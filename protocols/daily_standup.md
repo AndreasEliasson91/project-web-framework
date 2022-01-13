@@ -10,7 +10,7 @@ Att göra idag:
 - Planera projektstruktur
 
 Att göra till nästa gång:
-
+- Skapa 1:a sprinten
 
 
 ANTECKNINGAR:
