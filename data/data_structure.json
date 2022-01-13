@@ -1,0 +1,63 @@
+[{
+    "user-child": {
+      "username": "",
+      "password": "",
+      "avatar": "",
+      "personal_high_score": [
+        {
+          "game": "",
+          "score": ""
+        }
+      ]
+  }
+  },
+
+  {
+   "user-parent": {
+     "parent_email": "",
+     "parent_password": "",
+     "parent_age": "",
+     "child": [
+       {
+         "child_email": "",
+         "child_username": "",
+         "child_password": "",
+         "child_age": ""
+       }
+     ]
+   }
+  },
+
+  {
+    "games": {
+      "name": "",
+      "level": "",
+      "description": "",
+      "content": [
+        {
+          "images": "",
+          "text": "",
+          "sound": "",
+          "effects": "",
+          "assignment": ""
+        }
+      ]
+    }
+  },
+
+  {
+    "high-score": {
+      "scores": [
+        {
+          "game": "",
+          "top10": [
+            {
+              "child_id": "",
+              "score": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
