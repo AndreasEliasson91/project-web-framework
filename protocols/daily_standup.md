@@ -50,7 +50,9 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
 
--
+
+
+
 
 MÖTESPROTOKOLL
 
@@ -64,3 +66,7 @@ Att göra idag:
 Att göra till nästa gång:
 
 ANTECKNINGAR:
+
+To do list - vecka 3: 
+- Skapa en indexsida med login, signin, logout
+- 
