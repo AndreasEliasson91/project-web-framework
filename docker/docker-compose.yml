@@ -4,10 +4,12 @@ services:
   mongo:
     image: mongo:latest
     restart: always
+    container_name: LearningByGames
     ports:
       - '27013:27017'
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: HelloThere
+      MONGO_INITDB_DATABASE: LearningByGames_DB
     volumes:
-      - '../dumps:/db_dump'
+      - './dumps:/db_dump'
