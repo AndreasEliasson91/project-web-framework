@@ -36,7 +36,7 @@ Blueprints: open, user, admin, spel
 Open: startsida - login, signin, overall high score, informationssida, en sida med 2-3 frispel [Länkar till startsida, aboutsida, regelsida, spelsida, lognin, registering]
 
 User: profilsida - information om användaren, användarens poängsystem, ladda upp en egen bild/avtar (en färdig lista på avatar som randomiseras till nya användare), lägga till kontakter, chatfunktion (livechat), skicka pm, skapa event - bjuda in andra användare till olika spel/utmaningar (multiplayer) [Länkar till välkommen till din sida, profilsida, kalender, kompiar, spelsida, chatsida].
-<Registrering sker av föräldrar med barn som är under 18> 
+<Registrering sker av föräldrar med barn som är under 13 --> EU lag> 
 
 Föräldraradmin/läraradmin: stänga av användare, skapa events/tävlingar [Länkar till välkommen till din sida]
 
@@ -49,3 +49,18 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Svenska spel: stavningasspel, alternativ spel med bilder och ord
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
+
+-
+
+MÖTESPROTOKOLL
+
+Datum: 14-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Att göra idag:
+- Skapa och planera 1:a sprintsen
+
+Att göra till nästa gång:
+
+ANTECKNINGAR:
