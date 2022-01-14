@@ -70,5 +70,6 @@ ANTECKNINGAR:
 - Diskussioner kring chattfunktionen --> Vi kanske tar bort den
 - Andreas har skapat en miro doc.
 - Införa KAFFERAST kl. 11.00 varje dag.
+- Förslag på fler spel: Berättelser, matte maze
 _______________________________________________________________________________________________________________________________________________________________________
 
