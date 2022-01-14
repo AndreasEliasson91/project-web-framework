@@ -1,4 +1,5 @@
-from application.dll.db import db, Document
+from application.dll.db import db
+from application.dll.db.document import Document
 
 
 class User(Document):
