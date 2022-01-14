@@ -23,7 +23,7 @@ Projektplanering:
 - Börja projektet med att skapa en webbsida med fokus på funktionalitet och design.
 - Skapa en databas (MongoDB - Pymongo) med fake data och få till en fungerade login och signin, få till en bra säkerhet på sidan.
 - Skapa och designa MINST ett spel i varje ämnesområde (Matte, svenska, engelska, logik)
-- 
+
 
 
 Brainstorming:
@@ -52,7 +52,6 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 
 _______________________________________________________________________________________________________________________________________________________________________
 
-
 MÖTESPROTOKOLL
 
 Datum: 14-01-2022
@@ -60,7 +59,7 @@ Datum: 14-01-2022
 Närvarande: Andreas, Markus, Lenny och Anna
 
 Att göra idag:
-- Skapa en product backlog och planera 1:a sprinten för vecka 3.
+- Skapa en product backlog och planera 1:a sprinten (001) för vecka 3.
 
 Att göra till nästa gång (Måndag 17-01-2022):
 - Skapa 1:a sprinten
@@ -68,4 +67,8 @@ Att göra till nästa gång (Måndag 17-01-2022):
 
 ANTECKNINGAR:
 
-- Diskussioner kring chattfunktionen -->
+- Diskussioner kring chattfunktionen --> Vi kanske tar bort den
+- Andreas har skapat en miro doc.
+- Införa KAFFERAST kl. 11.00 varje dag.
+_______________________________________________________________________________________________________________________________________________________________________
+
