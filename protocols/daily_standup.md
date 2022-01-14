@@ -50,8 +50,7 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
 
-
-
+_______________________________________________________________________________________________________________________________________________________________________
 
 
 MÖTESPROTOKOLL
@@ -61,12 +60,12 @@ Datum: 14-01-2022
 Närvarande: Andreas, Markus, Lenny och Anna
 
 Att göra idag:
-- Skapa och planera 1:a sprintsen
+- Skapa en product backlog och planera 1:a sprinten för vecka 3.
 
-Att göra till nästa gång:
+Att göra till nästa gång (Måndag 17-01-2022):
+- Skapa 1:a sprinten
+
 
 ANTECKNINGAR:
 
-To do list - vecka 3: 
-- Skapa en indexsida med login, signin, logout
-- 
+- Diskussioner kring chattfunktionen -->
