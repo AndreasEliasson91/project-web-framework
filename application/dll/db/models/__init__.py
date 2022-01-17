@@ -17,8 +17,5 @@ class User(Document):
     def is_anonymous():
         return False
 
-    def get_id(self, login_method):  # See if this works
-        if login_method == 'email':
-            return self.email
-        else:
-            return self.username
+    def get_id(self):
+        return self.email

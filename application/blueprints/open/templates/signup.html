@@ -13,68 +13,48 @@
             {% endif %}
         {% endwith %}
         <form action="/signup" method="POST">
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label" style="color:rgb(101,67,33)">Username</label>
+                    <label class="label">Email</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="text" name="username" placeholder="" required>
+                        <input class="input is-medium" type="email" name="parent_email" placeholder="Skriv din email" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label" style="color:rgb(101,67,33)">Email</label>
+                    <label class="label">Lösenord</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="email" name="email" placeholder="" required>
+                        <input class="input is-medium" type="password" name="parent_password_1" placeholder="Skriv ett lösenord" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label" style="color:rgb(101,67,33)">Password</label>
+                    <label class="label">Lösenord</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="password" name="password" placeholder="*********" required>
+                        <input class="input is-medium" type="password" name="parent_password_2" placeholder="Upprepa ditt lösenord" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label" style="color:rgb(101,67,33)">Name</label>
+                    <label class="label">Födelsedatum</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="text" name="name" placeholder="" required>
+                        <input class="input is-medium" style="color:rgb(215,215,215)" type="date" name="parent_birth_date" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
-                <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">City</label>
-                </div>
-                <div class="field-body">
-                    <div class="control">
-                        <input class="input is-medium" type="text" name="city" placeholder="" required>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-grouped ml-6">
-                <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">Birthdate</label>
-                </div>
-                <div class="field-body">
-                    <div class="control">
-                        <input class="input main is-medium" type="date" name="birth_date" required>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-grouped is-grouped-centered">
-                <button class="button main is-medium ml-6 is-fullwidth">Sign Up</button>
+            <div class="field-body">
+                <button class="button is-medium is-fullwidth">Sign Up</button>
             </div>
         </form>
     </div>
