@@ -73,3 +73,29 @@ ANTECKNINGAR:
 - Förslag på fler spel: Berättelser, matte maze
 _______________________________________________________________________________________________________________________________________________________________________
 
+MÖTESPROTOKOLL
+
+Datum: 17-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Att göra idag:
+- Skapa 1:a sprinten
+- Andreas gör kort: #001c
+- Markus gör kort: #001b
+- Lenny och Anna gör kort: #001a och #008
+
+Att göra till nästa gång (18-01-2022):
+- Prata om hur långt vi kom igår med korten.
+- Fortsätta jobba med nya gamla kort/nya kort.
+
+
+ANTECKNINGAR:
+-
+_______________________________________________________________________________________________________________________________________________________________________
+
+MÖTESPROTOKOLL
+
+Datum: 18-01-2022
+
+Närvarande: 
