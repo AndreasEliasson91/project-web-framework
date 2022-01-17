@@ -23,7 +23,7 @@ Projektplanering:
 - Börja projektet med att skapa en webbsida med fokus på funktionalitet och design.
 - Skapa en databas (MongoDB - Pymongo) med fake data och få till en fungerade login och signin, få till en bra säkerhet på sidan.
 - Skapa och designa MINST ett spel i varje ämnesområde (Matte, svenska, engelska, logik)
-- 
+
 
 
 Brainstorming:
@@ -36,7 +36,7 @@ Blueprints: open, user, admin, spel
 Open: startsida - login, signin, overall high score, informationssida, en sida med 2-3 frispel [Länkar till startsida, aboutsida, regelsida, spelsida, lognin, registering]
 
 User: profilsida - information om användaren, användarens poängsystem, ladda upp en egen bild/avtar (en färdig lista på avatar som randomiseras till nya användare), lägga till kontakter, chatfunktion (livechat), skicka pm, skapa event - bjuda in andra användare till olika spel/utmaningar (multiplayer) [Länkar till välkommen till din sida, profilsida, kalender, kompiar, spelsida, chatsida].
-<Registrering sker av föräldrar med barn som är under 18> 
+<Registrering sker av föräldrar med barn som är under 13 --> EU lag> 
 
 Föräldraradmin/läraradmin: stänga av användare, skapa events/tävlingar [Länkar till välkommen till din sida]
 
@@ -49,3 +49,54 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Svenska spel: stavningasspel, alternativ spel med bilder och ord
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+MÖTESPROTOKOLL
+
+Datum: 14-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Att göra idag:
+- Skapa en product backlog och planera 1:a sprinten (001) för vecka 3.
+
+Att göra till nästa gång (Måndag 17-01-2022):
+- Skapa 1:a sprinten
+
+
+ANTECKNINGAR:
+
+- Diskussioner kring chattfunktionen --> Vi kanske tar bort den
+- Andreas har skapat en miro doc.
+- Införa KAFFERAST kl. 11.00 varje dag.
+- Förslag på fler spel: Berättelser, matte maze
+_______________________________________________________________________________________________________________________________________________________________________
+
+MÖTESPROTOKOLL
+
+Datum: 17-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Att göra idag:
+- Skapa 1:a sprinten
+- Andreas gör kort: #001c
+- Markus gör kort: #001b
+- Lenny och Anna gör kort: #001a och #008
+- Skapa nya branches för vardera kort
+
+Att göra till nästa gång (18-01-2022):
+- Prata om hur långt vi kom igår med korten.
+- Fortsätta jobba med nya gamla kort/nya kort.
+
+
+ANTECKNINGAR:
+-
+_______________________________________________________________________________________________________________________________________________________________________
+
+MÖTESPROTOKOLL
+
+Datum: 18-01-2022
+
+Närvarande: 
