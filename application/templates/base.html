@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
+    <!-- Here goes the cdn keys, we are using Bulma. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- this is the path to the static files.  where we can get images and styling sheets-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
     {% block head %} {% endblock %}
 </head>
 <body>
