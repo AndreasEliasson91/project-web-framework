@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Signup{% endblock %}
+{% block title %}Registrera Ett Barn{% endblock %}
 
 {% block content %}
     <div class="column is-4 is-offset-4">
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -12,6 +13,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
         <div class="box">
             <form action="/parent/register-child" method="POST">
                 <div class="field">
@@ -43,4 +45,8 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+
 {% endblock %}

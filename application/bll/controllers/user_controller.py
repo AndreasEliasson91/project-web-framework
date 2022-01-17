@@ -22,7 +22,6 @@ def create_parent(email, password, birth_date):
             'date_created': datetime.datetime.now(),
         }
     )
-
     user_repository.create_parent(parent)
 
 
@@ -40,5 +39,4 @@ def create_child(username, password, birth_date: Optional):
     if birth_date:
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
-
     user_repository.create_child(child)
