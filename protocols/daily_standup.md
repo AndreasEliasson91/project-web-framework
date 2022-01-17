@@ -84,6 +84,7 @@ Att göra idag:
 - Andreas gör kort: #001c
 - Markus gör kort: #001b
 - Lenny och Anna gör kort: #001a och #008
+- Skapa nya branches för vardera kort
 
 Att göra till nästa gång (18-01-2022):
 - Prata om hur långt vi kom igår med korten.
