@@ -9,7 +9,7 @@ def create_app():
     _app.config.from_pyfile('settings.py')
     init_db(_app)
 
-    toolbar = DebugToolbarExtension(_app)
+    # toolbar = DebugToolbarExtension(_app)
 
     login_manager = LoginManager()
     login_manager.init_app(_app)
