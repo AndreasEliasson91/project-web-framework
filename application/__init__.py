@@ -11,8 +11,11 @@ def create_app():
 
     toolbar = DebugToolbarExtension(_app)
 
-    login_manager = LoginManager()
-    login_manager.init_app(_app)
+    from application.blueprints.open import bp_open
+    _app.register_blueprint(bp_open)
+
+    # login_manager = LoginManager()
+    # login_manager.init_app(_app)
 
     return _app
 

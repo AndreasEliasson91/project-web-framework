@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+    <div class="column is-4 is-offset-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notification is-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/signup" method="POST">
+            <div class="field is-grouped ml-6">
+                <div class="field-label is-medium">
+                    <label class="label main" style="color:rgb(101,67,33)">Username</label>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-medium" type="text" name="username" placeholder="e.g. foodlover" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped ml-6">
+                <div class="field-label is-medium">
+                    <label class="label main" style="color:rgb(101,67,33)">Email</label>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-medium" type="email" name="email" placeholder="e.g. foodlover@food.com" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped ml-6">
+                <div class="field-label is-medium">
+                    <label class="label main" style="color:rgb(101,67,33)">Password</label>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-medium" type="password" name="password" placeholder="*********" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped ml-6">
+                <div class="field-label is-medium">
+                    <label class="label main" style="color:rgb(101,67,33)">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-medium" type="text" name="name" placeholder="e.g. Gordon Ramsey" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped ml-6">
+                <div class="field-label is-medium">
+                    <label class="label main" style="color:rgb(101,67,33)">City</label>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-medium" type="text" name="city" placeholder="e.g. Foodtopia" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped ml-6">
+                <div class="field-label is-medium">
+                    <label class="label main" style="color:rgb(101,67,33)">Birthdate</label>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input main is-medium" type="date" name="birth_date" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <button class="button main is-medium ml-6 is-fullwidth">Sign Up</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
