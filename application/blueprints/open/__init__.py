@@ -5,7 +5,7 @@ from werkzeug.security import check_password_hash
 
 bp_open = Blueprint('bp_open',
                     __name__,
-                    template_folder='templates'
+                    template_folder='templates',
                     )
 
 
