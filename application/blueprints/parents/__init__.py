@@ -31,4 +31,4 @@ def register_child_post():
         return redirect(url_for('bp_parent.register_child_get'))
 
     create_child(username, password, birth_date)
-    return redirect(url_for('bp_open.fake_index'))
+    return redirect(url_for('bp_open.index'))

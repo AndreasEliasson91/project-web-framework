@@ -12,36 +12,24 @@
     {% endblock %}
 </head>
 <body>
-{#    <section class="hero is-primary is-fullheight">#}
-{#        <div class="hero-body">#}
+    <h3><ul>
+    <li><a class="active" href="/">Start sidan</a></li>
+    <li><a href="/signup">Registrera dig</a></li>
+        <li><a href="/signin">Logga in</a></li>
+        <li><a href="/game_rules">Regler</a></li>
+        <li><a href="/games">Spel</a></li>
+        <li><a href="/test_games">Provspel</a></li>
+    <li><a href="/about">Om oss</a></li>
 
-                <h3><ul>
-                <li><a class="active" href="/">Start sidan</a></li>
-                <li><a href="/signup">Registrera dig</a></li>
-                    <li><a href="/signin">Logga in</a></li>
-                    <li><a href="/game_rules">Regler</a></li>
-                    <li><a href="/games">Spel</a></li>
-                    <li><a href="/test_games">Provspel</a></li>
-                <li><a href="/about">Om oss</a></li>
+    </ul></h3>
 
-                </ul></h3>
-                {% block content %}
+    <section class="hero is-fullheight">{% block content %} {% endblock %}</section>
 
+    {% block scripts %} {% endblock %}
 
-
-                {% endblock %}
-{#        </div>#}
-{#    </section>#}
-
-    {% block scripts %}
-
-    {% endblock %}
-
-    {% block footer %}
-         <div class="footer">
-             <p><h1>(c) Lär dig från spel. Av Dreamteam.</h1>
-
-        </div>
-    {% endblock %}
+     <div class="footer">
+         {% block footer %} {% endblock %}
+         <p><h1>(c) Lär dig från spel. Av Dreamteam.</h1>
+    </div>
 </body>
 </html>

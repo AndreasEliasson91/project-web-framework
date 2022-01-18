@@ -13,7 +13,7 @@ bp_open = Blueprint('bp_open',
 def signin_get():
     return render_template('signin.html')
 
-  
+
 @bp_open.post('/signin')
 def signin_post():
     username = request.form.get('username')
@@ -35,8 +35,8 @@ def signin_post():
     return redirect(url_for('bp_open.index'))
 
 
-@bp_open.post('/signup')
-def signup_post():
+@bp_open.get('/signup')
+def signup_get():
     return render_template('signup.html')
 
 
