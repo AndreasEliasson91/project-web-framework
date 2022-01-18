@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Registrera Ditt Barn{% endblock %}
+
+{% block content %}
+    <div class="column is-4 is-offset-4">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notification is-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="box">
+            <form action="/parent/register-child" method="POST">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" name="username"
+                               placeholder="Skriv ett användarnamn" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="password" id="child_password_1"
+                               ame ="password" placeholder="Skriv ett lösenord" required>
+                    </div>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-large" type="password" id="child_password_2"
+                               placeholder="Upprepa ditt lösenord" onchange="checkPassword()" required>
+                    </div>
+                </div>
+                <div class="field-body">
+                    <div class="control">
+                        <input class="input is-large" style="color:rgb(215,215,215)" type="date" name="birth_date">
+                    </div>
+                </div>
+                <div class="field-body">
+                    <button class="button is-block is-info is-large is-fullwidth"
+                            id="register" disabled>Registrera Barn</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function checkPassword() {
+            let p1 = document.getElementById("child_password_1").value;
+            let p2 = document.getElementById("child_password_2").value;
+
+            if (p1 === p2) {
+                document.getElementById("register").disabled = false;
+            }
+        }
+    </script>
+{% endblock %}

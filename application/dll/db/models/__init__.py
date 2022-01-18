@@ -31,3 +31,4 @@ class Game(Document):
 class HighScore(Document):
     collection = db.high_score
 
+

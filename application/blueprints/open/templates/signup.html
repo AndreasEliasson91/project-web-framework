@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Signup{% endblock %}
+{% block title %}Registrera Dig{% endblock %}
 
 {% block content %}
     <div class="column is-4 is-offset-4">
@@ -13,69 +13,65 @@
             {% endif %}
         {% endwith %}
         <form action="/signup" method="POST">
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">Username</label>
+                    <label class="label">Email</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="text" name="username" placeholder="e.g. foodlover" required>
+                        <input class="input is-medium" type="email" name="email" placeholder="Skriv din email" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">Email</label>
+                    <label class="label">Lösenord</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="email" name="email" placeholder="e.g. foodlover@food.com" required>
+                        <input class="input is-medium" type="password" id="parent_password_1"
+                               name="password" placeholder="Skriv ett lösenord" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">Password</label>
+                    <label class="label">Lösenord</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="password" name="password" placeholder="*********" required>
+                        <input class="input is-medium" type="password" id="parent_password_2"
+                               placeholder="Upprepa ditt lösenord" onchange="checkPassword()" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
+            <div class="field is-grouped">
                 <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">Name</label>
+                    <label class="label">Födelsedatum</label>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-medium" type="text" name="name" placeholder="e.g. Gordon Ramsey" required>
+                        <input class="input is-medium" style="color:rgb(215,215,215)" type="date" name="birth_date" required>
                     </div>
                 </div>
             </div>
-            <div class="field is-grouped ml-6">
-                <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">City</label>
-                </div>
-                <div class="field-body">
-                    <div class="control">
-                        <input class="input is-medium" type="text" name="city" placeholder="e.g. Foodtopia" required>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-grouped ml-6">
-                <div class="field-label is-medium">
-                    <label class="label main" style="color:rgb(101,67,33)">Birthdate</label>
-                </div>
-                <div class="field-body">
-                    <div class="control">
-                        <input class="input main is-medium" type="date" name="birth_date" required>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-grouped is-grouped-centered">
-                <button class="button main is-medium ml-6 is-fullwidth">Sign Up</button>
+            <div class="field-body">
+                <button class="button is-medium is-fullwidth"
+                id="register" disabled>Registrera</button>
             </div>
         </form>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function checkPassword() {
+            let p1 = document.getElementById("parent_password_1").value;
+            let p2 = document.getElementById("parent_password_2").value;
+
+            if (p1 === p2) {
+                document.getElementById("register").disabled = false;
+            }
+        }
+    </script>
 {% endblock %}
