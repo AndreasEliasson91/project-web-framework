@@ -1,0 +1,63 @@
+<!-- The line below is the one who gets the atributes from the base.html file. -->
+{% extends "base.html" %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+    <section class="section">
+   <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-3">
+                <h1 class="is-size-3 title">Lär dig från spel.</h1>
+                <h2 class="is-size-3 subtitle">Barnens favoritplats</h2>
+                <p></p>
+                <h2 class="is-size-4 subtitle">Här kan ditt barn lära sig saker med
+                pedagogiska spel. Som tex pussel, mattelabyrint med mera. </h2>
+                <p></p>
+                <p></p>
+                <h2 class="is-size-4 subtitle">Kom igång direkt genom att registrera dig.</h2>
+            </div>
+
+            <div class="column is-3 ">
+               <!-- bild skall vara här -->
+
+                <figure class="image is-100x100">
+
+                <image class="is-rounded" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+                </figure>
+
+            </div>
+
+            <div class="column is-3">
+                <h2 class="is-size-2 title">Klicka på mig för att provspela</h2>
+                <h2 class="is-size-3 subtitle">du kommer att ha roligt i många timmar.
+                Glöm dock inte att fråga dina föräldrar först!</h2>
+
+
+            </div>
+
+
+
+
+                <div class="column is-3 ">
+                <!-- bild skall vara här -->
+
+                    <a href="/test_games">
+                 <figure class="image is-50x170">
+                     <image class="is-rounded" src="{{ url_for('static', filename="img/barnbild5.png") }}" title="Prova mig" class="Y1"></image>
+                </figure>
+                 </a>
+
+
+
+            </div>
+        </div>
+
+   </div>
+   </section>
+
+    <script>
+
+
+    </script>
+{% endblock %}
