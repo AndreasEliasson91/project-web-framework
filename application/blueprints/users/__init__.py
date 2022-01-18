@@ -8,6 +8,7 @@ bp_user = Blueprint('bp_user',
                     )
 
 
-@bp_user.get('/edit-profile')
-def edit_profile_get():
-    return render_template('edit_profile.html')
+@bp_user.get('/profile')
+@login_required
+def profile_get():
+    return render_template('profile.html')

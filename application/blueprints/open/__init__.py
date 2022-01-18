@@ -54,7 +54,7 @@ def signup_post():
         return redirect(url_for('bp_open.signup_get'))
 
     create_parent(email, password, birth_date)
-    return redirect(url_for('bp_open.fake_index'))
+    return redirect(url_for('bp_open.signin_get'))
 
 
 @bp_open.get('/')

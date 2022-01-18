@@ -9,7 +9,17 @@ def create_app():
     _app.config.from_pyfile('settings.py')
     init_db(_app)
 
+    login_manager = LoginManager()
+    login_manager.init_app(_app)
+
     # toolbar = DebugToolbarExtension(_app)
+    @login_manager.user_loader
+    def load_user(user_id):
+        from application.dll.db.models import User
+        if '@' in user_id:
+            return User.find(email=user_id).first_or_none()
+        else:
+            return User.find(username=user_id).first_or_none()
 
     from application.blueprints.open import bp_open
     _app.register_blueprint(bp_open)
@@ -19,14 +29,6 @@ def create_app():
 
     from application.blueprints.users import bp_user
     _app.register_blueprint(bp_user)
-
-    login_manager = LoginManager()
-    login_manager.init_app(_app)
-
-    @login_manager.user_loader
-    def load_user(user_id):
-        from application.dll.db.models import User
-        return User.find(_id=user_id).first_or_none()
 
     return _app
 
