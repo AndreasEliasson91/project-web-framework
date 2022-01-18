@@ -19,9 +19,9 @@ def register_child_get():
 @bp_parent.post('/register-child')
 # @login_required
 def register_child_post():
-    username = request.form.get('child_username')
-    password = request.form.get('child_password_1')
-    birth_date = request.form.get('child_birth_date')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    birth_date = request.form.get('birth_date')
 
     from application.dll.db.models import User
     user = User.find(username=username).first_or_none()

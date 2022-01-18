@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Registrera Ett Barn{% endblock %}
+{% block title %}Registrera Ditt Barn{% endblock %}
 
 {% block content %}
     <div class="column is-4 is-offset-4">
@@ -18,29 +18,29 @@
             <form action="/parent/register-child" method="POST">
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="text" name="child_username"
+                        <input class="input is-large" type="text" name="username"
                                placeholder="Skriv ett användarnamn" required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="password" name="child_password_1"
-                               placeholder="Skriv ett lösenord" required>
+                        <input class="input is-large" type="password" id="child_password_1"
+                               ame ="password" placeholder="Skriv ett lösenord" required>
                     </div>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-large" type="password" name="child_password_2"
+                        <input class="input is-large" type="password" id="child_password_2"
                                placeholder="Upprepa ditt lösenord" required>
                     </div>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-large" style="color:rgb(215,215,215)" type="date" name="child_birth_date">
+                        <input class="input is-large" style="color:rgb(215,215,215)" type="date" name="birth_date">
                     </div>
                 </div>
                 <div class="field-body">
-                    <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+                    <button class="button is-block is-info is-large is-fullwidth">Registrera Barn</button>
                 </div>
             </form>
         </div>

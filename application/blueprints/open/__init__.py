@@ -21,9 +21,9 @@ def signup_get():
 
 @bp_open.post('/signup')
 def signup_post():
-    email = request.form.get('parent_email')
-    password = request.form.get('parent_password_1')
-    birth_date = request.form.get('parent_birth_date')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    birth_date = request.form.get('birth_date')
 
     from application.dll.db.models import User
     user = User.find(email=email).first_or_none()
