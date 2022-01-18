@@ -51,7 +51,7 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
 
-_______________________________________________________________________________________________________________________________________________________________________
+
 
 MÖTESPROTOKOLL
 -
@@ -73,7 +73,8 @@ ANTECKNINGAR:
 - Andreas har skapat en miro doc.
 - Införa KAFFERAST kl. 11.00 varje dag.
 - Förslag på fler spel: Berättelser, matte maze
-_______________________________________________________________________________________________________________________________________________________________________
+
+
 
 MÖTESPROTOKOLL
 -
@@ -96,7 +97,7 @@ Att göra till nästa gång (18-01-2022):
 
 ANTECKNINGAR:
 
-_______________________________________________________________________________________________________________________________________________________________________
+
 
 MÖTESPROTOKOLL
 -
@@ -116,9 +117,12 @@ Att göra idag:
 
 Att göra till nästa gång:
 
-_______________________________________________________________________________________________________________________________________________________________________
+ANTECKNINGAR:
+
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 19-01-2022
 
