@@ -9,14 +9,30 @@ bp_open = Blueprint('bp_open',
                     )
 
 
-@bp_open.get('/')
-def fake_index():
-    return 'Testing'
+@bp_open.get('/signin')
+def signin_get():
+    return render_template('signin.html')
 
+  
+@bp_open.post('/signin')
+def signin_post():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    from application.dll.db.models import User
+    if '@' in username:
+        user = User.find(email=username).first_or_none()
+    else:
+        user = User.find(username=username).first_or_none()
+    if user is None:
+        flash('Username or password is incorrect')
+        return redirect(url_for('bp_open.signin_get'))
 
-@bp_open.get('/signup')
-def signup_get():
-    return render_template('signup.html')
+    if not check_password_hash(user.password, password):
+        flash('Username or password is incorrect')
+        return redirect(url_for('bp_open.signin_get'))
+
+    login_user(user)
+    return redirect(url_for('bp_open.index'))
 
 
 @bp_open.post('/signup')
@@ -34,3 +50,7 @@ def signup_post():
 
     create_parent(email, password, birth_date)
     return redirect(url_for('bp_open.fake_index'))
+
+@bp_open.get('/')
+def index():
+    return render_template('index.html')

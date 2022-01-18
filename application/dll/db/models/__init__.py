@@ -18,4 +18,17 @@ class User(Document):
         return False
 
     def get_id(self):
-        return self.email
+        if self.parent:
+            return self.email
+        else:
+            return self.username
+
+          
+class Game(Document):
+    collection = db.games
+
+
+class HighScore(Document):
+    collection = db.high_score
+
+
