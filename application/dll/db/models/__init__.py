@@ -18,4 +18,7 @@ class User(Document):
         return False
 
     def get_id(self):
-        return self.username
+        if self.parent:
+            return self.email
+        else:
+            return self.username

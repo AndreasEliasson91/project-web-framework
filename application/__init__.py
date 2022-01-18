@@ -9,13 +9,19 @@ def create_app():
     _app.config.from_pyfile('settings.py')
     init_db(_app)
 
-    toolbar = DebugToolbarExtension(_app)
+    # toolbar = DebugToolbarExtension(_app)
+    # toolbar.DEBUG_TB_INTERCEPT_REDIRECTS = False
 
     from application.blueprints.open import bp_open
     _app.register_blueprint(bp_open)
 
-    # login_manager = LoginManager()
-    # login_manager.init_app(_app)
+    login_manager = LoginManager()
+    login_manager.init_app(_app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        from application.dll.db.models import User
+        return User.find(_id=user_id).first_or_none()
 
     return _app
 
