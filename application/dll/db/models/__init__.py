@@ -22,3 +22,12 @@ class User(Document):
             return self.email
         else:
             return self.username
+
+          
+class Game(Document):
+    collection = db.games
+
+
+class HighScore(Document):
+    collection = db.high_score
+

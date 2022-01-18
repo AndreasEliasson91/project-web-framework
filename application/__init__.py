@@ -10,7 +10,6 @@ def create_app():
     init_db(_app)
 
     # toolbar = DebugToolbarExtension(_app)
-    # toolbar.DEBUG_TB_INTERCEPT_REDIRECTS = False
 
     from application.blueprints.open import bp_open
     _app.register_blueprint(bp_open)
