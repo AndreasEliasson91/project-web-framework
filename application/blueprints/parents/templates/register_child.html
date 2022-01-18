@@ -31,7 +31,7 @@
                 <div class="field-body">
                     <div class="control">
                         <input class="input is-large" type="password" id="child_password_2"
-                               placeholder="Upprepa ditt lösenord" required>
+                               placeholder="Upprepa ditt lösenord" onchange="checkPassword()" required>
                     </div>
                 </div>
                 <div class="field-body">
@@ -40,7 +40,8 @@
                     </div>
                 </div>
                 <div class="field-body">
-                    <button class="button is-block is-info is-large is-fullwidth">Registrera Barn</button>
+                    <button class="button is-block is-info is-large is-fullwidth"
+                            id="register" disabled>Registrera Barn</button>
                 </div>
             </form>
         </div>
@@ -48,5 +49,14 @@
 {% endblock %}
 
 {% block scripts %}
+    <script>
+        function checkPassword() {
+            let p1 = document.getElementById("child_password_1").value;
+            let p2 = document.getElementById("child_password_2").value;
 
+            if (p1 === p2) {
+                document.getElementById("register").disabled = false;
+            }
+        }
+    </script>
 {% endblock %}
