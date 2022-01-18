@@ -32,7 +32,7 @@ def signin_post():
         return redirect(url_for('bp_open.signin_get'))
 
     login_user(user)
-    return redirect(url_for('bp_open.index'))
+    return redirect(url_for('bp_user.profile_get'))
 
 
 @bp_open.get('/signup')

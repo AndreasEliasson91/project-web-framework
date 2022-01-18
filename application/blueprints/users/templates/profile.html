@@ -10,7 +10,7 @@
 <div class="column">
     <div class="container mt-5 mb-5">
         <div class="row no-gutters justify-content-between align-items-center">
-            <div class="col-md-4 col-lg-4">
+            <div class="col-md-4 col-lg-4 profile-pic">
 {#                <form action="{{ url_for('bp_user.profile_get') }}" method="post" enctype="multipart/form-data">#}
 {#                    <label for="fileToUpload">#}
 {#                        <div class="profile-pic" id="picture" style="background-image: url({{ url_for('static', filename='img/father.png') }})">#}
@@ -22,7 +22,8 @@
 {#                    </label>#}
 {#                    <input type="File" name="fileToUpload" id="fileToUpload" onchange="changePic()">#}
 {#                </form>#}
-                <img id="profile-pic" src="{{ url_for('static', filename='img/father.png') }}" border="5px solid #555" onclick="changePic()">
+                    <img class="profile-pic" id="profile-pic" src="{{ image_file }}" border="5px solid #555">
+
             </div>
             <div class="col-md-8 col-lg-8">
                 <div class="d-flex flex-column">
@@ -67,15 +68,15 @@
 {% endblock %}
 
 {% block scripts %}
-    <script>
-        function changePic() {
-            let p = document.getElementById("profile-pic").src
-            if (p="{{ url_for('static', filename='img/father.png') }}") {
-                document.getElementById("profile-pic").src="{{ url_for('static', filename='img/father2.png') }}";
-            } else if (p="{{ url_for('static', filename='img/father2.png') }}") {
-                document.getElementById("profile-pic").src="{{ url_for('static', filename='img/father.png') }}";
-            }
-        }
-    </script>
+{#    <script>#}
+{#        function changePic() {#}
+{#            let p = document.getElementById("profile-pic").value#}
+{#            if (p === "static/img/father.png") {#}
+{#                document.getElementById("profile-pic").src="{{ url_for('static', filename='img/father2.png') }}";#}
+{#            } else {#}
+{#                document.getElementById("profile-pic").src="{{ url_for('static', filename='img/father.png') }}";#}
+{#            }#}
+{#        }#}
+{#    </script>#}
 
 {% endblock %}
