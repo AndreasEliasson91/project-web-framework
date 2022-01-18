@@ -11,13 +11,13 @@ bp_parent = Blueprint('bp_parent',
 
 
 @bp_parent.get('/register-child')
-# @login_required
+@login_required
 def register_child_get():
     return render_template('register_child.html')
 
 
 @bp_parent.post('/register-child')
-# @login_required
+@login_required
 def register_child_post():
     username = request.form.get('username')
     password = request.form.get('password')
