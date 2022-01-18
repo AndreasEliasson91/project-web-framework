@@ -84,7 +84,7 @@ Att göra idag:
 - Andreas gör kort: #001c
 - Markus gör kort: #001b
 - Lenny och Anna gör kort: #001a och #008
-- Skapa nya branches för vardera kort
+- Skapa nya branches för varje kort
 
 Att göra till nästa gång (18-01-2022):
 - Prata om hur långt vi kom igår med korten.
@@ -99,4 +99,24 @@ MÖTESPROTOKOLL
 
 Datum: 18-01-2022
 
-Närvarande: 
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Alla i gruppen har lyckats få sina delar/kort att fungera bra. Första prototypen, CHECK!
+
+Att göra idag:
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+- Andreas och Markus #002a(profil) oh #002b(kontakter)
+- Lenny och Anna #001E(about) och fortsätta med #008(navigationsbar som inloggad)
+- Skapa nya branches med dem nya korten.
+
+Att göra till nästa gång:
+-
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+MÖTESPROTOKOLL
+
+Datum: 18-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
