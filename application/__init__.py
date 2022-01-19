@@ -14,7 +14,6 @@ def create_app():
     from application.blueprints.open import bp_open
     _app.register_blueprint(bp_open)
 
-
     from application.blueprints.parents import bp_parent
     _app.register_blueprint(bp_parent)
 
@@ -24,7 +23,7 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         from application.dll.db.models import User
-        return User.find(_id=user_id).first_or_none()
+        return User.find(email=user_id).first_or_none()
 
     return _app
 

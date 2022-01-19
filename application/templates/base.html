@@ -13,29 +13,53 @@
 </head>
 <body>
     <section class="is-fullheight">
-{#        <div class="hero-body">#}
 
-                <h3><ul>
-                <li><a class="active" href="/">Start sidan</a></li>
-                <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
-                    <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
-                    <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
-                    <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
-                    <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
-                    <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
-                    <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
+    <!-- Flask login gives us the current_user then we signed in. -->
+                        {% if current_user.is_authenticated %}
+                            <h3><ul>
+                                <li><a class="active" href="/">Start sidan</a></li>
+                            <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
+                                <li><a href="{{ url_for ('bp_open.signup_get') }}">Start sida</a></li>
+                                <li><a href="{{ url_for ('bp_user.profil_get') }}">Profil</a></li>
+                                <li><a href="{{ url_for ('bp_user.contacts_get') }}">Vänner</a></li>
+                                <li><a href="{{ url_for ('bp_user.settings_get') }}">Inställningar</a></li>
+                                <li><a href="{{ url_for ('bp_open.signout') }}">logga ut</a></li>
+                                <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
+                                <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
+                                <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
+
+
+                        {% else %}
 
 
 
+                            <h3><ul>
+                                <li><a class="active" href="/">Start sidan</a></li>
+                    <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
+                                <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
+                                <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
+                                <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
+                                <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
+                                <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
+                                <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
+                        {% endif %}
 
-                </ul></h3>
+                        {% if current_user.admin %}
+                            <a href="/admin" class="navbar-item">
+                                Admin
+                            </a>
+                        {% endif %}
+
+
+    </section>
+
                 {% block content %}
 
 
 
                 {% endblock %}
-{#        </div>#}
-    </section>
+
+
 
     {% block scripts %}
 
