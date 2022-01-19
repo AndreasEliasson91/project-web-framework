@@ -1,4 +1,5 @@
 MÖTESPROTOKOLL
+-
 
 Datum: 13-01-2022
 
@@ -50,9 +51,10 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
 
-_______________________________________________________________________________________________________________________________________________________________________
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 14-01-2022
 
@@ -71,9 +73,11 @@ ANTECKNINGAR:
 - Andreas har skapat en miro doc.
 - Införa KAFFERAST kl. 11.00 varje dag.
 - Förslag på fler spel: Berättelser, matte maze
-_______________________________________________________________________________________________________________________________________________________________________
+
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 17-01-2022
 
@@ -92,10 +96,11 @@ Att göra till nästa gång (18-01-2022):
 
 
 ANTECKNINGAR:
--
-_______________________________________________________________________________________________________________________________________________________________________
+
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 18-01-2022
 
@@ -106,17 +111,19 @@ Vad har gjorts sen sist:
 
 Att göra idag:
 - Gå igenom pull requestarna, diskutera koden och merga in till master.
-- Andreas och Markus #002a(profil) oh #002b(kontakter)
-- Lenny och Anna #001E(about) och fortsätta med #008(navigationsbar som inloggad)
+- Andreas och Markus gör: #002a(profil) och #002b(kontakter)
+- Lenny och Anna gör: #001E(about) och fortsätta med #008(navigationsbar som inloggad)
 - Skapa nya branches med dem nya korten.
 
 Att göra till nästa gång:
--
 
-_______________________________________________________________________________________________________________________________________________________________________
+ANTECKNINGAR:
+
+
 
 MÖTESPROTOKOLL
+-
 
-Datum: 18-01-2022
+Datum: 19-01-2022
 
 Närvarande: Andreas, Markus, Lenny och Anna
