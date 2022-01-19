@@ -14,6 +14,6 @@ bp_user = Blueprint('bp_user',
 @login_required
 def profile_get():
     # file = Image.find(_id=current_user.avatar).first_or_none()
-    # image = fs.find_one({''})
-    # return render_template('profile.html', image_file=image)
-    return render_template('profile.html')
+    image = url_for('static', filename='img/father3.png')
+    return render_template('profile.html', image_file=image)
+    # return render_template('profile.html')

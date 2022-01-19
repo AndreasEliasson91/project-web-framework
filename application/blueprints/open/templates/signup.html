@@ -53,9 +53,7 @@
             let p1 = document.getElementById("parent_password_1").value;
             let p2 = document.getElementById("parent_password_2").value;
 
-            if (p1 === p2) {
-                document.getElementById("register").disabled = false;
-            }
+            document.getElementById("register").disabled = p1 !== p2;
         }
     </script>
 {% endblock %}
