@@ -35,8 +35,8 @@ def signin_post():
     return redirect(url_for('bp_open.index'))
 
 
-@bp_open.post('/signup')
-def signup_post():
+@bp_open.get('/signup')
+def signup_get():
     return render_template('signup.html')
 
 
@@ -54,9 +54,13 @@ def signup_post():
         return redirect(url_for('bp_open.signup_get'))
 
     create_parent(email, password, birth_date)
-    return redirect(url_for('bp_open.fake_index'))
+    return redirect(url_for('bp_open.index'))
 
 
 @bp_open.get('/')
 def index():
     return render_template('index.html')
+
+@bp_open.get('/profile')
+def profile_get():
+    return render_template('profile.html')
