@@ -35,8 +35,8 @@ def signin_post():
     return redirect(url_for('bp_open.index'))
 
 
-@bp_open.post('/signup')
-def signup_post():
+@bp_open.get('/signup')
+def signup_get():
     return render_template('signup.html')
 
 
@@ -60,3 +60,23 @@ def signup_post():
 @bp_open.get('/')
 def index():
     return render_template('index.html')
+
+
+@bp_open.get('/about')
+def about_get():
+    return render_template('about.html')
+
+
+@bp_open.get('/game_rules')
+def rules_get():
+    return render_template('game_rules.html')
+
+
+@bp_open.get('/games')
+def games_get():
+    return render_template('games.html')
+
+
+@bp_open.get('/test_games')
+def test_games_get():
+    return render_template('test_games.html')
