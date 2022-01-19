@@ -135,7 +135,7 @@ Vad har gjorts sen sist:
 Att göra idag:
 - Gå igenom pull requestarna, diskutera koden och merga in till master.
 - Andreas och Markus forsätter med #002a(profil) och #002b(kontakter)
-- Lenny och Anna forsätter med #001E(about) och fortsätta med #008(navigationsbar som inloggad)
+- Lenny och Anna forsätter med #001E(about) och #008(navigationsbar som inloggad)
 - Skapa nya branches med dem nya korten.
 
 Att göra till nästa gång:
