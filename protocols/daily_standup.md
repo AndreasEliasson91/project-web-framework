@@ -127,3 +127,29 @@ MÖTESPROTOKOLL
 Datum: 19-01-2022
 
 Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Andreas och Markus har skapat en profilsida med bilder och spelkategorier med poängsystem samt en lista med användarens vänner/kontakter.
+- Lenny och Anna har skapat en "om oss" sida med profilbilder + text. Ändrat alla länkar till url_for. Ändrat footern så att den alltid hamnar längst ner.
+
+Att göra idag:
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+- Andreas och Markus forsätter med #002a(profil) och #002b(kontakter)
+- Lenny och Anna forsätter med #001E(about) och fortsätta med #008(navigationsbar som inloggad)
+- Skapa nya branches med dem nya korten.
+
+Att göra till nästa gång:
+- Fixa dem sista bitarna på sprinten.
+
+ANTECKNINGAR:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 18-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+
