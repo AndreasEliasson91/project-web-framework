@@ -14,6 +14,9 @@ def create_app():
     from application.blueprints.open import bp_open
     _app.register_blueprint(bp_open)
 
+    from application.blueprints.users import bp_user
+    _app.register_blueprint(bp_user)
+
     from application.blueprints.parents import bp_parent
     _app.register_blueprint(bp_parent)
 
