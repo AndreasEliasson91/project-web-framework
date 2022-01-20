@@ -1,4 +1,4 @@
-from application.bll.controllers.user_controller import create_child, get_user_by_username
+from application.bll.controllers.user_controller import register_child, get_user_by_username, update_user_information
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 
@@ -23,16 +23,21 @@ def register_child_post():
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
-    from application.dll.db.models import User
-    user = User.find(username=username).first_or_none()
+    user = get_user_by_username(username)
 
     if user is not None:
         flash('En användare med detta användarnamn existerar redan')
         return redirect(url_for('bp_parent.register_child_get'))
 
-    create_child(username, password, birth_date)
+    register_child(username, password, birth_date)
     child = get_user_by_username(username)
 
-    current_user.children.append(child['_id'], child['username'])
+    current_user.children.append(
+        {
+            '_id': child._id,
+            'username': child.username
+        }
+    )
+    update_user_information(current_user)
 
     return redirect(url_for('bp_open.index'))

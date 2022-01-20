@@ -23,7 +23,7 @@ class User(Document):
         else:
             return self.username
 
-          
+
 class Game(Document):
     collection = db.games
 
@@ -34,5 +34,3 @@ class HighScore(Document):
 
 class Image(Document):
     collection = db.images
-
-
