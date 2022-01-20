@@ -41,3 +41,8 @@ def create_child(username, password, birth_date: Optional):
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
     user_repository.create_child(child)
+
+
+def get_user_by_username(username):
+    return user_repository.get_user_by_username(username)
+

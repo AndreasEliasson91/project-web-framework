@@ -12,27 +12,46 @@
     {% endblock %}
 </head>
 <body>
-    <h3><ul>
-    <li><a class="active" href="/">Start sidan</a></li>
-    <li><a href="/signup">Registrera dig</a></li>
-        <li><a href="/signin">Logga in</a></li>
-        <li><a href="/game_rules">Regler</a></li>
-        <li><a href="/games">Spel</a></li>
-        <li><a href="/test_games">Provspel</a></li>
-    <li><a href="/about">Om oss</a></li>
+    <section class="is-fullheight">
 
-    </ul></h3>
+                <h3><ul>
+                <li><a class="active" href="/">Start sidan</a></li>
+                <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
+                    <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
+                    <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
+                    <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
+                    <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
+                    <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
+                    <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
 
-    <section class="hero is-fullheight">
-        {% block content %} {% endblock %}
 
+
+
+                </ul></h3>
+                {% block content %}
+
+
+
+                {% endblock %}
     </section>
 
-    {% block scripts %} {% endblock %}
-{##}
-{#     <div class="footer">#}
-{#         {% block footer %} {% endblock %}#}
-{#         <p><h1>(c) Lär dig från spel. Av Dreamteam.</h1>#}
-{#    </div>#}
+    {% block scripts %}
+
+    {% endblock %}
+
+    {% block footer %}
+        <body>
+
+            <div class="content">
+
+            </div>
+
+
+            <footer class="footer1">(c)opyright Leaning by Games.</footer>
+
+
+        </body>
+    {% endblock %}
+
 </body>
 </html>

@@ -1,6 +1,6 @@
-from application.bll.controllers.user_controller import create_child
+from application.bll.controllers.user_controller import create_child, get_user_by_username
 from flask import Blueprint, render_template, redirect, request, url_for, flash
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 bp_parent = Blueprint('bp_parent',
@@ -31,4 +31,8 @@ def register_child_post():
         return redirect(url_for('bp_parent.register_child_get'))
 
     create_child(username, password, birth_date)
+    child = get_user_by_username(username)
+
+    current_user.children.append(child['_id'], child['username'])
+
     return redirect(url_for('bp_open.index'))
