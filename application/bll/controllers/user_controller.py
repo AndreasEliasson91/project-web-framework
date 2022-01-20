@@ -1,10 +1,9 @@
 import datetime
 
 from application.dll.db.models import User
+from application.dll.repository import user_repository
 from typing import Optional
 from werkzeug.security import generate_password_hash
-
-from application.dll.repository import user_repository
 
 
 def register_adult(email, password, birth_date):
@@ -39,7 +38,6 @@ def register_child(username, password, birth_date: Optional):
     if birth_date:
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
-
     user_repository.register_child(child)
 
 
