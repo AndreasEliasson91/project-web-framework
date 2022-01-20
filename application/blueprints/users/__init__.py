@@ -11,7 +11,7 @@ def user_index():
     return render_template('welcome.html')
 
 
-@bp_user.get('/profil')
+@bp_user.get('/profile')
 def profil_get():
     return render_template('profil.html')
 
