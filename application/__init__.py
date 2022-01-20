@@ -23,10 +23,18 @@ def create_app():
     login_manager = LoginManager()
     login_manager.init_app(_app)
 
+    # @login_manager.user_loader
+    # def load_user(user_id):
+    #     from application.dll.db.models import User
+    #     return User.find(email=user_id).first_or_none()
+
     @login_manager.user_loader
     def load_user(user_id):
         from application.dll.db.models import User
-        return User.find(email=user_id).first_or_none()
+        if '@' in user_id:
+            return User.find(email=user_id).first_or_none()
+        else:
+            return User.find(username=user_id).first_or_none()
 
     return _app
 
