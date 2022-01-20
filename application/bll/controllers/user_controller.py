@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash
 from application.dll.repository import user_repository
 
 
-def create_parent(email, password, birth_date):
+def register_adult(email, password, birth_date):
     birth_date = birth_date.split('-')
     birth_date = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
@@ -22,10 +22,10 @@ def create_parent(email, password, birth_date):
             'date_created': datetime.datetime.now(),
         }
     )
-    user_repository.create_parent(parent)
+    user_repository.register_adult(parent)
 
 
-def create_child(username, password, birth_date: Optional):
+def register_child(username, password, birth_date: Optional):
     child = User(
         {
             'username': username,
@@ -39,4 +39,18 @@ def create_child(username, password, birth_date: Optional):
     if birth_date:
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
-    user_repository.create_child(child)
+
+    user_repository.register_child(child)
+
+
+def update_user_information(user):
+    return user_repository.update_user_information(user)
+
+
+def get_user_by_email(email):
+    return user_repository.get_user_by_email(email)
+
+
+def get_user_by_username(username):
+    return user_repository.get_user_by_username(username)
+
