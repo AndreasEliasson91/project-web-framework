@@ -22,11 +22,14 @@ body {
         3px 3px 7px #999999a9,
         -3px -3px 12px #e9e9e9a9;
     animation: uplift 0.1s 1 linear;
+    transform: scaleY(1.1);
+  transform-origin: bottom;
 }
 
 .neumorphism-3:not( :hover) {
     animation: downlift 0.1s 1 linear;
     top: 40px;
+
 
 
 }

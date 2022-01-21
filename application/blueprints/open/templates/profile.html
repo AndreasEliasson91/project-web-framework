@@ -13,26 +13,15 @@
     <div class="container mt-5 mb-5">
         <div class="row justify-content-between align-items-center">
             <div class="col-md-4 col-lg-4  profile-pic">
-{#                <form action="{{ url_for('bp_user.profile_get') }}" method="post" enctype="multipart/form-data">#}
-{#                    <label for="fileToUpload">#}
-{#                        <div class="profile-pic" id="picture" style="background-image: url({{ url_for('static', filename='img/father.png') }})">#}
-{#                            <span>Ändra Bild</span>#}
-{#                        </div>#}
-{#                        <div style="position: relative;">#}
-{#                            <span class="icon-photo glyphicon glyphicon-camera" style=""></span>#}
-{#                        </div>#}
-{#                    </label>#}
-{#                    <input type="File" name="fileToUpload" id="fileToUpload" onchange="changePic()">#}
-{#                </form>#}
                 <img class="profile-pic" id="profile-pic" src="{{ url_for('static', filename='img/kylo2.jpg') }}" onclick="changePic()" border="5px solid #555">
             </div>
             <div class=" col-md-8 col-lg-8" >
                 <div class="d-flex flex-column">
                     <div class="neumorphism-3  justify-content-between align-items-center p-5 text-center text-white" id="username"
-                         style=" border-top-left-radius: 25px; border-top-right-radius: 25px; font-family: Helvetica, sans-serif; background-color: rgb(32,32,32)" onclick="get_color_bar(); reply_click(this.id)">
+                         style=" border-top-left-radius: 25px; border-top-right-radius: 25px; font-family: Helvetica, sans-serif; background-color: rgb(32,32,32)" onclick="get_color_bar(this); reply_click(this.id)">
                         <h3 class="display-3">Darth Vader</h3>
                     </div>
-                    <div class="neumorphism-3  p-3 text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;" onclick="get_color_bar()" id="highscore">
+                    <div class="neumorphism-3  p-3 text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;" onclick="get_color_bar(this)" id="highscore">
 
                         <h3 class="display-5">High Score</h3>
                     </div>
@@ -78,11 +67,11 @@
  <div class="container mt-6 mb-6" >
      <div  class="row no-gutters">
         <div class="flex-column d-flex">
-            <div class="justify-content-between align-items-center p-5 text-white" style="background-color: rgb(32,32,32);
-            border-top-left-radius: 25px; border-top-right-radius: 25px;">
+            <div class="neumorphism-3 justify-content-between align-items-center p-5 text-white" style="background-color: rgb(32,32,32);
+            border-top-left-radius: 25px; border-top-right-radius: 25px;" onclick="get_color_bar(this)" >
                 <h2 class="text-center"><a style="color: white; font-family: Helvetica, sans-serif;" href="mailto:someone@example.com">KONTAKTA MIG</a></h2>
             </div>
-            <div class=" p-3  text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;">
+            <div class=" neumorphism-3 p-3  text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;" onclick="get_color_bar(this)" >
                 <h6 class=" text-center display-3">Kylo Rens barn</h6>
             </div>
                 <a href="http://127.0.0.1:5000/">
@@ -111,16 +100,11 @@
 </div>
 
 
-
-
-
 <div class="input" id="color_bar" hidden>
     <input type="number" id="red">
     <input type="number" id="green">
     <input type="number" id="blue">
 </div>
-
-
 
 {% endblock %}
 
@@ -128,11 +112,11 @@
 {% block scripts %}
 
 
-
-
     <script src="{{  url_for('static', filename='js/color_picker.js') }}"></script>
     <script>
-        function get_color_bar() {
+        let box = undefined;
+        function get_color_bar(e) {
+            box = e;
      document.getElementById("color_bar").hidden = !document.getElementById("color_bar").hidden; }
     </script>
 

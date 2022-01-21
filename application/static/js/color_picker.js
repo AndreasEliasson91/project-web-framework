@@ -2,13 +2,16 @@
 let red = document.getElementById('red');
 let green = document.getElementById('green');
 let blue = document.getElementById('blue');
-let box = document.querySelector('div.neumorphism-3');
+// let box = document.querySelector('div.neumorphism-3');
 
-  function reply_click(clicked_id)
-  {
-      return document.querySelector(clicked_id)
-  }
-
+//   function reply_click(clicked_id)
+//   {
+//       return document.querySelector(clicked_id)
+//   }
+//
+// div.addEventListener('click', function) {
+//       let box = document.querySelector('')
+// }
 
 let r = 0, g = 0, b = 0;
 
