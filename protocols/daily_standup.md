@@ -161,8 +161,7 @@ Att göra idag:
 
 Att göra till nästa gång:
 - Fixa dem sista bitarna på sprinten.
-- Gå igenom pull requestarna, diskutera koden och merga in till master.
-- Skapa 2:a sprinten
+
 
 Anteckningar:
 - Möte kl. 13.00
@@ -172,9 +171,45 @@ Anteckningar:
 MÖTESPROTOKOLL
 -
 
-Datum: 20-01-2022
+Datum: 21-01-2022
 
 Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas har kopplat ihop användarna från databasen med profilsidan och fått det att funka.
+- Markus har lagt till fler funktionaliteter på kontaktsidan och jobbat på att få in alla färgerna korrekt på sidan.
+- Lenny och Anna har fått navbaren att fungera bra på usersidan, ändrat och lagt till fler routes.
+
+Att göra idag:
+- Finslipa det sista med korten.
+
+Att göra till nästa gång:
+- Skapa 2:a sprinten
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 24-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+
+
+Anteckningar:
+
+
 
 
 
