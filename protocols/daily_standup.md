@@ -1,4 +1,5 @@
 MÖTESPROTOKOLL
+-
 
 Datum: 13-01-2022
 
@@ -50,9 +51,10 @@ Förslag på spel som går på tid och är som är ålderanpassad (ålderen styr
 - Engelska spel: stavningsspel, alternativ spel med bilder och ord
 - Logik spel: Enklare IQ spel, vad-fattas-i-mönstret spel, pussel, gåtor
 
-_______________________________________________________________________________________________________________________________________________________________________
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 14-01-2022
 
@@ -71,9 +73,11 @@ ANTECKNINGAR:
 - Andreas har skapat en miro doc.
 - Införa KAFFERAST kl. 11.00 varje dag.
 - Förslag på fler spel: Berättelser, matte maze
-_______________________________________________________________________________________________________________________________________________________________________
+
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 17-01-2022
 
@@ -84,7 +88,7 @@ Att göra idag:
 - Andreas gör kort: #001c
 - Markus gör kort: #001b
 - Lenny och Anna gör kort: #001a och #008
-- Skapa nya branches för vardera kort
+- Skapa nya branches för varje kort
 
 Att göra till nästa gång (18-01-2022):
 - Prata om hur långt vi kom igår med korten.
@@ -92,11 +96,120 @@ Att göra till nästa gång (18-01-2022):
 
 
 ANTECKNINGAR:
--
-_______________________________________________________________________________________________________________________________________________________________________
+
+
 
 MÖTESPROTOKOLL
+-
 
 Datum: 18-01-2022
 
-Närvarande: 
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Alla i gruppen har lyckats få sina delar/kort att fungera bra. Första prototypen, CHECK!
+
+Att göra idag:
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+- Andreas och Markus gör: #002a(profil) och #002b(kontakter)
+- Lenny och Anna gör: #001E(about) och fortsätta med #008(navigationsbar som inloggad)
+- Skapa nya branches med dem nya korten.
+
+Att göra till nästa gång:
+
+ANTECKNINGAR:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 19-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Andreas och Markus har skapat en profilsida med bilder och spelkategorier med poängsystem samt en lista med användarens vänner/kontakter.
+- Lenny och Anna har skapat en "om oss" sida med profilbilder + text. Ändrat alla länkar till url_for. Ändrat footern så att den alltid hamnar längst ner.
+
+Att göra idag:
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+- Andreas och Markus forsätter med #002a(profil) och #002b(kontakter)
+- Lenny och Anna forsätter med #001E(about) och #008(navigationsbar som inloggad)
+
+Att göra till nästa gång:
+- Fixa dem sista bitarna på sprinten.
+
+ANTECKNINGAR:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 20-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Lenny och Anna har skapat en test branch (008_test) för att jobba på navbaren till usersidan, felsökt och löst problemet. Skapat nya routes på user blueprint.
+- Andreas och Markus har lagt till flera funktionalieteter på profilsidan och kontaktsidan.
+
+Att göra idag:
+- Andreas och Markus forsätter med #002a(profil) och #002b(kontakter)
+- Lenny och Anna forsätter med #001E(about) och #008(navigationsbar som inloggad)
+
+Att göra till nästa gång:
+- Fixa dem sista bitarna på sprinten.
+
+
+Anteckningar:
+- Möte kl. 13.00
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 21-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas har kopplat ihop användarna från databasen med profilsidan och fått det att funka.
+- Markus har lagt till fler funktionaliteter på kontaktsidan och jobbat på att få in alla färgerna korrekt på sidan.
+- Lenny och Anna har fått navbaren att fungera bra på usersidan, ändrat och lagt till fler routes.
+
+Att göra idag:
+- Finslipa det sista med korten.
+
+Att göra till nästa gång:
+- Skapa 2:a sprinten
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 24-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+
+
+Anteckningar:
+
+
+
+
+
