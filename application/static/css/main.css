@@ -83,7 +83,8 @@ body {
     border-radius: 50%;
 }
 
-.tumme_upp {
+.tumme_upp{
+
     position: absolute; top:0; right: 12px;
     /*margin-left: 125px;*/
     /*margin-right: 0;*/
@@ -108,5 +109,13 @@ body {
     margin-top: 5px;
     width: auto;
 
+    border-radius: 50%;
+}
+
+.different_hover a:hover{
+    background-color:purple;
+    position: absolute; top:0; right: 12px;
+    margin-top: 10px;
+    width: auto;
     border-radius: 50%;
 }
