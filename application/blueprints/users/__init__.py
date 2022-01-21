@@ -11,4 +11,4 @@ bp_user = Blueprint('bp_user',
 @bp_user.get('/')
 @login_required
 def profile():
-    return render_template('profile.html')
+    return render_template('profile_parent_edit.html')

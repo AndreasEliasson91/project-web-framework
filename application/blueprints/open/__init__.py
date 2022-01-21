@@ -61,6 +61,6 @@ def signup_post():
 def index():
     return render_template('index.html')
 
-@bp_open.get('/profile')
-def profile_get():
-    return render_template('profile.html')
+@bp_open.get('/user/user')
+def profile_get_view():
+    return render_template('profile_parent_view.html')
