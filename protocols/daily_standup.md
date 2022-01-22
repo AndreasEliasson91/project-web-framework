@@ -136,7 +136,6 @@ Att göra idag:
 - Gå igenom pull requestarna, diskutera koden och merga in till master.
 - Andreas och Markus forsätter med #002a(profil) och #002b(kontakter)
 - Lenny och Anna forsätter med #001E(about) och #008(navigationsbar som inloggad)
-- Skapa nya branches med dem nya korten.
 
 Att göra till nästa gång:
 - Fixa dem sista bitarna på sprinten.
@@ -148,8 +147,69 @@ ANTECKNINGAR:
 MÖTESPROTOKOLL
 -
 
-Datum: 18-01-2022
+Datum: 20-01-2022
 
 Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Lenny och Anna har skapat en test branch (008_test) för att jobba på navbaren till usersidan, felsökt och löst problemet. Skapat nya routes på user blueprint.
+- Andreas och Markus har lagt till flera funktionalieteter på profilsidan och kontaktsidan.
+
+Att göra idag:
+- Andreas och Markus forsätter med #002a(profil) och #002b(kontakter)
+- Lenny och Anna forsätter med #001E(about) och #008(navigationsbar som inloggad)
+
+Att göra till nästa gång:
+- Fixa dem sista bitarna på sprinten.
+
+
+Anteckningar:
+- Möte kl. 13.00
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 21-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas har kopplat ihop användarna från databasen med profilsidan och fått det att funka.
+- Markus har lagt till fler funktionaliteter på kontaktsidan och jobbat på att få in alla färgerna korrekt på sidan.
+- Lenny och Anna har fått navbaren att fungera bra på usersidan, ändrat och lagt till fler routes.
+
+Att göra idag:
+- Finslipa det sista med korten.
+
+Att göra till nästa gång:
+- Skapa 2:a sprinten
+- Gå igenom pull requestarna, diskutera koden och merga in till master.
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 24-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+
+
+Anteckningar:
+
+
+
 
 

@@ -13,45 +13,29 @@
 </head>
 <body>
     <section class="is-fullheight">
+        <h3><ul>
+            <li><a class="active" href="/">Start sidan</a></li>
+            <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
+            <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
+            <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
+            <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
+            <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
+            <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
+            <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
+        </ul></h3>
 
-                <h3><ul>
-                <li><a class="active" href="/">Start sidan</a></li>
-                <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
-                    <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
-                    <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
-                    <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
-                    <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
-                    <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
-                    <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
+        {% block content %}
+        {% endblock %}
 
-
-
-
-                </ul></h3>
-                {% block content %}
-
-
-
-                {% endblock %}
     </section>
 
     {% block scripts %}
-
     {% endblock %}
 
     {% block footer %}
         <body>
-
-            <div class="content">
-
-            </div>
-
-
             <footer class="footer1">(c)opyright Leaning by Games.</footer>
-
-
         </body>
     {% endblock %}
-
 </body>
 </html>

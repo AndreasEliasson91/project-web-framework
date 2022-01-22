@@ -61,6 +61,11 @@ def signup_post():
 def index():
     return render_template('index.html')
 
+#
+# @bp_open.get('/user/user')
+# def profile_get_view():
+#     return render_template('profile_parent_view.html')
+
 
 @bp_open.get('/about')
 def about_get():
@@ -80,3 +85,4 @@ def games_get():
 @bp_open.get('/test_games')
 def test_games_get():
     return render_template('test_games.html')
+
