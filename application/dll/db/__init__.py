@@ -26,13 +26,6 @@ def init_db(app):
 
     images = gridfs.GridFS(db, collection='images')
 
-    # file = 'C:/Users/andre/OneDrive/Skrivbord/father5.png'
-    #
-    # with open(file, 'rb') as f:
-    #     contents = f.read()
-    #
-    # images.put(contents, filename='father5.png')
-
     # client.LearningByGames_DB.command(
     #     'createUser', username,
     #     pwd=password,

@@ -23,13 +23,17 @@
 {#                    </label>#}
 {#                    <input type="File" name="fileToUpload" id="fileToUpload" onchange="changePic()">#}
 {#                </form>#}
-                <img class="profile-pic" id="profile-pic" src="{{ image_file }}" border="5px solid #555">
+                <img class="profile-pic" id="profile-pic" src="{{ profile_picture }}" border="5px solid #555">
             </div>
             <div class="col-md-8 col-lg-8" style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
                 <div class="d-flex flex-column">
                     <div class="justify-content-between align-items-center p-5 bg-dark text-center text-white"
                          style="border-top-left-radius: 25px; border-top-right-radius: 25px; font-family: Helvetica, sans-serif;">
-                        <h3 class="display-3">Darth Vader</h3>
+                        {% if current_user.parent %}
+                            <h3 class="display-3">{{ current_user.email }}</h3>
+                        {% else %}
+                            <h3 class="display-3">{{ current_user.username }}</h3>
+                        {% endif %}
                     </div>
                     <div class="p-3 text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;">
                         <h3 class="display-5">High Score</h3>
@@ -79,10 +83,10 @@
                     </div>
                     <div class="d-flex flex-row justify-content-center align-content-center" style="background-color: white">
                         {% for child in current_user.children %}
-                                <div class="chip" style="background-color: white">
-                                    <img src="{{ url_for('static', filename='img/father5.png') }}" alt="Person" width="192" height="192">
-                                    <a href="{{ url_for('bp_open.index') }}">{{ child.username }}</a>
-                                </div>
+                            <div class="chip" style="background-color: white">
+                                <img src="{{ children_pictures[0] }}" alt="Person" width="192" height="192">
+                                <a href="{{ url_for('bp_open.index') }}">{{ child.username }}</a>
+                            </div>
                         {% endfor %}
                     </div>
 
