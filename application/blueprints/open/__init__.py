@@ -34,7 +34,7 @@ def signin_post():
 
     login_user(user)
 
-    return redirect(url_for('bp_user.profile_get'))
+    return redirect(url_for('bp_open.index'))
 
 @bp_open.get('/signup')
 def signup_get():

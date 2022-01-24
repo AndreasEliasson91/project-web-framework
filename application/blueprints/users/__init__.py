@@ -9,20 +9,21 @@ from application.dll.db.models import Image, User
 bp_user = Blueprint('bp_user',
                     __name__,
                     template_folder='templates',
-                     url_prefix='/user'
+                    url_prefix='/user'
                     )
 
-              
+
 @bp_user.get('/welcome')
 @login_required
 def user_index():
     return render_template('welcome.html')
 
+#
+# @bp_user.get('/profile')
+# @login_required
+# def profil_get():
+#     return render_template('profil.html')
 
-@bp_user.get('/profile')
-@login_required
-def profil_get():
-    return render_template('profil.html')
 
 @bp_user.get('/settings')
 @login_required
@@ -34,24 +35,25 @@ def settings_get():
 @login_required
 def contacts_get():
     return render_template('contacts.html')
- 
+
+
 @bp_user.get('/profile')
 @login_required
 def profile_get():
-    if 'children' in current_user.__dict__:
-        children_pictures = []
-        i = 0
-
-        for child in current_user.children:
-            children_pictures.append(get_image(child['avatar'], f'child{i}'))
-            i += 1
-
-        return render_template('profile.html',
-                               profile_picture=get_image(current_user.avatar, 'profile'),
-                               children_pictures=children_pictures)
-    else:
-        return render_template('profile.html',
-                               profile_picture=get_image(current_user.avatar, 'profile'))
+    # if 'children' in current_user.__dict__:
+    #     children_pictures = []
+    #     i = 0
+    #
+    #     for child in current_user.children:
+    #         children_pictures.append(get_image(child['avatar'], f'child{i}'))
+    #         i += 1
+    #
+    #     return render_template('profile.html',
+    #                            profile_picture=get_image(current_user.avatar, 'profile'),
+    #                            children_pictures=children_pictures)
+    # else:
+    return render_template('profile.html')
+    #           profile_picture=get_image(current_user.avatar, 'profile'))
 
 
 @bp_user.post('/profile')
