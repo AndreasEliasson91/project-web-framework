@@ -17,6 +17,9 @@ def create_app():
     from application.blueprints.users import bp_user
     _app.register_blueprint(bp_user)
 
+    from application.blueprints.games import bp_games
+    _app.register_blueprint(bp_games)
+
     login_manager = LoginManager()
     login_manager.init_app(_app)
 
