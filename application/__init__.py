@@ -28,6 +28,4 @@ def create_app():
         else:
             return get_user_by_username(user_id)
 
-
     return _app
-
