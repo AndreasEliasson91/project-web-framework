@@ -38,7 +38,7 @@ def contacts_get():
 @bp_user.get('/profile')
 @login_required
 def profile_get():
-    if len(current_user.children) > 0:
+    if 'children' in current_user.__dict__:
         children_pictures = []
         i = 0
 
@@ -71,19 +71,13 @@ def profile_post():
         for img in Image.all():
             if img.filename == name:
                 i += 1
-                name = f'{i}_{file.filename}'
+                name = f'LBG{i}_{file.filename}'
 
         images.put(contents, filename=f'{i}_{file.filename}')
 
     image_id = Image.find(filename=file.filename).first_or_none()._id
+
     current_user.avatar = image_id
     User.save(current_user)
 
     return redirect(url_for('bp_user.profile_get'))
-
-  
-@bp_user.get('/')
-@login_required
-def profile():
-    return render_template('profile_parent_edit.html')
-
