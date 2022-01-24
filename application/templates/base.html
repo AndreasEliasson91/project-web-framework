@@ -13,58 +13,55 @@
     {% endblock %}
 </head>
 <body>
-    <section class="is-fullheight">
+    <section class="hero is-fullheight">
 
     <!-- Flask login gives us the current_user then we signed in. -->
-                        {% if current_user.is_authenticated %}
-                            <h3><ul>
-                                <li><a class="active" href="/">Start sidan</a></li>
-                            <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
-                                <li><a href="{{ url_for ('bp_user.profile_get') }}">Profil</a></li>
-                                <li><a href="{{ url_for ('bp_user.contacts_get') }}">Vänner</a></li>
-                                <li><a href="{{ url_for ('bp_user.settings_get') }}">Inställningar</a></li>
-                                <li><a href="{{ url_for ('bp_open.signout') }}">logga ut</a></li>
-                                <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
-                                <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
-                                <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
-                                <li><a class="empty_link" href="{{ url_for ('bp_open.games_get') }}"></a></li>
-                                <li><a class="inloggad_email" href="{{ url_for ('bp_user.profile_get') }}">Inloggad som: {{ current_user.email or current_user.username }}</a></li>
-                                <li class="different_hover"><a href="{{ url_for ('bp_open.signout') }}">
-                                    <image class="tumme_upp" src="{{ url_for('static', filename="img/tumme_upp.png") }}"></image>
-                                </a></li>
+        {% if current_user.is_authenticated %}
+            <h3><ul>
+                <li><a class="active" href="/">Start sidan</a></li>
+            <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
+                <li><a href="{{ url_for ('bp_user.profile_get') }}">Profil</a></li>
+                <li><a href="{{ url_for ('bp_user.contacts_get') }}">Vänner</a></li>
+                <li><a href="{{ url_for ('bp_user.settings_get') }}">Inställningar</a></li>
+                <li><a href="{{ url_for ('bp_open.signout') }}">logga ut</a></li>
+                <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
+                <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
+                <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
+                <li><a class="empty_link" href="{{ url_for ('bp_open.games_get') }}"></a></li>
+                <li><a class="inloggad_email" href="{{ url_for ('bp_user.profile_get') }}">Inloggad som: {{ current_user.email or current_user.username }}</a></li>
+                <li class="different_hover"><a href="{{ url_for ('bp_open.signout') }}">
+                    <image class="tumme_upp" src="{{ url_for('static', filename="img/tumme_upp.png") }}"></image>
+                </a></li>
 
 
 
-{#                                <li><image class="tumme_upp" src="{{ url_for('static', filename="img/tumme_upp.png") }}"></image></li>#}
-
-                        {% else %}
+        {% else %}
 
 
 
-                            <h3><ul>
-                                <li><a class="active" href="/">Start sidan</a></li>
-                    <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
-                                <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
-                                <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
-                                <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
-                                <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
-                                <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
-                                <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
-                                <li><a id="utloggad"> Utloggad</a></li>
-                                <li><image class="tumme_ned" src="{{ url_for('static', filename="img/tumme_ned.png") }}"></image></li>
-                        {% endif %}
+            <h3><ul>
+                <li><a class="active" href="/">Start sidan</a></li>
+    <!--<li><a href="{{ url_for }}('bp_open.signup_get)">Registrera dig</a></li> -->
+                <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera dig</a></li>
+                <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga in</a></li>
+                <li><a href="{{ url_for ('bp_open.about_get') }}">Om oss</a></li>
+                <li><a href="{{ url_for ('bp_open.rules_get') }}">Regler</a></li>
+                <li><a href="{{ url_for ('bp_open.games_get') }}">Spel</a></li>
+                <li><a href="{{ url_for ('bp_open.test_games_get') }}">Provspel</a></li>
+                <li><a id="utloggad"> Utloggad</a></li>
+                <li><image class="tumme_ned" src="{{ url_for('static', filename="img/tumme_ned.png") }}"></image></li>
+        {% endif %}
 
-                        {% if current_user.admin %}
-                            <a href="/admin" class="navbar-item">
-                                Admin
-                            </a>
-                        {% endif %}
+        {% if current_user.admin %}
+            <a href="/admin" class="navbar-item">
+                Admin
+            </a>
+        {% endif %}
 
-             </ul></h3>
-    </section>
+     </ul></h3>
 
-                {% block content %}
-                {% endblock %}
+    {% block content %}
+    {% endblock %}
 
 
     {% block scripts %}
@@ -75,5 +72,6 @@
             <footer class="footer1">(c)opyright Leaning by Games.</footer>
         </body>
     {% endblock %}
+    </section>
 </body>
 </html>
