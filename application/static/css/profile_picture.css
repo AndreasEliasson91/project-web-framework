@@ -27,14 +27,3 @@ form input[type="file"] {
           display: none;
           cursor: pointer;
  }
-
-.image-text {
-    display: none;
-    height:30px;
-    width:290px;
-    align-content: center;
-}
-
-a:hover + .image-text {
-    display: block;
-}
