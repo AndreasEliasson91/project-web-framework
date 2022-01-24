@@ -199,17 +199,23 @@ Datum: 24-01-2022
 Närvarande: Andreas, Markus, Lenny och Anna
 
 Vad har gjorts sen sist:
-
+- Andreas har färdigställt funktionalitetet för att ladda upp och spara profilbilder.
+- Markus har färdigställt föräldraprofilen, samt funktionaliteten för att byta färgtema på profilen.
+- Lenny och Anna har färdigställt navbaren 1.0.
 
 Att göra idag:
-
+- Kolla pull requests.
+- Göra en sprint review.
+- Sätta upp veckans sprint.
+- Starta upp veckan.
 
 Att göra till nästa gång:
+- Andreas: Lägga in funktioner i repon. High Score-sida
+- Anna: Felsöka navbar och footer. Stänga av användare
+- Lenny: Felsöka navbar och footer. Stänga av användare
+- Markus: Felsöka profilsida. Kontakt-sida
 
 
 Anteckningar:
-
-
-
-
+Nästa veckas sprint fokuserar på att bli klar med grunden till hemsidan, så att man sedan kan fokusera på design och content.
 

@@ -3,8 +3,11 @@
 {% block head %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_picture.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color-picker.css') }}">
+
 {% endblock %}
 
 {% block content %}
@@ -20,17 +23,17 @@
                     <input type="submit" id="button" value="Ladda Upp" name="submit" style="align-content: center;" hidden>
                 </form>
             </div>
-            <div class="col-md-8 col-lg-8" style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+            <div class="col-md-8 col-lg-8" style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; ">
                 <div class="d-flex flex-column">
-                    <div class="justify-content-between align-items-center p-5 bg-dark text-center text-white"
-                         style="border-top-left-radius: 25px; border-top-right-radius: 25px; font-family: Helvetica, sans-serif;">
+                    <div class="neumorphism-3 justify-content-between align-items-center p-5 text-center text-white"
+                         style="background-color: rgb(32,32,32); border-top-left-radius: 25px; border-top-right-radius: 25px; font-family: Helvetica, sans-serif;" onclick="get_color_bar(this)">
                         {% if current_user.parent %}
                             <h3 class="display-3">{{ current_user.email }}</h3>
                         {% else %}
                             <h3 class="display-3">{{ current_user.username }}</h3>
                         {% endif %}
                     </div>
-                    <div class="p-3 text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;">
+                    <div class="neumorphism-3 p-3 text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;" onclick="get_color_bar(this)" id="highscore">
                         <h3 class="display-5">High Score</h3>
                     </div>
                     <div class="d-flex flex-row text-white">
@@ -69,11 +72,11 @@
         <div class="container mt-6 mb-6" >
             <div  class="row no-gutters">
                 <div class="flex-column d-flex">
-                    <div class="justify-content-between align-items-center p-5 text-white" style="background-color: rgb(32,32,32);
-                    border-top-left-radius: 25px; border-top-right-radius: 25px;">
+                    <div class="neumorphism-3 justify-content-between align-items-center p-5 text-white" style="background-color: rgb(32,32,32);
+                    border-top-left-radius: 25px; border-top-right-radius: 25px;" onclick="get_color_bar(this)" >
                         <h2 class="text-center"><a style="color: white; font-family: Helvetica, sans-serif;" href="mailto:someone@example.com">Email: {{ current_user.email }}</a></h2>
                     </div>
-                    <div class=" p-3  text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;">
+                    <div class="neumorphism-3 p-3  text-center text-white" style="background-color: purple; font-family: Helvetica, sans-serif;"  onclick="get_color_bar(this)">
                         <h6 class=" text-center display-3">{{ current_user.email }}:s barn</h6>
                     </div>
                     <div class="d-flex flex-row justify-content-center align-content-center" style="background-color: white">
@@ -90,9 +93,32 @@
     {% endif %}
 </div>
 
+<div class="input" id="color_bar" hidden>
+    <input type="number" id="red">
+    <input type="number" id="green">
+    <input type="number" id="blue">
+</div>
+
+
 {% endblock %}
 
 {% block scripts %}
+
+  <script src="{{  url_for('static', filename='js/color_picker.js') }}"></script>
+    <script>
+        let box = undefined;
+        function get_color_bar(e) {
+            box = e;
+     document.getElementById("color_bar").hidden = !document.getElementById("color_bar").hidden; }
+    </script>
+
+    <script>
+        function changeColor() {
+            document.getElementById("")
+            src={{ url_for('static', filename='css/color-picker.css') }}
+        }
+    </script>
+
     <script>
         function showButton() {
             document.getElementById("button").hidden = !document.getElementById("button").hidden;
