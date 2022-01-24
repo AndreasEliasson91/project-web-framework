@@ -27,6 +27,21 @@ body {
     background-color: #eeeeee
 }
 
+.skill-block {
+    width: 30%
+}
+
+@media (min-width: 991px) and (max-width:1200px) {
+    .skill-block {
+        padding: 32px !important
+    }
+}
+
+@media (min-width: 1200px) {
+    .skill-block {
+        padding: 56px !important
+    }
+}
 
 .hr {
     height: 30px;
@@ -70,11 +85,9 @@ body {
 }
 
 .chip img {
-  float: left;
-  margin: 0 10px 0 -25px;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
 }
-
-

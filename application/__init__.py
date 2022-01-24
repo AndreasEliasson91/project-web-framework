@@ -13,22 +13,20 @@ def create_app():
 
     from application.blueprints.parents import bp_parent
     _app.register_blueprint(bp_parent)
-    login_manager = LoginManager()
-    login_manager.init_app(_app)
 
     from application.blueprints.users import bp_user
     _app.register_blueprint(bp_user)
 
+    login_manager = LoginManager()
+    login_manager.init_app(_app)
+
     @login_manager.user_loader
     def load_user(user_id):
-urn User.find(username=user_id).first_or_none()
-
         from application.bll.controllers.user_controller import get_user_by_email, get_user_by_username
         if '@' in user_id:
             return get_user_by_email(user_id)
         else:
             return get_user_by_username(user_id)
-
 
     return _app
 

@@ -24,13 +24,13 @@ class User(Document):
             return self.username
 
 
-class Game(Document):
-    collection = db.games
-
-
-class HighScore(Document):
-    collection = db.high_score
+# class Game(Document):
+#     collection = db.games
+#
+#
+# class HighScore(Document):
+#     collection = db.high_score
 
 
 class Image(Document):
-    collection = db.images
+    collection = db.images.files

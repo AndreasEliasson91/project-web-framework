@@ -3,7 +3,7 @@ import gridfs
 
 client = None
 db = None
-fs = None
+images = None
 
 
 def init_db(app):
@@ -13,7 +13,7 @@ def init_db(app):
     :param app: Flask app object
     :return: None
     """
-    global client, db, fs
+    global client, db, images
 
     username = app.config['DB_USER']
     password = app.config['DB_PASSWORD']
@@ -24,14 +24,7 @@ def init_db(app):
     client = MongoClient(f'mongodb://{username}:{password}@{host}:{port}')
     db = client[database]
 
-    fs = gridfs.GridFS(db)
-    #
-    # file = 'C:/Users/andre/OneDrive/Skrivbord/father2.png'
-    #
-    # with open(file, 'rb') as f:
-    #     contents = f.read()
-    #
-    # fs.put(contents, filename='father_2')
+    images = gridfs.GridFS(db, collection='images')
 
     # client.LearningByGames_DB.command(
     #     'createUser', username,

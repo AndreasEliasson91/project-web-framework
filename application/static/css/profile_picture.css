@@ -1,16 +1,8 @@
-.icon-photo {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
 .profile-pic {
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
-    vertical-align: middle;
-    text-align: center;
     color: dimgrey;
     transition: all .3s ease;
     text-decoration: none;
@@ -35,3 +27,14 @@ form input[type="file"] {
           display: none;
           cursor: pointer;
  }
+
+.image-text {
+    display: none;
+    height:30px;
+    width:290px;
+    align-content: center;
+}
+
+a:hover + .image-text {
+    display: block;
+}

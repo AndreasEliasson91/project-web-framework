@@ -35,7 +35,8 @@ def register_child_post():
     current_user.children.append(
         {
             '_id': child._id,
-            'username': child.username
+            'username': child.username,
+            'avatar': child.avatar
         }
     )
     update_user_information(current_user)
