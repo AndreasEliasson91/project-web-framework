@@ -80,10 +80,10 @@
                         <h6 class=" text-center display-3">{{ current_user.email }}:s barn</h6>
                     </div>
                     <div class="d-flex flex-row justify-content-center align-content-center" style="background-color: white">
-                        {% for child in current_user.children %}
+                        {% for child in children %}
                             <div class="chip" style="background-color: white">
-                                <img src="{{ children_pictures[0] }}" alt="Person" width="192" height="192">
-                                <a href="{{ url_for('bp_open.index') }}">{{ child.username }}</a>
+                                <img src="{{ child['avatar'] }}" alt="Person" width="192" height="192">
+                                <a href="{{ url_for('bp_open.index') }}">{{ child['username'] }}</a>
                             </div>
                         {% endfor %}
                     </div>
