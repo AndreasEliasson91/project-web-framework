@@ -4,7 +4,7 @@ from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 from application.bll.controllers.image_controller import get_image
 from application.dll.db import images
-
+from application.dll.db.models import Image, User
 
 bp_user = Blueprint('bp_user',
                     __name__,
@@ -30,6 +30,34 @@ def profile_get():
     else:
         return render_template('profile.html',
                                profile_picture=get_image(current_user.avatar, 'profile'))
+
+
+@bp_user.post('/profile')
+@login_required
+def profile_post():
+    file = request.files.get('profile_picture')
+    file.save(os.path.join('application/static/img/temp/', 'temp.png'))
+
+    with open('application/static/img/temp/temp.png', 'rb') as in_file:
+        contents = in_file.read()
+
+    if Image.find(filename=file.filename).first_or_none() == None:
+        images.put(contents, filename=file.filename)
+    else:
+        i = 0
+        name = file.filename
+        for img in Image.all():
+            if img.filename == name:
+                i += 1
+                name = f'{i}_{file.filename}'
+
+        images.put(contents, filename=f'{i}_{file.filename}')
+
+    image_id = Image.find(filename=file.filename).first_or_none()._id
+    current_user.avatar = image_id
+    User.save(current_user)
+
+    return redirect(url_for('bp_user.profile_get'))
 
 
 @bp_user.get('/')
