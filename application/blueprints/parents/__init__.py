@@ -2,7 +2,6 @@ from application.bll.controllers.user_controller import register_child, get_user
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 
-
 bp_parent = Blueprint('bp_parent',
                       __name__,
                       template_folder='templates',

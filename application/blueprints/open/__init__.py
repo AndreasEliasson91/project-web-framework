@@ -13,7 +13,7 @@ bp_open = Blueprint('bp_open',
 def signin_get():
     return render_template('signin.html')
 
-  
+
 @bp_open.post('/signin')
 def signin_post():
     username = request.form.get('username')
@@ -33,8 +33,8 @@ def signin_post():
         return redirect(url_for('bp_open.signin_get'))
 
     login_user(user)
-    return redirect(url_for('bp_user.profile_get'))
 
+    return redirect(url_for('bp_user.profile_get'))
 
 @bp_open.get('/signup')
 def signup_get():
@@ -85,4 +85,10 @@ def games_get():
 @bp_open.get('/test_games')
 def test_games_get():
     return render_template('test_games.html')
+
+
+@bp_open.get('/signout')
+def signout():
+    logout_user()
+    return render_template('signed_out_page.html')
 
