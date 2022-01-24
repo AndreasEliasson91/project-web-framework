@@ -18,9 +18,9 @@ def register_adult(email, password, birth_date):
             'birth_date': birth_date,
             'admin': False,
             'parent': True,
-            'children': [],
+            #'children': [],
             'date_created': datetime.datetime.now(),
-            'avatar': random.choice(image_repository.get_all_image_ids())
+           # 'avatar': random.choice(image_repository.get_all_image_ids())
         }
     )
     user_repository.register_adult(parent)
