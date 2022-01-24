@@ -1,6 +1,6 @@
-from application.bll.controllers.user_controller import create_parent
+from application.bll.controllers.user_controller import register_adult, get_user_by_email, get_user_by_username
 from flask import Blueprint, render_template, redirect, request, url_for, flash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user
 from werkzeug.security import check_password_hash
 
 bp_open = Blueprint('bp_open',
@@ -18,11 +18,12 @@ def signin_get():
 def signin_post():
     username = request.form.get('username')
     password = request.form.get('password')
-    from application.dll.db.models import User
+
     if '@' in username:
-        user = User.find(email=username).first_or_none()
+        user = get_user_by_email(username)
     else:
-        user = User.find(username=username).first_or_none()
+        user = get_user_by_username(username)
+
     if user is None:
         flash('Username or password is incorrect')
         return redirect(url_for('bp_open.signin_get'))
@@ -46,20 +47,27 @@ def signup_post():
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
-    from application.dll.db.models import User
-    user = User.find(email=email).first_or_none()
+    user = get_user_by_email(email)
 
     if user is not None:
         flash('Denna email är redan registrerad')
         return redirect(url_for('bp_open.signup_get'))
 
-    create_parent(email, password, birth_date)
+
+
+
+    register_adult(email, password, birth_date)
     return redirect(url_for('bp_open.index'))
 
 
 @bp_open.get('/')
 def index():
     return render_template('index.html')
+
+
+@bp_open.get('/user/user')
+def profile_get_view():
+    return render_template('profile_parent_view.html')
 
 
 @bp_open.get('/about')
@@ -86,5 +94,4 @@ def test_games_get():
 def signout():
     logout_user()
     return render_template('signed_out_page.html')
-
 
