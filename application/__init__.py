@@ -4,7 +4,7 @@ from flask_login import LoginManager
 
 
 def create_app():
-    _app = Flask(name)
+    _app = Flask(__name__)
     _app.config.from_pyfile('settings.py')
     init_db(_app)
 
