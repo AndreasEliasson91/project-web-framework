@@ -1,7 +1,6 @@
-from application.bll.controllers.user_controller import register_adult, get_user_by_email, get_user_by_username
+from application.bll.controllers.user_controller import register_adult, get_user_by_email, verify_user, signin_user
 from flask import Blueprint, render_template, redirect, request, url_for, flash
-from flask_login import login_user, logout_user
-from werkzeug.security import check_password_hash
+from flask_login import logout_user
 
 bp_open = Blueprint('bp_open',
                     __name__,
@@ -16,25 +15,17 @@ def signin_get():
 
 @bp_open.post('/signin')
 def signin_post():
-    username = request.form.get('username')
+    user_id = request.form.get('user_id')
     password = request.form.get('password')
 
-    if '@' in username:
-        user = get_user_by_email(username)
-    else:
-        user = get_user_by_username(username)
-
-    if user is None:
+    if not verify_user(user_id, password):
         flash('Username or password is incorrect')
         return redirect(url_for('bp_open.signin_get'))
 
-    if not check_password_hash(user.password, password):
-        flash('Username or password is incorrect')
-        return redirect(url_for('bp_open.signin_get'))
-
-    login_user(user)
+    signin_user(user_id)
 
     return redirect(url_for('bp_user.profile_get'))
+
 
 @bp_open.get('/signup')
 def signup_get():
@@ -60,11 +51,6 @@ def signup_post():
 @bp_open.get('/')
 def index():
     return render_template('index.html')
-
-#
-# @bp_open.get('/user/user')
-# def profile_get_view():
-#     return render_template('profile_parent_view.html')
 
 
 @bp_open.get('/about')
