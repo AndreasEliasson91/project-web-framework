@@ -1,8 +1,5 @@
 .profile-pic {
     border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
     color: dimgrey;
     transition: all .3s ease;
     text-decoration: none;
