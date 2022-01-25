@@ -36,6 +36,7 @@ def signin_post():
 
     return redirect(url_for('bp_open.index'))
 
+
 @bp_open.get('/signup')
 def signup_get():
     return render_template('signup.html')
@@ -60,6 +61,7 @@ def signup_post():
 @bp_open.get('/')
 def index():
     return render_template('index.html')
+
 
 #
 # @bp_open.get('/user/user')
@@ -91,4 +93,3 @@ def test_games_get():
 def signout():
     logout_user()
     return render_template('signed_out_page.html')
-
