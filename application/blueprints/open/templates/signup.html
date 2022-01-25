@@ -15,27 +15,28 @@
         {% endwith %}
 
         <div class="box">
-            <form action="/signup" method="POST">
+            <form action="{{ url_for('bp_open.signup_post') }}" method="POST">
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="email" name="email" placeholder="Skriv din email" required>
+                        <input class="input is-large" type="email" name="email" placeholder="Skriv din email" required />
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="password" id="parent_password_1"
-                               name="password" placeholder="Skriv ett lösenord" required>
+                        <input class="input is-large" type="password" id="parent_password_1" name="password"
+                               placeholder="Skriv ett lösenord" oninput="verifyPassword()" required />
+                        <span id="pwd-message"></span>
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
                         <input class="input is-large" type="password" id="parent_password_2"
-                               placeholder="Upprepa ditt lösenord" onchange="checkPassword()" required>
+                               placeholder="Upprepa ditt lösenord" oninput="checkPassword()" required disabled />
                     </div>
                 </div>
                 <div class="field-body">
                     <div class="control">
-                        <input class="input is-large" style="color:rgb(215,215,215)" type="date" name="birth_date" required>
+                        <input class="input is-large" style="color:rgb(215,215,215)" type="date" name="birth_date" required />
                     </div>
                 </div>
                 <div class="field-body">
@@ -55,5 +56,29 @@
 
             document.getElementById("register").disabled = p1 !== p2;
         }
+
+        function verifyPassword() {
+            let pwdInput = document.getElementById("parent_password_1");
+            let pwdMessage = document.getElementById("pwd-message");
+            let resultObj = safePassword(pwdInput.value);
+            pwdMessage.innerHTML = resultObj.message;
+            document.getElementById("parent_password_2").disabled = !resultObj.result;
+        }
+
+        function safePassword(inputtxt) {
+            let pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,1000}$/;
+            let obj = {}
+
+            if (inputtxt.match(pattern)) {
+                obj.result = true;
+                obj.message = "";
+            } else {
+                obj.result = false;
+                obj.message = "Lösenordet behöver vara 6 tecken långt och innehålla minst " +
+                    "1 liten bokstav, 1 stor bokstav och 1 specialtecken."
+            }
+            return obj;
+        }
+
     </script>
 {% endblock %}
