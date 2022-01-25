@@ -6,6 +6,7 @@
     color: #f1f1f1;
     text-shadow: 1px 1px 1px #ababab;
     font-size: 40px;
+    text-align: center;
 }
 
 .bg-hs {
@@ -67,6 +68,8 @@
     font-size: 15px;
     border-radius: 25px;
     margin: 10px;
+    background-position: center;
+    background-size: cover;
 }
 
 @media (min-width: 991px) and (max-width:1200px) {

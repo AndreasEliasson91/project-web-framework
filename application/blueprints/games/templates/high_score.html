@@ -4,7 +4,6 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/high_score.css') }}">
-
 {% endblock %}
 
 {% block content %}
@@ -65,8 +64,7 @@
                         <h3 style="color: #4c4c4d">High Score</h3>
                     </div>
                     <div class="level-item">
-                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father2.png') }});
-                                background-size: cover; background-position: center;">
+                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father2.png') }});">
                             <h4>90p</h4>
                             <h6>Spelare 1</h6>
                         </div>
