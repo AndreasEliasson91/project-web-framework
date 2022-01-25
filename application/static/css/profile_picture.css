@@ -2,7 +2,7 @@
     border-radius: 50%;
     width: 300px;
     height: 300px;
-    color: dimgrey;
+    color: #1c1b1b;
     transition: all .3s ease;
     text-decoration: none;
     cursor: pointer;
@@ -10,9 +10,8 @@
 }
 
 .profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
     z-index: 10000;
-    color: #fff;
+    color: #696969FF;
     transition: all .3s ease;
     text-decoration: none;
 }

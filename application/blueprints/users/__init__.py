@@ -3,8 +3,7 @@ import os
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 from application.bll.controllers.image_controller import get_image, upload_image
-from application.dll.db import images
-from application.dll.db.models import Image, User
+from application.dll.db.models import User
 
 bp_user = Blueprint('bp_user',
                     __name__,
@@ -56,6 +55,19 @@ def profile_get():
 @bp_user.post('/profile')
 @login_required
 def profile_post():
+    rgb = [request.form.get('red'), request.form.get('green'), request.form.get('blue')]
+    if rgb[0]:
+        if request.form.get('title'):
+            for i in range(len(current_user.settings['rgb_title'])):
+                current_user.settings['rgb_title'][i] = int(rgb[i])
+        else:
+            for i in range(len(current_user.settings['rgb_subtitle'])):
+                current_user.settings['rgb_subtitle'][i] = int(rgb[i])
+
+        current_user.save()
+
     file = request.files.get('profile_picture')
-    upload_image(current_user, file)
+    if file:
+        upload_image(current_user, file)
+
     return redirect(url_for('bp_user.profile_get'))
