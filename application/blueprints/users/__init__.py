@@ -25,12 +25,6 @@ def settings_get():
     return render_template('settings.html')
 
 
-@bp_user.get('/contacts')
-@login_required
-def contacts_get():
-    return render_template('contacts.html')
-
-
 @bp_user.get('/friends')
 @login_required
 def friends_get():
