@@ -14,13 +14,13 @@ def register_adult(email, password, birth_date):
 
     adult = {
             'email': email,
-            'password': argon2.using(rounds=12).hash(password),
+            'password': password,
             'birth_date': birth_date,
             'admin': False,
             'parent': True,
             'children': [],
             'date_created': datetime.datetime.now(),
-            'avatar': random.choice(image_repository.get_all_image_ids())
+            # 'avatar': random.choice(image_repository.get_all_image_ids())
         }
     user_repository.register_adult(adult)
 
