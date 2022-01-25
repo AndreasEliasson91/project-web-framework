@@ -14,13 +14,13 @@
 <div class="column">
     <div class="container mt-5 mb-5">
         <div class="row justify-content-between align-items-center">
-            <div class="col-md-4 col-lg-4 profile-pic">
+            <div class="col-md-4 col-lg-4">
                 <form action="{{ url_for('bp_user.profile_get') }}" method="post" enctype="multipart/form-data">
                     <label for="fileToUpload">
                         <img class="profile-pic" id="profile-pic" src="{{ profile_picture }}" border="5px solid #555" title="Ändra Bild">
                     </label>
-                    <input type="file" name="profile_picture" id="fileToUpload">
-                    <input type="submit" value="Ladda Upp" name="submit" style="align-content: center">
+                    <input type="file" name="profile_picture" id="fileToUpload" oninput="showButton()">
+                    <input type="submit" id="button" value="Ladda Upp" name="submit" style="align-content: center;" hidden>
                 </form>
             </div>
             <div class="col-md-8 col-lg-8" style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; ">
@@ -82,12 +82,11 @@
                     <div class="d-flex flex-row justify-content-center align-content-center" style="background-color: white">
                         {% for child in children %}
                             <div class="chip" style="background-color: white">
-                                <img src="{{ child['avatar'] }}" alt="Person" width="192" height="192">
-                                <a href="{{ url_for('bp_open.index') }}">{{ child['username'] }}</a>
+                                <a href="{{ url_for('bp_open.index') }}"><img src="{{ child['avatar'] }}" alt="Person" width="192" height="192"></a>
+                                <span>{{ child['username'] }}</span>
                             </div>
                         {% endfor %}
                     </div>
-
                 </div>
             </div>
         </div>
@@ -121,9 +120,8 @@
     </script>
 
     <script>
-        function uploadButton() {
-            let y = document.getElementById("fileToUpload");
-            y.hidden = !y.hidden;
+        function showButton() {
+            document.getElementById("button").hidden = !document.getElementById("button").hidden;
         }
     </script>
 {% endblock %}

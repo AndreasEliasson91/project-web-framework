@@ -2,11 +2,11 @@ from application.dll.db.models import User
 
 
 def register_adult(adult):
-    User.save(adult)
+    User(adult).save()
 
 
 def register_child(child):
-    User.save(child)
+    User(child).save()
 
 
 def update_user_information(user):
