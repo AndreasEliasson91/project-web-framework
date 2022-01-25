@@ -219,3 +219,33 @@ Att göra till nästa gång:
 Anteckningar:
 Nästa veckas sprint fokuserar på att bli klar med grunden till hemsidan, så att man sedan kan fokusera på design och content.
 
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 25-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Gjort en high score-sida. Fixat med lösenord.
+- Anna: Fixat buggar. Jobbat på admin-sidor.
+- Lenny: Fixat buggar. Jobbat på admin-sidor.
+- Markus: Fixat buggar. Startade upp en vänner-sida
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Funktionalitet för att spara user-settings. Starta upp med att kunna se andras profiler.
+- Anna: Fortsätt att arbeta med admin-sidorna.
+- Lenny: Fortsätt att arbeta med admin-sidorna.
+- Markus: Fortsätta med vänner-sidan. Sedan fortsätta med "kom ihåg mig-rutan".
+
+
+Anteckningar:
+
+
+
+
