@@ -1,4 +1,4 @@
-
+import dotenv
 
 from application.dll.db import init_db
 from flask import Flask
@@ -37,3 +37,8 @@ def create_app():
             return get_user_by_username(user_id)
 
     return _app
+
+
+# if __name__ == '__main__':
+#     dotenv.load_dotenv()
+#     create_app().run(debug=True)

@@ -19,6 +19,8 @@ def signin_post():
     username = request.form.get('username')
     password = request.form.get('password')
 
+# här skall vi börja kontrollera om activate fältet är true eller false.
+
     if '@' in username:
         user = get_user_by_email(username)
     else:

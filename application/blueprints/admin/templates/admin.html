@@ -22,16 +22,17 @@
 <body>
 
 
-<form Name="Form1" Method="" Action="">
+<form Name="Form1" Method="POST" Action="/admin">
     <div class="boxen">
-        <select Name="List1" class="combo_users" size="10">
+        <select Name="List1" class="combo_users" size="10" id="myCourses">
            {% for item in listan %}
-            <Option value="{{ item }}"> {{ item }}
+            <Option name="{{ item }}" value="{{ item }}"> {{ item }}
             {% endfor %}
         </select>
 
         <div class="buttons">
-            <button id="shutdown_user" onclick="alert('You have now suspended that user')">Suspend</button>
+{#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
+            <button id="shutdown_user"  ondblclick="myGeeks()">Suspend</button>
             <button id="turn_on_user">Activate</button>
             <button id="list_all_users">List of all users</button>
         </div>
@@ -39,7 +40,12 @@
 </form>
 
 
-
+<script>
+        function myGeeks() {
+            document.getElementById("myCourses").selectedIndex
+                    = "";
+        }
+    </script>
 
 
 
