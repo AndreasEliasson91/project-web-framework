@@ -25,4 +25,14 @@
 form input[type="file"] {
           display: none;
           cursor: pointer;
- }
+}
+
+.view-profile-pic {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    color: #1c1b1b;
+    transition: all .3s ease;
+    text-decoration: none;
+    justify-content: center;
+}

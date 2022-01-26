@@ -14,7 +14,7 @@ def register_adult(email, password, birth_date):
 
     adult = {
             'email': email,
-            'password': password,
+            'password': argon2.using(rounds=12).hash(password),
             'birth_date': birth_date,
             'admin': False,
             'parent': True,
@@ -59,6 +59,10 @@ def get_user_by_email(email):
 
 def get_user_by_username(username):
     return user_repository.get_user_by_username(username)
+
+
+def get_user_by_user_id(user_id):
+    return user_repository.get_user_by_user_id(user_id)
 
 
 def verify_user(user_id, password):

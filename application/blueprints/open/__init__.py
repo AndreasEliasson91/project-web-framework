@@ -1,6 +1,6 @@
 from application.bll.controllers.user_controller import register_adult, get_user_by_email, verify_user, signin_user
 from flask import Blueprint, render_template, redirect, request, url_for, flash
-from flask_login import logout_user
+from flask_login import logout_user, current_user
 
 bp_open = Blueprint('bp_open',
                     __name__,
@@ -24,7 +24,7 @@ def signin_post():
 
     signin_user(user_id)
 
-    return redirect(url_for('bp_user.profile_get'))
+    return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
 
 
 @bp_open.get('/signup')

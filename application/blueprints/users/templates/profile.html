@@ -11,7 +11,7 @@
     <div class="container" style="margin-top: 5%; margin-bottom: 5%">
         <div class="level has-text-centered">
             <div class="level-item">
-                <form action="{{ url_for('bp_user.profile_get') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url_for('bp_user.profile_get', user_id=current_user._id) }}" method="post" enctype="multipart/form-data">
                     <label for="fileToUpload">
                         <img class="profile-pic" id="profile-pic" src="{{ profile_picture }}" border="5px solid #555" title="Ändra Bild">
                     </label>
@@ -73,7 +73,7 @@
                     <div class="level-item">
                         {% for child in children %}
                             <div class="chip">
-                                <a href="{{ url_for('bp_open.index') }}"><img src="{{ child['avatar'] }}" alt="Person" width="192" height="192"></a>
+                                <a href="{{ url_for('bp_user.view_profile_get', user_id=child['_id']) }}"><img src="{{ child['avatar'] }}" alt="Person" width="192" height="192"></a>
                                 <span>{{ child['username'] }}</span>
                             </div>
                         {% endfor %}
@@ -85,7 +85,7 @@
 </div>
 
 <div class="color-bar" id="color_bar" hidden>
-    <form action="{{ url_for('bp_user.profile_get') }}" method="post" >
+    <form action="{{ url_for('bp_user.profile_get', user_id=current_user._id) }}" method="post" >
         <input type="text" id="red" name="red" />
         <input type="text" id="green" name="green" />
         <input type="text" id="blue" name="blue" />
