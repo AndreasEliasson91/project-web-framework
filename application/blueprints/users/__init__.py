@@ -1,14 +1,11 @@
-import os
-
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 from application.bll.controllers.image_controller import get_image, upload_image
-from application.dll.db.models import User
 
 bp_user = Blueprint('bp_user',
                     __name__,
                     template_folder='templates',
-                     url_prefix='/user'
+                    url_prefix='/user'
                     )
 
               
@@ -24,10 +21,10 @@ def settings_get():
     return render_template('settings.html')
 
 
-@bp_user.get('/contacts')
+@bp_user.get('/friends')
 @login_required
-def contacts_get():
-    return render_template('contacts.html')
+def friends_get():
+    return render_template('friends.html')
 
 
 @bp_user.get('/profile')
@@ -71,3 +68,5 @@ def profile_post():
         upload_image(current_user, file)
 
     return redirect(url_for('bp_user.profile_get'))
+
+

@@ -17,8 +17,12 @@ ul {
       margin: 0;
       padding: 0;
       overflow: hidden;
+<<<<<<< HEAD
       background-color: purple;
 }
+=======
+   }
+>>>>>>> 385d552cb4d7d0cdc99280e18ef672056ab25b48
 
 li {
   float: left;

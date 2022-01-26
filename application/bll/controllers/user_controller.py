@@ -14,7 +14,7 @@ def register_adult(email, password, birth_date):
 
     adult = {
             'email': email,
-            'password': argon2.using(rounds=12).hash(password),
+            'password': password,
             'birth_date': birth_date,
             'admin': False,
             'parent': True,
