@@ -20,6 +20,5 @@ def before_request():
 @bp_admin.get('/')
 @login_required
 def admin():
-    get_all_users_from_db()
-
-    return render_template('admin.html')
+    listan = get_all_users_from_db()
+    return render_template('admin.html', listan=listan)

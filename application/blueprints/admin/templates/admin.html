@@ -13,10 +13,11 @@
 
 
 {% block content %}
+    <h1>Du är nu inloggad som admin: {{ current_user.email }}</h1>
+
 <div class="titel">
             <label class="lab" for="aaa">Choose your user:</label>
        </div>
-
 
 <body>
 
@@ -24,26 +25,9 @@
 <form Name="Form1" Method="" Action="">
     <div class="boxen">
         <select Name="List1" class="combo_users" size="10">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
-            <Option value="">
+           {% for item in listan %}
+            <Option value="{{ item }}"> {{ item }}
+            {% endfor %}
         </select>
 
         <div class="buttons">

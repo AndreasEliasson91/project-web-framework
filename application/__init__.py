@@ -1,3 +1,5 @@
+
+
 from application.dll.db import init_db
 from flask import Flask
 from flask_login import LoginManager
