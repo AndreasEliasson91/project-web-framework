@@ -22,3 +22,4 @@ def before_request():
 def admin():
     listan = get_all_users_from_db()
     return render_template('admin.html', listan=listan)
+
