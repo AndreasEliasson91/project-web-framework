@@ -1,15 +1,17 @@
 .profile-pic {
     border-radius: 50%;
-    color: dimgrey;
+    width: 300px;
+    height: 300px;
+    color: #1c1b1b;
     transition: all .3s ease;
     text-decoration: none;
     cursor: pointer;
+    justify-content: center;
 }
 
 .profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
     z-index: 10000;
-    color: #fff;
+    color: #696969FF;
     transition: all .3s ease;
     text-decoration: none;
 }
@@ -23,4 +25,14 @@
 form input[type="file"] {
           display: none;
           cursor: pointer;
- }
+}
+
+.view-profile-pic {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    color: #1c1b1b;
+    transition: all .3s ease;
+    text-decoration: none;
+    justify-content: center;
+}

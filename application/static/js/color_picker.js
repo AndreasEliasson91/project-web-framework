@@ -1,4 +1,3 @@
-
 let red = document.getElementById('red');
 let green = document.getElementById('green');
 let blue = document.getElementById('blue');
