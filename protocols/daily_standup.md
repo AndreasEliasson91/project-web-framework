@@ -248,4 +248,30 @@ Anteckningar:
 
 
 
+MÖTESPROTOKOLL
+-
+
+Datum: 26-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Skrev om profilkod. Fixat med att kunna spara settings till db
+- Anna: Jobbat med funktionalitet att stänga av användare.
+- Lenny: Jobbat med funktionalitet att stänga av användare.
+- Markus: Fixat med "remember me". Skapat vänner-sida
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Funktionalitet för att kunna se andras profilsidor. Ladda upp och dumpa bilder från db.
+- Anna: Fortsätt att arbeta med admin-sidorna.
+- Lenny: Fortsätt att arbeta med admin-sidorna.
+- Markus: Fixa med parental controll.
+
+
+Anteckningar:
+
+
 
