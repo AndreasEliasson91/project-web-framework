@@ -1,8 +1,10 @@
 from bson import ObjectId
-from flask import Blueprint, render_template, redirect, request, url_for, flash
+from flask import Blueprint, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
+
+from application.bll.controllers import game_controller
 from application.bll.controllers.image_controller import get_image, upload_image
-from application.bll.controllers.user_controller import get_user_by_user_id, get_user_by_username
+from application.bll.controllers.user_controller import get_user_by_user_id, get_user_friends
 
 bp_user = Blueprint('bp_user',
                     __name__,
@@ -20,7 +22,17 @@ def user_index():
 @bp_user.get('/friends')
 @login_required
 def friends_get():
-    return render_template('friends.html')
+    friends = []
+    i = 0
+    for friend in get_user_friends(current_user):
+        friends.append({
+            '_id': friend._id,
+            'name': friend.display_name if friend.parent else friend.username,
+            'image': get_image(friend.avatar, f'friend{i}'),
+            'colors': friend.settings['rgb_title']
+        })
+        i += 1
+    return render_template('friends.html', friends=friends)
 
 
 @bp_user.get('/profile/<user_id>')
@@ -94,3 +106,12 @@ def view_profile_get(user_id):
         return render_template('profile_view.html',
                                user=user,
                                profile_picture=get_image(user.avatar, 'profile'))
+
+
+@bp_user.post('/view-profile/<user_id>')
+@login_required
+def view_profile_post(user_id):
+    request.form.get('add-friend')
+    current_user.friends.append(ObjectId(user_id))
+    current_user.save()
+    return redirect(url_for('bp_user.view_profile_get', user_id=user_id))

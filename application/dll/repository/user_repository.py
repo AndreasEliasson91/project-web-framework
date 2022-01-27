@@ -35,3 +35,8 @@ def get_parent_from_child_id(_id):
                 if child == _id:
                     return user
     return None
+
+
+def get_all_users():
+    return User.all()
+
