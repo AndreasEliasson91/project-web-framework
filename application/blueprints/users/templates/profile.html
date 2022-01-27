@@ -13,7 +13,7 @@
             <div class="level-item">
                 <form action="{{ url_for('bp_user.profile_get', user_id=current_user._id) }}" method="post" enctype="multipart/form-data">
                     <label for="fileToUpload">
-                        <img class="profile-pic" id="profile-pic" src="{{ profile_picture }}" border="5px solid #555" title="Ändra Bild">
+                        <img class="profile-pic" id="profile-pic" src="{{ profile_picture }}" title="Ändra Bild">
                     </label>
                     <input type="file" name="profile_picture" id="fileToUpload" oninput="showButton()">
                     <input type="submit" id="button" value="Ladda Upp" name="submit" hidden>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="level-item bg-hs" onclick="get_color_bar(this)" id="sub-title" title="Tryck För Att Byta Färg"
                          style="background-color: rgb({{ current_user.settings.rgb_subtitle[0] }}, {{ current_user.settings.rgb_subtitle[1] }}, {{ current_user.settings.rgb_subtitle[2] }});" >
-                        <h3>Högsta Poäng För Varje Spel</h3>
+                        <h3>Dina Högsta Poäng</h3>
                     </div>
                     <div class="level-item">
                         <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father2.png') }}); color: bisque;">
