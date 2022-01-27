@@ -17,12 +17,6 @@ def user_index():
     return render_template('welcome.html')
 
 
-@bp_user.get('/settings')
-@login_required
-def settings_get():
-    return render_template('settings.html')
-
-
 @bp_user.get('/friends')
 @login_required
 def friends_get():

@@ -7,6 +7,6 @@ bp_games = Blueprint('bp_games',
                      )
 
 
-@bp_games.get('/high-scores')
-def high_score_get():
-    return render_template('high_score.html')
+@bp_games.get('/')
+def index_hs():
+    return render_template('games_index_hs.html')
