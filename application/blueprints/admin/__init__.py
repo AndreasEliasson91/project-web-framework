@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 
+from application.bll.controllers.admin_activate_user_controller import activate_email_user
 from application.bll.controllers.admin_controller import get_all_users_from_db
+from application.bll.controllers.admin_is_user_active_controller import is_user_activate
 from application.bll.controllers.admin_suspend_email_user import suspend_email_user
 from application.dll.db.models import User
 
@@ -29,8 +31,13 @@ def admin():
 @login_required
 def admin_post():
     email = request.form.get('List1')
+    is_selected_user_active = is_user_activate(email)
 
-    user_suspend = suspend_email_user(email)
+    # Suspendera användaren eller aktivera
+    email = request.form.get('List1')
+    user_status = suspend_email_user(email, is_selected_user_active)
+    print(user_status)
+
     listan = get_all_users_from_db()
     print(user_suspend)
     return render_template('admin.html', listan=listan)

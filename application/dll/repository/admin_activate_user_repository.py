@@ -1,11 +1,11 @@
 from application.dll.db.models import User
 
 
-def suspend_email_user(email, is_selected_user_active):
+def activate_email_user(email):
     global operation, _id, admin, parent, password, children, birth_date, date_created, act, date_end, settings, \
-        time_start, time_end, date_start, rgb_title, rgb_subtitle, update_user_dict, avatar
+        time_start, time_end, date_start, rgb_title, rgb_subtitle
     test_lista = []
-    status_on_user = is_selected_user_active
+
     # Here we are looking for the selected users email, and take out the
     # the user dict.
     user1 = User.find(email=email)
@@ -40,10 +40,7 @@ def suspend_email_user(email, is_selected_user_active):
                 date_created = value
 
             if key == 'activated':
-                if status_on_user == 'true':
-                    act = 'false'
-                else:
-                    act = 'true'
+                act = 'true'
 
             if key == 'time_start':
                 time_start = value
@@ -57,32 +54,28 @@ def suspend_email_user(email, is_selected_user_active):
             if key == 'avatar':
                 avatar = value
 
-            if key == 'settings':
-                # Take out the second dict called settings.
+            # Take out the second dict called settings.
+            if user_dict.values == 'settings':
+                print("Hello")
 
-                for ettan, tvåan in user_dict.items():
-                    if ettan == 'settings':
-                        for k, v in tvåan.items():
-                            if k == 'rgb_title':
-                                rgb_title = v
-                            if k == 'rgb_subtitle':
-                                rgb_subtitle = v
+            for ettan, tvåan in user_dict.items():
+                if ettan == 'settings':
+                    for k, v in tvåan.items():
+                        if k == 'rgb_title':
+                            rgb_title = v
+                        if k == 'rgb_subtitle':
+                            rgb_subtitle = v
 
-                                # Here we build up the dict as it was, and we changed the activate field to false.
+                # Here we build up the dict as it was, and we changed the activate field to false.
                 update_user_dict = User(
                     {'_id': _id, 'email': email, 'password': password, 'birth_date': birth_date
-                        , 'admin': admin, 'parent': parent, 'children': children,
-                     'date_created': date_created
-                        , 'activated': act, 'time_start': time_start, 'time_end': time_end,
-                     'date_start': date_start,
+                        , 'admin': admin, 'parent': parent, 'children': children, 'date_created': date_created
+                        , 'activated': act, 'time_start': time_start, 'time_end': time_end, 'date_start': date_start,
                      'date_end': date_end, 'avatar': avatar,
                      'settings': {'rgb_title': rgb_title, 'rgb_subtitle': rgb_subtitle}
                      })
                 # update the dict to the database.
                 User.save(update_user_dict)
-                if status_on_user == 'true':
-                    operation = "Suspended"
-                else:
-                    operation = "Activated"
+                operation = "Active"
                 # print(key, ' : ', value)
     return operation
