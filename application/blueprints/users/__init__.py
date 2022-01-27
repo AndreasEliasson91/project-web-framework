@@ -1,8 +1,8 @@
 from bson import ObjectId
-from flask import Blueprint, render_template, redirect, request, url_for, flash
+from flask import Blueprint, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
 from application.bll.controllers.image_controller import get_image, upload_image
-from application.bll.controllers.user_controller import get_user_by_user_id, get_user_by_username
+from application.bll.controllers.user_controller import get_user_by_user_id, get_user_friends
 
 bp_user = Blueprint('bp_user',
                     __name__,
@@ -20,7 +20,15 @@ def user_index():
 @bp_user.get('/friends')
 @login_required
 def friends_get():
-    return render_template('friends.html')
+    friends = []
+    for friend in get_user_friends(current_user):
+        friends.append({
+            '_id': friend._id,
+            'name': friend.get_id(),
+            'image': get_image(friend.avatar, 'friend'),
+            'colors': friend.settings['rgb_title']
+        })
+    return render_template('friends.html', friends=friends)
 
 
 @bp_user.get('/profile/<user_id>')
