@@ -48,7 +48,7 @@ def suspend_email_user(email):
                 update_user_dict = User(
                     {'_id': _id, 'email': email, 'password': password, 'birth_date': birth_date
                         , 'admin': admin, 'parent': parent, 'children': children, 'date_created': date_created
-                        , 'activated': value})
+                        , 'activated': value, 'time_management': 'null', 'avatar': 'null', 'setting': 'null'})
 
                 User.save(update_user_dict)
                 operation = "Suspended"
