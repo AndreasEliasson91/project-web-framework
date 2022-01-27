@@ -8,6 +8,11 @@ bp_open = Blueprint('bp_open',
                     )
 
 
+@bp_open.get('/')
+def index():
+    return render_template('index.html')
+
+
 @bp_open.get('/signin')
 def signin_get():
     return render_template('signin.html')
@@ -48,19 +53,14 @@ def signup_post():
     return redirect(url_for('bp_open.index'))
 
 
-@bp_open.get('/')
-def index():
-    return render_template('index.html')
-
-
 @bp_open.get('/about')
 def about_get():
     return render_template('about.html')
 
 
-@bp_open.get('/game_rules')
+@bp_open.get('/rules')
 def rules_get():
-    return render_template('game_rules.html')
+    return render_template('rules.html')
 
 
 @bp_open.get('/test_games')
