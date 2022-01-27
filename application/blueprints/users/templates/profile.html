@@ -31,7 +31,7 @@
                     </div>
                     <div class="level-item bg-hs" onclick="get_color_bar(this)" id="sub-title" title="Tryck För Att Byta Färg"
                          style="background-color: rgb({{ current_user.settings.rgb_subtitle[0] }}, {{ current_user.settings.rgb_subtitle[1] }}, {{ current_user.settings.rgb_subtitle[2] }});" >
-                        <h3>High Score</h3>
+                        <h3>Högsta Poäng För Varje Spel</h3>
                     </div>
                     <div class="level-item">
                         <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father2.png') }}); color: bisque;">
@@ -65,10 +65,10 @@
             <div  class="level-item">
                 <div class="container">
                     <div class="level-item bg-email" style="background-color: rgb({{ current_user.settings.rgb_title[0] }}, {{ current_user.settings.rgb_title[1] }}, {{ current_user.settings.rgb_title[2] }})" >
-                        <h2><a style="color: #f1f1f1;" href="mailto:someone@example.com">Email: {{ current_user.email }}</a></h2>
+                        <h2><a style="color: #f1f1f1;" href="mailto:someone@example.com" title="Kontakta Mig">{{ current_user.email }}</a></h2>
                     </div>
                     <div class="level-item bg-child" style="background-color: rgb({{ current_user.settings.rgb_subtitle[0] }}, {{ current_user.settings.rgb_subtitle[1] }}, {{ current_user.settings.rgb_subtitle[2] }})">
-                        <h6>{{ current_user.email }}:s barn</h6>
+                        <h6>Registrerade Barn</h6>
                     </div>
                     <div class="level-item">
                         {% for child in children %}

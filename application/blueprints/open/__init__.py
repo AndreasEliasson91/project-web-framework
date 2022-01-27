@@ -63,11 +63,6 @@ def rules_get():
     return render_template('game_rules.html')
 
 
-@bp_open.get('/games')
-def games_get():
-    return render_template('games.html')
-
-
 @bp_open.get('/test_games')
 def test_games_get():
     return render_template('test_games.html')
