@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Parent_control{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/parent.css') }}">
+{% endblock %}
+{% block content %}
+
+    <div class="popup" onclick="myFunction()"> click me
+
+    </div>
+    <div class="popup">
+    <label for="myPopup"></label><input class="popuptext" type="time" id="myPopup" hidden/>
+    </div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    <script>
+function myFunction() {
+  {#var popup = document.getElementById("myPopup");#}
+  document.getElementById("myPopup").hidden = !document.getElementById("myPopup").hidden;
+}
+</script>
+
+{% endblock %}

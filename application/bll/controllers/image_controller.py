@@ -5,7 +5,7 @@ def get_image(_id, filename):
     return image_repository.get_image(_id, filename)
 
 
-def get_all_image_is():
+def get_all_image_ids():
     return image_repository.get_all_image_ids()
 
 
