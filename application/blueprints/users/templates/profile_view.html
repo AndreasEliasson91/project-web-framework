@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_picture.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color-picker.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="column" style="background-color: #89d23d">
+    <div class="container" style="margin-top: 5%; margin-bottom: 5%">
+        <div class="level has-text-centered">
+            <div class="level-item">
+                <img class="view-profile-pic" src="{{ profile_picture }}" border="5px solid #555">
+            </div>
+            <div class="level-item" style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; ">
+                <div class="container">
+                    <div class="level-item bg-email" style="background-color: rgb({{ user.settings.rgb_title[0] }}, {{ user.settings.rgb_title[1] }}, {{ user.settings.rgb_title[2] }});">
+                        {% if user.parent %}
+                            <h3>{{ user.email }}</h3>
+                        {% else %}
+                            <h3>{{ user.username }}</h3>
+                        {% endif %}
+                    </div>
+                    <div class="level-item bg-child" style="background-color: rgb({{ user.settings.rgb_subtitle[0] }}, {{ user.settings.rgb_subtitle[1] }}, {{ user.settings.rgb_subtitle[2] }});" >
+                        <h3>High Score</h3>
+                    </div>
+                    <div class="level-item">
+                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father2.png') }}); color: bisque;">
+                            <h4>90p</h4>
+                            <h6>Spel 1</h6>
+                        </div>
+                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father3.png') }}); color: bisque;">
+                            <h4>70p</h4>
+                            <h6>Spel 2</h6>
+                        </div>
+                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father4.png') }}); color: bisque;">
+                            <h4>80p</h4>
+                            <h6>Spel 3</h6>
+                        </div>
+                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father5.png') }}); color: bisque;">
+                            <h4>75p</h4>
+                            <h6>Spel 4</h6>
+                        </div>
+                        <div class="skill-block" style="background-image: url({{ url_for('static', filename='img/father6.png') }}); color: bisque;">
+                            <h4>10p</h4>
+                            <h6>Spel 5</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if user.parent %}
+        <hr class="bind"/>
+        <div class="container" style="margin-top: 5%; margin-bottom: 5%">
+            <div  class="level-item">
+                <div class="container">
+                    <div class="level-item bg-email" style="background-color: rgb({{ user.settings.rgb_title[0] }}, {{ user.settings.rgb_title[1] }}, {{ user.settings.rgb_title[2] }})" >
+                        <h2><a style="color: #f1f1f1;" href="mailto:someone@example.com" title="Kontakta Mig">{{ user.email }}</a></h2>
+                    </div>
+                    <div class="level-item bg-child" style="background-color: rgb({{ user.settings.rgb_subtitle[0] }}, {{ user.settings.rgb_subtitle[1] }}, {{ user.settings.rgb_subtitle[2] }})">
+                        <h6>Registrerade barn</h6>
+                    </div>
+                    <div class="level-item">
+                        {% for child in children %}
+                            <div class="chip">
+                                <a href="{{ url_for('bp_user.view_profile_get', user_id=child['_id']) }}"><img src="{{ child['avatar'] }}" alt="Person" width="192" height="192"></a>
+                                <span>{{ child['username'] }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

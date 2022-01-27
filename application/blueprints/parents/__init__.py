@@ -31,13 +31,7 @@ def register_child_post():
     register_child(username, password, birth_date)
     child = get_user_by_username(username)
 
-    current_user.children.append(
-        {
-            '_id': child._id,
-            'username': child.username,
-            'avatar': child.avatar
-        }
-    )
+    current_user.children.append(child._id)
     update_user_information(current_user)
 
     return redirect(url_for('bp_open.index'))

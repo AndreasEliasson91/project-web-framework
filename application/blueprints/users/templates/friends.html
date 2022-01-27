@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section>
+<div>
+    <div class="container has-text-centered"  style="background-color: purple; width: 400px; height: 70px; color: white; right: 40%; top: 15%; position: absolute;border-radius: 25px; align-content: center;line-height: 70px;">
+        <h1>Dina vänner</h1>
+    </div>
+<div class="" style="right: 35%; top: 22%; position: absolute; width: 600px; height: 600px;">
+
+{#     {% for friend in friends %}#}
+{#            <div class="chip" style="background-color: white; margin-bottom: 5px;">#}
+{#                <img src="{{ friend['avatar'] }}" alt="Person" width="192" height="192">#}
+{#                <a href="{{ url_for('bp_open.index') }}">{{ friend['username'] }}</a>#}
+{#            </div>#}
+{#    {% endfor %}#}
+
+        <div class="chip" style="background-color: white; margin-bottom: 5px;">
+            <img src="{{ url_for('static', filename='img/father.png') }}" alt='Person' width='192' height='192'>
+            <a href="{{ url_for('bp_open.index') }}">Darth Vader</a>
+
+        </div>
+         <div class="chip" style="background-color: white; margin-bottom: 5px;">
+            <img src="{{ url_for('static', filename='img/father.png') }}" alt='Person' width='192' height='192'>
+            <a href="{{ url_for('bp_open.index') }}">Darth Vader</a>
+        </div>
+        <div class="chip" style="background-color: white;margin-bottom: 5px;" >
+            <img src="{{ url_for('static', filename='img/father.png') }}" alt='Person' width='192' height='192'>
+            <a href="{{ url_for('bp_open.index') }}">Darth Vader</a>
+        </div>
+        <div class="chip" style="background-color: white;margin-bottom: 5px;" >
+            <img src="{{ url_for('static', filename='img/father.png') }}" alt='Person' width='192' height='192'>
+            <a href="{{ url_for('bp_open.index') }}">Darth Vader</a>
+        </div>
+         <div class="chip" style="background-color: white;margin-bottom: 5px;" >
+            <img src="{{ url_for('static', filename='img/father.png') }}" alt='Person' width='192' height='192'>
+            <a href="{{ url_for('bp_open.index') }}">Darth Vader</a>
+        </div>
+        <div class="chip" style="background-color: white;margin-bottom: 5px;" >
+            <img src="{{ url_for('static', filename='img/father.png') }}" alt='Person' width='192' height='192'>
+            <a href="{{ url_for('bp_open.index') }}">Darth Vader</a>
+        </div>
+
+
+</div>
+</div>
+</section>
+
+{% endblock %}

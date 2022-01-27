@@ -1,8 +1,10 @@
 import os
 
+from bson import ObjectId
 from flask import url_for
 from application.dll.db import images
 from application.dll.db.models import Image, User
+from application.dll.repository import user_repository
 
 
 def get_image(_id, filename):
@@ -35,6 +37,14 @@ def upload_picture(current_user, file):
         images.put(contents, filename=f'{i}_{file.filename}')
 
     image_id = Image.find(filename=file.filename).first_or_none()._id
+
+    if not current_user.parent:
+        parent = user_repository.get_parent_from_child_id(ObjectId(current_user._id))
+        if parent:
+            for child in parent.children:
+                if child._id == current_user._id:
+                    child.avatar = image_id
+            user_repository.update_user_information(parent)
 
     current_user.avatar = image_id
     User.save(current_user)
