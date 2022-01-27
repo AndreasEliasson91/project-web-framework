@@ -144,7 +144,7 @@ body {
 
 .chip {
   display: inline-block;
-  padding: 0 25px;
+  padding: 25px;
   height: 100px;
   font-size: 32px;
   line-height: 100px;
@@ -157,4 +157,29 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 50%;
+    border-style: solid;
+    border-color: #1c1b1b;
+}
+
+.add-friend {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: #1c1b1b;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.add-friend:hover {
+    box-shadow: -3px -3px 7px #000000,
+        -3px -3px 12px #1c1b1b,
+        3px 3px 7px #000000,
+        -3px -3px 12px #1c1b1b;
+    transform: scale(1.1);
+    transform-origin: center;
 }

@@ -20,7 +20,9 @@ def register_adult(email, password, birth_date):
             'parent': True,
             'activated:': True,
             'time_management': None,
+            'personal_high_score': [],
             'children': [],
+            'friends': [],
             'date_created': datetime.datetime.now(),
             'avatar': random.choice(image_repository.get_all_image_ids()),
             'settings': {
@@ -39,6 +41,7 @@ def register_child(username, password, birth_date: Optional):
             'activated:': True,
             'time_management': None,
             'personal_high_score': [],
+            'friends': [],
             'date_created': datetime.datetime.now(),
             'avatar': random.choice(image_repository.get_all_image_ids()),
             'settings': {

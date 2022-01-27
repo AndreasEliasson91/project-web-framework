@@ -94,3 +94,12 @@ def view_profile_get(user_id):
         return render_template('profile_view.html',
                                user=user,
                                profile_picture=get_image(user.avatar, 'profile'))
+
+
+@bp_user.post('/view-profile/<user_id>')
+@login_required
+def view_profile_post(user_id):
+    request.form.get('add-friend')
+    current_user.friends.append(ObjectId(user_id))
+    current_user.save()
+    return redirect(url_for('bp_user.view_profile_get', user_id=user_id))
