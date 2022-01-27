@@ -26,7 +26,7 @@
                 <div class="container">
                     <div class="level-item bg-email" style="background-color: rgb({{ user.settings.rgb_title[0] }}, {{ user.settings.rgb_title[1] }}, {{ user.settings.rgb_title[2] }});">
                         {% if user.parent %}
-                            <h3>{{ user.email }}</h3>
+                            <h3>{{ user.display_name }}</h3>
                         {% else %}
                             <h3>{{ user.username }}</h3>
                         {% endif %}

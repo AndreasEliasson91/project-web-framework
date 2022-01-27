@@ -24,7 +24,7 @@
                     <div class="level-item bg-title" onclick="get_color_bar(this)" id="title" title="Tryck För Att Byta Färg"
                          style="background-color: rgb({{ current_user.settings.rgb_title[0] }}, {{ current_user.settings.rgb_title[1] }}, {{ current_user.settings.rgb_title[2] }});">
                         {% if current_user.parent %}
-                            <h3>{{ current_user.email }}</h3>
+                            <h3>{{ current_user.display_name }}</h3>
                         {% else %}
                             <h3>{{ current_user.username }}</h3>
                         {% endif %}

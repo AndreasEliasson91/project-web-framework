@@ -14,6 +14,7 @@ def register_adult(email, password, birth_date):
 
     adult = {
         'email': email,
+        'display_name': email.split('@')[0],
         'password': argon2.using(rounds=12).hash(password),
         'birth_date': birth_date,
         'admin': False,
@@ -54,6 +55,10 @@ def register_child(username, password, birth_date: Optional):
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
     user_repository.register_child(child)
+
+
+def get_all_users():
+    return user_repository.get_all_users()
 
 
 def update_user_information(user):
