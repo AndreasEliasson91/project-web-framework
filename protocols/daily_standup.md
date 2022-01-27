@@ -275,3 +275,31 @@ Anteckningar:
 
 
 
+MÖTESPROTOKOLL
+-
+
+Datum: 27-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Fixat så att man kan se andras profiler. Dumpat dbn
+- Anna: Fortsatt med för att funktionalitet att stänga av användare.
+- Lenny: Fortsatt med för att funktionalitet att stänga av användare.
+- Markus: Gjort småfix.
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Småfix. Kolla vad som kan göras framåt.
+- Anna: Fortsätt att arbeta med admin-sidorna.
+- Lenny: Fortsätt att arbeta med admin-sidorna.
+- Markus: Fixa med parental controll.
+
+
+Anteckningar:
+
+
+
+
