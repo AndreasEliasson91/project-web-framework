@@ -34,9 +34,23 @@ def suspend_email_user(email):
 
             if key == 'date_created':
                 date_created = value
-            test_lista.append(value)
+
             if key == 'activated':
-                value = 'false'
+                act = 'false'
+
+            if key == 'time_start':
+                time_start = value
+            if key == 'time_end':
+                time_end = value
+            if key == 'date_start':
+                date_start = value
+            if key == 'date_end':
+                date_end = value
+            # if key == 'settings':
+            #     print("Nu är jag i settings")
+            #     settings = value
+            if key == 'avatar':
+                avatar = value
 
                 update_user_dict = User(
                     {'_id': _id, 'email': email, 'password': password, 'birth_date': birth_date
