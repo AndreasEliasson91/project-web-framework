@@ -39,8 +39,8 @@ def admin_post():
     print(user_status)
 
     listan = get_all_users_from_db()
-    print(user_suspend)
-    return render_template('admin.html', listan=listan)
+
+    return render_template('admin.html', listan=listan, active_suspend=user_status)
     # if user is not None:
     #     flash('Denna email är redan registrerad')
     #     return redirect(url_for('bp_open.signup_get'))

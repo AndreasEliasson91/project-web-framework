@@ -28,13 +28,15 @@
            {% for item in listan %}
             <Option name="{{ item }}" value="{{ item }}"> {{ item }}
             {% endfor %}
-        </select>"
+        </select>
 
         <div class="buttons">
 {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
-            <button id="shutdown_user"  ondblclick="myGeeks()">Suspend</button>
-            <button id="turn_on_user">Activate</button>
-            <button id="list_all_users">List of all users</button>
+            <button id="shutdown_user"
+
+                    onclick="alert('You have now {{ active_suspend }} the user')" ondblclick="myGeeks()">Suspend/Activate User</button>
+            {# <button id="turn_on_user">Activate</button> #}
+            {# <button id="list_all_users">List of all users</button> #}
         </div>
     </div>
 </form>
