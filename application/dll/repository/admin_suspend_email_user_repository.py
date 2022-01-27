@@ -2,7 +2,7 @@ from application.dll.db.models import User
 
 
 def suspend_email_user(email):
-    global operation, _id, admin, parent, password, children, birth_date, date_created
+    global operation, _id, admin, parent, password, children, birth_date, date_created, act, date_end, settings, time_start, time_end, date_start
     test_lista = []
 
     user1 = User.find(email=email)
@@ -14,31 +14,24 @@ def suspend_email_user(email):
             if key == '_id':
                 _id = value
 
-                test_lista.append(value)
             if key == 'email':
                 email = value
 
-                test_lista.append(value)
             if key == 'password':
                 password = value
 
-                test_lista.append(value)
             if key == 'birth_date':
                 birth_date = value
 
-                test_lista.append(value)
             if key == 'admin':
                 admin = value
 
-                test_lista.append(value)
             if key == 'parent':
                 parent = value
 
-                test_lista.append(value)
             if key == 'children':
                 children = value
 
-                test_lista.append(value)
             if key == 'date_created':
                 date_created = value
             test_lista.append(value)
@@ -48,7 +41,8 @@ def suspend_email_user(email):
                 update_user_dict = User(
                     {'_id': _id, 'email': email, 'password': password, 'birth_date': birth_date
                         , 'admin': admin, 'parent': parent, 'children': children, 'date_created': date_created
-                        , 'activated': value, 'time_management': 'null', 'avatar': 'null', 'setting': 'null'})
+                        , 'activated': act, 'time_start': time_start, 'time_end': time_end, 'date_start': date_start,
+                     'date_end': date_end, 'avatar': avatar})
 
                 User.save(update_user_dict)
                 operation = "Suspended"
