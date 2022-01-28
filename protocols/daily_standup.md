@@ -303,3 +303,30 @@ Anteckningar:
 
 
 
+MÖTESPROTOKOLL
+-
+
+Datum: 28-01-2022
+
+Närvarande: Andreas, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Fixat buggar. Optimerat kod och databas.
+- Anna: Avslutat admin-funktionalitet
+- Lenny: Avslutat admin-funktionalitet
+- Markus: -
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Småfix. Börja städa och kolla igenom css-filer osv.
+- Anna: Fixa det sista i sprinten
+- Lenny: Fixa det sista i sprinten
+- Markus: Fortsätta arbeta med sina kort
+
+Anteckningar:
+Markus jobbade, så han missade mötet. Men han kör på efter jobbet, alt. i helgen och avslutar sina kort.
+Lenny, Anna och Markus behöver snacka ihop sig om parent control-sida, så det blir på måndag.
+
+
