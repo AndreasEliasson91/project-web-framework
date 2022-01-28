@@ -23,11 +23,14 @@ def signin_post():
     # här skall vi börja kontrollera om activate fältet är true eller false.
 
     if '@' in username:
+        selected_val = 1
         user = get_user_by_email(username)
-        status = is_user_activate(username)
+        status = is_user_activate(username, selected_val)
+
     else:
+        selected_val = 2
         user = get_user_by_username(username)
-        status = is_user_activate(username)
+        status = is_user_activate(username, selected_val)
 
     if status:
 

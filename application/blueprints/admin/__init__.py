@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
-
+import json
 from application.bll.controllers.admin_activate_user_controller import activate_email_user
 from application.bll.controllers.admin_controller import get_all_users_from_db
 from application.bll.controllers.admin_is_user_active_controller import is_user_activate
@@ -33,7 +33,10 @@ def admin_post():
     # Suspendera användaren eller aktivera
     email = request.form.get('List1')
     user_status = suspend_email_user(email)
-    print(user_status)
+    if user_status == "Activated":
+        user_status = "suspended"
+    else:
+        user_status = "activated"
 
     listan = get_all_users_from_db()
 
