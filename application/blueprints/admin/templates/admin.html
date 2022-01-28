@@ -30,9 +30,10 @@
                 {% endfor %}
             </select>
 
-        <div class="buttons">
-{#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
-            <button id="shutdown_user"
+            {% set s_a = active_suspend %}
+            <div class="buttons">
+                {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
+                <button id="shutdown_user"
 
                         onclick="alert('You have now been: {{ s_a }}')" ondblclick="myGeeks()">Suspend/Activate User
 

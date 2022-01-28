@@ -18,16 +18,4 @@ def is_user_active(username, selected_val):
             if key == 'activated':
                 act = value
 
-            if key == 'time_start':
-                time_start = value
-            if key == 'time_end':
-                time_end = value
-            if key == 'date_start':
-                date_start = value
-            if key == 'date_end':
-                date_end = value
-
-            if key == 'avatar':
-                avatar = value
-
     return act
