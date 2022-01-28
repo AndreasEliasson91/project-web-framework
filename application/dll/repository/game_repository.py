@@ -1,4 +1,4 @@
-from application.dll.db.models import Game, HighScore
+from application.dll.db.models import Game
 
 
 def add_game(game):
@@ -6,16 +6,8 @@ def add_game(game):
 
 
 def get_all_games():
-    return Game.all()
+    return [game for game in Game.all()]
 
 
-def get_high_scores_by_game_id(game_id):
-    return HighScore.find(game_id=game_id)
-
-
-def update_high_score(high_score):
-    HighScore.save(high_score)
-
-
-def set_high_score(hs):
-    HighScore(hs).save()
+def update_game(game):
+    Game.save(game)
