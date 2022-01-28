@@ -30,12 +30,9 @@ def admin():
 @bp_admin.post('/')
 @login_required
 def admin_post():
-    email = request.form.get('List1')
-    is_selected_user_active = is_user_activate(email)
-
     # Suspendera användaren eller aktivera
     email = request.form.get('List1')
-    user_status = suspend_email_user(email, is_selected_user_active)
+    user_status = suspend_email_user(email)
     print(user_status)
 
     listan = get_all_users_from_db()
