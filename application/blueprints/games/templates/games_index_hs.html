@@ -24,17 +24,19 @@
                                 <h3 style="color: rgb(255,255,255)">High Score</h3>
                             </div>
                             <div class="level-item">
-                                {% for s in hs %}
-                                    <div class="skill-block">
-                                        <h4>{{ s.user_id }}</h4>
-                                        <h6>{{ s.score }}</h6>
+                                {% for hs in game.high_score %}
+                                    <div class="skill-block" style="background-image: url({{ hs.avatar }})">
+                                        <h4>{{ hs.user_id }}</h4>
+                                        <h6>{{ hs.score }}</h6>
                                     </div>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="level-item">
-                        <img class="picture" src="{{ url_for('static', filename=game.image) }}" border="5px solid #555">
+                        <a href="{{ url_for('bp_open.index') }}">
+                            <img class="picture" src="{{ game.content.main_image }}" border="5px solid #555">
+                        </a>
                     </div>
                 </div>
                 <hr class="bind" style="height:7px; border-radius: 7px 7px 7px 7px "/>

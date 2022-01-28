@@ -28,9 +28,5 @@ class Game(Document):
     collection = db.games
 
 
-class HighScore(Document):
-    collection = db.high_score
-
-
 class Image(Document):
     collection = db.images.files
