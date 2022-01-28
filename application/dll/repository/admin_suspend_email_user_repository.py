@@ -1,7 +1,7 @@
 from application.dll.db.models import User
 
 
-def suspend_email_user(email, is_selected_user_active):
+def suspend_email_user(email):
     # Here we are looking for the selected users email, and take out the
     # the user dict.
     user1 = User.find(email=email).first_or_none()

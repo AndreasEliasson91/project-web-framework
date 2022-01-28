@@ -1,3 +1,4 @@
+from application.bll.controllers.admin_is_user_active_controller import is_user_activate
 from application.bll.controllers.user_controller import register_adult, get_user_by_email, get_user_by_username
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user
@@ -19,24 +20,36 @@ def signin_post():
     username = request.form.get('username')
     password = request.form.get('password')
 
-# här skall vi börja kontrollera om activate fältet är true eller false.
+    # här skall vi börja kontrollera om activate fältet är true eller false.
 
     if '@' in username:
         user = get_user_by_email(username)
+        status = is_user_activate(username)
     else:
         user = get_user_by_username(username)
+        status = is_user_activate(username)
 
-    if user is None:
-        flash('Username or password is incorrect')
-        return redirect(url_for('bp_open.signin_get'))
+    if status:
 
-    if not check_password_hash(user.password, password):
-        flash('Username or password is incorrect')
-        return redirect(url_for('bp_open.signin_get'))
+        if user is None:
+            flash('Username or password is incorrect')
+            return redirect(url_for('bp_open.signin_get'))
 
-    login_user(user)
+        if not check_password_hash(user.password, password):
+            flash('Username or password is incorrect')
+            return redirect(url_for('bp_open.signin_get'))
 
-    return redirect(url_for('bp_open.index'))
+        login_user(user)
+        return redirect(url_for('bp_open.index'))
+
+    else:
+
+        return render_template('suspended.html')
+
+
+@bp_open.get('/suspended')
+def suspended():
+    return render_template('suspended.html')
 
 
 @bp_open.get('/signup')
