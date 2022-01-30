@@ -39,5 +39,12 @@ def register_child_post():
 
 @bp_parent.get('/control')
 @login_required
-def register_child_get():
+def control_get():
     return render_template('parent_control.html')
+
+
+@bp_parent.get('/control')
+@login_required
+def control_post(user_id):
+    start = request.form.get('start')
+    end = request.form.get('end')

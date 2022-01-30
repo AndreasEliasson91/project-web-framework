@@ -7,11 +7,21 @@
 {% block content %}
 
     <div class="popup" onclick="myFunction()"> click me
+    </div>
 
+
+    <div id="myPopup">
+        <form action="{{ url_for('bp_parent.control_get', user_id=None)}}" method="post">
+            <div style="float: left; margin-right: 20px;">
+                <label for="start">Start</label><input id="start" name="start" type="time"/>
+            </div>
+            <div style="float: left; margin-right: 20px;">
+                <label for="end">End</label><input id="end" name="end" type="time"/>
+            </div>
+        </form>
     </div>
-    <div class="popup">
-    <label for="myPopup"></label><input class="popuptext" type="time" id="myPopup" hidden/>
-    </div>
+
+
 
 
 {% endblock %}
@@ -21,9 +31,10 @@
 
     <script>
 function myFunction() {
-  {#var popup = document.getElementById("myPopup");#}
   document.getElementById("myPopup").hidden = !document.getElementById("myPopup").hidden;
+
 }
+
 </script>
 
 {% endblock %}
