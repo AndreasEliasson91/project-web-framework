@@ -8,21 +8,17 @@
 
     <div class="popup" onclick="myFunction()"> click me
     </div>
+    <div class="position" id="myPopup">
 
-
-    <div id="myPopup">
         <form action="{{ url_for('bp_parent.control_get', user_id=None)}}" method="post">
             <div style="float: left; margin-right: 20px;">
-                <label for="start">Start</label><input id="start" name="start" type="time"/>
+                <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
             </div>
             <div style="float: left; margin-right: 20px;">
-                <label for="end">End</label><input id="end" name="end" type="time"/>
+                <label class="timed"  for="end" style="text-align: center">Slut</label><input class="timed"  id="end" name="end" type="time"/>
             </div>
         </form>
     </div>
-
-
-
 
 {% endblock %}
 
