@@ -1,0 +1,22 @@
+.timed {
+    display:block;
+}
+
+
+
+
+.position {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+}
+
+
+
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
