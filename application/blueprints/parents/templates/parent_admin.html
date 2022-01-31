@@ -29,6 +29,7 @@
                 {% for item in listan %}
                     <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
                 {% endfor %}
+            <input type="text" name="textboxen" id="txt1" onClick="check">
             </select>
 
             {% set s_a = active_suspend %}
@@ -63,8 +64,18 @@
         </form>
     </div>
 
-    <input type="text" id="htext" name="fname" >
 
+<script>
+
+    // Script to put the txt from the combobox to the hidden textbox
+    // that lets us request from that instead.
+    let select = document.getElementById('myCourses');
+    let input = document.getElementById('txt1');
+    select.onchange = function() {
+    input.value = select.value;
+}
+
+</script>
 
 <script>
     function myFunction() {
@@ -86,7 +97,7 @@
         function parent_admin() {
             document.getElementById("myCourses").selectedIndex
                 = ""
-            document.getElementById("htext").selected.text
+
         }
     </script>
 
