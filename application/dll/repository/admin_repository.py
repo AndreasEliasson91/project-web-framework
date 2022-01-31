@@ -1,23 +1,28 @@
 from application.dll.db.models import User
-from application.dll.repository import user_repository
 
 
 def suspend_email_user(email):
-    # Here we are looking for the selected users email, and take out the user dict.
-    user = User.find(email=email).first_or_none()
+    user_status = "Suspended"
+    # Here we are looking for the selected users email, and take out the
+    # the user dict.
+    user1 = User.find(email=email).first_or_none()
 
-    if user is not None:
-        user.activated = not user.activated
-        user_repository.update_user_information(user)
+    if user1 is not None:
+        if user1.activated == True:
+            user_status = "Suspended"
+            user1.activated = not user1.activated
+            user1.save()
+        else:
+            user_status ="Activated"
+            user1.activated = not user1.activated
+            user1.save()
+    return user_status
 
-        return "Suspended" if user.activated else "Activated"
 
-
-def is_user_active(user_id):
-    if '@' in user_id:
-        user = User.find(email=user_id).first_or_none()
+def is_user_active(username, selected_val):
+    if selected_val == 1:
+        user = User.find(email=username).first_or_none()
     else:
-        user = User.find(username=user_id).first_or_none()
-
+        user = User.find(username=username).first_or_none()
     return user.activated
 

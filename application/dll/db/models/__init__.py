@@ -26,10 +26,8 @@ class User(Document):
             return self.username
 
 
-
 class Game(Document):
     collection = db.games
-
 
 
 class Image(Document):

@@ -1,0 +1,63 @@
+ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: yellow;
+}
+
+#utloggad {
+    color: white;
+    margin-left: 1050px;
+    margin-top: 5px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.thumb {
+    position: absolute; top:0; right: 12px;
+    margin-top: 10px;
+    width: auto;
+    border-radius: 50%;
+}
+
+
+.inloggad_email {
+    position: relative;
+    margin-left: auto;
+    margin-top: 5px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.empty_space {
+    color: white;
+    margin-left: 630px;
+    margin-top: 5px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.different_hover a:hover{
+    background-color:purple;
+    position: absolute; top:0; right: 12px;
+    margin-top: 10px;
+    width: auto;
+    border-radius: 50%;
+}
+

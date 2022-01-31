@@ -10,12 +10,6 @@ bp_user = Blueprint('bp_user',
                     )
 
 
-@bp_user.get('/welcome')
-@login_required
-def user_index():
-    return render_template('welcome.html')
-
-
 @bp_user.get('/friends')
 @login_required
 def friends_get():

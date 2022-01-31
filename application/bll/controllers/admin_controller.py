@@ -10,5 +10,5 @@ def suspend_email_user(email):
     return admin_repository.suspend_email_user(email)
 
 
-def is_user_active(user_id):
-    return admin_repository.is_user_active(user_id)
+def is_user_active(user_id, selected_val):
+    return admin_repository.is_user_active(user_id, selected_val)

@@ -3,7 +3,6 @@ from application.bll.controllers import admin_controller
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 
-
 bp_admin = Blueprint('bp_admin',
                      __name__,
                      template_folder='templates',
@@ -20,7 +19,8 @@ def before_request():
 @bp_admin.get('/')
 @login_required
 def admin_get():
-    return render_template('admin.html', listan=admin_controller.get_all_users_from_db())
+    return render_template('admin.html',
+                           user_list=admin_controller.get_all_users_from_db())
 
 
 @bp_admin.post('/')
@@ -34,7 +34,6 @@ def admin_post():
     else:
         user_status = "activated"
 
-    return redirect(url_for('bp_admin.admin_get',
-                    listan=admin_controller.get_all_users_from_db(),
-                    status=json.dumps(user_status)))
-
+    return render_template('admin.html',
+                           user_list=admin_controller.get_all_users_from_db(),
+                           active_suspend=json.dumps(user_status))
