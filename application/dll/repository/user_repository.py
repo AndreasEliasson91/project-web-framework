@@ -32,6 +32,11 @@ def get_parent_from_child_id(_id):
     for user in users:
         if user.parent:
             for child in user.children:
-                if child['_id'] == _id:
+                if child == _id:
                     return user
     return None
+
+
+def get_all_users():
+    return User.all()
+

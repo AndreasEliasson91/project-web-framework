@@ -41,31 +41,43 @@
     padding-bottom: 4.5em;
 }
 
-.hr {
-    height: 30px;
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-    border-radius: 50%;
+/*.hr {*/
+/*    height: 30px;*/
+/*    display: block;*/
+/*    margin-top: 0.5em;*/
+/*    margin-bottom: 0.5em;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    border-style: inset;*/
+/*    border-width: 1px;*/
+/*    border-radius: 50%;*/
 
-}
+/*}*/
 
 .bind {
     background-color: purple;
     margin-left: 7%;
     margin-right: 7%;
+    height: 30px;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-style: inset;
+    border-width: 1px;
+    border-radius: 50%;
 }
 
 .skill-block {
-    width: 30%;
+    width: 150px;
+    height: 150px;
+    position: relative;
     font-family: Helvetica, sans-serif;
     color: greenyellow;
     text-shadow: 1px 1px 1px #ababab;
-    font-size: 15px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size: 20px;
     border-radius: 25px;
     margin: 10px;
     background-position: center;
@@ -74,13 +86,12 @@
 
 @media (min-width: 991px) and (max-width:1200px) {
     .skill-block {
-        padding: 32px !important
+        padding: inherit; !important
     }
 }
 
 @media (min-width: 1200px) {
     .skill-block {
-        padding: 56px !important
+        padding: inherit; !important
     }
 }
-

@@ -3,48 +3,69 @@ import os
 from bson import ObjectId
 from flask import url_for
 from application.dll.db import images
-from application.dll.db.models import Image, User
+from application.dll.db.models import Image, User, Game
 from application.dll.repository import user_repository
-
-
-def get_image(_id, filename):
-    file = images.get(_id).read()
-    with open(f'application/static/img/temp/{filename}.png', 'wb') as bin_file:
-        bin_file.write(file)
-    return url_for('static', filename=f'img/temp/{filename}.png')
 
 
 def get_all_image_ids():
     return [image._id for image in Image.all()]
 
 
-def upload_picture(current_user, file):
-    file.save(os.path.join('application/static/img/temp/', 'temp.png'))
+def get_profile_picture(user):
+    file = images.get(user.avatar).read()
+    with open(f'application/static/img-profile/{str(user._id)}.png', 'wb') as bin_file:
+        bin_file.write(file)
+    return url_for('static', filename=f'img-profile/{str(user._id)}.png')
 
-    with open('application/static/img/temp/temp.png', 'rb') as in_file:
+
+def upload_profile_picture(user, file):
+    file.save(os.path.join('application/static/img-profile/', f'{str(user._id)}.png'))
+
+    with open(f'application/static/img-profile/{str(user._id)}.png', 'rb') as in_file:
         contents = in_file.read()
 
-    if Image.find(filename=file.filename).first_or_none() is None:
-        images.put(contents, filename=file.filename)
-    else:
-        i = 0
-        name = file.filename
-        for img in Image.all():
-            if img.filename == name:
-                i += 1
-                name = f'LBG{i}_{file.filename}'
+    for image in Image.all():
+        if image.filename == f'{str(user._id)}.png':
+            images.delete(image._id)
+            break
 
-        images.put(contents, filename=f'{i}_{file.filename}')
+    images.put(contents, filename=f'{str(user._id)}.png')
+    image_id = Image.find(filename=f'{str(user._id)}.png').first_or_none()._id
 
-    image_id = Image.find(filename=file.filename).first_or_none()._id
-
-    if not current_user.parent:
-        parent = user_repository.get_parent_from_child_id(ObjectId(current_user._id))
+    if not user.parent:
+        parent = user_repository.get_parent_from_child_id(ObjectId(user._id))
         if parent:
             for child in parent.children:
-                if child._id == current_user._id:
+                if child._id == user._id:
                     child.avatar = image_id
             user_repository.update_user_information(parent)
 
-    current_user.avatar = image_id
-    User.save(current_user)
+    user.avatar = image_id
+    User.save(user)
+
+
+def get_game_image(game, suffix):
+    file = images.get(game.content['main_image']).read()
+    with open(f'application/static/img-game/{str(game._id)}{suffix}.png', 'wb') as bin_file:
+        bin_file.write(file)
+    return url_for('static', filename=f'img-game/{str(game._id)}{suffix}.png')
+
+
+# def upload_game_image(game, suffix, file):
+#     file.save(os.path.join('application/static/img-game/', f'{str(game._id)}{suffix}.png'))
+#
+#     with open(f'application/static/img-game/{str(game._id)}{suffix}.png', 'rb') as in_file:
+#         contents = in_file.read()
+#
+#     for image in Image.all():
+#         if image.filename == f'{str(game._id)}{suffix}.png':
+#             images.delete(image._id)
+#             break
+#
+#     images.put(contents, filename=f'{str(game._id)}{suffix}.png')
+#     image_id = Image.find(filename=f'{str(game._id)}{suffix}.png').first_or_none()._id
+#
+#     if 'main' in suffix:
+#         game.content['main_image'] = image_id
+#
+#     Game.save(game)

@@ -8,6 +8,11 @@ bp_open = Blueprint('bp_open',
                     )
 
 
+@bp_open.get('/')
+def index():
+    return render_template('index.html')
+
+
 @bp_open.get('/signin')
 def signin_get():
     return render_template('signin.html')
@@ -15,7 +20,7 @@ def signin_get():
 
 @bp_open.post('/signin')
 def signin_post():
-    user_id = request.form.get('user_id')
+    user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
 
     if not verify_user(user_id, password):
@@ -34,7 +39,7 @@ def signup_get():
 
 @bp_open.post('/signup')
 def signup_post():
-    email = request.form.get('email')
+    email = request.form.get('email').lower()
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
@@ -48,24 +53,14 @@ def signup_post():
     return redirect(url_for('bp_open.index'))
 
 
-@bp_open.get('/')
-def index():
-    return render_template('index.html')
-
-
 @bp_open.get('/about')
 def about_get():
     return render_template('about.html')
 
 
-@bp_open.get('/game_rules')
+@bp_open.get('/rules')
 def rules_get():
-    return render_template('game_rules.html')
-
-
-@bp_open.get('/games')
-def games_get():
-    return render_template('games.html')
+    return render_template('rules.html')
 
 
 @bp_open.get('/test_games')

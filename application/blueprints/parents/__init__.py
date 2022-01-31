@@ -9,16 +9,16 @@ bp_parent = Blueprint('bp_parent',
                       )
 
 
-@bp_parent.get('/register-child')
-@login_required
-def register_child_get():
-    return render_template('register_child.html')
+# @bp_parent.get('/register-child')
+# @login_required
+# def register_child_get():
+#     return render_template('register_child.html')
 
 
 @bp_parent.post('/register-child')
 @login_required
 def register_child_post():
-    username = request.form.get('username')
+    username = request.form.get('username').lower()
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
@@ -35,3 +35,16 @@ def register_child_post():
     update_user_information(current_user)
 
     return redirect(url_for('bp_open.index'))
+
+
+@bp_parent.get('/control')
+@login_required
+def control_get():
+    return render_template('parent_control.html')
+
+
+@bp_parent.get('/control')
+@login_required
+def control_post(user_id):
+    start = request.form.get('start')
+    end = request.form.get('end')
