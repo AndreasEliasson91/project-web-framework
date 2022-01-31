@@ -7,3 +7,4 @@ DB_HOST = environ.get('DB_HOST')
 DB_PORT = environ.get('DB_PORT')
 
 SECRET_KEY = environ.get('SECRET_KEY')
+

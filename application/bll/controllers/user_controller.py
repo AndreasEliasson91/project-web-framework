@@ -12,51 +12,57 @@ def register_adult(email, password, birth_date):
     birth_date = birth_date.split('-')
     birth_date = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
+
     adult = {
-            'email': email,
-            'password': argon2.using(rounds=12).hash(password),
-            'birth_date': birth_date,
-            'admin': False,
-            'parent': True,
-            'activated': True,
-            'time_start': None,
-            'time_end': None,
-            'date_start': None,
-            'date_end': None,
-            'children': [],
-            'date_created': datetime.datetime.now(),
-            'avatar': random.choice(image_repository.get_all_image_ids()),
-            'settings': {
-                'rgb_title': (0, 0, 0),
-                'rgb_subtitle': (128, 0, 128)
-            }
+        'email': email,
+        'display_name': email.split('@')[0],
+        'password': argon2.using(rounds=12).hash(password),
+        'birth_date': birth_date,
+        'admin': False,
+        'parent': True,
+        'activated:': True,
+        'time_management': None,
+        'personal_high_score': [],
+        'children': [],
+        'friends': [],
+        'date_created': datetime.datetime.now(),
+        'avatar': random.choice(image_repository.get_all_image_ids()),
+        'settings': {
+            'rgb_title': (0, 0, 0),
+            'rgb_subtitle': (128, 0, 128)
+
         }
+    }
     user_repository.register_adult(adult)
 
 
 def register_child(username, password, birth_date: Optional):
+
     child = {
-            'username': username,
-            'password': argon2.using(rounds=12).hash(password),
-            'parent': False,
-            'activated': True,
-            'time_start': None,
-            'time_end': None,
-            'date_start': None,
-            'date_end': None,
-            'personal_high_score': [],
-            'date_created': datetime.datetime.now(),
-            'avatar': random.choice(image_repository.get_all_image_ids()),
-            'settings': {
-                'rgb_title': (0, 0, 0),
-                'rgb_subtitle': (128, 0, 128)
-            }
+        'username': username,
+        'password': argon2.using(rounds=12).hash(password),
+        'parent': False,
+        'activated:': True,
+        'time_management': None,
+        'personal_high_score': [],
+        'friends': [],
+        'date_created': datetime.datetime.now(),
+        'avatar': random.choice(image_repository.get_all_image_ids()),
+        'settings': {
+            'rgb_title': (0, 0, 0),
+            'rgb_subtitle': (128, 0, 128)
+
         }
+    }
 
     if birth_date:
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
     user_repository.register_child(child)
+
+
+def get_all_users():
+    return user_repository.get_all_users()
 
 
 def update_user_information(user):
@@ -103,3 +109,13 @@ def signin_user(user_id):
         login_user(user)
         user.last_signin = datetime.datetime.now()
         user.save()
+
+
+def get_user_friends(current_user):
+    users = user_repository.get_all_users()
+    friends = []
+    for u in users:
+        for friend_id in current_user.friends:
+            if u._id == friend_id:
+                friends.append(u)
+    return friends

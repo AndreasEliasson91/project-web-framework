@@ -34,6 +34,7 @@ def friends_get():
 
 @bp_user.get('/profile/<user_id>')
 @login_required
+
 def profile_get(user_id):
     if 'children' in current_user.__dict__:
         children = []
@@ -56,6 +57,7 @@ def profile_get(user_id):
                                profile_picture=image_controller.get_profile_picture(current_user))
 
 
+
 @bp_user.post('/profile/<user_id>')
 @login_required
 def profile_post(user_id):
@@ -71,6 +73,9 @@ def profile_post(user_id):
         current_user.save()
 
     file = request.files.get('profile_picture')
+
+
+
     if file:
         image_controller.upload_profile_picture(current_user, file)
 
@@ -110,3 +115,4 @@ def view_profile_post(user_id):
     current_user.friends.append(ObjectId(user_id))
     current_user.save()
     return redirect(url_for('bp_user.view_profile_get', user_id=user_id))
+
