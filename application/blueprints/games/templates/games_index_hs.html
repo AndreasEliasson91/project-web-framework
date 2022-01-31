@@ -25,9 +25,9 @@
                             </div>
                             <div class="level-item">
                                 {% for hs in game.high_score %}
-                                    <div class="skill-block" style="background-image: url({{ hs.avatar }})">
-                                        <h4>{{ hs.user_id }}</h4>
-                                        <h6>{{ hs.score }}</h6>
+                                    <div class="skill-block" style="background-image: url({{ hs.avatar }});">
+                                        <p>{{ hs.user_id }}</p>
+                                        <p>{{ hs.score }}</p>
                                     </div>
                                 {% endfor %}
                             </div>

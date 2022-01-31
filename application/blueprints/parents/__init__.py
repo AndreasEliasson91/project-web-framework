@@ -18,7 +18,7 @@ def register_child_get():
 @bp_parent.post('/register-child')
 @login_required
 def register_child_post():
-    username = request.form.get('username')
+    username = request.form.get('username').lower()
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 

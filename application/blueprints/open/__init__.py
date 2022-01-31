@@ -20,7 +20,7 @@ def signin_get():
 
 @bp_open.post('/signin')
 def signin_post():
-    user_id = request.form.get('user_id')
+    user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
 
     if not verify_user(user_id, password):
@@ -39,7 +39,7 @@ def signup_get():
 
 @bp_open.post('/signup')
 def signup_post():
-    email = request.form.get('email')
+    email = request.form.get('email').lower()
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
