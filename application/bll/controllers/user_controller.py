@@ -20,7 +20,12 @@ def register_adult(email, password, birth_date):
         'admin': False,
         'parent': True,
         'activated:': True,
-        'time_management': None,
+        'time_management': {
+            'start_time': None,
+            'end_time': None,
+            'start_date': None,
+            'end_date': None
+        },
         'personal_high_score': [],
         'children': [],
         'friends': [],
@@ -40,7 +45,12 @@ def register_child(username, password, birth_date: Optional):
         'password': argon2.using(rounds=12).hash(password),
         'parent': False,
         'activated:': True,
-        'time_management': None,
+        'time_management': {
+            'start_time': None,
+            'end_time': None,
+            'start_date': None,
+            'end_date': None
+        },
         'personal_high_score': [],
         'friends': [],
         'date_created': datetime.datetime.now(),

@@ -36,8 +36,10 @@
         {% else %}
             <li><a href="{{ url_for ('bp_open.signup_get') }}">Registrera Dig</a></li>
             <li><a href="{{ url_for ('bp_open.signin_get') }}">Logga In</a></li>
-            <li><a id="utloggad">Utloggad</a></li>
-            <li><image class="tumme_ned" src="{{ url_for('static', filename="img/tumme_ned.png") }}"></image></li>
+            <li><a id="utloggad" href="{{ url_for ('bp_open.index') }}">Utloggad</a></li>
+            <li class="different_hover"><a href="{{ url_for ('bp_open.signin_get') }}">
+                <image class="tumme_ned" src="{{ url_for('static', filename="img/tumme_ned.png") }}"></image>
+            </a></li>
 
         {% endif %}
         </ul></h3>
