@@ -20,7 +20,6 @@ def user_index():
 @login_required
 def friends_get():
     friends = []
-    i = 0
     for friend in user_controller.get_user_friends(current_user):
         friends.append({
             '_id': friend._id,
@@ -28,7 +27,7 @@ def friends_get():
             'image': image_controller.get_profile_picture(friend),
             'colors': friend.settings['rgb_title']
         })
-        i += 1
+
     return render_template('friends.html', friends=friends)
 
 
@@ -37,7 +36,6 @@ def friends_get():
 def profile_get(user_id):
     if 'children' in current_user.__dict__:
         children = []
-        i = 0
 
         for child in current_user.children:
             c = user_controller.get_user_by_user_id(child)
@@ -46,7 +44,6 @@ def profile_get(user_id):
                 'username': c.username,
                 'avatar': image_controller.get_profile_picture(c)
             })
-            i += 1
 
         return render_template('profile.html',
                                profile_picture=image_controller.get_profile_picture(current_user),

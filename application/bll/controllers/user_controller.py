@@ -19,7 +19,7 @@ def register_adult(email, password, birth_date):
         'birth_date': birth_date,
         'admin': False,
         'parent': True,
-        'activated:': True,
+        'activated': True,
         'time_management': {
             'start_time': None,
             'end_time': None,
@@ -46,7 +46,7 @@ def register_child(username, password, birth_date: Optional):
         'username': username,
         'password': argon2.using(rounds=12).hash(password),
         'parent': False,
-        'activated:': True,
+        'activated': True,
         'time_management': {
             'start_time': None,
             'end_time': None,
