@@ -19,7 +19,7 @@ def get_all_users_from_db():
             else:
                 pass
 
-    return listan  # render_template('admin.html', listan=listan)
+    return listan  # render_template('parent_admin.html', listan=listan)
 
 # # global val
 # user_list = []

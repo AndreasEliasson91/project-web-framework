@@ -1,4 +1,3 @@
-
 from application.bll.controllers.admin_is_user_active_controller import is_user_activate
 
 from application.bll.controllers.user_controller import register_adult, get_user_by_email, verify_user, signin_user
@@ -27,40 +26,30 @@ def signin_post():
     user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
 
-
     # här skall vi börja kontrollera om activate fältet är true eller false.
 
-    if '@' in username:
+    if '@' in user_id:
         selected_val = 1
-        user = get_user_by_email(username)
-        status = is_user_activate(username, selected_val)
+        status = is_user_activate(user_id, selected_val)
 
     else:
         selected_val = 2
-        user = get_user_by_username(username)
-        status = is_user_activate(username, selected_val)
+        status = is_user_activate(user_id, selected_val)
 
     if status:
-          if not verify_user(user_id, password):
-        flash('Username or password is incorrect')
-        return redirect(url_for('bp_open.signin_get'))
+        if not verify_user(user_id, password):
+            flash('Username or password is incorrect')
+            return redirect(url_for('bp_open.signin_get'))
 
-    signin_user(user_id)
-
-    return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
-   
-
+        signin_user(user_id)
+        return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
     else:
-
         return render_template('suspended.html')
 
 
 @bp_open.get('/suspended')
 def suspended():
     return render_template('suspended.html')
-
-
-
 
 
 @bp_open.get('/signup')
@@ -79,18 +68,6 @@ def signup_post():
     if user is not None:
         flash('Denna email är redan registrerad')
         return redirect(url_for('bp_open.signup_get'))
-
-    register_adult(email, password, birth_date)
-    return redirect(url_for('bp_open.index'))
-
-
-
-@bp_open.get('/')
-def index():
-    return render_template('index.html')
-
-
-
 
 
 @bp_open.get('/about')

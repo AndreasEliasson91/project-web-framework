@@ -42,7 +42,7 @@ def register_child(username, password, birth_date: Optional):
         'username': username,
         'password': argon2.using(rounds=12).hash(password),
         'parent': False,
-        'activated:': True,
+        'activated': True,
         'time_management': None,
         'personal_high_score': [],
         'friends': [],

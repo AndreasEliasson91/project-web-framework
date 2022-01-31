@@ -1,3 +1,8 @@
+import json
+
+from application.bll.controllers.child_suspend_user import suspend_child
+from application.bll.controllers.parent_admin import get_all_children_from_db
+from application.bll.controllers.parent_control import child_control_clock
 from application.bll.controllers.user_controller import register_child, get_user_by_username, update_user_information
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
@@ -9,10 +14,10 @@ bp_parent = Blueprint('bp_parent',
                       )
 
 
-# @bp_parent.get('/register-child')
-# @login_required
-# def register_child_get():
-#     return render_template('register_child.html')
+@bp_parent.get('/register-child')
+@login_required
+def register_child_get():
+    return render_template('register_child.html')
 
 
 @bp_parent.post('/register-child')
@@ -40,11 +45,37 @@ def register_child_post():
 @bp_parent.get('/control')
 @login_required
 def control_get():
-    return render_template('parent_control.html')
+    listan = get_all_children_from_db()
+    return render_template('parent_admin.html', listan=listan)
 
 
-@bp_parent.get('/control')
+@bp_parent.post('/control')
 @login_required
-def control_post(user_id):
+def control_post_clock():
     start = request.form.get('start')
     end = request.form.get('end')
+    child = request.form.get('List2')
+    child_control_clock(child, start, end)
+
+
+def control_post():
+    status_on_user = ""
+    child = request.form.get('List1')
+    child_status = suspend_child(child)
+    if child_status == 'Activated':
+        status_on_user = 'suspended'
+    else:
+        status_on_user = "activated"
+
+    listan = get_all_children_from_db()
+    return render_template('parent_admin.html', listan=listan, active_suspend=json.dumps(status_on_user))
+
+    # email = request.form.get('List1')
+    # user_status = suspend_email_user(email)
+    # if user_status == "Activated":
+    #     user_status = "suspended"
+    # else:
+    #     user_status = "activated"
+    #
+    # listan = get_all_users_from_db()
+    # return render_template('admin.html', listan=listan, active_suspend=json.dumps(user_status))

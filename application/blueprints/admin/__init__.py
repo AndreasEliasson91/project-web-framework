@@ -40,7 +40,7 @@ def admin_post():
 
     listan = get_all_users_from_db()
     return render_template('admin.html', listan=listan, active_suspend=json.dumps(user_status))
-    # return render_template('admin.html', listan=listan, user_status=json.dumps(user_status))
+    # return render_template('parent_admin.html', listan=listan, user_status=json.dumps(user_status))
     # if user is not None:
     #     flash('Denna email är redan registrerad')
     #     return redirect(url_for('bp_open.signup_get'))
