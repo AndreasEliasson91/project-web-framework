@@ -34,7 +34,6 @@ def friends_get():
 
 @bp_user.get('/profile/<user_id>')
 @login_required
-
 def profile_get(user_id):
     if 'children' in current_user.__dict__:
         children = []
@@ -55,7 +54,6 @@ def profile_get(user_id):
     else:
         return render_template('profile.html',
                                profile_picture=image_controller.get_profile_picture(current_user))
-
 
 
 @bp_user.post('/profile/<user_id>')
