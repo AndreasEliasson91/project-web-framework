@@ -12,6 +12,7 @@ def register_adult(email, password, birth_date):
     birth_date = birth_date.split('-')
     birth_date = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
+
     adult = {
         'email': email,
         'display_name': email.split('@')[0],
@@ -34,12 +35,14 @@ def register_adult(email, password, birth_date):
         'settings': {
             'rgb_title': (0, 0, 0),
             'rgb_subtitle': (128, 0, 128)
+
         }
     }
     user_repository.register_adult(adult)
 
 
 def register_child(username, password, birth_date: Optional):
+
     child = {
         'username': username,
         'password': argon2.using(rounds=12).hash(password),
@@ -58,6 +61,7 @@ def register_child(username, password, birth_date: Optional):
         'settings': {
             'rgb_title': (0, 0, 0),
             'rgb_subtitle': (128, 0, 128)
+
         }
     }
 

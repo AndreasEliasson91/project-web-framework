@@ -1,9 +1,11 @@
+from abc import ABC
+
 from application.dll.db import db
 from application.dll.db.document import Document
 
 
 class User(Document):
-    collection = db.users
+    collection = db.users  # db.users  # db.users
 
     @staticmethod
     def is_authenticated():
@@ -24,8 +26,10 @@ class User(Document):
             return self.username
 
 
+
 class Game(Document):
     collection = db.games
+
 
 
 class Image(Document):

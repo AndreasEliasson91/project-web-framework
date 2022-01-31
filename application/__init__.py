@@ -1,3 +1,5 @@
+import dotenv
+
 from application.dll.db import init_db
 from flask import Flask
 from flask_login import LoginManager
@@ -17,6 +19,9 @@ def create_app():
     from application.blueprints.users import bp_user
     _app.register_blueprint(bp_user)
 
+    from application.blueprints.admin import bp_admin
+    _app.register_blueprint(bp_admin)
+
     from application.blueprints.games import bp_games
     _app.register_blueprint(bp_games)
 
@@ -32,3 +37,8 @@ def create_app():
             return get_user_by_username(user_id)
 
     return _app
+
+
+# if __name__ == '__main__':
+#     dotenv.load_dotenv()
+#     create_app().run(debug=True)
