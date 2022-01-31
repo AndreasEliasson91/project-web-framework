@@ -303,3 +303,58 @@ Anteckningar:
 
 
 
+MÖTESPROTOKOLL
+-
+
+Datum: 28-01-2022
+
+Närvarande: Andreas, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Fixat buggar. Optimerat kod och databas.
+- Anna: Avslutat admin-funktionalitet
+- Lenny: Avslutat admin-funktionalitet
+- Markus: -
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Småfix. Börja städa och kolla igenom css-filer osv.
+- Anna: Fixa det sista i sprinten
+- Lenny: Fixa det sista i sprinten
+- Markus: Fortsätta arbeta med sina kort
+
+Anteckningar:
+Markus jobbade, så han missade mötet. Men han kör på efter jobbet, alt. i helgen och avslutar sina kort.
+Lenny, Anna och Markus behöver snacka ihop sig om parent control-sida, så det blir på måndag.
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 31-01-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Anna och Lenny , gjorde klart admin sidan, så man kan stänga av användare. Även fixat en alert som
+talar om att man stängt av en användare. Även ändrat lite i login rutinen, så att den kollar om man är avstängd.
+Lagt till en sida som man dirigeras till, när man är avstängd.
+
+Markus har lagt till lite funktionalitet på parent sidan, lagt in inputs som är hidden, men trycker man på dem kommer de fram.
+
+Andreas, gjorde klart spelsidan, och fixade lite buggar, snyggade till en del saker.
+
+Att göra idag:
+Merge, alla branches vi har, fixa lite små buggar.
+
+Att göra till nästa gång:
+Parent sidan, skall göras, försöka bli klara med den. , Andreas skall försöka fixa CSS, så att det finns en för varje grupp (Users, games, etc)
+fixa lite med designen.
+
+Anteckningar:
+
+
+
