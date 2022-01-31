@@ -85,7 +85,7 @@ def view_profile_get(user_id):
     if 'children' in user.__dict__:
         children = []
 
-        for i, child in enumerate(user.children):
+        for child in user.children:
             c = user_controller.get_user_by_user_id(child)
             children.append({
                 '_id': child,
