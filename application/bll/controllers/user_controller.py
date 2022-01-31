@@ -12,7 +12,6 @@ def register_adult(email, password, birth_date):
     birth_date = birth_date.split('-')
     birth_date = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
-
     adult = {
         'email': email,
         'display_name': email.split('@')[0],
