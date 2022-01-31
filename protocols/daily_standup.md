@@ -219,3 +219,142 @@ Att göra till nästa gång:
 Anteckningar:
 Nästa veckas sprint fokuserar på att bli klar med grunden till hemsidan, så att man sedan kan fokusera på design och content.
 
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 25-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Gjort en high score-sida. Fixat med lösenord.
+- Anna: Fixat buggar. Jobbat på admin-sidor.
+- Lenny: Fixat buggar. Jobbat på admin-sidor.
+- Markus: Fixat buggar. Startade upp en vänner-sida
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Funktionalitet för att spara user-settings. Starta upp med att kunna se andras profiler.
+- Anna: Fortsätt att arbeta med admin-sidorna.
+- Lenny: Fortsätt att arbeta med admin-sidorna.
+- Markus: Fortsätta med vänner-sidan. Sedan fortsätta med "kom ihåg mig-rutan".
+
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 26-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Skrev om profilkod. Fixat med att kunna spara settings till db
+- Anna: Jobbat med funktionalitet att stänga av användare.
+- Lenny: Jobbat med funktionalitet att stänga av användare.
+- Markus: Fixat med "remember me". Skapat vänner-sida
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Funktionalitet för att kunna se andras profilsidor. Ladda upp och dumpa bilder från db.
+- Anna: Fortsätt att arbeta med admin-sidorna.
+- Lenny: Fortsätt att arbeta med admin-sidorna.
+- Markus: Fixa med parental controll.
+
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 27-01-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Fixat så att man kan se andras profiler. Dumpat dbn
+- Anna: Fortsatt med för att funktionalitet att stänga av användare.
+- Lenny: Fortsatt med för att funktionalitet att stänga av användare.
+- Markus: Gjort småfix.
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Småfix. Kolla vad som kan göras framåt.
+- Anna: Fortsätt att arbeta med admin-sidorna.
+- Lenny: Fortsätt att arbeta med admin-sidorna.
+- Markus: Fixa med parental controll.
+
+
+Anteckningar:
+
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 28-01-2022
+
+Närvarande: Andreas, Lenny och Anna
+
+Vad har gjorts sen sist:
+- Andreas: Fixat buggar. Optimerat kod och databas.
+- Anna: Avslutat admin-funktionalitet
+- Lenny: Avslutat admin-funktionalitet
+- Markus: -
+
+Att göra idag:
+
+
+Att göra till nästa gång:
+- Andreas: Småfix. Börja städa och kolla igenom css-filer osv.
+- Anna: Fixa det sista i sprinten
+- Lenny: Fixa det sista i sprinten
+- Markus: Fortsätta arbeta med sina kort
+
+Anteckningar:
+Markus jobbade, så han missade mötet. Men han kör på efter jobbet, alt. i helgen och avslutar sina kort.
+Lenny, Anna och Markus behöver snacka ihop sig om parent control-sida, så det blir på måndag.
+
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 31-01-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Anna och Lenny , gjorde klart admin sidan, så man kan stänga av användare. Även fixat en alert som
+talar om att man stängt av en användare. Även ändrat lite i login rutinen, så att den kollar om man är avstängd.
+Lagt till en sida som man dirigeras till, när man är avstängd.
+
+Markus har lagt till lite funktionalitet på parent sidan, lagt in inputs som är hidden, men trycker man på dem kommer de fram.
+
+Andreas, gjorde klart spelsidan, och fixade lite buggar, snyggade till en del saker.
+
+Att göra idag:
+Merge, alla branches vi har, fixa lite små buggar.
+
+Att göra till nästa gång:
+Parent sidan, skall göras, försöka bli klara med den. , Andreas skall försöka fixa CSS, så att det finns en för varje grupp (Users, games, etc)
+fixa lite med designen.
+
+Anteckningar:
+
+
+

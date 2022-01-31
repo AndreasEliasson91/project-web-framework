@@ -1,13 +1,20 @@
+
 from application.bll.controllers.admin_is_user_active_controller import is_user_activate
-from application.bll.controllers.user_controller import register_adult, get_user_by_email, get_user_by_username
+
+from application.bll.controllers.user_controller import register_adult, get_user_by_email, verify_user, signin_user
+
 from flask import Blueprint, render_template, redirect, request, url_for, flash
-from flask_login import login_user, logout_user
-from werkzeug.security import check_password_hash
+from flask_login import logout_user, current_user
 
 bp_open = Blueprint('bp_open',
                     __name__,
                     template_folder='templates',
                     )
+
+
+@bp_open.get('/')
+def index():
+    return render_template('index.html')
 
 
 @bp_open.get('/signin')
@@ -17,8 +24,9 @@ def signin_get():
 
 @bp_open.post('/signin')
 def signin_post():
-    username = request.form.get('username')
+    user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
+
 
     # här skall vi börja kontrollera om activate fältet är true eller false.
 
@@ -33,17 +41,14 @@ def signin_post():
         status = is_user_activate(username, selected_val)
 
     if status:
+          if not verify_user(user_id, password):
+        flash('Username or password is incorrect')
+        return redirect(url_for('bp_open.signin_get'))
 
-        if user is None:
-            flash('Username or password is incorrect')
-            return redirect(url_for('bp_open.signin_get'))
+    signin_user(user_id)
 
-        if not check_password_hash(user.password, password):
-            flash('Username or password is incorrect')
-            return redirect(url_for('bp_open.signin_get'))
-
-        login_user(user)
-        return redirect(url_for('bp_open.index'))
+    return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+   
 
     else:
 
@@ -55,6 +60,9 @@ def suspended():
     return render_template('suspended.html')
 
 
+
+
+
 @bp_open.get('/signup')
 def signup_get():
     return render_template('signup.html')
@@ -62,7 +70,7 @@ def signup_get():
 
 @bp_open.post('/signup')
 def signup_post():
-    email = request.form.get('email')
+    email = request.form.get('email').lower()
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
@@ -76,15 +84,13 @@ def signup_post():
     return redirect(url_for('bp_open.index'))
 
 
+
 @bp_open.get('/')
 def index():
     return render_template('index.html')
 
 
-#
-# @bp_open.get('/user/user')
-# def profile_get_view():
-#     return render_template('profile_parent_view.html')
+
 
 
 @bp_open.get('/about')
@@ -92,14 +98,9 @@ def about_get():
     return render_template('about.html')
 
 
-@bp_open.get('/game_rules')
+@bp_open.get('/rules')
 def rules_get():
-    return render_template('game_rules.html')
-
-
-@bp_open.get('/games')
-def games_get():
-    return render_template('games.html')
+    return render_template('rules.html')
 
 
 @bp_open.get('/test_games')

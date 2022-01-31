@@ -1,13 +1,24 @@
-from flask import Blueprint, render_template, redirect, request, url_for
-
+from flask import Blueprint, render_template
+from application.bll.controllers import game_controller, user_controller, image_controller
 
 bp_games = Blueprint('bp_games',
-                    __name__,
-                    template_folder='templates',
-                    url_prefix='/games'
-                    )
+                     __name__,
+                     template_folder='templates',
+                     url_prefix='/games'
+                     )
 
 
-@bp_games.get('/high-scores')
-def high_score_get():
-    return render_template('high_score.html')
+@bp_games.get('/')
+def index():
+    games = game_controller.get_all_games()
+    users = user_controller.get_all_users()
+
+    for game in games:
+        game.content['main_image'] = image_controller.get_game_image(game, '_main')
+        for score in game.high_score:
+            for user in users:
+                if score['user_id'] == user._id:
+                    score['user_id'] = user.display_name if user.parent else user.username
+                    score['avatar'] = image_controller.get_profile_picture(user)
+
+    return render_template('games_index_hs.html', games=games)

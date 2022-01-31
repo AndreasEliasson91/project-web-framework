@@ -1,20 +1,21 @@
 .profile-pic {
     border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-    color: dimgrey;
+    width: 300px;
+    height: 300px;
+    color: #1c1b1b;
     transition: all .3s ease;
     text-decoration: none;
     cursor: pointer;
+    justify-content: center;
 }
 
 .profile-pic:hover {
-    background-color: rgba(0,0,0,.5);
-    z-index: 10000;
-    color: #fff;
-    transition: all .3s ease;
-    text-decoration: none;
+    box-shadow: -3px -3px 7px #000,
+        -3px -3px 12px #464646A8,
+        3px 3px 7px #000,
+        -3px -3px 12px #464646A8;
+    transform: scale(1.2);
+    transform-origin: center;
 }
 
 .profile-pic span {
@@ -26,4 +27,14 @@
 form input[type="file"] {
           display: none;
           cursor: pointer;
- }
+}
+
+.view-profile-pic {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    color: #1c1b1b;
+    transition: all .3s ease;
+    text-decoration: none;
+    justify-content: center;
+}

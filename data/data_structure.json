@@ -1,4 +1,5 @@
-[{
+[
+  {
     "user-child": {
       "username": "",
       "password": "",
@@ -9,7 +10,7 @@
           "score": ""
         }
       ]
-  }
+    }
   },
 
   {

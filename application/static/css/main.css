@@ -11,13 +11,14 @@ h1 {
   font-family: Helvetica, sans-serif;
   font-size: 28px;
 }
+
 ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: purple;
    }
+
 
 li {
   float: left;
@@ -89,7 +90,7 @@ html, body {
     border-radius: 50%;
 }
 
-.empty_link {
+.empty_space {
     color: white;
     margin-left: 630px;
     margin-top: 5px;
