@@ -1,6 +1,7 @@
 from application.bll.controllers.admin_is_user_active_controller import is_user_activate
 
-from application.bll.controllers.user_controller import register_adult, get_user_by_email, verify_user, signin_user
+from application.bll.controllers.user_controller import register_adult, get_user_by_email, verify_user, signin_user, \
+    time_is_right
 
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import logout_user, current_user
@@ -39,6 +40,10 @@ def signin_post():
     if status:
         if not verify_user(user_id, password):
             flash('Username or password is incorrect')
+            return redirect(url_for('bp_open.signin_get'))
+
+        if time_is_right(user_id):
+            flash('You cannot log in at this time')
             return redirect(url_for('bp_open.signin_get'))
 
         signin_user(user_id)

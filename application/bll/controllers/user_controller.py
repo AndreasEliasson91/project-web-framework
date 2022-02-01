@@ -119,3 +119,7 @@ def get_user_friends(current_user):
             if u._id == friend_id:
                 friends.append(u)
     return friends
+
+
+def time_is_right(user_id):
+    return user_repository.time_is_right(user_id)
