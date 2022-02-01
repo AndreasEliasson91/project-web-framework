@@ -13,7 +13,7 @@ def suspend_email_user(email):
             user1.activated = not user1.activated
             user1.save()
         else:
-            user_status ="Activated"
+            user_status = "Activated"
             user1.activated = not user1.activated
             user1.save()
     return user_status
