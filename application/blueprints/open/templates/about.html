@@ -2,111 +2,85 @@
 
 {% block title %}Om oss{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/open.css') }}">
+{% endblock %}
+
 {% block content %}
-
     <section class="section">
-    <h1 style="text-align:center;">Om oss:</h1>
-     <br>
-        <br>
-
-   <div class="container">
-        <div class="columns is-vcentered">
-
-            <div class="column is-3">
-
-                <div class="card">
-                    <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
-                        <div class="container">
-                            <h4><b>Lenny Ryd-Weissner</b></h4>
-                            <p>Utvecklare sedan 1880</p>
-                            <p>Gillar Gais och dataspel.</p>
-                            <p>Gillar Kalle Anka.</p>
-
-
-
-                        </div>
-                </div>
-
-            </div>
-
-            <div class="column is-3 ">
-
-                <div class="card">
-                  <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
-                    <div class="container">
-                        <h4><b>Anna Truong</b></h4>
-                        <p>Junior mjukvaruutvecklare</p>
-                        <p>Nyligen gått ut Teknikhögskolan</p>
-                        <p>Gillar att laga mat.</p>
-                </div>
-            </div>
-
-            </div>
-
-            <div class="column is-3">
-
-              <div class="card">
-                <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
-                    <div class="container">
-                        <h4><b>Markus Antonsen</b></h4>
-                        <p>Backendutvecklare</p>
-                        <p>Markus gillar att äta på Lucýs Burger</p>
-                        <p>och att dansa.</p>
-                    </div>
-</div>
-
-
-            </div>
-
-
-
-
-                <div class="column is-3 ">
-
+        <h1 style="text-align:center;"><strong>Teamet Bakom</strong><br><br></h1>
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-3">
                     <div class="card">
                         <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
-                            <div class="container">
-                                <h4><b>Andreas Eliasson</b></h4>
-                                <p>Frontendutvecklare</p>
-                                <p>Andreas har en söt hund.</p>
-                                <p>Gillar att vandra i norrland.</p>
+                            <div class="container has-text-centered">
+                                <h4><b>Lenny Ryd-Weissner</b></h4>
+                                <p>Utvecklare sedan 1880</p>
+                                <p>Gillar Gais och dataspel.</p>
+                                <p>Gillar Kalle Anka.</p>
                             </div>
                     </div>
-
-
                 </div>
-        </div>
-
-   </div>
-
-   </section>
-     <h1 style="text-align:center;">Om Learning by games</h1>
-    <br>
-        <br>
-            <div class="Om_oss_texten">
-            <p style="text-align:center;">
-                skriver en massa saker här för att se om det
+                <div class="column is-3 ">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
+                        <div class="container has-text-centered">
+                            <h4><b>Anna Truong</b></h4>
+                            <p>Junior mjukvaruutvecklare</p>
+                            <p>Nyligen gått ut Teknikhögskolan</p>
+                            <p>Gillar att laga mat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
+                        <div class="container has-text-centered">
+                            <h4><b>Markus Antonsen</b></h4>
+                            <p>Backendutvecklare</p>
+                            <p>Markus gillar att äta på Lucýs Burger</p>
+                            <p>och att dansa.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3 ">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename="img/card_avatar.png") }}" alt="Avatar" style="width:100%">
+                        <div class="container has-text-centered">
+                            <h4><b>Andreas Eliasson</b></h4>
+                            <p>Frontendutvecklare</p>
+                            <p>Andreas har en söt hund.</p>
+                            <p>Gillar att vandra i norrland.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+       </div>
+        <h1 style="text-align:center;"><strong>Om Learning by games</strong><br></h1>
+    <div>
+        <p style="text-align:center;">
+            skriver en massa saker här för att se om det
             ser bra ut. Annars får vi göra detta imorgon.
-            då ungar måste hämtas på skolan.</p>
-            <br>
-                <br>
-            </div>
-             <h1 style="text-align:center;">Bakgrund:</h1>
-             <div class="Om_oss_bakgrund">
-            <p style="text-align:center;">
-                Här kommer våran bakgrund som
-            grupp och tankar att presenteras.</p>
-
-
-            </div>
-            <br>
-                <br>
-             <h1 style="text-align:center;">Jobba hos oss:</h1>
-             <div class="Om_oss_jobba_hos_oss">
-            <p style="text-align:center;">
-                Här kan du som söker jobb läsa
-            vad vi söker för kompetens.</p>
-
-
-            </div>
+            då ungar måste hämtas på skolan.
+        </p>
+        <br><br>
+    </div>
+        <h1 style="text-align:center;"><strong>Bakgrund</strong><br></h1>
+    <div>
+        <p style="text-align:center;">
+            Här kommer våran bakgrund som
+            grupp och tankar att presenteras.
+        </p>
+    <br><br>
+    </div>
+        <h1 style="text-align:center;"><strong>Jobba hos oss</strong><br></h1>
+    <div>
+        <p style="text-align:center;">
+            Här kan du som söker jobb läsa
+            vad vi söker för kompetens.
+        </p>
+    </div>
+    </section>
 {% endblock %}

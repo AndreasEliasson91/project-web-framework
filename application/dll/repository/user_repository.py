@@ -39,4 +39,3 @@ def get_parent_from_child_id(_id):
 
 def get_all_users():
     return User.all()
-
