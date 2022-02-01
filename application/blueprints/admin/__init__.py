@@ -37,3 +37,4 @@ def admin_post():
     return render_template('admin.html',
                            user_list=admin_controller.get_all_users_from_db(),
                            active_suspend=json.dumps(user_status))
+
