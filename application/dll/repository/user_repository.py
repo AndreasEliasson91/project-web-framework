@@ -1,3 +1,6 @@
+import datetime
+import time
+
 from bson import ObjectId
 
 from application.dll.db.models import User
@@ -39,3 +42,20 @@ def get_parent_from_child_id(_id):
 
 def get_all_users():
     return User.all()
+
+def time_is_right(user_id):
+    child = get_user_by_username(user_id)
+    start_time = child.time_start
+    end_time = child.time_end
+    start_time = start_time.replace(":", "")
+    end_time = end_time.replace(":", "")
+
+    hour = datetime.datetime.now().hour
+    minute = datetime.datetime.now().minute
+    timed = f"{hour}{minute}"
+
+    if int(start_time) < int(timed) or int(timed) > int(end_time):
+        return True
+    else:
+        return False
+
