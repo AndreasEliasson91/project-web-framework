@@ -54,8 +54,10 @@ def control_get():
 def control_post_clock():
     start = request.form.get('start')
     end = request.form.get('end')
-    child = request.form.get('List2')
-    child_control_clock(child, start, end)
+    xx = request.form.get('t1')
+    child_control_clock(xx, start, end)
+    listan = get_all_children_from_db()
+    return render_template('parent_admin.html', listan=listan)
 
 
 def control_post():
