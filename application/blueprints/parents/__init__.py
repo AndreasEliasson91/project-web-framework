@@ -61,7 +61,6 @@ def control_post_clock():
 
 
 def control_post():
-    status_on_user = ""
     child = request.form.get('List1')
     child_status = suspend_child(child)
     if child_status == 'Activated':
@@ -72,12 +71,3 @@ def control_post():
     listan = get_all_children_from_db()
     return render_template('parent_admin.html', listan=listan, active_suspend=json.dumps(status_on_user))
 
-    # email = request.form.get('List1')
-    # user_status = suspend_email_user(email)
-    # if user_status == "Activated":
-    #     user_status = "suspended"
-    # else:
-    #     user_status = "activated"
-    #
-    # listan = get_all_users_from_db()
-    # return render_template('admin.html', listan=listan, active_suspend=json.dumps(user_status))

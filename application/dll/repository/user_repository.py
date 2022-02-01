@@ -44,6 +44,7 @@ def get_all_users():
     return User.all()
 
 def time_is_right(user_id):
+
     child = get_user_by_username(user_id)
     start_time = child.time_start
     end_time = child.time_end

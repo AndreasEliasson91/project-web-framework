@@ -2,9 +2,6 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/parent.css') }}">
-
-
 {% endblock %}
 
 
@@ -14,44 +11,33 @@
 
 
 {% block content %}
-    <h1>Du är nu inloggad som : {{ current_user.email }}</h1>
+
 
     <div class="titel">
-        <label class="lab" for="aaa">Choose your child:</label>
+        <label class="title" for="aaa">Välj barn att hantera</label>
     </div>
 
-    <body>
 
-
-    <form Name="Form1" Method="POST" Action="/parent/control">
-        <div class="boxen">
+        <div  class="boxen">
             <select Name="List1" class="combo_users" size="10" id="myCourses">
                 {% for item in listan %}
                     <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
                 {% endfor %}
-
             </select>
-
-            {% set s_a = active_suspend %}
-
-            <div class="buttons">
-                {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
-                <button id="shutdown_user"
-
-                       onclick="parent_admin(); alert('You have now been: {{ s_a }}') ">Suspend/activate user
-{#                        ondblclick="parent_admin()">Suspend/Activate User#}
-
+                <div class="buttons">
+                    <form Name="Form1" Method="POST" Action="/parent/control">
+                        {% set s_a = active_suspend %}
+                        <button class="popup" onclick="parent_admin(); alert('You have now been: {{ s_a }}') ">Suspend/activate user
+                        </button>
+                    </form>
+                <button class="popup"   onclick="myFunction(); parent_admin();" >set time</button>
+                <button class="popup"  >clear user</button>
                 </button>
-
+                </div>
             </div>
-        </div>
-    </form>
 
-    <div class="buttons"  style="margin-left:50px">
-    <button class="popup" id="shutdown_user" onclick="myFunction(); parent_admin();" >set time</button>
-    </div>
-
-    <div class="position" id="myPopup" hidden>
+    <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
+    <div>Hej</div>
 
         <form Name="List2" Method="POST" Action="/parent/control">
             <div style="float: left; margin-right: 20px;">
@@ -59,17 +45,19 @@
             </div>
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="end" style="text-align: center">Slut</label><input class="timed"  id="end" name="end" type="time"/>
-
+            </div>
 
             <button style="margin-top: 30px">Spara</button>
-            <input class="input is-large" type="text" name="t1" id="txt1" onclick="check" required />
+            <div hidden>
+            <label for="txt1"></label><input class="input is-large" type="text" name="t1" id="txt1" onclick="check" >
             </div>
         </form>
     </div>
 
+{% endblock %}
 
+{% block scripts %}
 <script>
-
     // Script to put the txt from the combobox to the hidden textbox
     // that lets us request from that instead.
     let select = document.getElementById('myCourses');
@@ -77,7 +65,6 @@
     select.onchange = function() {
     input.value = select.value;
 }
-
 </script>
 
 <script>
@@ -96,19 +83,11 @@
 
 
 
-    <script>
-        function parent_admin() {
-            document.getElementById("myCourses").selectedIndex
-                = ""
-
-        }
-    </script>
-
-
-
-{% endblock %}
-
-{% block scripts %}
-
+<script>
+    function parent_admin() {
+        document.getElementById("myCourses").selectedIndex
+            = ""
+    }
+</script>
 
 {% endblock scripts %}

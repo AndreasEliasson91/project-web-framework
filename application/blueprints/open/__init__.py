@@ -2,6 +2,8 @@ from application.bll.controllers import admin_controller, user_controller
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import logout_user, current_user
 
+from application.bll.controllers.user_controller import time_is_right
+
 bp_open = Blueprint('bp_open',
                     __name__,
                     template_folder='templates',
@@ -29,13 +31,14 @@ def signin_post():
         return redirect(url_for('bp_open.signin_get')) 
 
     if admin_controller.is_user_active(user_id, 1 if '@' in user_id else 2):
-      
-      if time_is_right(user_id):
-            flash('You cannot log in at this time')
-            return redirect(url_for('bp_open.signin_get'))
+        if '@' not in user_id:
+            if time_is_right(user_id):
+                flash('You cannot log in at this time')
+                return redirect(url_for('bp_open.signin_get'))
       
         user_controller.signin_user(user_id)
         return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+
     else:
         return redirect(url_for('bp_open.suspended'))
 

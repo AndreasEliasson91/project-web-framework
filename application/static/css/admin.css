@@ -10,52 +10,87 @@
 }
 
 .boxen {
-  border: 1px solid purple ;
-  background-color: lightgrey;
-  margin-bottom: 180px;
-  margin-top: 10px;
-  margin-left: 600px;
-  margin-right: 20px;
-  width: 620px;
+    position: absolute;
+    border: 1px solid purple ;
+    background-color: lightgrey;
+    top: 35%;
+    left: 35%;
+    width: 620px;
     height:400px;
 
 }
 
-.lab {
+.title {
+    position: absolute;
     font-family: Helvetica, sans-serif;
     font-size: 50px;
-        /*text-shadow: 1px 1px purple;*/
-    margin-left: 700px;
-    margin-right: 20px;
-    margin-top: 50px;
-    margin-bottom: 10px;
-}
-
-.suspend {
-    height: 50px;
-    width: 200px;
-    border-radius: 20%;
-    margin-left: 200px;
-    margin-right: 20px;
-    margin-top: -50px;
-    padding:0px 15px 2px;
-    line-height: 100px;
+    top: 25%;
+    left: 38%;
 
 }
+
+/*.suspend {*/
+/*    height: 50px;*/
+/*    width: 200px;*/
+/*    border-radius: 20%;*/
+/*    margin-left: 200px;*/
+/*    margin-right: 20px;*/
+/*    margin-top: -50px;*/
+/*    padding:0px 15px 2px;*/
+/*    line-height: 100px;*/
+
+/*}*/
 
 .buttons{
-    margin: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 92%;
+    left: 85%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    margin-top: 190px;
-    margin-left: 150px;
+    width: 400px;
 
 
 }
+
+
+
+.buttons2{
+    position: absolute;
+    top: 270px;
+    left: 49.9%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+
+
+
+}
+
+
 
 #op {
     color:purple;
+}
+
+.timed {
+    display:block;
+}
+
+
+
+
+.position {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+}
+
+
+
+
+/* Popup container */
+.popup {
+  position: relative;
+  /*display: inline-block;*/
+  cursor: pointer;
 }
