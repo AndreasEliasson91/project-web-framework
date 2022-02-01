@@ -2,7 +2,9 @@
 
 {% block title %}Sign in{% endblock %}
 
-
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/open.css') }}">
+{% endblock %}
 
 {% block content %}
     <div class="column is-centered">

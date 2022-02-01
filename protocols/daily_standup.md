@@ -357,4 +357,22 @@ fixa lite med designen.
 Anteckningar:
 
 
+MÖTESPROTOKOLL
+-
+
+Datum: 01-02-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Lenny , Anna och Markus jobbade med parent sidan, och kan nu lista alla barn, som tillhör föräldern.
+Andreas har jobbat med CSS, och börjat dela upp Css:erna och grupperade dem efter blueprints. 
+
+Att göra idag:
+Lenny , Anna , Markus fortsätter med parentsidan för att försöka lägga till funktionaliteten sätta tid, så en förälder kan bestämma vilka tider
+ett barn inte skall kunna använda siten.
+
+Andreas, skall börja koda spel idag och fixar knapp till profil sidan.
+
+Anteckningar:
 

@@ -12,7 +12,6 @@ def register_adult(email, password, birth_date):
     birth_date = birth_date.split('-')
     birth_date = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
-
     adult = {
         'email': email,
         'display_name': email.split('@')[0],
@@ -20,8 +19,13 @@ def register_adult(email, password, birth_date):
         'birth_date': birth_date,
         'admin': False,
         'parent': True,
-        'activated:': True,
-        'time_management': None,
+        'activated': True,
+        'time_management': {
+            'start_time': None,
+            'end_time': None,
+            'start_date': None,
+            'end_date': None
+        },
         'personal_high_score': [],
         'children': [],
         'friends': [],
@@ -30,9 +34,9 @@ def register_adult(email, password, birth_date):
         'settings': {
             'rgb_title': (0, 0, 0),
             'rgb_subtitle': (128, 0, 128)
-
         }
     }
+
     user_repository.register_adult(adult)
 
 
@@ -42,8 +46,13 @@ def register_child(username, password, birth_date: Optional):
         'username': username,
         'password': argon2.using(rounds=12).hash(password),
         'parent': False,
-        'activated:': True,
-        'time_management': None,
+        'activated': True,
+        'time_management': {
+            'start_time': None,
+            'end_time': None,
+            'start_date': None,
+            'end_date': None
+        },
         'personal_high_score': [],
         'friends': [],
         'date_created': datetime.datetime.now(),
@@ -51,13 +60,13 @@ def register_child(username, password, birth_date: Optional):
         'settings': {
             'rgb_title': (0, 0, 0),
             'rgb_subtitle': (128, 0, 128)
-
         }
     }
 
     if birth_date:
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
+
     user_repository.register_child(child)
 
 
@@ -112,9 +121,8 @@ def signin_user(user_id):
 
 
 def get_user_friends(current_user):
-    users = user_repository.get_all_users()
     friends = []
-    for u in users:
+    for u in user_repository.get_all_users():
         for friend_id in current_user.friends:
             if u._id == friend_id:
                 friends.append(u)
