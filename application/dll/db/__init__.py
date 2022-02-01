@@ -1,6 +1,5 @@
-
-from pymongo import MongoClient
 import gridfs
+from pymongo import MongoClient
 
 client = None
 db = None

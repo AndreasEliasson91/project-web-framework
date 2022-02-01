@@ -1,11 +1,7 @@
+import json
+from application.bll.controllers import admin_controller
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
-import json
-from application.bll.controllers.admin_activate_user_controller import activate_email_user
-from application.bll.controllers.admin_controller import get_all_users_from_db
-from application.bll.controllers.admin_is_user_active_controller import is_user_activate
-from application.bll.controllers.admin_suspend_email_user import suspend_email_user
-from application.dll.db.models import User
 
 bp_admin = Blueprint('bp_admin',
                      __name__,
@@ -22,9 +18,9 @@ def before_request():
 
 @bp_admin.get('/')
 @login_required
-def admin():
-    listan = get_all_users_from_db()
-    return render_template('admin.html', listan=listan)
+def admin_get():
+    return render_template('admin.html',
+                           user_list=admin_controller.get_all_users_from_db())
 
 
 @bp_admin.post('/')
@@ -32,18 +28,13 @@ def admin():
 def admin_post():
     # Suspendera användaren eller aktivera
     email = request.form.get('List1')
-    user_status = suspend_email_user(email)
+    user_status = admin_controller.suspend_email_user(email)
     if user_status == "Activated":
         user_status = "suspended"
     else:
         user_status = "activated"
 
-    listan = get_all_users_from_db()
-    return render_template('admin.html', listan=listan, active_suspend=json.dumps(user_status))
-    # return render_template('parent_admin.html', listan=listan, user_status=json.dumps(user_status))
-    # if user is not None:
-    #     flash('Denna email är redan registrerad')
-    #     return redirect(url_for('bp_open.signup_get'))
-    #
-    # register_adult(email, password, birth_date)
-    # return redirect(url_for('bp_open.index'))
+    return render_template('admin.html',
+                           user_list=admin_controller.get_all_users_from_db(),
+                           active_suspend=json.dumps(user_status))
+

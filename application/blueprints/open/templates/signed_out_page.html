@@ -2,6 +2,11 @@
 
 {% block title %}Utloggad{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/open.css') }}">
+{% endblock %}
+
+
 {% block content %}
     <h1>Du är nu utloggad</h1>
 

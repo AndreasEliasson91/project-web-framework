@@ -1,3 +1,8 @@
+form input[type="file"] {
+          display: none;
+          cursor: pointer;
+}
+
 .profile-pic {
     border-radius: 50%;
     width: 300px;
@@ -24,11 +29,6 @@
     padding-bottom: 4.5em;
 }
 
-form input[type="file"] {
-          display: none;
-          cursor: pointer;
-}
-
 .view-profile-pic {
     border-radius: 50%;
     width: 300px;
@@ -37,4 +37,26 @@ form input[type="file"] {
     transition: all .3s ease;
     text-decoration: none;
     justify-content: center;
+}
+
+.game-img {
+    border-radius: 50px;
+    color: dimgrey;
+    transition: all .3s ease;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+}
+
+.game-img:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+}
+
+.game-img span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
 }
