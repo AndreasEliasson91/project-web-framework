@@ -22,3 +22,8 @@ def index():
                     score['avatar'] = image_controller.get_profile_picture(user)
 
     return render_template('games_index_hs.html', games=games)
+
+
+@bp_games.get('/memory-game')
+def index_memory():
+    return render_template('index_memory.html')

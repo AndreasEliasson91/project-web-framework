@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/memory_game.css') }}">
+    <title>Memory Game</title>
+</head>
+<body>
+    <h1 class="page-title">Memory Game</h1>
+
+{#    <div class="overlay-text visible">
+    Click to Start
+  </div>
+  <div id="game-over-text" class="overlay-text">
+    GAME OVER
+    <span class="overlay-text-small">Click to Restart</span>
+  </div>
+  <div id="victory-text" class="overlay-text">
+    VICTORY
+    <span class="overlay-text-small">Click to Restart</span>
+  </div>#}
+
+    <div class="game-container">
+        <div class="game-info-container">
+            <div class="game-info">
+                Tid: <span id="time.remaining">100</span>
+            </div>
+            <div class="game-info">
+                Antal flippade kort: <span id="time.remaining">0</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-back">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
