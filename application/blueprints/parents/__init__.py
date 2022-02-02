@@ -67,7 +67,9 @@ def control_post():
         status_on_user = 'suspended'
     else:
         status_on_user = "activated"
+    print()
 
     listan = get_all_children_from_db()
     return render_template('parent_admin.html', listan=listan, active_suspend=json.dumps(status_on_user))
+
 
