@@ -51,26 +51,28 @@ def control_get():
 
 @bp_parent.post('/control')
 @login_required
-def control_post_clock():
-    start = request.form.get('start')
-    end = request.form.get('end')
-    xx = request.form.get('t1')
-    child_control_clock(xx, start, end)
-    listan = get_all_children_from_db()
-    return render_template('parent_admin.html', listan=listan)
-
-
 def control_post():
     status_on_user = ""
     child = request.form.get('List1')
     child_status = suspend_child(child)
-    if child_status == 'Activated':
+    if child_status == 'activated':
         status_on_user = 'suspended'
     else:
         status_on_user = "activated"
 
     listan = get_all_children_from_db()
     return render_template('parent_admin.html', listan=listan, active_suspend=json.dumps(status_on_user))
+
+
+@bp_parent.post('/control')
+@login_required
+def control_post_clock():
+    start = request.form.get('start')
+    end = request.form.get('end')
+    xx = request.form.get('t1')
+    child_control_clock(xx, start, end)
+    listan = get_all_children_from_db()
+    return redirect(url_for('bp_parent.control_get', listan=listan))
 
     # email = request.form.get('List1')
     # user_status = suspend_email_user(email)
