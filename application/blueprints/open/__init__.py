@@ -35,7 +35,7 @@ def signin_post():
             if time_is_right(user_id):
                 flash('You cannot log in at this time')
                 return redirect(url_for('bp_open.signin_get'))
-      
+
         user_controller.signin_user(user_id)
         return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
 
