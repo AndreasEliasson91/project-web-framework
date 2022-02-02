@@ -376,3 +376,20 @@ Andreas, skall börja koda spel idag och fixar knapp till profil sidan.
 
 Anteckningar:
 
+MÖTESPROTOKOLL
+-
+
+Datum: 02-02-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Markus fixade till funktionaliteten på parent-admin-sidan och style till den lite samt skapade en clear user knapp som kan rensa alla användare. 
+Andreas började med mattespelen och har fått det att fungera med python och började med att försöka få in den på webbsidan
+Anna och Lenny har spånat på hur man kan bygga ett memory spel med ord och bilder.
+
+Att göra idag:
+Alla forsätter jobba vidare med det som påbörjades igår.
+
+Anteckningar:
+
