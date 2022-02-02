@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/memory_game.css') }}">
+
     <title>Memory Game</title>
 </head>
 <body>
@@ -33,8 +34,24 @@
             <div class="card-back card-face">
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
-            <div class="card-front card-back">
-
+            <div class="card-front card-face2">
+            <image class="card-value" src="{{ url_for('static', filename="img/kanin.jpg") }}"></image>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-face2">
+                <image class="card-value" src="{{ url_for('static', filename="img/kossa.jpg") }}"></image>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-back card-face">
+           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+            </div>
+            <div class="card-front card-face2">
+                <image class="card-value" src="{{ url_for('static', filename="img/sköldpadda.jpeg") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -65,24 +82,8 @@
             <div class="card-back card-face">
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
-            <div class="card-front card-back">
-
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-back">
-
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-back">
-
+            <div class="card-front card-face2">
+                <h2 class="word"> Kanin</h2>
             </div>
         </div>
         <div class="card">
@@ -126,6 +127,20 @@
             </div>
         </div>
     </div>
+{#     <script src="{{ url_for('static', filename="js/memory_game.js") }}"></script>#}
+<script>
+    window.onload = choosePic;
+
+    var myPix = ["/static/img/mus.jpg","/static/img/kanin.jpg","/static/img/kossa.jpg"];
+
+function choosePic() {
+    var randomNum = Math.floor(Math.random() * myPix.length);
+    document.getElementById("myPicture").src = myPix[randomNum];
+
+}
+
+
+</script>
 </body>
 </html>
 

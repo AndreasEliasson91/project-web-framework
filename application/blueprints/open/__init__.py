@@ -25,10 +25,9 @@ def signin_post():
     user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
 
-
     if not user_controller.verify_user(user_id, password):
         flash('Username or password is incorrect')
-        return redirect(url_for('bp_open.signin_get')) 
+        return redirect(url_for('bp_open.signin_get'))
 
     if admin_controller.is_user_active(user_id, 1 if '@' in user_id else 2):
         if '@' not in user_id:
@@ -40,7 +39,6 @@ def signin_post():
         return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
     else:
         return redirect(url_for('bp_open.suspended'))
-
 
 
 @bp_open.get('/suspended')

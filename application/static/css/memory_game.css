@@ -94,6 +94,7 @@ body {
 }
 
 .card-back:hover .pink-bear {
+
   transform: translateY(0);
 }
 
