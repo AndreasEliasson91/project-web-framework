@@ -17,7 +17,7 @@
         <label class="title" for="aaa">Välj barn att hantera</label>
     </div>
 
-
+    <body>
         <div  class="boxen">
             <select Name="List1" class="combo_users" size="10" id="myCourses">
                 {% for item in listan %}
@@ -25,12 +25,12 @@
                 {% endfor %}
             </select>
                 <div class="buttons">
-                    <form Name="Form1" Method="POST" Action="/parent/control">
+                    <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_post')  }}">
                         {% set s_a = active_suspend %}
-                        <button class="popup" onclick="parent_admin(); alert('You have now been: {{ s_a }}') ">Suspend/activate user
+                        <button class="popup" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
                         </button>
                     </form>
-                <button class="popup" onclick="myFunction(); parent_admin();" >set time</button>
+                <button class="popup" onclick="myFunction();" >set time</button>
                 <button class="popup">clear user</button>
                 </div>
             </div>
@@ -38,7 +38,7 @@
     <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
     <div>Hej</div>
 
-        <form Name="List2" Method="POST" Action="/parent/control">
+        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_post_clock') }}">
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
             </div>
@@ -54,7 +54,7 @@
 
 {% endblock %}
 
-{% block scripts %}
+
 <script>
     // Script to put the txt from the combobox to the hidden textbox
     // that lets us request from that instead.
@@ -87,5 +87,5 @@
             = ""
     }
 </script>
-
+{% block scripts %}
 {% endblock scripts %}

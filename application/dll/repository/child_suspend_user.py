@@ -1,24 +1,11 @@
 from application.dll.db.models import User
+from application.dll.repository import user_repository
 
 
 def suspend_child(username):
-    # user_status = "Suspended"
-    # Here we are looking for the selected users email, and take out the
-    # the user dict.
-    user1 = User.find(username=username).first_or_none()
+    user = User.find(username=username).first_or_none()
 
-    if user1 is not None:
-        if user1.activated == True:
-            user_status = "Suspended"
-            user1.activated = not user1.activated
-            user1.save()
-        else:
-            user_status ="Activated"
-            user1.activated = not user1.activated
-            user1.save()
-    return user_status
-
-    # if user1 is not None:
-    #     user1.activated = not user1.activated
-    #     user1.save()
-    # return user_status
+    if user is not None:
+        user.activated = not user.activated
+        user_repository.update_user_information(user)
+        return 'Activated' if user.activated else 'Suspended'
