@@ -28,6 +28,10 @@
                 <li><a href="/admin">Admin</a></li>
             {% endif %}
 
+            {% if current_user.parent  and current_user.children|length > 0 %}
+                <li><a href="{{ url_for('bp_parent.control_get') }}">Barn</a></li>
+            {% endif %}
+
 
             <li><a href="{{ url_for ('bp_open.signout') }}">Logga Ut</a></li>
             <li><div class="empty_space"></div></li>
