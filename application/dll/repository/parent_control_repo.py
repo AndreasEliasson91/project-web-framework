@@ -1,5 +1,3 @@
-import username
-
 from application.dll.db.models import User
 
 

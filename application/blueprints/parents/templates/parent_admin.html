@@ -20,40 +20,30 @@
         <label class="lab" for="aaa">Choose your child:</label>
     </div>
 
-    <body>
-
-
-    <form Name="Form1" Method="POST" Action="/parent/control">
+    <form Name="Form1" Method="POST" Action="{{ url_for('bp_parent.control_post') }}">
         <div class="boxen">
-            <select Name="List1" class="combo_users" size="10" id="myCourses">
-                {% for item in listan %}
-                    <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
-                {% endfor %}
+                    <select Name="List1" class="combo_users" size="10" id="myCourses">
+                        {% for item in listan %}
+                            <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
+                        {% endfor %}
+                    </select>
 
-            </select>
-
-            {% set s_a = active_suspend %}
-
-            <div class="buttons">
-                {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
-                <button id="shutdown_user"
-
-                       onclick="parent_admin(); alert('You have now been: {{ s_a }}') ">Suspend/activate user
-{#                        ondblclick="parent_admin()">Suspend/Activate User#}
-
-                </button>
-
-            </div>
-        </div>
-    </form>
-
-    <div class="buttons"  style="margin-left:50px">
-    <button class="popup" id="shutdown_user" onclick="myFunction(); parent_admin();" >set time</button>
+                    {% set s_a = active_suspend %}
+                    <div class="buttons">
+                        {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
+                        <button id="shutdown_user"
+                               onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
+{#                                ondblclick="parent_admin()">Suspend/Activate User#}
+                        </button>
+                    </div>
+{#            <div class="buttons">#}
+{#                <button id="shutdown_user" onclick="myFunction(); parent_admin();" >set time</button>#}
+{#            </div>#}
     </div>
+    </form>
+    <div id="myPopup" hidden>
 
-    <div class="position" id="myPopup" hidden>
-
-        <form Name="List2" Method="POST" Action="/parent/control">
+        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_post_clock') }}">
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
             </div>
@@ -66,6 +56,9 @@
             </div>
         </form>
     </div>
+
+
+
 
 
 <script>
