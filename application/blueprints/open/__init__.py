@@ -38,6 +38,7 @@ def signin_post():
 
         user_controller.signin_user(user_id)
         return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+
     else:
         return redirect(url_for('bp_open.suspended'))
 
