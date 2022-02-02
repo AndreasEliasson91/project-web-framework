@@ -45,6 +45,7 @@ def register_child_post():
 @bp_parent.get('/control')
 @login_required
 def control_get():
+
     listan = get_all_children_from_db()
     return render_template('parent_admin.html', listan=listan)
 
