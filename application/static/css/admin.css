@@ -44,27 +44,14 @@
 .buttons{
     position: absolute;
     top: 92%;
-    left: 85%;
+    left: 97%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 150px;
 
 
 }
 
-
-
-.buttons2{
-    position: absolute;
-    top: 270px;
-    left: 49.9%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-
-
-
-}
 
 
 
@@ -81,8 +68,8 @@
 
 .position {
   position: absolute;
-  top: 50%;
-  left: 45%;
+  top: 47%;
+  left: 43%;
 }
 
 

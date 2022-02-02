@@ -17,42 +17,49 @@
         <label class="title" for="aaa">Välj barn att hantera</label>
     </div>
 
-    <body>
+
+
+
         <div  class="boxen">
+            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child')  }}">
             <select Name="List1" class="combo_users" size="10" id="myCourses">
                 {% for item in listan %}
                     <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
                 {% endfor %}
             </select>
                 <div class="buttons">
-                    <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_post')  }}">
+
                         {% set s_a = active_suspend %}
-                        <button class="popup" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
+                        <button class="popup" style=" right:146px;" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
                         </button>
-                    </form>
+
+                    </div>
+                </form>
+                <div class="buttons">
                 <button class="popup" onclick="myFunction();" >set time</button>
-                <button class="popup">clear user</button>
+                </div>
                 </div>
             </div>
 
-    <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
-    <div>Hej</div>
 
-        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_post_clock') }}">
+    <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
+    <div style=" height: 50px; width:230px; border-bottom: 1px solid purple;">välj start och slut tid när barnet inte
+        har tillgång till hemsidan</div>
+
+        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_child') }}">
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
             </div>
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="end" style="text-align: center">Slut</label><input class="timed"  id="end" name="end" type="time"/>
             </div>
-            <button style="margin-top: 30px">Spara</button>
+            <button style="margin-top: 25px">Spara</button>
             <div hidden>
             <label for="txt1"></label><input class="input is-large" type="text" name="t1" id="txt1" onclick="check" >
             </div>
         </form>
     </div>
 
-{% endblock %}
 
 
 <script>
@@ -89,3 +96,16 @@
 </script>
 {% block scripts %}
 {% endblock scripts %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
