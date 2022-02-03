@@ -393,3 +393,20 @@ Alla forsätter jobba vidare med det som påbörjades igår.
 
 Anteckningar:
 
+
+MÖTESPROTOKOLL
+-
+
+Datum: 02-03-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Markus fixade igår Parent sidan, fixade buggar och snyggade till layoten. Andreas kodade spel, och buggfixade.
+Lenny och Anna började dra upp structuren för memory spelet, och startade med att koda lite.
+
+Att göra idag:
+Markus kommer att fixa med Navbaren, Andreas forstätter med samma saker som igår. Lenny och Anna fortsätter koda memory spel.
+
+Anteckningar:
+
