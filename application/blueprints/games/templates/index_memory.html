@@ -35,7 +35,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-            <image class="card-value" src="{{ url_for('static', filename="img/kanin.jpg") }}"></image>
+            <image id = "picture1" class="card-value" src="{{ url_for('static', filename="img/kanin.jpg") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -85,7 +85,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-                <h2 class="word"> Kanin</h2>
+                <h2 id="card1" class="word"> Kanin</h2>
             </div>
         </div>
         <div class="card">
@@ -93,7 +93,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-
+             <h2 id="card2"></h2>
             </div>
         </div>
         <div class="card">
@@ -101,7 +101,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-
+               <h2 id="card3"></h2>
             </div>
         </div>
         <div class="card">
@@ -109,7 +109,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-
+            <h2 id="card4"></h2>
             </div>
         </div>
         <div class="card">
@@ -117,7 +117,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-
+            <h2 id="card5"></h2>
             </div>
         </div>
         <div class="card">
@@ -125,24 +125,67 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-face2">
-
+            <h2 id="card6"></h2>
             </div>
         </div>
     </div>
-{#     <script src="{{ url_for('static', filename="js/memory_game.js") }}"></script>#}
+
+    {# Here's the link src to the JS file #}
+    {# <script src="{{ url_for('static', filename="js/memory_game.js") }}" async ></script> #}
+
+
 <script>
-    window.onload = choosePic;
+    window.onload = choosePicWord;
 
-    var myPix = ["/static/img/mus.jpg","/static/img/kanin.jpg","/static/img/kossa.jpg"];
+    var cards = ["card1", "card2", "card3", "card4", "card5", "card6"]
 
-function choosePic() {
-    var randomNum = Math.floor(Math.random() * myPix.length);
-    document.getElementById("myPicture").src = myPix[randomNum];
+    var picture = ["picture1", "picture2", "picture3", "picture4", "picture5", "picture6"]
 
-}
+    var myPix = ["/static/img/mus.jpg","/static/img/kanin.jpg","/static/img/kossa.jpg",
+        "/static/img/flodhäst.jpg", "/static/img/räv.jpg", "/static/img/sköldpadda.jpeg"];
+
+    var myWord = ["Kanin", "Kossa", "Mus", "Flodhäst", "Räv", "Sköldpadda"];
+
+function choosePicWord() {
+
+    for (let x = 0; x < 6; x++){
+        var randomNum2 = Math.floor(Math.random() * myWord.length);
+        for (let i = 0; i < myWord.length; i++) {
+
+
+        let slump = myWord[randomNum2]
+
+            if (myWord[i] === slump) {
+            document.getElementById(cards[x]).innerHTML = myWord[i];
+            myWord.splice(randomNum2, 1);
+
+            }
+
+
+
+}}
+    for (let x = 0; x < 6; x++){
+            var randomNum = Math.floor(Math.random() * myPix.length);
+            for (let i = 0; i < myPix.length; i++) {
+
+            let slump = myPix[randomNum]
+
+                if (myPix[i] === slump) {
+                document.getElementById(picture[x]).src = myPix[randomNum];
+                myPix.splice(randomNum, 1);
+            }
+
+
+
+
+
+}}}
 
 
 </script>
+
+
+
 </body>
 </html>
 
