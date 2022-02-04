@@ -27,3 +27,8 @@ def index():
 @bp_games.get('/memory-game')
 def index_memory():
     return render_template('index_memory.html')
+
+
+@bp_games.get('/test-memo')
+def index_test_memo():
+    return render_template('test-memo.html')
