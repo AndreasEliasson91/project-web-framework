@@ -84,8 +84,8 @@ body {
   backface-visibility: hidden;
 }
 
-.card:hover .card-back {
-  transform: rotateY(-180deg);
+.card.visible .card-back {
+  transform: rotateY(180deg);
 }
 
 .card:hover .card-front {
@@ -120,13 +120,13 @@ body {
 
 
 }
-/*
-.card-value {
-  position: relative;
-  transition: transform 100ms ease-in-out;
-  transform: scale(.9);
-}
-*/
+
+/*.card-value {*/
+/*  position: relative;*/
+/*  transition: transform 100ms ease-in-out;*/
+/*  transform: scale(.9);*/
+/*}*/
+
 
 .card-front:hover .card-value {
   transform: scale(1);
@@ -149,7 +149,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: #FF6D00;
+  color: plum;
   font-family: serif;
   transition: background-color 500ms, font-size 500ms;
 }
