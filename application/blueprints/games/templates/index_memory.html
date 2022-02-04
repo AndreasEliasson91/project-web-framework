@@ -7,8 +7,7 @@
 </head>
 <body>
     <h1 class="page-title">Memory Game</h1>
-
-{#    <div class="overlay-text visible">
+    <div class="overlay-text visible">
     Click to Start
   </div>
   <div id="game-over-text" class="overlay-text">
@@ -18,7 +17,7 @@
   <div id="victory-text" class="overlay-text">
     VICTORY
     <span class="overlay-text-small">Click to Restart</span>
-  </div>#}
+  </div>
 
     <div class="game-container">
         <div class="game-info-container">
@@ -37,12 +36,12 @@
 
             </div>
         </div>
-        <div class="card">
+        <div class="card visible">
             <div class="card-back card-face">
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-back">
-
+            <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -58,7 +57,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-back">
-
+            <image class="card-value" src="{{ url_for('static', filename="img/fox.png") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -74,7 +73,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-back">
-
+            <image class="card-value" src="{{ url_for('static', filename="img/Koala.png") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -90,7 +89,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-back">
-
+            <image class="card-value" src="{{ url_for('static', filename="img/pingvin.png") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -106,7 +105,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-back">
-
+            <image class="card-value" src="{{ url_for('static', filename="img/rabbit.png") }}"></image>
             </div>
         </div>
         <div class="card">
@@ -122,7 +121,7 @@
            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
             </div>
             <div class="card-front card-back">
-
+            <image class="card-value" src="{{ url_for('static', filename="img/rat.png") }}"></image>
             </div>
         </div>
     </div>
