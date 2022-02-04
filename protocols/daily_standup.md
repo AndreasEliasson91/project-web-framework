@@ -397,7 +397,7 @@ Anteckningar:
 MÖTESPROTOKOLL
 -
 
-Datum: 02-03-2022
+Datum: 03-02-2022
 
 Närvarande: Andreas, Lenny och Anna, Markus
 
@@ -409,4 +409,21 @@ Att göra idag:
 Markus kommer att fixa med Navbaren, Andreas forstätter med samma saker som igår. Lenny och Anna fortsätter koda memory spel.
 
 Anteckningar:
+
+Datum: 04-02-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Markus har jobbat med att få till en dropdown på navbaren, sedan har han jobbat med email functionen.
+Andreas har jobbat med spelet.
+Anna Har jobbat med pusselspelet, och analyserat javascript.
+Lenny Har jobbat med pusselspelet och analyserat Javascript.
+
+Att göra idag:
+Alla forsätter jobba vidare med det som påbörjades igår.
+
+Anteckningar:
+Andreas, är sjuk och kommer jobba med projectet på söndag om han kan.
+
 
