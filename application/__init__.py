@@ -1,13 +1,17 @@
 import dotenv
-
+from flask_mail import Mail
+from itsdangerous import URLSafeTimedSerializer
 from application.dll.db import init_db
 from flask import Flask
 from flask_login import LoginManager
+from application.settings import SECRET_KEY
 
 
 def create_app():
     _app = Flask(__name__)
     _app.config.from_pyfile('settings.py')
+    _app.config.from_pyfile('config.cfg')
+    mail = Mail(_app)
     init_db(_app)
 
     from application.blueprints.open import bp_open
@@ -39,7 +43,7 @@ def create_app():
     return _app
 
 
-if __name__ == '__main__':
-    dotenv.load_dotenv()
-    create_app().run()
+_app=create_app()
 
+if __name__ == '__main__':
+    _app.run(debug=True)

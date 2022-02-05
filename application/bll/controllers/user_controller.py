@@ -20,6 +20,7 @@ def register_adult(email, password, birth_date):
         'admin': False,
         'parent': True,
         'activated': True,
+        'verified': False,
         'time_management': {
             'start_time': None,
             'end_time': None,
@@ -131,3 +132,7 @@ def get_user_friends(current_user):
 
 def time_is_right(user_id):
     return user_repository.time_is_right(user_id)
+
+
+def send_email_registration(email):
+    return user_repository.send_email_registration(email)

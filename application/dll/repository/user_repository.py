@@ -1,8 +1,12 @@
 import datetime
 import time
+from flask import Flask, request, url_for
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 from bson import ObjectId
 
+from application import create_app
 from application.dll.db.models import User
 
 
@@ -59,4 +63,16 @@ def time_is_right(user_id):
         return True
     else:
         return False
+
+
+def send_email_registration(email):
+
+
+    mail = Mail()
+    s = URLSafeTimedSerializer(['SECRET_KEY'])
+    # token = s.dumps(email, salt='email-confirm')
+    # link = url_for('confirm_email', token=token, _external=True)
+    msg = Message('Confirm Email', sender='learnbygamesnow@gmail.com', recipients=[email])
+    msg.body = 'Your link is '
+    mail.send(msg)
 

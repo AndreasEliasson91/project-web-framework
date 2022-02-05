@@ -66,8 +66,18 @@ def signup_post():
         flash('Denna email är redan registrerad')
         return redirect(url_for('bp_open.signup_get'))
 
-    user_controller.register_adult(email, password, birth_date)
-    return redirect(url_for('bp_open.index'))
+    # user_controller.register_adult(email, password, birth_date)
+    user_controller.send_email_registration(email)
+    return redirect(url_for('bp_open.verified_get'))
+
+
+
+@bp_open.get('/verified')
+def verified_get():
+    return render_template('email_activiation.html')
+
+@bp_open.post('/verified')
+def verified_post():
 
 
 @bp_open.get('/about')
