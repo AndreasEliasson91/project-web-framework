@@ -6,134 +6,154 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/test-memo.css') }}">
     <script src="/static/js/memory_game.js" async></script>
-  <title>Memory Spel</title>
+    <title>Memory Spel</title>
 </head>
 <body>
-  <h1 class="page-title">Memory Spel</h1>
-  <div class="big-text visible">
-      <span class="restart-text-small">Klicka Här För Att</span>
+
+<h1 id="b1" class="font-effect-neon">Memory Spel</h1>
+
+
+<div class="big-text">
+    <span class="restart-text-small">Klicka Här För Att</span>
     Starta Spelet
-  </div>
-  <div id="game-over-text" class="big-text">
+</div>
+<div id="game-over-text" class="big-text">
     Du Förlorade...
     <span class="restart-text-small">Starta Om Spelet</span>
-  </div>
-  <div id="victory-text" class="big-text">
+</div>
+<div id="victory-text" class="big-text">
     Du Vann!
     <span class="restart-text-small">Starta Om Spelet</span>
-  </div>
+</div>
+<div class="name-title">Ditt namn: {{ current_user.email }}</div>
+<div class="highest-title">Din högsta poäng: {{current_user.score}}</div>
+<div class="knapp-diven">
+    <button id="start-game" class="start-knapp" onclick="startGame()">Starta Spel</button>
+    <button id="avsluta-game" class="avsluta-knapp" onclick="location.href={{ url_for('bp_games.index') }}">Avsluta Spel</button>
+</div>
+<div id="end_game" class="game_end"></div>
+<div class="hidden_box" id="e1">
 
-  <div class="game-container">
+
+     <form Name="Form" Method="POST" Action="{{ url_for('bp_games.save_score_post') }}">
+     <input class="input is-large" type="text" name="t1" id="txt1" onclick="check" required hidden />
+         <button id="clickButton" type="submit" value="Submit" hidden ></button>
+
+
+     </form>
+</div>
+
+<div class="game-container">
     <div class="game-info-container">
-      <div class="game-info">
-        Tid <span id="time-remaining">100</span>
-      </div>
-      <div class="game-info">
-         <span id="flips"></span>
-           Poäng <span id="score">0</span>
-      </div>
-    </div>
-
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-                        <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
-            </div>
+        <div class="game-info">
+            Tid <span id="time-remaining">20</span>
         </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-                 <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-                        <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-                <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/Koala.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/Koala.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/pingvin.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/pingvin.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/rabbit.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/rabbit.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/rat.png") }}"></image>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-back card-face">
-           <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
-            </div>
-            <div class="card-front card-face">
-            <image class="card-value" src="{{ url_for('static', filename="img/rat.png") }}"></image>
-            </div>
+        <div class="game-info">
+            <span id="flips"></span>
+            Poäng <span id="score">0</span>
         </div>
     </div>
 
-    {# Here's the link src to the JS file #}
 
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/fox.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/fox.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/bear1.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/Koala.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/Koala.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/pingvin.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/pingvin.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/rabbit.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/rabbit.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/rat.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/barn.jpg") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img/rat.png") }}"></image>
+        </div>
+    </div>
+</div>
+
+{# Here's the link src to the JS file #}
 
 
 {#<script>#}
@@ -170,7 +190,6 @@
 {##}
 {##}
 {#</script>#}
-
 
 
 </body>

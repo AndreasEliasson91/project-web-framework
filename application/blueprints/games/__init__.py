@@ -1,5 +1,8 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+
+
 from application.bll.controllers import game_controller, user_controller, image_controller
+from application.bll.controllers.save_cute_memory_score import save_cute_memory_score
 
 bp_games = Blueprint('bp_games',
                      __name__,
@@ -29,6 +32,9 @@ def index_memory():
     return render_template('index_memory.html')
 
 
-@bp_games.get('/test-memo')
-def index_test_memo():
-    return render_template('test-memo.html')
+@bp_games.post('/memory-game')
+def save_score_post():
+    # username = request.form.get('username').lower()
+    get_score = request.form.get('t1')
+    save_cute_memory_score(get_score)
+    return render_template('index_memory.html')
