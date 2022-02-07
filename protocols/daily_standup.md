@@ -427,3 +427,20 @@ Anteckningar:
 Andreas, är sjuk och kommer jobba med projectet på söndag om han kan.
 
 
+
+
+Datum: 07-02-2022
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Anna och Lenny fortsatte med memory spelet, men de blev inte helt klara.
+- Andreas fortsatte med sitt A-maze-ing game.
+- Markus fortsatte med email confimation delen, det bör vara färdigt idag.
+
+
+Att göra till nästa gång:
+- Anna och Lenny skall fortsätta med spelet.
+- Andreas ska forstsätta med spelet.
+- Markus ska göra färdigt email confrmation och sedan börja på forgot password.
+
