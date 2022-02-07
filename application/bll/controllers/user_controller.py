@@ -21,12 +21,6 @@ def register_adult(email, password, birth_date):
         'parent': True,
         'activated': True,
         'verified': False,
-        'time_management': {
-            'start_time': None,
-            'end_time': None,
-            'start_date': None,
-            'end_date': None
-        },
         'personal_high_score': [],
         'children': [],
         'friends': [],
@@ -48,12 +42,9 @@ def register_child(username, password, birth_date: Optional):
         'password': argon2.using(rounds=12).hash(password),
         'parent': False,
         'activated': True,
-        'time_management': {
-            'start_time': None,
-            'end_time': None,
-            'start_date': None,
-            'end_date': None
-        },
+        'verified': True,
+        'time_start': None,
+        'time_end': None,
         'personal_high_score': [],
         'friends': [],
         'date_created': datetime.datetime.now(),
@@ -140,3 +131,6 @@ def send_email_registration(email):
 
 def verify_user_email(email):
     return user_repository.verify_user_email(email)
+
+def is_user_verified(user_id):
+    return user_repository.is_user_verified(user_id)
