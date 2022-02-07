@@ -6,6 +6,7 @@ class MixOrMatch {
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.score = document.getElementById('score');
+        this.score2 = document.getElementById('txt1');
     }
 
     startGame() {
@@ -16,6 +17,7 @@ class MixOrMatch {
         this.matchedCards = [];
         this.busy = true;
         this.the_score = 0;
+        this.score_box = 0;
 
         this.score_string = ''
         setTimeout(() => {
@@ -27,6 +29,7 @@ class MixOrMatch {
         this.timer.innerText = this.timeRemaining;
 
         this.score.innerText = this.the_score;
+        this.score2.value = this.score_box;
     }
 
     startCountdown() {
@@ -131,7 +134,8 @@ class MixOrMatch {
             this.busy = false;
         }, 1000);
     }
-    shuffleCards(cardsArray) { // Fisher-Yates Shuffle Algorithm.
+
+    shuffleCards(cardsArray) {
         for (let i = cardsArray.length - 1; i > 0; i--) {
             let randIndex = Math.floor(Math.random() * (i + 1));
             cardsArray[randIndex].style.order = i;

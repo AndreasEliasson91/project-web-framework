@@ -31,6 +31,137 @@ body {
     font-size: 80px;
 }
 
+#b1:hover {
+    color: blue;
+    font-family: "Sofia", sans-serif;
+    /*font-family: Helvetica;*/
+    font-weight: normal;
+    text-align: center;
+    font-size: 80px;
+    cursor: crosshair;
+}
+
+#highest-title:hover{
+    cursor: crosshair;
+
+}
+#start-game:hover{
+    cursor: crosshair;
+
+}
+
+#avsluta-game:hover{
+    cursor: crosshair;
+}
+
+.name-title {
+    position: fixed;
+
+    color: deeppink;
+    font-family: "Sofia", sans-serif;
+    /*font-family: Helvetica;*/
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 75%;
+    margin-top: 100px;
+
+}
+
+.name-title:hover{
+    color: blue;
+    cursor: crosshair;
+}
+
+.highest-title {
+    position: fixed;
+
+    color: deeppink;
+    font-family: "Sofia", sans-serif;
+    /*font-family: Helvetica;*/
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 75%;
+    margin-top: 130px;
+    z-index: 100;
+}
+
+.highest-title:hover{
+    color: green;
+    cursor: crosshair;
+}
+
+#end_game{
+    position: fixed;
+
+    color: deeppink;
+    font-family: "Sofia", sans-serif;
+    /*font-family: Helvetica;*/
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 75%;
+    margin-top: 250px;
+    z-index: 100;
+
+}
+
+
+.knapp-diven {
+    position: fixed;
+
+    color: deeppink;
+    font-family: "Sofia", sans-serif;
+    /*font-family: Helvetica;*/
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 70%;
+    margin-top: 180px;
+    z-index: 100;
+}
+
+
+.start-knapp {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    color: deeppink;
+    border-radius: 50%;
+    opacity: 0.5;
+    /*border-width: 1px;*/
+    border: 2px solid deeppink;
+    cursor: grab;
+    z-index: 100;
+}
+
+.start-knapp:hover{
+    cursor: grab;
+}
+
+.avsluta-knapp{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    color: deeppink;
+    border-radius: 50%;
+    opacity: 0.5;
+    /*border-width: 1px;*/
+    border: 2px solid deeppink;
+    cursor: grab;
+    z-index: 100;
+}
+
+.avsluta-knapp:hover {
+    cursor: grab;
+}
+
+.hidden_box {
+    position: fixed;
+    z-index: 100;
+}
+
 .game-info-container {
     grid-column: 1 / -1;
     display: flex;
