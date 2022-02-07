@@ -136,3 +136,7 @@ def time_is_right(user_id):
 
 def send_email_registration(email):
     return user_repository.send_email_registration(email)
+
+
+def verify_user_email(email):
+    return user_repository.verify_user_email(email)

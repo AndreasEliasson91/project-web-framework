@@ -6,7 +6,7 @@ from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 from bson import ObjectId
 
-from application import create_app
+from application import create_app, SECRET_KEY
 from application.dll.db.models import User
 
 
@@ -69,10 +69,15 @@ def send_email_registration(email):
 
 
     mail = Mail()
-    s = URLSafeTimedSerializer(['SECRET_KEY'])
-    # token = s.dumps(email, salt='email-confirm')
-    # link = url_for('confirm_email', token=token, _external=True)
-    msg = Message('Confirm Email', sender='learnbygamesnow@gmail.com', recipients=[email])
-    msg.body = 'Your link is '
+    s = URLSafeTimedSerializer([SECRET_KEY])
+    token = s.dumps(email, salt='email-confirm')
+    link = url_for('bp_open.verified_get_link', token=token, _external=True)
+    msg = Message('confirm_email', sender='learnbygamesnow@gmail.com', recipients=[email])
+    msg.body = f'Your  activation link is {link}'
     mail.send(msg)
 
+
+def verify_user_email(email):
+    user = get_user_by_email(email)
+    user.verified = True
+    user.save()
