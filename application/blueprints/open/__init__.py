@@ -1,8 +1,11 @@
+from itsdangerous import SignatureExpired, URLSafeTimedSerializer
+
+from application import SECRET_KEY
 from application.bll.controllers import admin_controller, user_controller
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import logout_user, current_user
 
-from application.bll.controllers.user_controller import time_is_right
+from application.bll.controllers.user_controller import time_is_right, get_user_by_email
 
 bp_open = Blueprint('bp_open',
                     __name__,
@@ -35,9 +38,15 @@ def signin_post():
             if time_is_right(user_id):
                 flash('You cannot log in at this time')
                 return redirect(url_for('bp_open.signin_get'))
+            user_controller.signin_user(user_id)
+            return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
 
-        user_controller.signin_user(user_id)
-        return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+        if '@' in user_id:
+            if not user_controller.is_user_verified(user_id):
+                flash('You need to check your email to verify your account')
+                return redirect(url_for('bp_open.signin_get'))
+            user_controller.signin_user(user_id)
+            return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
 
     else:
         return redirect(url_for('bp_open.suspended'))
@@ -67,7 +76,19 @@ def signup_post():
         return redirect(url_for('bp_open.signup_get'))
 
     user_controller.register_adult(email, password, birth_date)
+    user_controller.send_email_registration(email)
     return redirect(url_for('bp_open.index'))
+
+
+@bp_open.get('/verified/<token>')
+def verified_get_link(token):
+    s = URLSafeTimedSerializer([SECRET_KEY])
+    try:
+        email = s.loads(token, salt='email-confirm', max_age=86400)
+    except SignatureExpired:
+        return '<h1>The token is expired!</h1>'
+    user_controller.verify_user_email(email)
+    return render_template('email_activiation.html')
 
 
 @bp_open.get('/about')
