@@ -77,11 +77,15 @@ class MixOrMatch {
         this.send();
         this.the_score = 0;
 
+
+
     }
 
     victory() {
         clearInterval(this.countdown);
-        document.getElementById('victory-text').classList.add('visible');
+        document.querySelector('.game_end').innerHTML="Du vann!!, tryck starta knappen , om du vill spela igen.";
+        this.send();
+        // /*document.getElementById('victory-text').classList.add('visible');*/
     }
 
     hideCards() {
