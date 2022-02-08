@@ -58,6 +58,42 @@ def suspended():
     return render_template('suspended.html')
 
 
+@bp_open.get('/signin/forgot_password')
+def forgot_get():
+    return render_template('forgot_password.html')
+
+
+@bp_open.post('/signin/forgot_password')
+def forgot_post():
+    email = request.form.get('email').lower()
+    user = user_controller.get_user_by_email(email)
+    if user is not None:
+        user_controller.send_email_password(email)
+        flash('Emailet skickades!')
+    else:
+        flash('Det gick inte att skicka till e postaddressen')
+    return redirect(url_for('bp_open.signin_get'))
+
+@bp_open.get('/forgot_password/<token>')
+def forgot_password_get(token):
+    s = URLSafeTimedSerializer([SECRET_KEY])
+    try:
+        email = s.loads(token, salt='password', max_age=3600)
+        user_controller.signin_user(email)
+    except SignatureExpired:
+        return '<h1>Tiden för att byta lösenord gick ut, begär en ny länk igen för att byta lösenord</h1>'
+    return render_template('change_password_by_link.html', token=token)
+
+
+@bp_open.post('/forgot_password/<token>')
+def forgot_password_post(token):
+    email = current_user.email
+    password = request.form.get('password')
+    user_controller.change_user_password(email, password)
+    flash('Lösenordet ändrades!')
+    return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+
+
 @bp_open.get('/signup')
 def signup_get():
     return render_template('signup.html')
@@ -89,6 +125,8 @@ def verified_get_link(token):
         return '<h1>The token is expired!</h1>'
     user_controller.verify_user_email(email)
     return render_template('email_activiation.html')
+
+
 
 
 @bp_open.get('/about')

@@ -5,6 +5,7 @@ from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 from bson import ObjectId
+from passlib.handlers.argon2 import argon2
 
 from application import create_app, SECRET_KEY
 from application.dll.db.models import User
@@ -85,6 +86,11 @@ def verify_user_email(email):
     user.verified = True
     user.save()
 
+def change_user_password(email, password):
+    user = get_user_by_email(email)
+    user.password = argon2.using(rounds=12).hash(password)
+    user.save()
+
 
 def is_user_verified(user_id):
     user = get_user_by_email(user_id)
@@ -92,3 +98,14 @@ def is_user_verified(user_id):
         return True
     else:
         return False
+
+
+def send_email_password(email):
+    mail = Mail()
+    s = URLSafeTimedSerializer([SECRET_KEY])
+    token = s.dumps(email, salt='password')
+    link = url_for('bp_open.forgot_password_get', token=token, _external=True)
+    msg = Message('Forgot Password', sender='learnbygamesnow@gmail.com', recipients=[email])
+    msg.body = f'Your  link to reset your password is {link}, if you did not ask for this link your account may be' \
+               f'compromised, log in and change your password on our website.'
+    mail.send(msg)
