@@ -427,9 +427,11 @@ Anteckningar:
 Andreas, är sjuk och kommer jobba med projectet på söndag om han kan.
 
 
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
 
-
-Datum: 07-02-2022
+Datum: 07-02-2022 09:00
 
 Närvarande: Andreas, Markus, Lenny och Anna
 
@@ -443,4 +445,26 @@ Att göra till nästa gång:
 - Anna och Lenny skall fortsätta med spelet.
 - Andreas ska forstsätta med spelet.
 - Markus ska göra färdigt email confrmation och sedan börja på forgot password.
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 08-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Anna och lenny har jobbat med sitt memory spel, fixat så att poäng sparas ner i databasen.
+Markus blev färdig med email confirmation och blev nästan klar med forgot password.
+Andreas fixade en svårighetsgrads sida för math mazen, där man kan välja hur svårt man vill att det ska vara och vilket räknesätt man ska använda.
+
+Att göra idag:
+Anna och lenny skall försöka länka ihop poängen från memory spelet till profilsidan och sedan börja med ett stavningsspel.
+Andreas skulle välja ett nytt kort idag för att få en paus ifrån spelet.
+Markus Ska bli färdig med forgot password och sedan gå på något nytt kort, kanske ett spel.
+
+
+Anteckningar:
 
