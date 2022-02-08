@@ -1,3 +1,5 @@
+import time
+
 from flask import Blueprint, render_template, request
 
 
@@ -37,4 +39,5 @@ def save_score_post():
     # username = request.form.get('username').lower()
     get_score = request.form.get('t1')
     save_cute_memory_score(get_score)
+    time.sleep(5)
     return render_template('index_memory.html')

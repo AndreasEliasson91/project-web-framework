@@ -28,7 +28,7 @@
     <span class="restart-text-small">Starta Om Spelet</span>
 </div>
 <div class="name-title">Ditt namn: {{ current_user.email }}</div>
-<div class="highest-title">Din högsta poäng: {{current_user.score}}</div>
+<div class="highest-title">Din högsta poäng: {{current_user.game.get('SCORE')}}</div>
 <div class="knapp-diven">
     <button id="start-game" class="start-knapp" onclick="startGame()">Starta Spel</button>
     <button id="avsluta-game" class="avsluta-knapp" onclick="location.href={{ url_for('bp_games.index') }}">Avsluta Spel</button>
@@ -48,7 +48,7 @@
 <div class="game-container">
     <div class="game-info-container">
         <div class="game-info">
-            Tid <span id="time-remaining">20</span>
+            Tid <span id="time-remaining"></span>
         </div>
         <div class="game-info">
             <span id="flips"></span>
