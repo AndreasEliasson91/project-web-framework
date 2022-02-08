@@ -73,13 +73,3 @@ def control_post_clock():
     child_control_clock(xx, start, end)
     listan = get_all_children_from_db()
     return redirect(url_for('bp_parent.control_get', listan=listan))
-
-    # email = request.form.get('List1')
-    # user_status = suspend_email_user(email)
-    # if user_status == "Activated":
-    #     user_status = "suspended"
-    # else:
-    #     user_status = "activated"
-    #
-    # listan = get_all_users_from_db()
-    # return render_template('admin.html', listan=listan, active_suspend=json.dumps(user_status))
