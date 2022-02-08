@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Games{% endblock %}
+
+{% block head %} {% endblock %}
+
+{% block content %}
+
+
+
+
+
+    {{ card['text'] }} <br>
+
+    <form Name="Form1" Method="POST" Action="{{  url_for('bp_games.read_swe_post')  }}">
+
+    <button name="wrong" type="submit" >{{ card['wanswer'] }}</button>
+    <button name="right" type="submit" >{{ card['ranswer'] }}</button>
+    </form>
+
+{% endblock %}

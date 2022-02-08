@@ -11,3 +11,23 @@ def get_all_games():
 
 def update_game(game):
     Game.save(game)
+
+
+def game_sentances():
+    cards =  [
+        {
+            'text': 'this is the best text',
+            'wanswer': 'best',
+            'ranswer': 'not best'
+        },
+         {
+            'text': 'this is not the best text',
+            'wanswer': 'True',
+            'ranswer': 'Not true'
+        }
+
+    ]
+
+    return cards
+
+

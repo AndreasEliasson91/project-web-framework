@@ -11,3 +11,6 @@ def get_all_games():
 
 def update_game(game):
     game_repository.update_game(game)
+
+def game_sentances():
+    return game_repository.game_sentances()

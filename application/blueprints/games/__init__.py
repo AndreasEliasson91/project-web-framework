@@ -1,11 +1,19 @@
-from flask import Blueprint, render_template
+import random
+
+from flask import Blueprint, render_template, url_for, redirect
 from application.bll.controllers import game_controller, user_controller, image_controller
+from application.blueprints.open import bp_open
+
+i = 0
+
 
 bp_games = Blueprint('bp_games',
                      __name__,
                      template_folder='templates',
                      url_prefix='/games'
                      )
+
+
 
 
 @bp_games.get('/')
@@ -22,3 +30,20 @@ def index():
                     score['avatar'] = image_controller.get_profile_picture(user)
 
     return render_template('games_index_hs.html', games=games)
+
+
+@bp_games.get('/reading_swedish')
+def read_swe_get():
+    global i
+    cards = game_controller.game_sentances()
+    while i < len(cards):
+        return render_template('reading_game_swe.html', card=cards[i])
+    else:
+        return redirect(url_for("bp_open.index"))
+
+
+@bp_games.post('/reading_swedish')
+def read_swe_post():
+    global i
+    i += 1
+    return redirect(url_for("bp_games.read_swe_get"))
