@@ -2,9 +2,6 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/parent.css') }}">
-
-
 {% endblock %}
 
 
@@ -14,55 +11,60 @@
 
 
 {% block content %}
-    <h1>Du är nu inloggad som : {{ current_user.email }}</h1>
+
 
     <div class="titel">
-        <label class="lab" for="aaa">Choose your child:</label>
+        <label class="title" for="aaa">Välj barn att hantera</label>
     </div>
 
-    <form Name="Form1" Method="POST" Action="{{ url_for('bp_parent.control_post') }}">
-        <div class="boxen">
-                    <select Name="List1" class="combo_users" size="10" id="myCourses">
-                        {% for item in listan %}
-                            <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
-                        {% endfor %}
-                    </select>
 
-                    {% set s_a = active_suspend %}
-                    <div class="buttons">
-                        {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
-                        <button id="shutdown_user"
-                               onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
-{#                                ondblclick="parent_admin()">Suspend/Activate User#}
+
+
+
+        <div  class="boxen">
+            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child')  }}">
+            <select Name="List1" class="combo_users" size="10" id="myCourses">
+                {% for item in listan %}
+                    <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
+                {% endfor %}
+            </select>
+                <div class="buttons">
+
+                        {% set s_a = active_suspend %}
+                        <button class="popup" style=" right:146px;" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
                         </button>
-                    </div>
-{#            <div class="buttons">#}
-{#                <button id="shutdown_user" onclick="myFunction(); parent_admin();" >set time</button>#}
-{#            </div>#}
-    </div>
-    </form>
-    <div id="myPopup" hidden>
 
-        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_post_clock') }}">
+                    </div>
+                </form>
+                <div class="buttons">
+                <button class="popup" onclick="myFunction();" >set time</button>
+                </div>
+                </div>
+            </div>
+
+
+    <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
+    <div style=" height: 50px; width:230px; border-bottom: 1px solid purple;">välj start och slut tid när barnet inte
+        har tillgång till hemsidan</div>
+
+        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_child') }}">
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
             </div>
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="end" style="text-align: center">Slut</label><input class="timed"  id="end" name="end" type="time"/>
-
-
-            <button style="margin-top: 30px">Spara</button>
-            <input class="input is-large" type="text" name="t1" id="txt1" onclick="check" required />
+            </div>
+            <button style="margin-top: 25px">Spara</button>
+            <div hidden>
+            <label for="txt1"></label><input class="input is-large" type="text" name="t1" id="txt1" onclick="check" >
             </div>
         </form>
     </div>
 
 
-
-
+<
 
 <script>
-
     // Script to put the txt from the combobox to the hidden textbox
     // that lets us request from that instead.
     let select = document.getElementById('myCourses');
@@ -70,7 +72,6 @@
     select.onchange = function() {
     input.value = select.value;
 }
-
 </script>
 
 <script>
@@ -89,19 +90,24 @@
 
 
 
-    <script>
-        function parent_admin() {
-            document.getElementById("myCourses").selectedIndex
-                = ""
-
-        }
-    </script>
-
-
+<script>
+    function parent_admin() {
+        document.getElementById("myCourses").selectedIndex
+            = ""
+    }
+</script>
+{% block scripts %}
+{% endblock scripts %}
 
 {% endblock %}
 
-{% block scripts %}
 
 
-{% endblock scripts %}
+
+
+
+
+
+
+
+
