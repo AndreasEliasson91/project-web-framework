@@ -134,3 +134,11 @@ def verify_user_email(email):
 
 def is_user_verified(user_id):
     return user_repository.is_user_verified(user_id)
+
+
+def send_email_password(email):
+    return user_repository.send_email_password(email)
+
+
+def change_user_password(user, password):
+    return user_repository.change_user_password(user, password)
