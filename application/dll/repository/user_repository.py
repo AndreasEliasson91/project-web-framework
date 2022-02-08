@@ -86,8 +86,8 @@ def verify_user_email(email):
     user.verified = True
     user.save()
 
-def change_user_password(user, password):
-    user = user
+def change_user_password(email, password):
+    user = get_user_by_email(email)
     user.password = argon2.using(rounds=12).hash(password)
     user.save()
 

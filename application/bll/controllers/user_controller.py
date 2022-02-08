@@ -140,5 +140,5 @@ def send_email_password(email):
     return user_repository.send_email_password(email)
 
 
-def change_user_password(user, password):
-    return user_repository.change_user_password(user, password)
+def change_user_password(email, password):
+    return user_repository.change_user_password(email, password)
