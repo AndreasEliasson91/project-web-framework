@@ -9,6 +9,68 @@ DIRECTIONS = [
 ]
 
 
+def move(direction, x, y):
+    match direction:
+        case 'north':
+            y -= 1
+        case 'south':
+            y += 1
+        case 'west':
+            x -= 1
+        case 'east':
+            x += 1
+
+    return x, y
+
+
+def difficulty_settings(difficulty):
+    numbers, max_range, negative, decimals = None, None, None, None
+
+    match difficulty:
+        case 1:
+            numbers = [2]
+            max_range = 5
+            negative = False
+            decimals = False
+        case 2:
+            numbers = [2, 3]
+            max_range = 10
+            negative = False
+            decimals = False
+        case 3:
+            numbers = [3]
+            max_range = 12
+            negative = False
+            decimals = False
+        case 4:
+            numbers = [3, 4]
+            max_range = 15
+            negative = True
+            decimals = False
+        case 5:
+            numbers = [4]
+            max_range = 17
+            negative = True
+            decimals = False
+        case 6:
+            numbers = [4, 5]
+            max_range = 20
+            negative = True
+            decimals = True
+        case 7:
+            numbers = [5]
+            max_range = 30
+            negative = True
+            decimals = True
+
+    return {
+        'numbers': numbers,
+        'max_range': max_range,
+        'negative': negative,
+        'decimals': decimals
+    }
+
+
 def write_map(maze, out_file: str):
     """
     Write a map as an SVG (Scalable Vector Graphics) image of the map
@@ -64,17 +126,26 @@ class Maze:
         self.maze_end = (self.num_of_cells_x - 1, self.num_of_cells_y - 1)
         self.maze = [[Cell(x, y, difficulty, operators) for y in range(num_of_cells_y)] for x in range(num_of_cells_x)]
         self.create_maze()
-
-        for row in self.maze:
-            for cell in row:
-                cell.answers = [eval(''.join(str(i) for i in cell.math_problem)) if not wall
-                                else (eval(''.join(str(i) for i in cell.math_problem)) + r.randrange(1, 5)) for wall in
-                                cell.walls.values()]
-
+        self.set_cell_answers()
         write_map(self, filename)
 
     def get_cell(self, x: int, y: int):
         return self.maze[x][y]
+
+    def set_cell_answers(self):
+        for row in self.maze:
+            for cell in row:
+                for wall in cell.walls.values():
+                    if not wall:
+                        answer = eval(''.join(str(i) for i in cell.math_problem))
+                        if answer % 1 != 0:
+                            answer = round(answer, 3)
+                    else:
+                        answer = eval(''.join(str(i) for i in cell.math_problem)) + r.randrange(1, cell.settings['max_range'])
+                        if answer % 1 != 0:
+                            answer = round(answer, 3)
+
+                    cell.answers.append(answer)
 
     def get_valid_neighbours(self, cell):
         """
@@ -135,10 +206,29 @@ class Cell:
             'east': True,
             'west': True
         }
-        numbers = [r.randrange(1, 10) for _ in range(difficulty)]
-        operators = [r.choice(operator_list) for _ in range(len(numbers) - 1)]
-        self.math_problem = [i for i in itertools.chain.from_iterable(itertools.zip_longest(numbers, operators)) if i is not None]
-        self.answers = None
+        self.math_problem = None
+        self.answers = []
+        self.settings = difficulty_settings(difficulty)
+        self.set_math_problem(operator_list)
+
+    def set_math_problem(self, operator_list):
+
+        def set_up():
+            numbers = [r.randrange(1, self.settings['max_range']) for _ in range(r.choice(self.settings['numbers']))]
+            operators = [r.choice(operator_list) for _ in range(len(numbers) - 1)]
+            problem = [i for i in itertools.chain.from_iterable(itertools.zip_longest(numbers, operators)) if i is not None]
+            ans = eval(''.join(str(i) for i in problem))
+            return problem, ans
+
+        self.math_problem, answer = set_up()
+
+        if not self.settings['negative'] and not self.settings['decimals']:
+            while answer < 0 or answer % 1 != 0:
+                self.math_problem, answer = set_up()
+
+        elif not self.settings['decimals']:
+            while answer % 1 != 0:
+                self.math_problem, answer = set_up()
 
     def surrounded_by_walls(self) -> bool:
         return all(self.walls.values())

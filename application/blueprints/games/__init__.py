@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, redirect, url_for, request
 from application.bll.controllers import game_controller, user_controller, image_controller
 
 maze = None
-maze_position_x = None
-maze_position_y = None
+position_x = None
+position_y = None
 
 bp_games = Blueprint('bp_games',
                      __name__,
@@ -40,7 +40,7 @@ def difficulty_get():
 
 @bp_games.post('/math-maze/set-difficulty')
 def difficulty_post():
-    global maze, maze_position_x, maze_position_y
+    global maze, position_x, position_y
 
     from application.bll.math_maze import Maze
     from random import randrange
@@ -53,33 +53,26 @@ def difficulty_post():
     maze = Maze(int(maze_size), int(maze_size), int(difficulty), operators, 'application/static/img-game/maze.svg')
 
     #  Set starting point
-    maze_position_x, maze_position_y = randrange(0, (int(maze_size) - 1)), randrange(0, (int(maze_size) - 1))
+    position_x, position_y = randrange(0, (int(maze_size) - 1)), randrange(0, (int(maze_size) - 1))
 
     return redirect(url_for('bp_games.maze_get'))
 
 
 @bp_games.get('/math-maze')
 def maze_get():
-    global maze, maze_position_x, maze_position_y
+    global maze, position_x, position_y
 
-    return render_template('math_maze.html', current_location=maze.get_cell(*(maze_position_x, maze_position_y)))
+    return render_template('math_maze.html', current_location=maze.get_cell(*(position_x, position_y)))
 
 
 @bp_games.post('/math-maze')
 def maze_post():
-    global maze, maze_position_x, maze_position_y
+    global maze, position_x, position_y
+
+    from application.bll.math_maze import move
 
     direction = request.form.get('direction')
-    if not maze.get_cell(*(maze_position_x, maze_position_y)).walls[direction]:
+    if not maze.get_cell(*(position_x, position_y)).walls[direction]:
+        position_x, position_y = move(direction, position_x, position_y)
 
-        match direction:
-            case 'north':
-                maze_position_y -= 1
-            case 'south':
-                maze_position_y += 1
-            case 'west':
-                maze_position_x -= 1
-            case 'east':
-                maze_position_x += 1
-
-    return redirect(url_for('bp_games.maze_get', current_location=maze.get_cell(*(maze_position_x, maze_position_y))))
+    return redirect(url_for('bp_games.maze_get', current_location=maze.get_cell(*(position_x, position_y))))

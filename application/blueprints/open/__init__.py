@@ -1,6 +1,5 @@
 from itsdangerous import SignatureExpired, URLSafeTimedSerializer
 
-from application import SECRET_KEY
 from application.bll.controllers import admin_controller, user_controller
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import logout_user, current_user
@@ -66,6 +65,7 @@ def forgot_post():
 
 @bp_open.get('/forgot_password/<token>')
 def forgot_password_get(token):
+    from application.settings import SECRET_KEY
     s = URLSafeTimedSerializer([SECRET_KEY])
     try:
         email = s.loads(token, salt='password', max_age=3600)
