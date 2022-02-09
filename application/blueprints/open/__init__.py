@@ -1,10 +1,6 @@
-from itsdangerous import SignatureExpired, URLSafeTimedSerializer
-
-from application.bll.controllers import admin_controller, user_controller
+from application.bll.controllers import user_controller
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import logout_user, current_user
-
-from application.bll.controllers.user_controller import time_is_right, get_user_by_email
 
 bp_open = Blueprint('bp_open',
                     __name__,
@@ -24,6 +20,8 @@ def signin_get():
 
 @bp_open.post('/signin')
 def signin_post():
+    from application.bll.controllers.admin_controller import is_user_active
+
     user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
 
@@ -31,9 +29,9 @@ def signin_post():
         flash('Username or password is incorrect')
         return redirect(url_for('bp_open.signin_get')) 
 
-    if admin_controller.is_user_active(user_id):
+    if is_user_active(user_id):
         if '@' not in user_id:
-            if time_is_right(user_id):
+            if user_controller.time_is_right(user_id):
                 flash('You cannot log in at this time')
                 return redirect(url_for('bp_open.signin_get'))
         user_controller.signin_user(user_id)
@@ -47,25 +45,30 @@ def suspended():
     return render_template('suspended.html')
 
 
-@bp_open.get('/signin/forgot_password')
+@bp_open.get('/signin/forgot-password')
 def forgot_get():
     return render_template('forgot_password.html')
 
 
-@bp_open.post('/signin/forgot_password')
+@bp_open.post('/signin/forgot-password')
 def forgot_post():
+    from application.bll.mail import send_email_password
+
     email = request.form.get('email').lower()
     user = user_controller.get_user(email=email)
     if user is not None:
-        user_controller.send_email_password(email)
+        send_email_password(email)
         flash('Emailet skickades!')
     else:
-        flash('Det gick inte att skicka till e postaddressen')
+        flash('Det gick inte att skicka till e-postadressen')
     return redirect(url_for('bp_open.signin_get'))
+
 
 @bp_open.get('/forgot_password/<token>')
 def forgot_password_get(token):
     from application.settings import SECRET_KEY
+    from itsdangerous import SignatureExpired, URLSafeTimedSerializer
+
     s = URLSafeTimedSerializer([SECRET_KEY])
     try:
         email = s.loads(token, salt='password', max_age=3600)
@@ -81,7 +84,7 @@ def forgot_password_post(token):
     password = request.form.get('password')
     user_controller.change_user_password(email, password)
     flash('Lösenordet ändrades!')
-    return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+    return redirect(url_for('bp_user.profile_get', user_id=current_user._id, token=token))
 
 
 @bp_open.get('/signup')
@@ -91,6 +94,8 @@ def signup_get():
 
 @bp_open.post('/signup')
 def signup_post():
+    from application.bll.mail import send_email_registration
+
     email = request.form.get('email').lower()
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
@@ -102,13 +107,15 @@ def signup_post():
         return redirect(url_for('bp_open.signup_get'))
 
     user_controller.register_adult(email, password, birth_date)
-    user_controller.send_email_registration(email)
+    send_email_registration(email)
     return redirect(url_for('bp_open.index'))
 
 
 @bp_open.get('/verified/<token>')
 def verified_get_link(token):
     from application.settings import SECRET_KEY
+    from itsdangerous import SignatureExpired, URLSafeTimedSerializer
+
     s = URLSafeTimedSerializer([SECRET_KEY])
     try:
         email = s.loads(token, salt='email-confirm', max_age=86400)
@@ -116,8 +123,6 @@ def verified_get_link(token):
         return '<h1>The token is expired!</h1>'
     user_controller.verify_user_email(email)
     return render_template('email_activiation.html')
-
-
 
 
 @bp_open.get('/about')

@@ -1,8 +1,6 @@
 import json
 
-from application.bll.controllers import admin_controller
-from application.bll.controllers.admin_controller import suspend_user
-from application.bll.controllers.user_controller import register_child, get_user, update_user_information
+from application.bll.controllers import user_controller
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 
@@ -26,44 +24,42 @@ def register_child_post():
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
-    user = get_user(username=username)
+    user = user_controller.get_user(username=username)
 
     if user is not None:
         flash('En användare med detta användarnamn existerar redan')
         return redirect(url_for('bp_parent.register_child_get'))
 
-    register_child(username, password, birth_date)
-    child = get_user(username=username)
+    user_controller.register_child(username, password, birth_date)
+    child = user_controller.get_user(username=username)
 
     current_user.children.append(child._id)
-    update_user_information(current_user)
+    user_controller.update_user_information(current_user)
 
     return redirect(url_for('bp_open.index'))
 
 
 @bp_parent.get('/control')
 @login_required
-def control_get():
-    listan = get_all_children_from_db()
-    return render_template('parent_admin.html', listan=listan)
+def control_child_get():
+    return render_template('parent_admin.html',
+                           listan=[value for user in user_controller.get_all_users() for key, value in user.__dict__.items() if key == 'username'])
 
 
 @bp_parent.post('/control')
 @login_required
-def control_child():
+def control_child_post():
+    from application.bll.controllers.admin_controller import child_control_clock, suspend_user
 
     if request.form.get('List1'):
         child = request.form.get('List1')
-        child_status = suspend_user(child)
-        if child_status == 'activated':
-            status_on_user = 'suspended'
-        else:
-            status_on_user = "activated"
-        listan = get_all_children_from_db()
-        return render_template('parent_admin.html', listan=listan, active_suspend=json.dumps(status_on_user))
+        return render_template('parent_admin.html',
+                               listan=[value for user in user_controller.get_all_users() for key, value in user.__dict__.items() if key == 'username'],
+                               active_suspend=json.dumps(suspend_user(child)))
     else:
         start = request.form.get('start')
         end = request.form.get('end')
         child_id = request.form.get('t1')
-        admin_controller.child_control_clock(child_id, start, end)
-        return render_template('parent_admin.html', listan=get_all_children_from_db())
+        child_control_clock(child_id, start, end)
+        return render_template('parent_admin.html',
+                               listan=[value for user in user_controller.get_all_users() for key, value in user.__dict__.items() if key == 'username'])

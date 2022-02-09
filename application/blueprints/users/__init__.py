@@ -1,7 +1,7 @@
+from application.bll.controllers import image_controller, user_controller
 from bson import ObjectId
 from flask import Blueprint, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
-from application.bll.controllers import image_controller, user_controller
 
 bp_user = Blueprint('bp_user',
                     __name__,

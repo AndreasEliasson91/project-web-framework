@@ -1,9 +1,7 @@
 import datetime
 import random
 
-
 from application.dll.repository import user_repository, image_repository
-from flask_login import login_user
 from passlib.hash import argon2
 from typing import Optional
 
@@ -95,6 +93,8 @@ def verify_user(user_id, password):
 
 
 def signin_user(user_id):
+    from flask_login import login_user
+
     if check_parent_status(user_id):
         user = get_user(eamil=user_id)
     else:
