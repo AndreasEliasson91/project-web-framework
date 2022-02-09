@@ -22,3 +22,8 @@ def index():
                     score['avatar'] = image_controller.get_profile_picture(user)
 
     return render_template('games_index_hs.html', games=games)
+
+
+@bp_games.get('/hitta-ordet')
+def find_the_word_game():
+    return render_template('find_the_word_game.html')
