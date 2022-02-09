@@ -22,12 +22,13 @@ def game_sentances():
             'answer1': 'Hemma',
             'answer2': 'Hos grannen'
         },
-         {
-            'text': 'this is not the best text',
-            'answer': 'True',
-            'answer1': 'best',
-            'answer2': 'Not true'
-        }
+        {
+            'text': 'Kalle har en grön boll som han brukar leka med på gården',
+            'question': 'Vilken färg har kalles boll?',
+            'answer': 'Grön',
+            'answer1': 'Blå',
+            'answer2': 'Grå'
+        },
 
     ]
 

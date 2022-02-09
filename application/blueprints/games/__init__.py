@@ -1,6 +1,6 @@
 import random
 
-from flask import Blueprint, render_template, url_for, redirect
+from flask import Blueprint, render_template, url_for, redirect, request, flash
 from application.bll.controllers import game_controller, user_controller, image_controller
 from application.blueprints.open import bp_open
 
@@ -46,5 +46,9 @@ def read_swe_get():
 @bp_games.post('/reading_swedish')
 def read_swe_post():
     global i
-    i += 1
-    return redirect(url_for("bp_games.read_swe_get"))
+    if request.form.get('option') == 'right':
+        # ('Det var rätt! bra jobbat')
+        i += 1
+        return redirect(url_for("bp_games.read_swe_get"))
+    else:
+        return redirect(url_for("bp_games.read_swe_get"))
