@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-from application.bll.controllers import game_controller, user_controller, image_controller
 
 maze = None
 position_x = None
@@ -14,6 +13,8 @@ bp_games = Blueprint('bp_games',
 
 @bp_games.get('/')
 def index():
+    from application.bll.controllers import game_controller, user_controller, image_controller
+
     games = game_controller.get_all_games()
     users = user_controller.get_all_users()
 
