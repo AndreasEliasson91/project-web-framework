@@ -1,10 +1,6 @@
-import os
-
-from bson import ObjectId
-from flask import url_for
 from application.dll.db import images
-from application.dll.db.models import Image, User, Game
-from application.dll.repository import user_repository
+from application.dll.db.models import Image
+from bson import ObjectId
 
 
 def get_all_image_ids():
@@ -12,24 +8,22 @@ def get_all_image_ids():
 
 
 def get_profile_picture(user):
-    file = images.get(user.avatar).read()
-    with open(f'application/static/img-profile/{str(user._id)}.png', 'wb') as bin_file:
-        bin_file.write(file)
-    return url_for('static', filename=f'img-profile/{str(user._id)}.png')
+    return images.get(user.avatar).read()
 
 
-def upload_profile_picture(user, file):
-    file.save(os.path.join('application/static/img-profile/', f'{str(user._id)}.png'))
+def get_game_image(game):
+    return images.get(game.content['main_image']).read()
 
-    with open(f'application/static/img-profile/{str(user._id)}.png', 'rb') as in_file:
-        contents = in_file.read()
+
+def upload_profile_picture(user, content):
+    from application.dll.repository import user_repository
 
     for image in Image.all():
         if image.filename == f'{str(user._id)}.png':
             images.delete(image._id)
             break
 
-    images.put(contents, filename=f'{str(user._id)}.png')
+    images.put(content, filename=f'{str(user._id)}.png')
     image_id = Image.find(filename=f'{str(user._id)}.png').first_or_none()._id
 
     if not user.parent:
@@ -41,31 +35,21 @@ def upload_profile_picture(user, file):
             user_repository.update_user_information(parent)
 
     user.avatar = image_id
-    User.save(user)
+    user_repository.update_user_information(user)
 
 
-def get_game_image(game, suffix):
-    file = images.get(game.content['main_image']).read()
-    with open(f'application/static/img-game/{str(game._id)}{suffix}.png', 'wb') as bin_file:
-        bin_file.write(file)
-    return url_for('static', filename=f'img-game/{str(game._id)}{suffix}.png')
+def upload_game_image(game, suffix, content):
+    from application.dll.repository import game_repository
 
+    for image in Image.all():
+        if image.filename == f'{str(game._id)}{suffix}.png':
+            images.delete(image._id)
+            break
 
-# def upload_game_image(game, suffix, file):
-#     file.save(os.path.join('application/static/img-game/', f'{str(game._id)}{suffix}.png'))
-#
-#     with open(f'application/static/img-game/{str(game._id)}{suffix}.png', 'rb') as in_file:
-#         contents = in_file.read()
-#
-#     for image in Image.all():
-#         if image.filename == f'{str(game._id)}{suffix}.png':
-#             images.delete(image._id)
-#             break
-#
-#     images.put(contents, filename=f'{str(game._id)}{suffix}.png')
-#     image_id = Image.find(filename=f'{str(game._id)}{suffix}.png').first_or_none()._id
-#
-#     if 'main' in suffix:
-#         game.content['main_image'] = image_id
-#
-#     Game.save(game)
+    images.put(content, filename=f'{str(game._id)}{suffix}.png')
+    image_id = Image.find(filename=f'{str(game._id)}{suffix}.png').first_or_none()._id
+
+    if 'main' in suffix:
+        game.content['main_image'] = image_id
+
+    game_repository.update_game(game)

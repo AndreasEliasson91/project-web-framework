@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title%}A-Maze-Ing-Game{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/maze.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="column is-4 is-offset-4  has-text-centered">
+        <div class="container">
+            <h1 class="main-text" style="color: #800080FF;">Skapa En Ny Labyrint</h1>
+            <form action="{{ url_for('bp_games.difficulty_post')}}" method="POST">
+                <div style="width: 100%;">
+                    <br><br>
+                    <label for="mazeSize" class="subtitle">Hur stor ska labyrinten vara?</label>
+                    <input type="range" min="2" max="8" value="5" class="slider" id="mazeSize" name="size">
+                    <h1 class="subtitle" id="size"></h1>
+                    <br><br><br>
+                </div>
+                <div style="width: 100%;">
+                    <label for="mazeDifficulty" class="subtitle">Vilken svårighetsgrad?</label>
+                    <input type="range" min="1" max="7" value="1" class="slider" id="mazeDifficulty" name="difficulty">
+                    <h1 class="subtitle" id="difficulty"></h1>
+                    <br><br><br>
+                </div>
+                <div class="container" style="width: 100%;">
+                    <label for="operators[]" class="subtitle">Vilka matematiktecken vill du öva på?</label>
+                    <div class="container">
+                        <label for="addition"><img src="{{ url_for('static', filename='img-game/math-maze/addition.png') }}" style="width: 15px;"></label>
+                        <input type="checkbox" value="+" id="addition" name="operators[]" style="width: 20px; height: 20px; margin: 5px" checked>
+                    </div>
+                    <div class="container">
+                        <label for="subtraction"><img src="{{ url_for('static', filename='img-game/math-maze/subtraction.png') }}" style="width: 15px;"></label>
+                        <input type="checkbox" value="-" id="subtraction" name="operators[]" style="width: 20px; height: 20px; margin: 5px">
+                    </div>
+                    <div class="container">
+                        <label for="multiplication"><img src="{{ url_for('static', filename='img-game/math-maze/multiplication.png') }}" style="width: 15px;"></label>
+                        <input type="checkbox" value="*" id="multiplication" name="operators[]" style="width: 20px; height: 20px; margin: 5px">
+                    </div>
+                    <div class="container">
+                        <label for="division"><img src="{{ url_for('static', filename='img-game/math-maze/division.png') }}" style="width: 15px;"></label>
+                        <input type="checkbox" value="/" id="division" name="operators[]" style="width: 20px; height: 20px; margin: 5px">
+                    </div>
+                    <br><br><br>
+                </div>
+                <button class="main-text button-maze">Skapa Labyrint</button>
+            </form>
+        </div>
+    </div>
+
+
+{% block script %}
+    <script>
+        let size = document.getElementById('mazeSize');
+        let difficulty = document.getElementById('mazeDifficulty');
+        let size_output = document.getElementById('size');
+        let difficulty_output = document.getElementById('difficulty');
+
+        size_output.innerHTML = `${size.value} x ${size.value}`;
+        difficulty_output.innerHTML = `Nivå: ${difficulty.value}`;
+
+        size.oninput = function() {
+            size_output.innerHTML = `${this.value} x ${this.value}`;
+        }
+        difficulty.oninput = function() {
+                difficulty_output.innerHTML = `Nivå: ${difficulty.value}`;
+        }
+    </script>
+{% endblock %}
+{% endblock %}
