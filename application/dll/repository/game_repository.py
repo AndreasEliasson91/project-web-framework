@@ -16,14 +16,17 @@ def update_game(game):
 def game_sentances():
     cards =  [
         {
-            'text': 'this is the best text',
-            'wanswer': 'best',
-            'ranswer': 'not best'
+            'text': 'Kalle har en grön boll som han brukar leka med på gården',
+            'question': 'Vart brukar kalle leka?',
+            'answer': 'På gården',
+            'answer1': 'Hemma',
+            'answer2': 'Hos grannen'
         },
          {
             'text': 'this is not the best text',
-            'wanswer': 'True',
-            'ranswer': 'Not true'
+            'answer': 'True',
+            'answer1': 'best',
+            'answer2': 'Not true'
         }
 
     ]

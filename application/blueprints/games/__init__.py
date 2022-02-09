@@ -32,6 +32,7 @@ def index():
     return render_template('games_index_hs.html', games=games)
 
 
+
 @bp_games.get('/reading_swedish')
 def read_swe_get():
     global i
