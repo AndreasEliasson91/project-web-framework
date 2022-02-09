@@ -1,4 +1,4 @@
-from application.dll.repository. image_repository import user_repository
+from application.dll.repository import user_repository
 
 
 def suspend_user(user):

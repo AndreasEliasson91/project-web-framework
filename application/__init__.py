@@ -35,11 +35,11 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
-        from application.bll.controllers.user_controller import get_user_by_email, get_user_by_username
-        if '@' in user_id:
-            return get_user_by_email(user_id)
+        from application.bll.controllers.user_controller import check_parent_status, get_user
+        if check_parent_status(user_id):
+            return get_user(email=user_id)
         else:
-            return get_user_by_username(user_id)
+            return get_user(username=user_id)
 
     return _app
 

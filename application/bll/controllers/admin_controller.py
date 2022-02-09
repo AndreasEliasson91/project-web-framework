@@ -3,7 +3,7 @@ from application.bll.controllers.user_controller import check_parent_status
 
 
 def suspend_user(user_id):
-    from application.dll.repository.user_repository import get_user
+    from application.dll.repository.user_controller import get_user
 
     if check_parent_status(user_id):
         user = get_user(email=user_id)
@@ -14,7 +14,7 @@ def suspend_user(user_id):
 
 
 def is_user_active(user_id):
-    from application.dll.repository.user_repository import get_user
+    from application.dll.repository.user_controller import get_user
 
     if check_parent_status(user_id):
         user = get_user(email=user_id)
@@ -26,4 +26,3 @@ def is_user_active(user_id):
 
 def child_control_clock(child_id, start, end):
     return admin_repository.child_control_clock(child_id, start, end)
-

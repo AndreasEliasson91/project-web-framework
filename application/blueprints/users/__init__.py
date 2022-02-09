@@ -32,7 +32,7 @@ def profile_get(user_id):
         children = []
 
         for child in current_user.children:
-            c = user_controller.get_user_by_user_id(child)
+            c = user_controller.get_user(_id=child)
             children.append({
                 '_id': child,
                 'username': c.username,
@@ -74,13 +74,13 @@ def profile_post(user_id):
 @bp_user.get('/view-profile/<user_id>')
 @login_required
 def view_profile_get(user_id):
-    user = user_controller.get_user_by_user_id(user_id)
+    user = user_controller.get_user(_id=user_id)
 
     if 'children' in user.__dict__:
         children = []
 
         for child in user.children:
-            c = user_controller.get_user_by_user_id(child)
+            c = user_controller.get_user(_id=child)
             children.append({
                 '_id': child,
                 'username': c.username,

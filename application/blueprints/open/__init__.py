@@ -55,7 +55,7 @@ def forgot_get():
 @bp_open.post('/signin/forgot_password')
 def forgot_post():
     email = request.form.get('email').lower()
-    user = user_controller.get_user_by_email(email)
+    user = user_controller.get_user(email=email)
     if user is not None:
         user_controller.send_email_password(email)
         flash('Emailet skickades!')
@@ -95,7 +95,7 @@ def signup_post():
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
-    user = user_controller.get_user_by_email(email)
+    user = user_controller.get_user(email=email)
 
     if user is not None:
         flash('Denna email är redan registrerad')

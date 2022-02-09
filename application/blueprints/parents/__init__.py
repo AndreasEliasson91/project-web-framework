@@ -2,8 +2,7 @@ import json
 
 from application.bll.controllers import admin_controller
 from application.bll.controllers.admin_controller import suspend_user
-from application.bll.controllers.parent_admin import get_all_children_from_db
-from application.bll.controllers.user_controller import register_child, get_user_by_username, update_user_information
+from application.bll.controllers.user_controller import register_child, get_user, update_user_information
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
 
@@ -27,14 +26,14 @@ def register_child_post():
     password = request.form.get('password')
     birth_date = request.form.get('birth_date')
 
-    user = get_user_by_username(username)
+    user = get_user(username=username)
 
     if user is not None:
         flash('En användare med detta användarnamn existerar redan')
         return redirect(url_for('bp_parent.register_child_get'))
 
     register_child(username, password, birth_date)
-    child = get_user_by_username(username)
+    child = get_user(username=username)
 
     current_user.children.append(child._id)
     update_user_information(current_user)
