@@ -456,14 +456,36 @@ Datum: 08-02-2022 09:00
 Närvarande: Andreas, Lenny och Anna, Markus
 
 Vad har gjorts sen sist:
-Anna och lenny har jobbat med sitt memory spel, fixat så att poäng sparas ner i databasen.
-Markus blev färdig med email confirmation och blev nästan klar med forgot password.
-Andreas fixade en svårighetsgrads sida för math mazen, där man kan välja hur svårt man vill att det ska vara och vilket räknesätt man ska använda.
+- Anna och lenny har jobbat med sitt memory spel, fixat så att poäng sparas ner i databasen.
+- Markus blev färdig med email confirmation och blev nästan klar med forgot password.
+- Andreas fixade en svårighetsgrads sida för math mazen, där man kan välja hur svårt man vill att det ska vara och vilket räknesätt man ska använda.
 
 Att göra idag:
-Anna och lenny skall försöka länka ihop poängen från memory spelet till profilsidan och sedan börja med ett stavningsspel.
-Andreas skulle välja ett nytt kort idag för att få en paus ifrån spelet.
-Markus Ska bli färdig med forgot password och sedan gå på något nytt kort, kanske ett spel.
+- Anna och lenny skall försöka länka ihop poängen från memory spelet till profilsidan och sedan börja med ett stavningsspel.
+- Andreas skulle välja ett nytt kort idag för att få en paus ifrån spelet.
+- Markus Ska bli färdig med forgot password och sedan gå på något nytt kort, kanske ett spel.
+
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 09-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Markus
+
+Vad har gjorts sen sist:
+- Lenny och Anna gjorde färdigt memory spelet och byggde om autosparnings rutningen. började bygga om profil sidan lite för att se poängen som är länkade med till spelet där.
+- Markus blev färdig med forgot password sidan och började med att göra ett läsförståelse spel på svenska.
+- Andreas blev färdig med sitt spel igår och mergade in det i projketet.
+Att göra idag:
+- lenny ska börja med ett word spel, (gissa ordet)
+- Markus jobbar vidare med spelet.
+- Andreas ska gå igenom filer i projketet och går igenom alla css filer. Och göra lite bug fixing med spelet.
 
 
 Anteckningar:
