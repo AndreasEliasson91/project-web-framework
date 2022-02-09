@@ -1,6 +1,5 @@
 from itsdangerous import SignatureExpired, URLSafeTimedSerializer
 
-from application import SECRET_KEY
 from application.bll.controllers import admin_controller, user_controller
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import logout_user, current_user
@@ -28,7 +27,6 @@ def signin_post():
     user_id = request.form.get('user_id').lower()
     password = request.form.get('password')
 
-
     if not user_controller.verify_user(user_id, password):
         flash('Username or password is incorrect')
         return redirect(url_for('bp_open.signin_get')) 
@@ -40,17 +38,8 @@ def signin_post():
                 return redirect(url_for('bp_open.signin_get'))
             user_controller.signin_user(user_id)
             return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
-
-        if '@' in user_id:
-            if not user_controller.is_user_verified(user_id):
-                flash('You need to check your email to verify your account')
-                return redirect(url_for('bp_open.signin_get'))
-            user_controller.signin_user(user_id)
-            return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
-
     else:
         return redirect(url_for('bp_open.suspended'))
-
 
 
 @bp_open.get('/suspended')
@@ -76,6 +65,7 @@ def forgot_post():
 
 @bp_open.get('/forgot_password/<token>')
 def forgot_password_get(token):
+    from application.settings import SECRET_KEY
     s = URLSafeTimedSerializer([SECRET_KEY])
     try:
         email = s.loads(token, salt='password', max_age=3600)

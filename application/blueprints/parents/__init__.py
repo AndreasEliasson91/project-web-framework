@@ -51,7 +51,6 @@ def control_get():
 
 @bp_parent.post('/control')
 @login_required
-
 def control_child():
 
     if request.form.get('List1'):
