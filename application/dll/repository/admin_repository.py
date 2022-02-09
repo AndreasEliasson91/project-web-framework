@@ -1,30 +1,15 @@
-from application.dll.db.models import User
+from application.dll.repository. image_repository import user_repository
 
 
-def suspend_email_user(email):
-    user_status = "Suspended"
-    # Here we are looking for the selected users email, and take out the
-    # the user dict.
-    user1 = User.find(email=email).first_or_none()
-
-    
-    if user1 is not None:
-        if user1.activated == True:
-            user_status = "Suspended"
-            user1.activated = not user1.activated
-            user1.save()
-        else:
-            user_status = "Activated"
-            user1.activated = not user1.activated
-            user1.save()
-    return user_status
+def suspend_user(user):
+    if user is not None:
+        user.activated = not user.activated
+        user_repository.update_user_information(user)
+        return 'aktiverad' if user.activated else 'avstängd'
 
 
-
-def is_user_active(username, selected_val):
-    if selected_val == 1:
-        user = User.find(email=username).first_or_none()
-    else:
-        user = User.find(username=username).first_or_none()
-    return user.activated
-
+def child_control_clock(child_id, start, end):
+    child = user_repository.get_user(username=child_id)
+    child.time_start = start
+    child.time_end = end
+    user_repository.update_user_information(child)

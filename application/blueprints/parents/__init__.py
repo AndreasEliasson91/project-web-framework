@@ -1,8 +1,8 @@
 import json
 
-from application.bll.controllers.child_suspend_user import suspend_child
+from application.bll.controllers import admin_controller
+from application.bll.controllers.admin_controller import suspend_user
 from application.bll.controllers.parent_admin import get_all_children_from_db
-from application.bll.controllers.parent_control import child_control_clock
 from application.bll.controllers.user_controller import register_child, get_user_by_username, update_user_information
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_required, current_user
@@ -55,7 +55,7 @@ def control_child():
 
     if request.form.get('List1'):
         child = request.form.get('List1')
-        child_status = suspend_child(child)
+        child_status = suspend_user(child)
         if child_status == 'activated':
             status_on_user = 'suspended'
         else:
@@ -65,6 +65,6 @@ def control_child():
     else:
         start = request.form.get('start')
         end = request.form.get('end')
-        xx = request.form.get('t1')
-        child_control_clock(xx, start, end)
+        child_id = request.form.get('t1')
+        admin_controller.child_control_clock(child_id, start, end)
         return render_template('parent_admin.html', listan=get_all_children_from_db())

@@ -31,13 +31,13 @@ def signin_post():
         flash('Username or password is incorrect')
         return redirect(url_for('bp_open.signin_get')) 
 
-    if admin_controller.is_user_active(user_id, 1 if '@' in user_id else 2):
+    if admin_controller.is_user_active(user_id):
         if '@' not in user_id:
             if time_is_right(user_id):
                 flash('You cannot log in at this time')
                 return redirect(url_for('bp_open.signin_get'))
-            user_controller.signin_user(user_id)
-            return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
+        user_controller.signin_user(user_id)
+        return redirect(url_for('bp_user.profile_get', user_id=current_user._id))
     else:
         return redirect(url_for('bp_open.suspended'))
 
@@ -108,6 +108,7 @@ def signup_post():
 
 @bp_open.get('/verified/<token>')
 def verified_get_link(token):
+    from application.settings import SECRET_KEY
     s = URLSafeTimedSerializer([SECRET_KEY])
     try:
         email = s.loads(token, salt='email-confirm', max_age=86400)

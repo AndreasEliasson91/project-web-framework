@@ -1,5 +1,5 @@
 import json
-from application.bll.controllers import admin_controller
+from application.bll.controllers.user_controller import get_all_users
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 
@@ -20,21 +20,16 @@ def before_request():
 @login_required
 def admin_get():
     return render_template('admin.html',
-                           user_list=admin_controller.get_all_users_from_db())
+                           user_list=[value for user in get_all_users() for key, value in user.__dict__.items() if key == 'email'])
 
 
 @bp_admin.post('/')
 @login_required
 def admin_post():
+    from application.bll.controllers.admin_controller import suspend_user
     # Suspendera användaren eller aktivera
     email = request.form.get('List1')
-    user_status = admin_controller.suspend_email_user(email)
-    if user_status == "Activated":
-        user_status = "suspended"
-    else:
-        user_status = "activated"
-
     return render_template('admin.html',
-                           user_list=admin_controller.get_all_users_from_db(),
-                           active_suspend=json.dumps(user_status))
+                           user_list=[value for user in get_all_users() for key, value in user.__dict__.items() if key == 'email'],
+                           active_suspend=json.dumps(suspend_user(email)))
 

@@ -142,3 +142,9 @@ def send_email_password(email):
 
 def change_user_password(email, password):
     return user_repository.change_user_password(email, password)
+
+
+def check_parent_status(user_id):
+    if '@' in user_id:
+        return True
+    return False

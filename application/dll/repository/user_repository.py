@@ -7,7 +7,7 @@ from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from bson import ObjectId
 from passlib.handlers.argon2 import argon2
 
-from application import create_app, SECRET_KEY
+
 from application.dll.db.models import User
 
 
@@ -33,6 +33,12 @@ def get_user_by_username(username):
 
 def get_user_by_user_id(user_id):
     return User.find(_id=ObjectId(user_id)).first_or_none()
+
+
+def get_user(**kwargs):
+    if '_id' in kwargs:
+        kwargs.value = ObjectId(kwargs.value)
+    return User.find(**kwargs).first_or_none()
 
 
 def get_parent_from_child_id(_id):
@@ -70,7 +76,7 @@ def time_is_right(user_id):
 
 
 def send_email_registration(email):
-
+    from application.settings import SECRET_KEY
 
     mail = Mail()
     s = URLSafeTimedSerializer([SECRET_KEY])
@@ -101,6 +107,8 @@ def is_user_verified(user_id):
 
 
 def send_email_password(email):
+    from application.settings import SECRET_KEY
+
     mail = Mail()
     s = URLSafeTimedSerializer([SECRET_KEY])
     token = s.dumps(email, salt='password')
