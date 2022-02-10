@@ -3,6 +3,7 @@ from bson import ObjectId
 from flask import Blueprint, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
 
+
 bp_user = Blueprint('bp_user',
                     __name__,
                     template_folder='templates',
@@ -14,6 +15,7 @@ bp_user = Blueprint('bp_user',
 @login_required
 def friends_get():
     friends = []
+
     for friend in user_controller.get_user_friends(current_user):
         friends.append({
             '_id': friend._id,
