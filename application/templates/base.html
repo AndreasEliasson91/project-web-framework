@@ -45,7 +45,7 @@
                 </button>
                 <div class="dropdown-content">
                 {% if current_user.parent  and current_user.children|length > 0 %}
-                    <a class="navitem" href="{{ url_for('bp_parent.control_get') }}">Dina Barn</a>
+                    <a class="navitem" href="{{ url_for('bp_parent.control_child_get') }}">Dina Barn</a>
                 {% endif %}
                     <a class="navitem" href="{{ url_for('bp_parent.register_child_get') }}">Lägg till barn</a>
                 </div>
