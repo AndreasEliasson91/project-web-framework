@@ -96,7 +96,7 @@ def signin_user(user_id):
     from flask_login import login_user
 
     if check_parent_status(user_id):
-        user = get_user(eamil=user_id)
+        user = get_user(email=user_id)
     else:
         user = get_user(username=user_id)
 
@@ -107,7 +107,7 @@ def signin_user(user_id):
 
 
 def get_user_friends(current_user):
-    return [user for user in get_all_users()  for friend in current_user.friends if user._id == friend]
+    return [user for user in get_all_users() for friend in current_user.friends if user._id == friend]
 
 
 def time_is_right(user_id):
