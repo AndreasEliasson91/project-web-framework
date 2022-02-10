@@ -7,3 +7,4 @@ __pycache__/
 application/temp/
 application/static/img/temp/
 application/config.cfg
+/docker_files/
