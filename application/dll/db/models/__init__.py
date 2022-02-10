@@ -1,5 +1,3 @@
-from abc import ABC
-
 from application.dll.db import db
 from application.dll.db.document import Document
 

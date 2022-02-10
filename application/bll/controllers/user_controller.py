@@ -2,10 +2,20 @@ import datetime
 import random
 
 from application.dll.repository import user_repository, image_repository
-from flask_login import login_user
 from passlib.hash import argon2
 from typing import Optional
-from werkzeug.security import check_password_hash
+
+
+def get_user(**kwargs):
+    return user_repository.get_user(**kwargs)
+
+
+def get_all_users():
+    return user_repository.get_all_users()
+
+
+def update_user_information(user):
+    return user_repository.update_user_information(user)
 
 
 def register_adult(email, password, birth_date):
@@ -32,7 +42,7 @@ def register_adult(email, password, birth_date):
         }
     }
 
-    user_repository.register_adult(adult)
+    user_repository.register_user(adult)
 
 
 def register_child(username, password, birth_date: Optional):
@@ -59,34 +69,16 @@ def register_child(username, password, birth_date: Optional):
         birth_date = birth_date.split('-')
         child['birth_date'] = datetime.datetime(int(birth_date[0]), int(birth_date[1]), int(birth_date[2]))
 
-    user_repository.register_child(child)
-
-
-def get_all_users():
-    return user_repository.get_all_users()
-
-
-def update_user_information(user):
-    return user_repository.update_user_information(user)
-
-
-def get_user_by_email(email):
-    return user_repository.get_user_by_email(email)
-
-
-def get_user_by_username(username):
-    return user_repository.get_user_by_username(username)
-
-
-def get_user_by_user_id(user_id):
-    return user_repository.get_user_by_user_id(user_id)
+    user_repository.register_user(child)
 
 
 def verify_user(user_id, password):
-    if '@' in user_id:
-        user = get_user_by_email(user_id)
+    from werkzeug.security import check_password_hash
+
+    if check_parent_status(user_id):
+        user = get_user(email=user_id)
     else:
-        user = get_user_by_username(user_id)
+        user = get_user(username=user_id)
 
     if user is None:
         return False
@@ -95,50 +87,52 @@ def verify_user(user_id, password):
         verified = check_password_hash(user.password, password)
         if verified:
             user.password = argon2.using(rounds=12).hash(password)
-            user.save()
+            update_user_information(user)
         return verified
     return argon2.verify(password, user.password)
 
 
 def signin_user(user_id):
-    if '@' in user_id:
-        user = get_user_by_email(user_id)
+    from flask_login import login_user
+
+    if check_parent_status(user_id):
+        user = get_user(eamil=user_id)
     else:
-        user = get_user_by_username(user_id)
+        user = get_user(username=user_id)
 
     if user is not None:
         login_user(user)
         user.last_signin = datetime.datetime.now()
-        user.save()
+        update_user_information(user)
 
 
 def get_user_friends(current_user):
-    friends = []
-    for u in user_repository.get_all_users():
-        for friend_id in current_user.friends:
-            if u._id == friend_id:
-                friends.append(u)
-    return friends
+    return [user for user in get_all_users()  for friend in current_user.friends if user._id == friend]
 
 
 def time_is_right(user_id):
-    return user_repository.time_is_right(user_id)
-
-
-def send_email_registration(email):
-    return user_repository.send_email_registration(email)
+    child = get_user(username=user_id)
+    return user_repository.time_is_right(child)
 
 
 def verify_user_email(email):
-    return user_repository.verify_user_email(email)
+    user = get_user(email=email)
+    user.verified = True
+    update_user_information(user)
+
 
 def is_user_verified(user_id):
-    return user_repository.is_user_verified(user_id)
-
-
-def send_email_password(email):
-    return user_repository.send_email_password(email)
+    user = get_user(email=user_id)
+    return user.verified
 
 
 def change_user_password(email, password):
-    return user_repository.change_user_password(email, password)
+    user = get_user(email=email)
+    user.password = argon2.using(rounds=12).hash(password)
+    update_user_information(user)
+
+
+def check_parent_status(user_id):
+    if '@' in user_id:
+        return True
+    return False
