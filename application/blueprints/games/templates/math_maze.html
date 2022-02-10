@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}A-Maze-Ing-Game{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/maze.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/text-blocks.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="column is-4 is-offset-4 has-text-centered">
+        <div class="main-text bottom-20 top-20" style="background-color: #366ed4; margin-top: 5%; margin-bottom: 5%;">
+            <h3>A-Maze-Ing Game</h3>
+{#            <img src="{{ url_for('static', filename='img-game/math-maze/maze.svg') }}">#}
+        </div>
+        <div class="textbox-anim main-text bottom-20 top-20" style="background-color: #366ed4; height: 80px; margin-top: 5%; margin-bottom: 5%;">
+            <h3>{% for item in current_location.math_problem %}{{ item }} {% endfor %}=</h3>
+        </div>
+        <form id="maze" action="{{ url_for('bp_games.maze_post')}}" method="POST">
+            <div class="container main-text bottom-20 top-20" style="width: 320px; height: 320px; border-style: solid;">
+                <br>
+                    <button class="main-text button-maze" type="submit" name="direction" value="north" style="background-color: purple;">{{ current_location.answers[0] }}</button>
+                <br><br>
+                    <button class="main-text button-maze" type="submit" name="direction" value="west" style="background-color: purple; margin-right: 20px;">{{ current_location.answers[3] }}</button>
+                    <button class="main-text button-maze" type="submit" name="direction" value="east" style="background-color: purple; margin-left: 20px;">{{ current_location.answers[2] }}</button>
+                <br><br>
+                    <button class="main-text button-maze" type="submit" name="direction" value="south" style="background-color: purple;">{{ current_location.answers[1] }}</button>
+                <br>
+            </div>
+        </form>
+    </div>
+    {% block script %}
+    <script>
+        document.getElementById("maze").addEventListener("submit", checkAnswer);
+
+        function checkAnswer() {
+            let answer = parseInt({{ current_location.math_problem }});
+            let player_answer = document.getElementById("maze");
+
+            if (answer === player_answer) {
+                alert('Rätt! Du går vidare!');
+            }
+            else {
+                alert('Fel! Försök igen!');
+            }
+        }
+    </script>
+    {% endblock %}
+{% endblock %}

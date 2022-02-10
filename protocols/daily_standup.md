@@ -393,3 +393,120 @@ Alla forsätter jobba vidare med det som påbörjades igår.
 
 Anteckningar:
 
+
+MÖTESPROTOKOLL
+-
+
+Datum: 03-02-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Markus fixade igår Parent sidan, fixade buggar och snyggade till layoten. Andreas kodade spel, och buggfixade.
+Lenny och Anna började dra upp structuren för memory spelet, och startade med att koda lite.
+
+Att göra idag:
+Markus kommer att fixa med Navbaren, Andreas forstätter med samma saker som igår. Lenny och Anna fortsätter koda memory spel.
+
+Anteckningar:
+
+Datum: 04-02-2022
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+Markus har jobbat med att få till en dropdown på navbaren, sedan har han jobbat med email functionen.
+Andreas har jobbat med spelet.
+Anna Har jobbat med pusselspelet, och analyserat javascript.
+Lenny Har jobbat med pusselspelet och analyserat Javascript.
+
+Att göra idag:
+Alla forsätter jobba vidare med det som påbörjades igår.
+
+Anteckningar:
+Andreas, är sjuk och kommer jobba med projectet på söndag om han kan.
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 07-02-2022 09:00
+
+Närvarande: Andreas, Markus, Lenny och Anna
+
+Vad har gjorts sen sist: 
+- Anna och Lenny fortsatte med memory spelet, men de blev inte helt klara.
+- Andreas fortsatte med sitt A-maze-ing game.
+- Markus fortsatte med email confimation delen, det bör vara färdigt idag.
+
+
+Att göra till nästa gång:
+- Anna och Lenny skall fortsätta med spelet.
+- Andreas ska forstsätta med spelet.
+- Markus ska göra färdigt email confrmation och sedan börja på forgot password.
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 08-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Anna, Markus
+
+Vad har gjorts sen sist:
+- Anna och lenny har jobbat med sitt memory spel, fixat så att poäng sparas ner i databasen.
+- Markus blev färdig med email confirmation och blev nästan klar med forgot password.
+- Andreas fixade en svårighetsgrads sida för math mazen, där man kan välja hur svårt man vill att det ska vara och vilket räknesätt man ska använda.
+
+Att göra idag:
+- Anna och lenny skall försöka länka ihop poängen från memory spelet till profilsidan och sedan börja med ett stavningsspel.
+- Andreas skulle välja ett nytt kort idag för att få en paus ifrån spelet.
+- Markus Ska bli färdig med forgot password och sedan gå på något nytt kort, kanske ett spel.
+
+
+Anteckningar:
+
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 09-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Markus
+
+Vad har gjorts sen sist:
+- Lenny och Anna gjorde färdigt memory spelet och byggde om autosparnings rutningen. började bygga om profil sidan lite för att se poängen som är länkade med till spelet där.
+- Markus blev färdig med forgot password sidan och började med att göra ett läsförståelse spel på svenska.
+- Andreas blev färdig med sitt spel igår och mergade in det i projketet.
+Att göra idag:
+- lenny ska börja med ett word spel, (gissa ordet)
+- Markus jobbar vidare med spelet.
+- Andreas ska gå igenom filer i projketet och går igenom alla css filer. Och göra lite bug fixing med spelet.
+
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 10-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Markus
+
+Vad har gjorts sen sist:
+- lenny och Anna blev färdiga med memory spelet, och började med ett "swedish spelling" spel där man ska bygga ihop ord som där bokstäverna står helt fel.
+- Markus jobbade vidare på läsförtåelse spelet, fick färdigt hur kortet ska se ut, 
+- Andreas blev färdig med sitt spel igår och började städa upp lite i projketet där han bland annat skrev om några controllers och flyttade runt lite grejer.
+Att göra idag:
+- Lenny och Anna ska fortsätta med sitt spel idag.
+- Markus skall också fortsätta med spelet idag och förhoppnigsvis bli färdig.
+- Andreas ska fixa en bug med anonymnous user. Sedan jobba vidare med att städa upp i projketet.
+
+
+Anteckningar:

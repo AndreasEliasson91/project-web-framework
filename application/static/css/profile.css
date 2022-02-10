@@ -24,14 +24,3 @@
     transform: scale(1.1);
     transform-origin: center;
 }
-
-.pic {
-    opacity: 1.0;
-}
-
-.text-style {
-    font-size: 25px;
-    font-weight: bold;
-    color: purple;
-
-}
