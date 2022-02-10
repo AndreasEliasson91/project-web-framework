@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ game.name }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/games.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/image.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/text-blocks.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="column">
+        <div class="container main-text has-text-centered">
+            <div class="container textbox-non-anim top-20 bottom-20"
+                 style="background-color: #800080FF; width: 500px; margin-bottom: 50px; margin-top: 50px;">
+                <h1>{{ game['name'] }}</h1>
+            </div>
+            <img class="game-img" src="{{ game['content'].main_image }}" style="width: 400px; height: 400px;"  border="5px solid #555">
+            <div class="container textbox-non-anim top-20 bottom-20"
+                 style="background-color: #f1f1f1; width: 500px; height: 200px; margin-bottom: 50px; margin-top: 50px; font-size: 18px; color: #000000">
+                <h1 style="position: absolute; margin: 50px">{{ game['description'] }}</h1>
+            </div>
+            <form name="playGame" action="{{ url_for('bp_games.game_description_post', game_id=game['id']) }}" method="POST">
+                <input type="submit" id="play" value="Spela Spelet" class="textbox-anim top-20 bottom-20 button-play main-text" style="height: 60px; background-color: purple;">
+            </form>
+        </div>
+    </div>
+{% endblock %}
