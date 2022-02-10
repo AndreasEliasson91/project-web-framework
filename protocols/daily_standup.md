@@ -490,3 +490,23 @@ Att göra idag:
 
 Anteckningar:
 
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 10-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Markus
+
+Vad har gjorts sen sist:
+- lenny och Anna blev färdiga med memory spelet, och började med ett "swedish spelling" spel där man ska bygga ihop ord som där bokstäverna står helt fel.
+- Markus jobbade vidare på läsförtåelse spelet, fick färdigt hur kortet ska se ut, 
+- Andreas blev färdig med sitt spel igår och började städa upp lite i projketet där han bland annat skrev om några controllers och flyttade runt lite grejer.
+Att göra idag:
+- Lenny och Anna ska fortsätta med sitt spel idag.
+- Markus skall också fortsätta med spelet idag och förhoppnigsvis bli färdig.
+- Andreas ska fixa en bug med anonymnous user. Sedan jobba vidare med att städa upp i projketet.
+
+
+Anteckningar:

@@ -1,3 +1,9 @@
+
+import time
+
+from application.bll.controllers import game_controller, user_controller, image_controller
+from application.bll.controllers.save_cute_memory_score import save_cute_memory_score
+
 from flask import Blueprint, render_template, redirect, url_for, request
 
 maze = None
@@ -26,7 +32,29 @@ def index():
                     score['user_id'] = user.display_name if user.parent else user.username
                     score['avatar'] = image_controller.get_profile_picture(user)
 
-    return render_template('games_index.html', games=games)
+
+    return render_template('games_index_hs.html', games=games)
+
+
+
+@bp_games.get('/hitta-ordet')
+def find_the_word_game():
+    return render_template('find_the_word_game.html')
+
+@bp_games.get('/memory-game')
+def index_memory():
+    return render_template('index_memory.html')
+
+
+@bp_games.post('/memory-game')
+def save_score_post():
+    # username = request.form.get('username').lower()
+    get_score = request.form.get('t1')
+    save_cute_memory_score(get_score)
+    time.sleep(5)
+    return render_template('index_memory.html')
+
+  
 
 
 # @bp_games.post('/')

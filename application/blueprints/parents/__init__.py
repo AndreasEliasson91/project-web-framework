@@ -41,6 +41,7 @@ def register_child_post():
 
 @bp_parent.get('/control')
 @login_required
+
 def control_child_get():
     return render_template('parent_admin.html',
                            listan=[value for user in user_controller.get_all_users() for key, value in user.__dict__.items() if key == 'username'])
