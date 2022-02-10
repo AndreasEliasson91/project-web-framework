@@ -1,0 +1,162 @@
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  background-color: lightcyan;
+}
+
+.container {
+  width: 800px;
+  height: 250px;
+  background-color: cornflowerblue;
+}
+
+.input_letters {
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+  position: fixed;
+  font-size: 80px;
+  text-align: center;
+  width: 795px;
+  height: 110px;
+  resize: none;
+}
+
+.game_buttons {
+  z-index: 100;
+  position: fixed;
+  margin-top: 210px;
+  margin-left: 435px;
+}
+
+.start_btn {
+
+  background-color: yellow;
+  color: cornflowerblue;
+  font-size: 25px;
+  border-radius: 8px;
+}
+
+.start_btn:hover {
+  color: blueviolet;
+
+}
+
+.next_btn {
+
+  background-color: lightgreen;
+  color: darkgreen;
+  font-size: 25px;
+  border-radius: 8px;
+}
+
+.next_btn:hover {
+  color: orangered;
+
+}
+
+.end_btn {
+
+  background-color: red;
+  color: silver;
+  font-size: 25px;
+  border-radius: 8px;
+}
+
+.end_btn:hover {
+  color: black;
+
+}
+
+.container_control {
+  position: fixed;
+  margin-top: 400px;
+  margin-left: 650px;
+  width: 150px;
+  height: 50px;
+  background-color: orangered;
+}
+
+.control_btn{
+  background-color: darkturquoise;
+  color: darkblue;
+  font-size: 25px;
+  margin-left: 25px;
+  border-radius: 8px;
+  margin-top: 7px;
+}
+
+.control_btn:hover{
+  color: black;
+
+}
+
+.timer{
+  position: fixed;
+  margin-bottom: 350px;
+  margin-left: 20px;
+  margin-right: 750px;
+  font-size: 35px;
+
+}
+
+.score{
+  position: fixed;
+  margin-bottom: 350px;
+  margin-left: 670px;
+  font-size: 35px;
+}
+
+.random_word {
+  position: fixed;
+  font-size: 50px;
+  margin-bottom: 600px;
+  display: flex;
+  justify-content: center;
+  color: green;
+}
+
+.random_word:hover{
+  cursor: pointer;
+  font-size: 60px;
+}
+
+.rnd_letters {
+  display: flex;
+  justify-content: center;
+}
+
+.text_end_game {
+  position: fixed;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 500px;
+  margin-right: 525px;
+  color: darkblue;
+  animation: ease-in-out;
+}
+
+.username {
+  position: fixed;
+  font-size: 25px;
+  margin-bottom: 600px;
+  margin-right: 1800px;
+  z-index: 100;
+
+  color: green;
+
+}
+
+.score_db {
+  position: fixed;
+  font-size: 25px;
+  margin-bottom: 490px;
+  margin-right: 1820px;
+  color: green;
+
+}

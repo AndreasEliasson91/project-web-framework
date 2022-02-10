@@ -36,6 +36,11 @@ def index():
     return render_template('games_index_hs.html', games=games)
 
 
+
+@bp_games.get('/hitta-ordet')
+def find_the_word_game():
+    return render_template('find_the_word_game.html')
+
 @bp_games.get('/memory-game')
 def index_memory():
     return render_template('index_memory.html')
@@ -100,4 +105,3 @@ def maze_post():
         position_x, position_y = move(direction, position_x, position_y)
 
     return redirect(url_for('bp_games.maze_get', current_location=maze.get_cell(*(position_x, position_y))))
-
