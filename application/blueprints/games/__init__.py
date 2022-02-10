@@ -5,7 +5,7 @@ from application.bll.controllers import game_controller, user_controller, image_
 from application.blueprints.open import bp_open
 
 i = 0
-
+points = 0
 
 bp_games = Blueprint('bp_games',
                      __name__,
@@ -46,9 +46,14 @@ def read_swe_get():
 @bp_games.post('/reading_swedish')
 def read_swe_post():
     global i
+    global points
+    cards = game_controller.game_sentances()
     if request.form.get('option') == 'right':
-        # ('Det var rätt! bra jobbat')
+        flash('Det var rätt, du fick ett poäng!')
         i += 1
+        points += 1
         return redirect(url_for("bp_games.read_swe_get"))
     else:
-        return redirect(url_for("bp_games.read_swe_get"))
+        flash('Det var inte rätt, försök igen!')
+        return render_template('reading_game_swe.html', card=cards[i])
+
