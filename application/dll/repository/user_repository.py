@@ -5,8 +5,8 @@ from bson import ObjectId
 
 
 def get_user(**kwargs):
-    # if '_id' in kwargs:
-    #     kwargs.value = ObjectId(kwargs.value)
+    if '_id' in kwargs.keys():
+        kwargs['_id'] = ObjectId(kwargs['_id'])
     return User.find(**kwargs).first_or_none()
 
 
