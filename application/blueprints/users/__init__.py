@@ -63,8 +63,6 @@ def profile_post(user_id):
 
     file = request.files.get('profile_picture')
 
-
-
     if file:
         image_controller.upload_profile_picture(current_user, file)
 
