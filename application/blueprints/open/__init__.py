@@ -27,7 +27,7 @@ def signin_post():
 
     if not user_controller.verify_user(user_id, password):
         flash('Username or password is incorrect')
-        return redirect(url_for('bp_open.signin_get')) 
+        return redirect(url_for('bp_open.signin_get'))
 
     if is_user_active(user_id):
         if '@' not in user_id:
