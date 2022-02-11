@@ -1,3 +1,5 @@
+import random
+
 from application.bll.controllers import image_controller, user_controller
 from bson import ObjectId
 from flask import Blueprint, render_template, redirect, request, url_for
@@ -30,6 +32,12 @@ def friends_get():
 @bp_user.get('/profile/<user_id>')
 @login_required
 def profile_get(user_id):
+    from application.bll.controllers import game_controller
+
+    games = game_controller.get_all_games()
+    for game in games:
+        game.content['main_image'] = image_controller.get_game_image(game, '_main')
+
     if 'children' in current_user.__dict__:
         children = []
 
@@ -43,10 +51,12 @@ def profile_get(user_id):
 
         return render_template('profile.html',
                                profile_picture=image_controller.get_profile_picture(current_user),
+                               games=games,
                                children=children)
     else:
         return render_template('profile.html',
-                               profile_picture=image_controller.get_profile_picture(current_user))
+                               profile_picture=image_controller.get_profile_picture(current_user),
+                               games=games)
 
 
 @bp_user.post('/profile/<user_id>')
@@ -74,7 +84,13 @@ def profile_post(user_id):
 @bp_user.get('/view-profile/<user_id>')
 @login_required
 def view_profile_get(user_id):
+    from application.bll.controllers import game_controller
+
     user = user_controller.get_user(_id=user_id)
+    games = game_controller.get_all_games()
+
+    for game in games:
+        game.content['main_image'] = image_controller.get_game_image(game, '_main')
 
     if 'children' in user.__dict__:
         children = []
@@ -89,11 +105,13 @@ def view_profile_get(user_id):
 
         return render_template('profile_view.html',
                                user=user,
+                               games=games,
                                profile_picture=image_controller.get_profile_picture(user),
                                children=children)
     else:
         return render_template('profile_view.html',
                                user=user,
+                               games=games,
                                profile_picture=image_controller.get_profile_picture(user))
 
 

@@ -44,27 +44,17 @@
                     <div class="level-item main-text textbox-non-anim bottom-20" style="background-color: rgb({{ user.settings.rgb_subtitle[0] }}, {{ user.settings.rgb_subtitle[1] }}, {{ user.settings.rgb_subtitle[2] }});" >
                         <h3>Högsta Spelpoäng</h3>
                     </div>
-                    <div class="level-item">
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father2.png') }}); color: bisque;">
-                            <h4>90p</h4>
-                            <h6>Spel 1</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father3.png') }}); color: bisque;">
-                            <h4>70p</h4>
-                            <h6>Spel 2</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father4.png') }}); color: bisque;">
-                            <h4>80p</h4>
-                            <h6>Spel 3</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father5.png') }}); color: bisque;">
-                            <h4>75p</h4>
-                            <h6>Spel 4</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father6.png') }}); color: bisque;">
-                            <h4>10p</h4>
-                            <h6>Spel 5</h6>
-                        </div>
+                                        <div class="level-item">
+                        {% set i = namespace(value=0) %}
+                        {% for game in games %}
+                            <a class="circle-text-over main-text" href="{{ url_for('bp_games.game_description_get', game_id=game['_id']) }}" style="background-image: url({{ game.content.main_image }});
+                                    color: rgb({{ game.content.rgb_text[0] }}, {{ game.content.rgb_text[1] }}, {{ game.content.rgb_text[2] }});">
+                                    <p><strong>{{ game.name }}</strong></p>
+{#                                    <p><strong>{{ i.value }}p</strong></p>#}
+                                    <p><strong>{{ user.personal_high_score[i.value]['score'] }}p</strong></p>
+                            </a>
+                            {% set i.value = i.value + 1 %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>

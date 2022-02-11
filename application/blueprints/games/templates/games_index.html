@@ -29,14 +29,11 @@
                             </div>
                             <div class="level-item">
                                 {% for hs in game.high_score %}
-                                    <a href="{{ url_for('bp_user.view_profile_get', user_id=hs.user_id) }}">
-                                        <div class="circle-text-over main-text" title="{{ hs.name }}" style="background-image: url({{ hs.avatar }});
-                                                                   font-size: 25px; margin: 20px; width: 150px; height: 150px;">
-                                            <span style="height: 20px; width: 50px; color: rgb({{ game.content.rgb_text[0] }}, {{ game.content.rgb_text[1] }}, {{ game.content.rgb_text[2] }}">{{ hs.score }}p</span>
-                                        </div>
+                                    <a class="circle-text-over main-text" href="{{ url_for('bp_user.view_profile_get', user_id=hs.user_id) }}" style="background-image: url({{ hs.avatar }});
+                                            color: rgb({{ game.content.rgb_text[0] }}, {{ game.content.rgb_text[1] }}, {{ game.content.rgb_text[2] }})" >
+                                            <p><strong>{{ hs.name.upper() }}</strong></p>
+                                            <p><strong>{{ hs.score }}p</strong></p>
                                     </a>
-                                    <div class="level-item">
-                                    </div>
                                 {% endfor %}
                             </div>
                         </div>

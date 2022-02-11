@@ -36,12 +36,7 @@ def index():
     return render_template('games_index.html', games=games)
 
 
-# @bp_games.post('/')
-# def index_post():
-#     return redirect(url_for('bp_games.game_description_get'))
-
-
-@bp_games.get('/<game_id>')
+@bp_games.get('/description/<game_id>')
 def game_description_get(game_id):
     game = game_controller.get_game(ObjectId(game_id))
     game.content['main_image'] = image_controller.get_game_image(game, '_main')
@@ -49,23 +44,18 @@ def game_description_get(game_id):
     return render_template('game_description.html', game=game)
 
 
-@bp_games.post('/<game_id>')
+@bp_games.post('/description/<game_id>')
 def game_description_post(game_id):
     game = game_controller.get_game(ObjectId(game_id))
-    play = request.form.get('playGame')
-
-    if play:
-        match game['name'].lower():
-            case 'hitta ordet!':
-                return redirect('bp_games.find_the_word_game')
-            case 'cute memory':
-                return redirect('bp_games.index_memory')
-            case 'a-maze-ing game':
-                return redirect('bp_games.difficulty_get')
-            # case 'ordgåtan':
-                # return redirect('bp_games.word_game or something')
-    else:
-        return redirect('bp_open.index')
+    match game.name.lower():
+        case 'hitta ordet!':
+            return redirect(url_for('bp_games.find_the_word_game'))
+        case 'cute memory':
+            return redirect(url_for('bp_games.index_memory'))
+        case 'a-maze-ing game':
+            return redirect(url_for('bp_games.difficulty_get'))
+        # case 'ordgåtan':
+            # return redirect(url_for('bp_games.word_game or something'))
 
 
 @bp_games.get('/hitta-ordet')
