@@ -510,3 +510,24 @@ Att göra idag:
 
 
 Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 11-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Markus
+
+Vad har gjorts sen sist:
+- lenny och Anna Anna och Lenny blev klara med spelet igår, och sedan började fixa lite på suspended, där dom la till en animation och lite till om man e suspended. De fixade även logout sidan.
+- Markus blev nästan klar med sitt spel. fixade massa fler läsförståelse kort och fixade till koden och designen.
+- Andreas bugfixade lite efter problem som blev efter merge.
+Att göra idag:
+- Lenny och Anna Ska snygga till admin sidan. 
+- Markus bli helt färdig med spelet och försöka fixa ett sätt att flytta runt knapparna.
+- Andreas Ska fixa highscoren och sedan göra en databasdump.
+
+
+Anteckningar:
