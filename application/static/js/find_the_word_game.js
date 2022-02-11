@@ -11,7 +11,13 @@
 
 
 // Punkt 1
-    let Wordarray = ['python', 'fåtölj', 'popcorn', 'apelsin', 'sjuksköterska', 'kalender'];
+    let Wordarray = ['python', 'fåtölj', 'popcorn', 'apelsin', 'sjuksköterska', 'kalender', 'svenska', 'danska', 'hund'
+        , 'katt', 'gais', 'köttbullar', 'spagetti', 'blomma', 'zebra', 'måne', 'solen', 'torsk', 'lax', 'lejon',
+        'tröja', 'byxor', 'dator', 'giraff', 'hårtork', 'tavla','sköldpadda', 'piano', 'ljusstake',
+        'mugg', 'mobiltelefon', 'påse', 'tofflor', 'hörlurar', 'ros', 'skål', 'godis', 'kaka',
+        'glass', 'tulpan', 'blåbär', 'jordgubbe', 'tält', 'träd', 'skola', 'bio', 'tv', 'glasögon', 'papper',
+        'lägenhet', 'dagis', 'ryggsäck', 'fröken', 'lärare', 'penna', 'stol', 'huvud', 'näsa', 'öron', 'axlar', 'knä'
+        , 'tår'];
     let get_my_element = document.getElementById('la_word');
     let chosenLetters = document.querySelector('.input_letters');
     let score = '';

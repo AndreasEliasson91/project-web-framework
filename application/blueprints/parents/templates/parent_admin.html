@@ -22,7 +22,7 @@
 
 
         <div  class="boxen">
-            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child')  }}">
+            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child_post')  }}">
             <select Name="List1" class="combo_users" size="10" id="myCourses">
                 {% for item in listan %}
                     <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}

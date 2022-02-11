@@ -31,7 +31,7 @@ def signin_post():
 
     if is_user_active(user_id):
         if '@' not in user_id:
-            if user_controller.time_is_right(user_id):
+            if not user_controller.time_is_right(user_id):
                 flash('You cannot log in at this time')
                 return redirect(url_for('bp_open.signin_get'))
         user_controller.signin_user(user_id)
