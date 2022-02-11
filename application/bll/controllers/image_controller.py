@@ -31,9 +31,7 @@ def upload_profile_picture(user, file):
     image_repository.upload_profile_picture(user, content)
 
 
-def upload_game_image(game, suffix, file):
-    file.save(os.path.join('application/static/img-game/', f'{str(game._id)}{suffix}.png'))
-
+def upload_game_image(game, suffix):
     with open(f'application/static/img-game/{str(game._id)}{suffix}.png', 'rb') as in_file:
         content = in_file.read()
 

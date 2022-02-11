@@ -1,9 +1,9 @@
-
 import time
 
-from application.bll.controllers import game_controller, user_controller, image_controller
-from application.bll.controllers.save_cute_memory_score import save_cute_memory_score
+from bson import ObjectId
 
+from application.bll.controllers import game_controller, image_controller
+from application.bll.controllers.save_cute_memory_score import save_cute_memory_score
 from flask import Blueprint, render_template, redirect, url_for, request
 
 maze = None
@@ -19,7 +19,7 @@ bp_games = Blueprint('bp_games',
 
 @bp_games.get('/')
 def index():
-    from application.bll.controllers import game_controller, user_controller, image_controller
+    from application.bll.controllers import user_controller
 
     games = game_controller.get_all_games()
     users = user_controller.get_all_users()
@@ -29,17 +29,39 @@ def index():
         for score in game.high_score:
             for user in users:
                 if score['user_id'] == user._id:
-                    score['user_id'] = user.display_name if user.parent else user.username
+                    score['user_id'] = user._id
+                    score['name'] = user.display_name if user.parent else user.username
                     score['avatar'] = image_controller.get_profile_picture(user)
 
+    return render_template('games_index.html', games=games)
 
-    return render_template('games_index_hs.html', games=games)
 
+@bp_games.get('/description/<game_id>')
+def game_description_get(game_id):
+    game = game_controller.get_game(ObjectId(game_id))
+    game.content['main_image'] = image_controller.get_game_image(game, '_main')
+
+    return render_template('game_description.html', game=game)
+
+
+@bp_games.post('/description/<game_id>')
+def game_description_post(game_id):
+    game = game_controller.get_game(ObjectId(game_id))
+    match game.name.lower():
+        case 'hitta ordet!':
+            return redirect(url_for('bp_games.find_the_word_game'))
+        case 'cute memory':
+            return redirect(url_for('bp_games.index_memory'))
+        case 'a-maze-ing game':
+            return redirect(url_for('bp_games.difficulty_get'))
+        # case 'ordgåtan':
+            # return redirect(url_for('bp_games.word_game or something'))
 
 
 @bp_games.get('/hitta-ordet')
 def find_the_word_game():
     return render_template('find_the_word_game.html')
+
 
 @bp_games.get('/memory-game')
 def index_memory():
@@ -53,13 +75,6 @@ def save_score_post():
     save_cute_memory_score(get_score)
     time.sleep(5)
     return render_template('index_memory.html')
-
-  
-
-
-# @bp_games.post('/')
-# def index_post():
-#     return redirect(url_for('bp_game.difficulty_get'))
 
 
 @bp_games.get('/math-maze/set-difficulty')
