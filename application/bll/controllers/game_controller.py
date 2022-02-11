@@ -30,22 +30,20 @@ def get_high_score(game_id):
     return [score for game in get_all_games() if game._id == game_id for score in game['high_score']]
 
 
-def set_high_score(game_id, user):
+def set_high_score(game_id, user_id, score):
     game = get_game(game_id)
-    # high_score = get_high_score(game_id)
-    #
-    # for score in high_score:
-    #     if score < user['score']:
-    for g in user.personal_high_score:
-        if g['game'] == game_id:
+    high_score = get_high_score(game_id)
+
+    for hs in high_score:
+        if hs < score:
             game.high_score.append({
-                'user_id': user._id,
-                'score': g['score']
+                'user_id': user_id,
+                'score': score
             })
             break
 
     game.high_score = sorted(game.high_score, key=lambda x: x['score'], reverse=True)
-    # if len(high_score) > 5:
-    #     high_score.pop()
+    if len(high_score) > 5:
+        high_score.pop()
 
     game_repository.update_game(game)

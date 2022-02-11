@@ -1,5 +1,3 @@
-import random
-
 from application.bll.controllers import image_controller, user_controller
 from bson import ObjectId
 from flask import Blueprint, render_template, redirect, request, url_for
