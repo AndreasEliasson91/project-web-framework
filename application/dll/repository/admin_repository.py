@@ -5,7 +5,7 @@ def suspend_user(user):
     if user is not None:
         user.activated = not user.activated
         user_repository.update_user_information(user)
-        return 'aktiverad' if user.activated else 'avstängd'
+        return 'avstängd' if user.activated else 'aktiverad'
 
 
 def child_control_clock(child_id, start, end):

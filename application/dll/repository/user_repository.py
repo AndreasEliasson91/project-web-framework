@@ -42,7 +42,7 @@ def time_is_right(child):
         minute = datetime.datetime.now().minute
         timed = f"{hour}{minute}"
 
-        if int(start_time) < int(timed) or int(timed) > int(end_time):
+        if int(start_time) < int(timed) and int(timed) > int(end_time):
             return True
         else:
             return False

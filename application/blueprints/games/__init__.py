@@ -39,7 +39,7 @@ def index():
                     score['avatar'] = image_controller.get_profile_picture(user)
 
 
-    return render_template('games_index_hs.html', games=games)
+    return render_template('games_index.html', games=games)
 
 
 @login_required

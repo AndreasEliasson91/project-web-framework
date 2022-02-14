@@ -3,11 +3,29 @@
 {% block title %}Utloggad{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/open.css') }}">
+{#    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">#}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signed_out_page.css') }}">
+
 {% endblock %}
 
 
 {% block content %}
-    <h1>Du är nu utloggad</h1>
+<body>
+    <div class="font-effect-neon">
+       <h1>Du är nu utloggad</h1>
+    <button class="login_again" onclick='back_to_login()'>Logga in igen</button>
+    <a class="link_main" href="{{ url_for ('bp_open.index') }}">Tillbaka till huvudsidan</a>
+   </div>
+<script>
+    function back_to_login() {
+        window.location.href="/signin";
+        console.log('Im in the function')
 
+    }
+
+
+
+</script>
+</body>
 {% endblock %}

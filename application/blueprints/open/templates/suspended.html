@@ -1,11 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Du är avstängd på obestämd tid!!</title>
-</head>
-<body>
-<h1>Du är avstängd för att du har varit stygg!!!</h1>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/suspended.css') }}">
+
+  </head>
+  <body>
+<div class="txt1">Du är avstängd</div>
+<div class="txt2">Detta kontot är avstängt, kontakta Admin.</div>
+
+<div id="orbit-system">
+  <div class="system">
+    <div class="satellite-orbit">
+      <div class="satellite" class="texten" >
+      <div class="text_circle">Avstängd </div>
+      </div>
+    </div>
+    <div class="planet"><img src="" height="200px"> </div>
+  </div>
+</div>
+    <div>
+      <button class="exit-btn" onclick="take_me_back()">Tillbaka</button>
+    </div>
+
+<script>
+    function take_me_back(){
+        window.location.href = "/";
+        console.log('Im in the function');
+    }
+</script>
+
+
+
 
 </body>
 </html>
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Du är avstängd</title>#}
+{#</head>#}
+{#<body>#}
+{#<h1>Du är avstängd för att du har varit stygg!!!</h1>#}
+{##}
+{#</body>#}
+{#</html>#}

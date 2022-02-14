@@ -1,0 +1,51 @@
+body {
+    background-color: white;
+}
+
+.font-effect-neon {
+    font-family: "Sofia", sans-serif;
+    font-size: 90px;
+    justify-content: center;
+    text-align: center;
+    color: blueviolet;
+    opacity: 1;
+}
+/*
+
+.font-effect-neon:hover {
+    font-size: 80px;
+    color: cornflowerblue;
+}
+*/
+
+.link_main {
+    position: fixed;
+    font-size: 30px;
+
+    margin-top: 160px;
+    margin-left: -250px;
+}
+
+.link_main:hover {
+    font-size: 50px;
+    color: black;
+    margin-left: -325px;
+}
+
+.login_again {
+    font-size: 30px;
+    border-radius: 3px;
+    border: 2px solid;
+    border-color: rebeccapurple;
+    box-shadow: -3px -3px 7px;
+    background-color: purple;
+    color: white;
+    opacity: 0.7;
+}
+
+.login_again:hover {
+    border-color: black;
+    font-weight: bold;
+    font-size: 40px;
+}
+
