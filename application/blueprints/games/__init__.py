@@ -17,6 +17,7 @@ position_x = None
 position_y = None
 i = 0
 points = 0
+start = time.time()
 
 
 bp_games = Blueprint('bp_games',
@@ -52,15 +53,22 @@ def index():
 def card_game_get():
     global i
     global points
-
+    global current_game
+    global start
     cards = game_controller.game_sentances()
     while i < len(cards):
         answers = cards[i]['answers']
         random.shuffle(answers)
         return render_template('reading_game_swe.html', card=cards[i], points=points, answers=answers)
     else:
-        time.sleep(5)
-        return render_template('reading_game_swe_complete.html', points=points)
+        end = time.time()
+        total_score = points * 10 - int(end - start)
+        # game_controller.set_high_score(current_game, current_user, total_score)
+        i = 0
+        points = 0
+        start = time.time()
+        return render_template('reading_game_swe_complete.html', points=int(total_score))
+
 
 
 @login_required
