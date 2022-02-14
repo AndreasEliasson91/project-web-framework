@@ -497,7 +497,7 @@ Markus Dokumenterar
 
 Datum: 10-02-2022 09:00
 
-Närvarande: Andreas, Lenny och Markus
+Närvarande: Andreas, Lenny, Anna och Markus
 
 Vad har gjorts sen sist:
 - lenny och Anna blev färdiga med memory spelet, och började med ett "swedish spelling" spel där man ska bygga ihop ord som där bokstäverna står helt fel.
@@ -518,7 +518,7 @@ Markus Dokumenterar
 
 Datum: 11-02-2022 09:00
 
-Närvarande: Andreas, Lenny och Markus
+Närvarande: Andreas, Lenny, Anna och Markus
 
 Vad har gjorts sen sist:
 - lenny och Anna Anna och Lenny blev klara med spelet igår, och sedan började fixa lite på suspended, där dom la till en animation och lite till om man e suspended. De fixade även logout sidan.
@@ -529,5 +529,25 @@ Att göra idag:
 - Markus bli helt färdig med spelet och försöka fixa ett sätt att flytta runt knapparna.
 - Andreas Ska fixa highscoren och sedan göra en databasdump.
 
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 14-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- Lenny och Anna blev klara med att designa suspendsidan, logoutsidan, adminsidan och parent adminsidan. Hittade några buggar och jobba med att lösa dem, lyckades rätta till time set funtionen och suspend funktionen så att det stämmer överrens med databasen.
+- Markus blev klart med läsförståelsespelet.
+- Andreas forsatte med bugfxade och blev nästan klar med mattespelet.
+
+Att göra idag:
+- Andreas ska fixa till ett poängsystem för mattespelet och spara high scoret i databasen.
+- Alla ska merga in allt och fixa till buggar genom hela projektet.
+- Gå igenom så att designen har en röd tråd.
 
 Anteckningar:
