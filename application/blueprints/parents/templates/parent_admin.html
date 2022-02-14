@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/parent.css') }}">
 {% endblock %}
 
 
@@ -11,12 +12,14 @@
 
 
 {% block content %}
-
+{#   <section class="hero is-fullheight">#}
+    <div class="hantera_barn" id="hantera_barn_id">Hantera Barn</div>
 
     <div class="titel">
-        <label class="title" for="aaa">Välj barn att hantera</label>
+        <label class="title" for="aaa"></label>
     </div>
         <div  class="boxen">
+
             <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child_get')  }}">
 
             <select Name="List1" class="combo_users" size="10" id="myCourses">
@@ -27,28 +30,36 @@
                 <div class="buttons">
 
                         {% set s_a = active_suspend %}
-                        <button class="popup" style=" right:146px;" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
+                    <div class="suspend_btn" id="suspend_btn_id">
+                        <button class="popup suspend_btn" style=" right:146px;" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
                         </button>
-
                     </div>
-                </form>
+
+                </div>
+            </form>
                 <div class="buttons">
-                <button class="popup" onclick="myFunction();" >set time</button>
+                    <div class="set_time_btn" id="set_time_btn_id">
+                <button class="popup set_time_btn" onclick="myFunction();">set time</button>
+                    </div>
                 </div>
                 </div>
-            </div>
 
 
-    <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
-    <div style=" height: 50px; width:230px; border-bottom: 1px solid purple;">välj start och slut tid när barnet inte
+
+    <div class="position" id="myPopup" hidden>
+    <div>Välj start och slut tid när barnet inte
         har tillgång till hemsidan</div>
 
         <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_child_get') }}">
             <div style="float: left; margin-right: 20px;">
+                <div class="time_start">
                 <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
+                </div>
             </div>
             <div style="float: left; margin-right: 20px;">
+                <div class="time_slut">
                 <label class="timed"  for="end" style="text-align: center">Slut</label><input class="timed"  id="end" name="end" type="time"/>
+            </div>
             </div>
             <button style="margin-top: 25px">Spara</button>
             <div hidden>
@@ -56,9 +67,7 @@
             </div>
         </form>
     </div>
-
-
-<
+{#    </section>#}
 
 <script>
     // Script to put the txt from the combobox to the hidden textbox
