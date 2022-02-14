@@ -11,14 +11,21 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-                <div class="message">
+                {% if 'ett' in message %}
+                <div class="message" style="background-color: green">
                     {{ message }}
                 </div>
+                {% else %}
+                <div class="message" style="background-color: red">
+                    {{ message }}
+                </div>
+                {% endif %}
             {% endfor %}
         {% endif %}
     {% endwith %}
-
-
+    <div class="points">
+        <h1 style="font-size: 20px">Dina poäng är: {{ points }}</h1>
+    </div>
 <div class="card">
     <div class="text">
         {{ card['text'] }}
@@ -31,23 +38,18 @@
     <div class="buttons" style="-ms-transform: translateY(-50%);transform: translateY(-50%); position: absolute">
 
         <form Name="Form1" id="Form1" Method="POST" Action="{{  url_for('bp_games.read_swe_post')  }}">
-        <div id="btn1"><button class="button1" value="right" name="option" type="submit" >{{ card['answer'] }}</button></div>
-        <button class="button1" value="wrong" id="btn2" name="option" type="submit" >{{ card['answer1'] }}</button>
-        <div id="btn3"> <button class="button1" value="wrong"  name="option" type="submit" >{{ card['answer2'] }}</button></div>
+            {% for answer in answers %}
+                <button class="button1" value="{{ 'right' if answer['correct'] else 'wrong' }}" id="btn1" name="option" type="submit" >{{ answer['alternative'] }}</button>
+            {% endfor %}
+{#        <button class="button1" value="right" id="btn1" name="option" type="submit" >{{ card['answer'] }}</button>#}
+{#        <button class="button1" value="wrong" id="btn2" name="option" type="submit" >{{ card['answer1'] }}</button>#}
+{#        <button class="button1" value="wrong" id="btn3"  name="option" type="submit" >{{ card['answer2'] }}</button>#}
         </form>
 
     </div>
 </div>
 
-<script>
-document.getElementById('btn2').addEventListener('load', () => {
-  const btn1 = document.getElementById('btn1');
-  const btn3 = document.getElementById('btn3');
-  btn3.appendChild(btn1.firstElementChild);
-  btn1.appendChild(btn3.firstElementChild);
-});
 
-</script>
 
 
 {% endblock %}

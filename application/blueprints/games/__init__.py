@@ -1,4 +1,5 @@
 import random
+import time
 
 from flask import Blueprint, render_template, url_for, redirect, request, flash
 from application.bll.controllers import game_controller, user_controller, image_controller
@@ -36,24 +37,29 @@ def index():
 @bp_games.get('/reading_swedish')
 def read_swe_get():
     global i
+    global points
+
     cards = game_controller.game_sentances()
+    answers = cards[i]['answers']
+    random.shuffle(answers)
     while i < len(cards):
-        return render_template('reading_game_swe.html', card=cards[i])
+        return render_template('reading_game_swe.html', card=cards[i], points=points, answers=answers)
     else:
-        return redirect(url_for("bp_open.index"))
+        time.sleep(5)
+        return render_template('reading_game_swe_complete.html', card=cards[0], points=points)
 
 
 @bp_games.post('/reading_swedish')
 def read_swe_post():
     global i
     global points
-    cards = game_controller.game_sentances()
     if request.form.get('option') == 'right':
         flash('Det var rätt, du fick ett poäng!')
         i += 1
         points += 1
         return redirect(url_for("bp_games.read_swe_get"))
     else:
+        points -= 1
         flash('Det var inte rätt, försök igen!')
-        return render_template('reading_game_swe.html', card=cards[i])
+        return redirect(url_for('bp_games.read_swe_get'))
 
