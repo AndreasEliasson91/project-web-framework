@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/parent_admin.css') }}">
 {% endblock %}
 
 
@@ -14,7 +14,10 @@
 
 
     <div class="titel">
-        <label class="title" for="aaa">Välj barn att hantera</label>
+        <label class="title" for="aaa"></label>
+    </div>
+    <div class="title1">
+        Hantera användare:
     </div>
         <div  class="boxen">
             <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child_post')  }}">
@@ -26,20 +29,20 @@
                 <div class="buttons">
 
                         {% set s_a = active_suspend %}
-                        <button class="popup" style=" right:146px;" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
+                        <button class="popup" id="suspend_activate_id" style=" right:146px;" onclick="alert('You have now been: {{ s_a }}')" ondblclick="parent_admin()">Suspend/activate user
                         </button>
 
                     </div>
                 </form>
                 <div class="buttons">
-                <button class="popup" onclick="myFunction();" >set time</button>
+                <button class="popup" id="set_time_id" onclick="myFunction();" >set time</button>
                 </div>
                 </div>
             </div>
 
 
-    <div class="position" id="myPopup" style="border: 1px purple solid; background-color: lightgrey" hidden>
-    <div style=" height: 50px; width:230px; border-bottom: 1px solid purple;">välj start och slut tid när barnet inte
+    <div class="position" id="myPopup" hidden>
+    <div>välj start och slut tid när barnet inte
         har tillgång till hemsidan</div>
 
         <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_child_get') }}">

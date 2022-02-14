@@ -1,0 +1,87 @@
+.combo_users {
+    margin-bottom: 200px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 20px;
+    width: 590px;
+    height: 290px;
+    color: black;
+    font-family: poppins;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.boxen {
+    position: absolute;
+    border: 5px solid purple ;
+    background-color: purple;
+    top: 35%;
+    left: 35%;
+    width: 620px;
+    height:400px;
+    border-radius: 10px;
+}
+
+.title1 {
+
+    font-size: 50px;
+    margin-left: 750px;
+    margin-top: -400px;
+    background: purple;
+    border-radius: 10px;
+    color: white;
+    width: 450px;
+    text-align: center;
+}
+
+.popup {
+    font-size: 25px;
+    margin-top: -300px;
+}
+
+#set_time_id {
+    margin-left: 500px;
+    /*margin-top: 3px;*/
+  }
+
+#suspend_activate_id {
+    margin-left: 225px;
+    margin-top: -315px;
+}
+
+.position {
+    width: 570px;
+    height: 220px;
+
+}
+
+#myPopup {
+    position: fixed;
+    z-index: 0;
+    margin-top: 500px;
+    margin-left: 1300px;
+    font-size: 20px;
+    background-color: lightgrey;
+    text-align: center;
+}
+
+.timed {
+    margin-top: 50px;
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+#start{
+    margin-left: 10px;
+}
+
+#end {
+    margin-left: 10px;
+
+}
+
+.save-time-btn {
+    font-size: 25px;
+    margin-top: 140px;
+    margin-left: 120px;
+}
