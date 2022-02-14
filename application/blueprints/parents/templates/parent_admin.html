@@ -17,7 +17,8 @@
         <label class="title" for="aaa">Välj barn att hantera</label>
     </div>
         <div  class="boxen">
-            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child_post')  }}">
+            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child_get')  }}">
+
             <select Name="List1" class="combo_users" size="10" id="myCourses">
                 {% for item in listan %}
                     <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
