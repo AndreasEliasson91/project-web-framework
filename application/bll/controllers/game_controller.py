@@ -47,3 +47,6 @@ def set_high_score(game_id, user_id, score):
         high_score.pop()
 
     game_repository.update_game(game)
+
+def game_sentances():
+    return game_repository.game_sentances()

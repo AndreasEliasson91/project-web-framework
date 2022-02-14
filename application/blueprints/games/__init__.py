@@ -1,5 +1,5 @@
 import time
-
+import random
 from bson import ObjectId
 from flask_login import current_user, login_required
 
@@ -14,6 +14,9 @@ win_condition = None
 maze = None
 position_x = None
 position_y = None
+i = 0
+points = 0
+
 
 bp_games = Blueprint('bp_games',
                      __name__,
@@ -41,6 +44,38 @@ def index():
                     score['avatar'] = image_controller.get_profile_picture(user)
 
     return render_template('games_index.html', games=games)
+
+
+@login_required
+@bp_games.get('/reading_swedish')
+def read_swe_get():
+    global i
+    global points
+
+    cards = game_controller.game_sentances()
+    while i < len(cards):
+        answers = cards[i]['answers']
+        random.shuffle(answers)
+        return render_template('reading_game_swe.html', card=cards[i], points=points, answers=answers)
+    else:
+        time.sleep(5)
+        return render_template('reading_game_swe_complete.html', points=points)
+
+
+@login_required
+@bp_games.post('/reading_swedish')
+def read_swe_post():
+    global i, points
+
+    if request.form.get('option') == 'right':
+        flash('Det var rätt, du fick ett poäng!')
+        i += 1
+        points += 1
+    else:
+        points -= 1
+        flash('Det var inte rätt, försök igen!')
+
+    return redirect(url_for('bp_games.read_swe_get'))
 
 
 @bp_games.get('/description/<game_id>')
@@ -140,3 +175,4 @@ def maze_post():
         flash('Fel! Försök igen!')
 
     return redirect(url_for('bp_games.maze_get', current_location=maze.get_cell(*(position_x, position_y))))
+

@@ -12,29 +12,32 @@
 
 
 {% block content %}
-    <h1 class="main-text" style="font-size: 18px; color: #1c1b1b">Du är nu inloggad som admin: {{ current_user.email }}</h1>
-
-    <div class="titel">
-        <label class="lab main-text" style="color: #1c1b1b" for="aaa">Choose your user:</label>
+    <div class="inloggad_text">
+    <h1 class="text-email">Du är nu inloggad som admin: {{ current_user.email }}</h1>
+    </div>
+    <div class="title">
+        <label class="lab main-text" for="aaa"></label>
     </div>
 
     <body>
-
+    <div class="testar">
+    <h1>   Hantera användare:</h1>
+    </div>
 
     <form method="POST" action="{{ url_for('bp_admin.admin_post') }}">
-        <div class="boxen main-text">
-            <select Name="List1" class="combo_users" size="10" id="myCourses">
+        <div class="boxen ">
+            <select Name="List1" class="combo_users" size="10" id="s-u">
                 {% for item in user_list %}
-                    <Option class="main-text" style="color: #1c1b1b; font-size: 18px" id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
+                    <Option class="text-in-box" id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
                 {% endfor %}
             </select>
 
             {% set s_a = active_suspend %}
             <div class="buttons">
                 {#             <button id="shutdown_user" onclick="alert('You have now suspended that user')" ondblclick="myGeeks()">Suspend</button>#}
-                <button id="shutdown_user"
+                <button id="shutdown_user" class="suspend-btn"
 
-                        onclick="alert('You have now been: {{ s_a }}')" ondblclick="myGeeks()">Suspend/Activate User
+                        onclick="alert('You have now been: {{ s_a }}')" ondblclick="selected_user()">Suspend/Activate User
 
                 </button>
 
@@ -53,8 +56,8 @@
 
 
     <script>
-        function myGeeks() {
-            document.getElementById("myCourses").selectedIndex
+        function selected_user() {
+            document.getElementById("s-u").selectedIndex
                 = ""
 
         }
