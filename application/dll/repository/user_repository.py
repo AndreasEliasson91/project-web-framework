@@ -47,4 +47,4 @@ def time_is_right(child):
         else:
             return False
     else:
-        return False
+        return True
