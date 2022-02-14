@@ -13,8 +13,10 @@ current_score = None
 win_condition = None
 
 maze = None
-position_x = None
-position_y = None
+timer = None
+position_x = 0
+position_y = 0
+
 i = 0
 points = 0
 
@@ -92,7 +94,7 @@ def game_description_post(game_id):
     global current_game
 
     game = game_controller.get_game(ObjectId(game_id))
-    current_game = game_id
+    current_game = ObjectId(game_id)
 
     match game.name.lower():
         case 'hitta ordet!':
@@ -117,7 +119,6 @@ def index_memory():
 
 @bp_games.post('/memory-game')
 def save_score_post():
-    # username = request.form.get('username').lower()
     get_score = request.form.get('t1')
     save_cute_memory_score(get_score)
     time.sleep(5)
@@ -133,7 +134,7 @@ def difficulty_get():
 @bp_games.post('/math-maze/set-difficulty')
 @login_required
 def difficulty_post():
-    global maze, position_x, position_y, win_condition
+    global maze, position_x, position_y, win_condition, timer
 
     from application.bll.math_maze import Maze
 
@@ -145,6 +146,7 @@ def difficulty_post():
     maze = Maze(maze_size, maze_size, int(difficulty), operators, 'application/static/img-game/maze.svg')
     position_x, position_y = (0, 0)
     win_condition = ((maze_size - 1), (maze_size - 1))
+    timer = 120000
 
     return redirect(url_for('bp_games.maze_get'))
 
@@ -152,28 +154,37 @@ def difficulty_post():
 @bp_games.get('/math-maze')
 @login_required
 def maze_get():
-    global current_game, position_x, position_y, win_condition, current_score
+    global current_game, position_x, position_y, win_condition, current_score, timer, points
 
     if (position_x, position_y) == win_condition:
-        game_controller.set_high_score(current_game, current_user._id, current_score)
+        current_score = (points + int(timer, 10)) / 2
+        game_controller.set_high_score(current_game, current_user, current_score)
         return redirect(url_for('bp_games.game_description_get', game_id=current_game))
     else:
-        return render_template('math_maze.html', current_location=maze.get_cell(*(position_x, position_y)))
+        return render_template('math_maze.html',
+                               current_location=maze.get_cell(*(position_x, position_y)),
+                               time_remaining=timer,
+                               points=points)
 
 
 @bp_games.post('/math-maze')
 @login_required
 def maze_post():
-    global maze, position_x, position_y, current_score
+    global maze, position_x, position_y, current_score, timer, points
 
     from application.bll.math_maze import move
 
     direction = request.form.get('direction')
+    timer = request.form.get('timer')
+
     if not maze.get_cell(*(position_x, position_y)).walls[direction]:
         flash('Rätt! Du går vidare!')
         position_x, position_y = move(direction, position_x, position_y)
+        points += 1
     else:
         flash('Fel! Försök igen!')
+        if points > 0:
+            points -= 1
 
-    return redirect(url_for('bp_games.maze_get', current_location=maze.get_cell(*(position_x, position_y))))
+    return redirect(url_for('bp_games.maze_get'))
 
