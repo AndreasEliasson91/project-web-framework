@@ -12,8 +12,8 @@
        <div class="container main-text">
             <div class="columns is-centered">
                 <div class="column is-3">
-                    <h1 class="is-size-3 title">Lär dig från spel.</h1>
-                    <h2 class="is-size-3 subtitle">Barnens favoritplats</h2>
+                    <h1 class="is-size-3 title">Lär dig från spel Barnens favoritplats</h1>
+{#                    <h2 class="is-size-3 subtitle">Barnens favoritplats</h2>#}
                     <p></p>
                     <h2 class="is-size-4 subtitle">Här kan ditt barn lära sig saker med
                     pedagogiska spel. Som tex pussel, mattelabyrint med mera. </h2>
@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="column is-3">
-                    <h2 class="is-size-2 title">Klicka på mig för att provspela</h2>
-                    <h2 class="is-size-3 subtitle">du kommer att ha roligt i många timmar.
+                    <h2 class="is-size-3 title">Klicka på bilden till höger för att provspela</h2>
+                    <h2 class="is-size-4 subtitle">Du kommer att ha roligt i många timmar.
                     Glöm dock inte att fråga dina föräldrar först!</h2>
 
 
@@ -46,7 +46,7 @@
                     <div class="column is-3 ">
                     <!-- bild skall vara här -->
 
-                        <a href="{{ url_for('bp_open.test_games_get') }}">
+                        <a href="{{ url_for('bp_games.index') }}">
                      <figure class="image is-50x170">
                          <image class="is-rounded" src="{{ url_for('static', filename="img/barnbild5.png") }}" title="Prova mig" class="Y1"></image>
                     </figure>
