@@ -41,15 +41,9 @@
             {% for answer in answers %}
                 <button class="button1" value="{{ 'right' if answer['correct'] else 'wrong' }}" id="btn1" name="option" type="submit" >{{ answer['alternative'] }}</button>
             {% endfor %}
-{#        <button class="button1" value="right" id="btn1" name="option" type="submit" >{{ card['answer'] }}</button>#}
-{#        <button class="button1" value="wrong" id="btn2" name="option" type="submit" >{{ card['answer1'] }}</button>#}
-{#        <button class="button1" value="wrong" id="btn3"  name="option" type="submit" >{{ card['answer2'] }}</button>#}
         </form>
 
     </div>
 </div>
-
-
-
 
 {% endblock %}
