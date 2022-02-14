@@ -76,11 +76,7 @@ def read_swe_post():
         points -= 1
         flash('Det var inte rätt, försök igen!')
 
-<<<<<<< HEAD
     return redirect(url_for('bp_games.read_swe_get'))
-=======
-
->>>>>>> d889e38441ded07cb9ef4cf5ed60a9981af2deb0
 
 
 @bp_games.get('/description/<game_id>')
