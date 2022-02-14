@@ -1,7 +1,7 @@
 from application.dll.db.models import Game
 
 
-def add_game(game):
+def add_game_information(game):
     Game(game).save()
 
 

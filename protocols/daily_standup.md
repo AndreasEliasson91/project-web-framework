@@ -456,15 +456,98 @@ Datum: 08-02-2022 09:00
 Närvarande: Andreas, Lenny och Anna, Markus
 
 Vad har gjorts sen sist:
-Anna och lenny har jobbat med sitt memory spel, fixat så att poäng sparas ner i databasen.
-Markus blev färdig med email confirmation och blev nästan klar med forgot password.
-Andreas fixade en svårighetsgrads sida för math mazen, där man kan välja hur svårt man vill att det ska vara och vilket räknesätt man ska använda.
+- Anna och lenny har jobbat med sitt memory spel, fixat så att poäng sparas ner i databasen.
+- Markus blev färdig med email confirmation och blev nästan klar med forgot password.
+- Andreas fixade en svårighetsgrads sida för math mazen, där man kan välja hur svårt man vill att det ska vara och vilket räknesätt man ska använda.
 
 Att göra idag:
-Anna och lenny skall försöka länka ihop poängen från memory spelet till profilsidan och sedan börja med ett stavningsspel.
-Andreas skulle välja ett nytt kort idag för att få en paus ifrån spelet.
-Markus Ska bli färdig med forgot password och sedan gå på något nytt kort, kanske ett spel.
+- Anna och lenny skall försöka länka ihop poängen från memory spelet till profilsidan och sedan börja med ett stavningsspel.
+- Andreas skulle välja ett nytt kort idag för att få en paus ifrån spelet.
+- Markus Ska bli färdig med forgot password och sedan gå på något nytt kort, kanske ett spel.
 
 
 Anteckningar:
 
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 09-02-2022 09:00
+
+Närvarande: Andreas, Lenny och Markus
+
+Vad har gjorts sen sist:
+- Lenny och Anna gjorde färdigt memory spelet och byggde om autosparnings rutningen. började bygga om profil sidan lite för att se poängen som är länkade med till spelet där.
+- Markus blev färdig med forgot password sidan och började med att göra ett läsförståelse spel på svenska.
+- Andreas blev färdig med sitt spel igår och mergade in det i projketet.
+Att göra idag:
+- lenny ska börja med ett word spel, (gissa ordet)
+- Markus jobbar vidare med spelet.
+- Andreas ska gå igenom filer i projketet och går igenom alla css filer. Och göra lite bug fixing med spelet.
+
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 10-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- lenny och Anna blev färdiga med memory spelet, och började med ett "swedish spelling" spel där man ska bygga ihop ord som där bokstäverna står helt fel.
+- Markus jobbade vidare på läsförtåelse spelet, fick färdigt hur kortet ska se ut, 
+- Andreas blev färdig med sitt spel igår och började städa upp lite i projketet där han bland annat skrev om några controllers och flyttade runt lite grejer.
+Att göra idag:
+- Lenny och Anna ska fortsätta med sitt spel idag.
+- Markus skall också fortsätta med spelet idag och förhoppnigsvis bli färdig.
+- Andreas ska fixa en bug med anonymnous user. Sedan jobba vidare med att städa upp i projketet.
+
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 11-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- lenny och Anna Anna och Lenny blev klara med spelet igår, och sedan började fixa lite på suspended, där dom la till en animation och lite till om man e suspended. De fixade även logout sidan.
+- Markus blev nästan klar med sitt spel. fixade massa fler läsförståelse kort och fixade till koden och designen.
+- Andreas bugfixade lite efter problem som blev efter merge.
+Att göra idag:
+- Lenny och Anna Ska snygga till admin sidan. 
+- Markus bli helt färdig med spelet och försöka fixa ett sätt att flytta runt knapparna.
+- Andreas Ska fixa highscoren och sedan göra en databasdump.
+
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 14-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- Lenny och Anna blev klara med att designa suspendsidan, logoutsidan, adminsidan och parent adminsidan. Hittade några buggar och jobba med att lösa dem, lyckades rätta till time set funtionen och suspend funktionen så att det stämmer överrens med databasen.
+- Markus blev klart med läsförståelsespelet.
+- Andreas forsatte med bugfxade och blev nästan klar med mattespelet.
+
+Att göra idag:
+- Andreas ska fixa till ett poängsystem för mattespelet och spara high scoret i databasen.
+- Alla ska merga in allt och fixa till buggar genom hela projektet.
+- Gå igenom så att designen har en röd tråd.
+
+Anteckningar:

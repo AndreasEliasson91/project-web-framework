@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/memory_game.css') }}">
+    <script src="{{ url_for('static', filename='js/memory_game.js') }}" async></script>
+    <title>Cute Memory</title>
+</head>
+<body>
+
+<h1 id="b1" class="font-effect-neon">Cute Memory</h1>
+
+
+<div class="big-text">
+    <span class="restart-text-small">Klicka Här För Att</span>
+    Starta Spelet
+</div>
+<div id="game-over-text" class="big-text">
+    Du Förlorade...
+    <span class="restart-text-small">Starta Om Spelet</span>
+</div>
+<div id="victory-text" class="big-text">
+    Du Vann!
+    <span class="restart-text-small">Starta Om Spelet</span>
+</div>
+<div class="name-title">Ditt namn: {{ current_user.email }}</div>
+<div class="highest-title">Din högsta poäng: </div>
+<div class="knapp-diven">
+    <button id="start-game" class="start-knapp" onclick="startGame()">Starta Spel</button>
+    <button id="avsluta-game" class="avsluta-knapp" onclick="location.href={{ url_for('bp_games.index') }}">Avsluta Spel</button>
+</div>
+<div id="end_game" class="game_end"></div>
+<div class="hidden_box" id="e1">
+
+
+     <form Name="Form" Method="POST" Action="{{ url_for('bp_games.save_score_post') }}">
+     <input class="input is-large" type="text" name="t1" id="txt1" onclick="check" required hidden />
+         <button id="clickButton" type="submit" value="Submit" hidden ></button>
+
+
+     </form>
+</div>
+
+<div class="game-container">
+    <div class="game-info-container">
+        <div class="game-info">
+            Tid <span id="time-remaining"></span>
+        </div>
+        <div class="game-info">
+            <span id="flips"></span>
+            Poäng <span id="score">0</span>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/fox.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/fox.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/bear1.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/bear1.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/Koala.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/Koala.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/pingvin.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/pingvin.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/rabbit.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/rabbit.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/rat.png") }}"></image>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-back card-face">
+            <image class="pink-bear" src="{{ url_for('static', filename="img/61f2b9927b8b30662bb44ada_main.png") }}"></image>
+        </div>
+        <div class="card-front card-face">
+            <image class="card-value" src="{{ url_for('static', filename="img-game/cute-memory/rat.png") }}"></image>
+        </div>
+    </div>
+</div>
+
+{# Here's the link src to the JS file #}
+
+
+{#<script>#}
+{#    window.onload = choosePicWord;#}
+{##}
+{#    var cards = ["card1", "card2", "card3", "card4", "card5", "card6"]#}
+{##}
+{#    var myPix = ["/static/img/mus.jpg","/static/img/kanin.jpg","/static/img/kossa.jpg",#}
+{#        "/static/img/flodhäst.jpg", "/static/img/räv.jpg", "/static/img/sköldpadda.jpeg"];#}
+{##}
+{#    var myWord = ["Kanin", "Kossa", "Mus", "Flodhäst", "Räv", "Sköldpadda"];#}
+{##}
+{#function choosePicWord() {#}
+{##}
+{#    var randomNum = Math.floor(Math.random() * myPix.length);#}
+{#    document.getElementById("myPicture").src = myPix[randomNum];#}
+{##}
+{#    for (let x = 0; x < 6; x++){#}
+{#        var randomNum2 = Math.floor(Math.random() * myWord.length);#}
+{#        for (let i = 0; i < myWord.length; i++) {#}
+{##}
+{##}
+{#        let slump = myWord[randomNum2]#}
+{##}
+{#            if (myWord[i] === slump) {#}
+{#            document.getElementById(cards[x]).innerHTML = myWord[i];#}
+{#            myWord.splice(randomNum2, 1);#}
+{##}
+{#            }#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#</script>#}
+
+
+</body>
+</html>
+

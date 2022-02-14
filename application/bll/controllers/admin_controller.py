@@ -1,14 +1,28 @@
-from application.bll.controllers import user_controller
 from application.dll.repository import admin_repository
+from application.bll.controllers.user_controller import check_parent_status
 
 
-def get_all_users_from_db():
-    return [value for user in user_controller.get_all_users() for key, value in user.__dict__.items() if key == 'email']
+def suspend_user(user_id):
+    from application.bll.controllers.user_controller import get_user
+
+    if check_parent_status(user_id):
+        user = get_user(email=user_id)
+    else:
+        user = get_user(username=user_id)
+
+    return admin_repository.suspend_user(user)
 
 
-def suspend_email_user(email):
-    return admin_repository.suspend_email_user(email)
+def is_user_active(user_id):
+    from application.bll.controllers.user_controller import get_user
+
+    if check_parent_status(user_id):
+        user = get_user(email=user_id)
+    else:
+        user = get_user(username=user_id)
+
+    return user.activated
 
 
-def is_user_active(user_id, selected_val):
-    return admin_repository.is_user_active(user_id, selected_val)
+def child_control_clock(child_id, start, end):
+    return admin_repository.child_control_clock(child_id, start, end)

@@ -2,6 +2,7 @@
     background-color: #f5ba28;
 }
 
+
 .card {
 position:absolute;
 float: left;
@@ -63,5 +64,13 @@ font-size: 20px;
     margin-top:15px;
     text-align: center;
 
+
+
+.button-play {
+    width: 200px;
+    margin: 10px;
+    height: 50px;
+    position: center;
+    font-size: 30px;
 
 }

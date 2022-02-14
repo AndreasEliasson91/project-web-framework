@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/find_the_word_game.css') }}">
+    <script src="{{ url_for('static', filename='js/find_the_word_game.js') }}" async></script>
+    <title>Hitta Ordet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="la_word" class="random_word" ></div>
+    <div class="username" > Du är inloggad som: {{ current_user.email }}</div>
+    <div class="score_db" > Högsta poäng: {{ current_user.game.get('SCORE') }}</div>
+    <div class="timer"></div>
+    <div class="score">0 Poäng</div>
+
+    <div class="container">
+        <textarea class="input_letters" type="text" id="txt1" value=""></textarea>
+        <div id="game-buttons" class="game_buttons">
+        <button class="start_btn" onclick="start_from_button()">Starta spel</button>
+            <button class="next_btn" onclick="NextWord()" disabled >Nästa</button>
+            <button class="end_btn" onclick="location.href={{ url_for('bp_games.index') }}" >Avsluta spel</button>
+        </div>
+
+        </div>
+        <div class="container_control">
+
+            <button class="control_btn" onclick="checkWord()">Kontroll</button>
+
+        </div>
+        <div id="end-game" class="text_end_game" ></div>
+
+</body>
+</html>
