@@ -65,8 +65,7 @@ def card_game_get():
 
 @login_required
 @bp_games.post('/card_game')
-
-def read_swe_post():
+def card_game_post():
     global i, points
 
     if request.form.get('option') == 'right':
