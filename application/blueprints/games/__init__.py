@@ -76,7 +76,7 @@ def card_game_post():
         points -= 1
         flash('Det var inte rätt, försök igen!')
 
-    return redirect(url_for('bp_games.read_swe_get'))
+    return redirect(url_for('bp_games.card_game_get'))
 
 
 @bp_games.get('/description/<game_id>')
