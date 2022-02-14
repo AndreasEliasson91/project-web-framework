@@ -49,7 +49,7 @@ def index():
 
 @login_required
 @bp_games.get('/card_game')
-def read_swe_get():
+def card_game_get():
     global i
     global points
 
@@ -65,6 +65,7 @@ def read_swe_get():
 
 @login_required
 @bp_games.post('/card_game')
+
 def read_swe_post():
     global i, points
 
@@ -102,7 +103,7 @@ def game_description_post(game_id):
         case 'a-maze-ing game':
             return redirect(url_for('bp_games.difficulty_get'))
         case 'ordgåtan':
-            return redirect(url_for('bp_games.card_game'))
+            return redirect(url_for('bp_games.card_game_get'))
 
 
 @bp_games.get('/hitta-ordet')
