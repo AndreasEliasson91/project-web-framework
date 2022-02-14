@@ -1,10 +1,11 @@
 import time
 import random
 from bson import ObjectId
+from flask_login import login_required
 
 from application.bll.controllers import game_controller, image_controller
 from application.bll.controllers.save_cute_memory_score import save_cute_memory_score
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 
 maze = None
 position_x = None
@@ -43,7 +44,7 @@ def index():
 
 
 @login_required
-@bp_games.get('/reading_swedish')
+@bp_games.get('/card_game')
 def read_swe_get():
     global i
     global points
@@ -58,7 +59,7 @@ def read_swe_get():
         return render_template('reading_game_swe_complete.html', points=points)
 
 @login_required
-@bp_games.post('/reading_swedish')
+@bp_games.post('/card_game')
 def read_swe_post():
     global i
     global points
@@ -72,7 +73,7 @@ def read_swe_post():
         flash('Det var inte rätt, försök igen!')
         return redirect(url_for('bp_games.read_swe_get'))
 
-    return render_template('games_index.html', games=games)
+
 
 
 @bp_games.get('/description/<game_id>')
@@ -93,8 +94,8 @@ def game_description_post(game_id):
             return redirect(url_for('bp_games.index_memory'))
         case 'a-maze-ing game':
             return redirect(url_for('bp_games.difficulty_get'))
-        # case 'ordgåtan':
-            # return redirect(url_for('bp_games.word_game or something'))
+        case 'ordgåtan':
+            return redirect(url_for('bp_games.card_game'))
 
 
 @bp_games.get('/hitta-ordet')
