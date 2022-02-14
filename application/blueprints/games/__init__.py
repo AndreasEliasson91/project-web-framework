@@ -45,7 +45,7 @@ def index():
 
 @login_required
 @bp_games.get('/card_game')
-def read_swe_get():
+def card_game_get():
     global i
     global points
 
@@ -60,18 +60,18 @@ def read_swe_get():
 
 @login_required
 @bp_games.post('/card_game')
-def read_swe_post():
+def card_game_post():
     global i
     global points
     if request.form.get('option') == 'right':
         flash('Det var rätt, du fick ett poäng!')
         i += 1
         points += 1
-        return redirect(url_for("bp_games.read_swe_get"))
+        return redirect(url_for("bp_games.card_game_get"))
     else:
         points -= 1
         flash('Det var inte rätt, försök igen!')
-        return redirect(url_for('bp_games.read_swe_get'))
+        return redirect(url_for('bp_games.card_game_get'))
 
 
 
@@ -95,7 +95,7 @@ def game_description_post(game_id):
         case 'a-maze-ing game':
             return redirect(url_for('bp_games.difficulty_get'))
         case 'ordgåtan':
-            return redirect(url_for('bp_games.card_game'))
+            return redirect(url_for('bp_games.card_game_get'))
 
 
 @bp_games.get('/hitta-ordet')
