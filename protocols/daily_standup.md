@@ -497,7 +497,7 @@ Markus Dokumenterar
 
 Datum: 10-02-2022 09:00
 
-Närvarande: Andreas, Lenny och Markus
+Närvarande: Andreas, Lenny, Anna och Markus
 
 Vad har gjorts sen sist:
 - lenny och Anna blev färdiga med memory spelet, och började med ett "swedish spelling" spel där man ska bygga ihop ord som där bokstäverna står helt fel.
@@ -508,5 +508,46 @@ Att göra idag:
 - Markus skall också fortsätta med spelet idag och förhoppnigsvis bli färdig.
 - Andreas ska fixa en bug med anonymnous user. Sedan jobba vidare med att städa upp i projketet.
 
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+Markus Dokumenterar
+
+Datum: 11-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- lenny och Anna Anna och Lenny blev klara med spelet igår, och sedan började fixa lite på suspended, där dom la till en animation och lite till om man e suspended. De fixade även logout sidan.
+- Markus blev nästan klar med sitt spel. fixade massa fler läsförståelse kort och fixade till koden och designen.
+- Andreas bugfixade lite efter problem som blev efter merge.
+Att göra idag:
+- Lenny och Anna Ska snygga till admin sidan. 
+- Markus bli helt färdig med spelet och försöka fixa ett sätt att flytta runt knapparna.
+- Andreas Ska fixa highscoren och sedan göra en databasdump.
+
+
+Anteckningar:
+
+
+MÖTESPROTOKOLL
+-
+
+Datum: 14-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- Lenny och Anna blev klara med att designa suspendsidan, logoutsidan, adminsidan och parent adminsidan. Hittade några buggar och jobba med att lösa dem, lyckades rätta till time set funtionen och suspend funktionen så att det stämmer överrens med databasen.
+- Markus blev klart med läsförståelsespelet.
+- Andreas forsatte med bugfxade och blev nästan klar med mattespelet.
+
+Att göra idag:
+- Andreas ska fixa till ett poängsystem för mattespelet och spara high scoret i databasen.
+- Alla ska merga in allt och fixa till buggar genom hela projektet.
+- Gå igenom så att designen har en röd tråd.
 
 Anteckningar:

@@ -44,27 +44,17 @@
                         <h3>Dina Högsta Poäng</h3>
                     </div>
                     <div class="level-item">
-                        <div class="circle-text-over pic main-text" style="background-image: url({{ url_for('static', filename='img/bear1.png') }});">
-{#                            <h6 class="text-style"> {{ current_user.game.get('game name') }}</h6>#}
-{#                            <h4 class="text-style"> {{ current_user.game.get('SCORE') }}p </h4>#}
 
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father3.png') }});">
-                            <h4>70p</h4>
-                            <h6>Spel 2</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father4.png') }});">
-                            <h4>80p</h4>
-                            <h6>Spel 3</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father5.png') }});">
-                            <h4>75p</h4>
-                            <h6>Spel 4</h6>
-                        </div>
-                        <div class="circle-text-over main-text" style="background-image: url({{ url_for('static', filename='img/father6.png') }});">
-                            <h4>10p</h4>
-                            <h6>Spel 5</h6>
-                        </div>
+                        {% set i = namespace(value=0) %}
+                        {% for game in games %}
+                            <a class="circle-text-over main-text" href="{{ url_for('bp_games.game_description_get', game_id=game['_id']) }}" style="background-image: url({{ game.content.main_image }});
+                                    color: rgb({{ game.content.rgb_text[0] }}, {{ game.content.rgb_text[1] }}, {{ game.content.rgb_text[2] }});">
+                                    <p><strong>{{ game.name }}</strong></p>
+                                    <p><strong>{{ current_user.personal_high_score[i.value]['score'] }}p</strong></p>
+                            </a>
+                            {% set i.value = i.value + 1 %}
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
