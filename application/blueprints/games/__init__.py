@@ -1,5 +1,5 @@
 import time
-
+import random
 from bson import ObjectId
 
 from application.bll.controllers import game_controller, image_controller
@@ -9,12 +9,17 @@ from flask import Blueprint, render_template, redirect, url_for, request
 maze = None
 position_x = None
 position_y = None
+i = 0
+points = 0
+
 
 bp_games = Blueprint('bp_games',
                      __name__,
                      template_folder='templates',
                      url_prefix='/games'
                      )
+
+
 
 
 @bp_games.get('/')
@@ -32,6 +37,40 @@ def index():
                     score['user_id'] = user._id
                     score['name'] = user.display_name if user.parent else user.username
                     score['avatar'] = image_controller.get_profile_picture(user)
+
+
+    return render_template('games_index_hs.html', games=games)
+
+
+@login_required
+@bp_games.get('/reading_swedish')
+def read_swe_get():
+    global i
+    global points
+
+    cards = game_controller.game_sentances()
+    while i < len(cards):
+        answers = cards[i]['answers']
+        random.shuffle(answers)
+        return render_template('reading_game_swe.html', card=cards[i], points=points, answers=answers)
+    else:
+        time.sleep(5)
+        return render_template('reading_game_swe_complete.html', points=points)
+
+@login_required
+@bp_games.post('/reading_swedish')
+def read_swe_post():
+    global i
+    global points
+    if request.form.get('option') == 'right':
+        flash('Det var rätt, du fick ett poäng!')
+        i += 1
+        points += 1
+        return redirect(url_for("bp_games.read_swe_get"))
+    else:
+        points -= 1
+        flash('Det var inte rätt, försök igen!')
+        return redirect(url_for('bp_games.read_swe_get'))
 
     return render_template('games_index.html', games=games)
 
@@ -120,3 +159,4 @@ def maze_post():
         position_x, position_y = move(direction, position_x, position_y)
 
     return redirect(url_for('bp_games.maze_get', current_location=maze.get_cell(*(position_x, position_y))))
+

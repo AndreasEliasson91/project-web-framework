@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Games{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/games.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card">
+    <div class="text">
+        <p>Spelet är slut och du fick {{ points }} poäng</p>
+    </div>
+    <div class="text2">
+        <p>Till vilken sida vill du gå?</p>
+    </div>
+        <hr style="border-top: 3px solid; color:purple">
+    <div class="buttons" style="-ms-transform: translateY(-50%);transform: translateY(-50%); position: absolute">
+            <button class="button1"><a style="color: black" href="url_for{{ bp_open.index }}">Startsidan</a></button>
+            <button class="button1"><a style="color: black" href="url_for{{ bp_open.games_get }}">Spelen</a></button>
+    </div>
+</div>
+
+
+{% endblock %}
