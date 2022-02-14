@@ -22,7 +22,7 @@
 
 
         <div  class="boxen">
-            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child')  }}">
+            <form Name="Form1" Method="POST" Action="{{  url_for('bp_parent.control_child_get')  }}">
             <select Name="List1" class="combo_users" size="10" id="myCourses">
                 {% for item in listan %}
                     <Option id="op1" name="{{ item }}" value="{{ item }}"> {{ item }}
@@ -47,7 +47,7 @@
     <div style=" height: 50px; width:230px; border-bottom: 1px solid purple;">välj start och slut tid när barnet inte
         har tillgång till hemsidan</div>
 
-        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_child') }}">
+        <form Name="List2" Method="POST" Action="{{ url_for('bp_parent.control_child_get') }}">
             <div style="float: left; margin-right: 20px;">
                 <label class="timed"  for="start" style="text-align: center">Start</label><input class="timed"  id="start" name="start" type="time"/>
             </div>

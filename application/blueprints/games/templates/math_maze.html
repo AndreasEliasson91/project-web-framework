@@ -8,41 +8,39 @@
 
 {% block content %}
     <div class="column is-4 is-offset-4 has-text-centered">
-        <div class="main-text bottom-20 top-20" style="background-color: #366ed4; margin-top: 5%; margin-bottom: 5%;">
-            <h3>A-Maze-Ing Game</h3>
 {#            <img src="{{ url_for('static', filename='img-game/math-maze/maze.svg') }}">#}
-        </div>
-        <div class="textbox-anim main-text bottom-20 top-20" style="background-color: #366ed4; height: 80px; margin-top: 5%; margin-bottom: 5%;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% if 'Rätt' in message %}
+                        <div class="textbox-anim main-text top-20 bottom-20" style="background-color: limegreen">
+                            {{ message }}
+                        </div>
+                    {% else %}
+                        <div class="textbox-anim main-text top-20 bottom-20" style="background-color: darkred">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="textbox-non-anim main-text top-20 bottom-20" style="background-color: #376907; margin-top: 5%; margin-bottom: 5%;">
+                    A-Maze-Ing Game
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="textbox-non-anim main-text bottom-20 top-20" style="background-color: #376907; height: 80px; margin-top: 5%;">
             <h3>{% for item in current_location.math_problem %}{{ item }} {% endfor %}=</h3>
         </div>
         <form id="maze" action="{{ url_for('bp_games.maze_post')}}" method="POST">
-            <div class="container main-text bottom-20 top-20" style="width: 320px; height: 320px; border-style: solid;">
+            <div class="container main-text bottom-20 top-20" style="background-color: #376907; margin: 5%;">
+                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="north" style="background-color: #4D3617FF; margin-top: 10%;">{{ current_location.answers[0] }}</button>
                 <br>
-                    <button class="main-text button-maze" type="submit" name="direction" value="north" style="background-color: purple;">{{ current_location.answers[0] }}</button>
-                <br><br>
-                    <button class="main-text button-maze" type="submit" name="direction" value="west" style="background-color: purple; margin-right: 20px;">{{ current_location.answers[3] }}</button>
-                    <button class="main-text button-maze" type="submit" name="direction" value="east" style="background-color: purple; margin-left: 20px;">{{ current_location.answers[2] }}</button>
-                <br><br>
-                    <button class="main-text button-maze" type="submit" name="direction" value="south" style="background-color: purple;">{{ current_location.answers[1] }}</button>
+                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="west" style="background-color: #4D3617FF; margin-right: 70px; margin-left: 10%;">{{ current_location.answers[3] }}</button>
+                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="east" style="background-color: #4D3617FF; margin-left: 70px; margin-right: 10%;">{{ current_location.answers[2] }}</button>
                 <br>
+                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="south" style="background-color: #4D3617FF; margin-bottom: 10%;">{{ current_location.answers[1] }}</button>
             </div>
         </form>
     </div>
-    {% block script %}
-    <script>
-        document.getElementById("maze").addEventListener("submit", checkAnswer);
-
-        function checkAnswer() {
-            let answer = parseInt({{ current_location.math_problem }});
-            let player_answer = document.getElementById("maze");
-
-            if (answer === player_answer) {
-                alert('Rätt! Du går vidare!');
-            }
-            else {
-                alert('Fel! Försök igen!');
-            }
-        }
-    </script>
-    {% endblock %}
 {% endblock %}
