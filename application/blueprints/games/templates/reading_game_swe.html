@@ -37,7 +37,7 @@
         <hr style="border-top: 3px solid; color:purple">
     <div class="buttons" style="-ms-transform: translateY(-50%);transform: translateY(-50%); position: absolute">
 
-        <form Name="Form1" id="Form1" Method="POST" Action="{{  url_for('bp_games.read_swe_post')  }}">
+        <form Name="Form1" id="Form1" Method="POST" Action="{{  url_for('bp_games.card_game_post')  }}">
             {% for answer in answers %}
                 <button class="button1" value="{{ 'right' if answer['correct'] else 'wrong' }}" id="btn1" name="option" type="submit" >{{ answer['alternative'] }}</button>
             {% endfor %}
