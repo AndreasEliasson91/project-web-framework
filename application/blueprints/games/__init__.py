@@ -96,21 +96,28 @@ def find_the_word_post():
 # Memory Game
 @bp_games.get('/memory-game')
 def memory_get():
-    for hs in current_user.personal_high_score:
-        if hs['game'] == current_game:
-            score = hs['score']
-    return render_template('index_memory.html', score=score)
+    if current_user is not None:
+        return render_template('index_memory.html')
+    else:
+        for hs in current_user.personal_high_score:
+            if hs['game'] == current_game:
+                score = hs['score']
+        return render_template('index_memory.html', score=score)
 
 
 @bp_games.post('/memory-game')
 def memory_post():
-    global current_game
+    if current_user is not None:
+        return render_template('index_memory.html')
+    else:
 
-    score = int(request.form.get('t1'))
-    game_controller.set_high_score(current_game, current_user, score)
-    time.sleep(5)
+        global current_game
 
-    return redirect(url_for('bp_games.game_description_get', game_id=current_game))
+        score = int(request.form.get('t1'))
+        game_controller.set_high_score(current_game, current_user, score)
+        time.sleep(5)
+
+        return redirect(url_for('bp_games.game_description_get', game_id=current_game))
 
 
 # Card Game
