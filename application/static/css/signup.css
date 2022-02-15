@@ -1,0 +1,12 @@
+#register{
+    background-color: purple;
+}
+
+.box {
+    border: 2px solid grey;
+}
+
+.box:hover {
+    border: 3px solid purple;
+}
+
