@@ -551,3 +551,20 @@ Att göra idag:
 - Gå igenom så att designen har en röd tråd.
 
 Anteckningar:
+
+
+Datum: 15-02-2022 09:00
+
+Närvarande: Andreas, Lenny, Anna och Markus
+
+Vad har gjorts sen sist:
+- Andreas har fixat poängsystem till mattespelet och läsförståelsespelet.
+- Anna och Lenny har fixat till utseendet på parent adminsidan så att det ser bra ihop.
+- Fixat några buggar
+
+Att göra idag:
+- Forsätta fixa småbuggar
+
+Anteckningar:
+
+
