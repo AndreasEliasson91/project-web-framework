@@ -92,7 +92,7 @@ Blev allt klart?
 - Vi blev klara med de korten vi valde att göra, dvs de kort som prioriterades.
 
 Vad behövs för att vi skall klara av detta issue nästa gång ?
-- 
+
 
 Vad kan bli bättre till nästa gång ?
 - Bättre på att uppskatta tid och dela upp korten mer.
