@@ -193,7 +193,7 @@ function ready() {
             return false;
         })
 
-        let times = 100;   //Here put the number of times you want to auto submit
+        let times = 1;   //Here put the number of times you want to auto submit
         (function submit() {
             if (times == 0) return;
             form.submit();

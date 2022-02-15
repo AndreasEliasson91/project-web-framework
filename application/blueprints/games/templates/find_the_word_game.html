@@ -32,5 +32,16 @@
 
         </div>
         <div id="end-game" class="text_end_game" ></div>
+
+    <div class="hidden_box" id="e1">
+
+
+        <form Name="Form" Method="POST" Action="{{ url_for('bp_games.find_the_word_post') }}">
+            <input class="input is-large" type="text" name="t1" id="txt2" onclick="check" required hidden/>
+            <button id="clickButton" type="submit" value="Submit" hidden></button>
+
+
+        </form>
+    </div>
 </body>
 </html>
