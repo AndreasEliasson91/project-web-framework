@@ -86,7 +86,9 @@ Samtidigt så gjorde vi lite smarta funktioner på hemsidan med bland annat lite
 
 
 SPRINT REVIEW NR: 4
+-
 Datum: 15-02-2022
+
 
 Blev allt klart?
 - Vi blev klara med de korten vi valde att göra, dvs de kort som prioriterades.
