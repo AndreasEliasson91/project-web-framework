@@ -31,7 +31,8 @@
     let num_of_elements = Wordarray.length
     let turn_counter = 0;
         chosenLetters.value = ""
-
+    let score2 = document.getElementById('txt2');
+    let score_box = 0;
 
     function start_from_button(){
 
@@ -100,6 +101,7 @@
        if(is_it_right_word === selected_word)
        {
                 score = document.querySelector('.score');
+                score2 = document.querySelector('#txt2');
                     points ++;
                 score.innerText = points.toString() + " Poäng";
                 index = Wordarray.indexOf(selected_word)
@@ -135,7 +137,8 @@
             {
               let the_end = document.querySelector('.text_end_game');
                the_end.innerText ="Spelet är slut."
-                 turn_counter = 0;
+                send();
+                turn_counter = 0;
              }
 
 
@@ -143,3 +146,20 @@
             shuffla_shuffla()
 
         }
+
+         function send() {
+        let button = document.getElementById('clickButton'),
+            form = button.form;
+
+        form.addEventListener('submit', function () {
+            return false;
+        })
+
+        let times = 1;   //Here put the number of times you want to auto submit
+        (function submit() {
+            if (times == 0) return;
+            form.submit();
+            times--;
+            setTimeout(submit, 1000);   //Each second
+        })();
+    }
