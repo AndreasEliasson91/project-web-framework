@@ -1,23 +1,22 @@
 import time
 import random
-from bson import ObjectId
 
 from application.bll.controllers import game_controller, image_controller
-from application.bll.controllers.save_cute_memory_score import save_cute_memory_score
+from bson import ObjectId
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import current_user, login_required
 
 current_game = None
+points = None
 win_condition = None
+
+i = None
 
 maze = None
 timer = None
 position_x = 0
 position_y = 0
 
-i = 0
-points = 0
-start = time.time()
 
 bp_games = Blueprint('bp_games',
                      __name__,
@@ -48,13 +47,79 @@ def index():
     return render_template('games_index.html', games=games)
 
 
+@bp_games.get('/description/<game_id>')
+def game_description_get(game_id):
+    game = game_controller.get_game(ObjectId(game_id))
+    game.content['main_image'] = image_controller.get_game_image(game, '_main')
+
+    return render_template('game_description.html', game=game)
+
+
+@bp_games.post('/description/<game_id>')
+def game_description_post(game_id):
+    global current_game
+
+    game = game_controller.get_game(ObjectId(game_id))
+    current_game = ObjectId(game_id)
+
+    match game.name.lower():
+        case 'hitta ordet!':
+            return redirect(url_for('bp_games.find_the_word_get'))
+        case 'cute memory':
+            return redirect(url_for('bp_games.memory_get'))
+        case 'a-maze-ing game':
+            return redirect(url_for('bp_games.difficulty_get'))
+        case 'ordgåtan':
+            return redirect(url_for('bp_games.card_game_get'))
+
+
+# Find The Word
+@bp_games.get('/hitta-ordet')
+def find_the_word_get():
+    for hs in current_user.personal_high_score:
+        if hs['game'] == current_game:
+            score = hs['score']
+    return render_template('find_the_word_game.html', score=score)
+
+
+@bp_games.post('/hitta-ordet')
+def find_the_word_post():
+    global current_game
+
+    score = int(request.form.get('t1'))
+    game_controller.set_high_score(current_game, current_user, score)
+    time.sleep(5)
+
+    return redirect(url_for('bp_games.game_description_get', game_id=current_game))
+
+
+# Memory Game
+@bp_games.get('/memory-game')
+def memory_get():
+    for hs in current_user.personal_high_score:
+        if hs['game'] == current_game:
+            score = hs['score']
+    return render_template('index_memory.html', score=score)
+
+
+@bp_games.post('/memory-game')
+def memory_post():
+    global current_game
+
+    score = int(request.form.get('t1'))
+    game_controller.set_high_score(current_game, current_user, score)
+    time.sleep(5)
+
+    return redirect(url_for('bp_games.game_description_get', game_id=current_game))
+
+
+# Card Game
 @login_required
 @bp_games.get('/card_game')
 def card_game_get():
-    global i
-    global points
-    global current_game
-    global start
+    global i, points, current_game
+
+    start = time.time()
     cards = game_controller.game_sentances()
     while i < len(cards):
         answers = cards[i]['answers']
@@ -86,50 +151,7 @@ def card_game_post():
     return redirect(url_for('bp_games.card_game_get'))
 
 
-@bp_games.get('/description/<game_id>')
-def game_description_get(game_id):
-    game = game_controller.get_game(ObjectId(game_id))
-    game.content['main_image'] = image_controller.get_game_image(game, '_main')
-
-    return render_template('game_description.html', game=game)
-
-
-@bp_games.post('/description/<game_id>')
-def game_description_post(game_id):
-    global current_game
-
-    game = game_controller.get_game(ObjectId(game_id))
-    current_game = ObjectId(game_id)
-
-    match game.name.lower():
-        case 'hitta ordet!':
-            return redirect(url_for('bp_games.find_the_word_game'))
-        case 'cute memory':
-            return redirect(url_for('bp_games.index_memory'))
-        case 'a-maze-ing game':
-            return redirect(url_for('bp_games.difficulty_get'))
-        case 'ordgåtan':
-            return redirect(url_for('bp_games.card_game_get'))
-
-
-@bp_games.get('/hitta-ordet')
-def find_the_word_game():
-    return render_template('find_the_word_game.html')
-
-
-@bp_games.get('/memory-game')
-def index_memory():
-    return render_template('index_memory.html')
-
-
-@bp_games.post('/memory-game')
-def save_score_post():
-    get_score = request.form.get('t1')
-    save_cute_memory_score(get_score)
-    time.sleep(5)
-    return render_template('index_memory.html')
-
-
+# Maze Game
 @bp_games.get('/math-maze/set-difficulty')
 @login_required
 def difficulty_get():
@@ -183,6 +205,7 @@ def maze_post():
             score = len(timer) * points
             game_controller.set_high_score(current_game, current_user, score)
             flash(f'Grattis!\nDu fick {score} poäng!')
+            time.sleep(5)
             return redirect(url_for('bp_games.game_description_get', game_id=current_game))
         else:
             flash('Rätt! Du går vidare!')

@@ -145,7 +145,7 @@ body {
   position: fixed;
   font-size: 25px;
   margin-bottom: 600px;
-  margin-right: 1800px;
+  margin-right: 70%;
   z-index: 100;
 
   color: green;
@@ -156,7 +156,20 @@ body {
   position: fixed;
   font-size: 25px;
   margin-bottom: 490px;
-  margin-right: 1820px;
+  margin-right: 70%;
   color: green;
 
+}
+
+@media (max-width: 600px) {
+
+    .username {
+        flex-direction: column;
+        align-items: center;
+    }
+
+  .score_DB {
+        flex-direction: column;
+        align-items: center;
+    }
 }

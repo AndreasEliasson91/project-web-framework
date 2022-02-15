@@ -28,7 +28,7 @@
 </div>
 <div class="name-title">Ditt namn: {{ current_user.email }}</div>
 
-<div class="highest-title">Din högsta poäng: </div>
+<div class="highest-title">Din högsta poäng: {{ score }}</div>
 
 <div class="knapp-diven">
     <button id="start-game" class="start-knapp" onclick="startGame()">Starta Spel</button>
@@ -38,7 +38,7 @@
 <div class="hidden_box" id="e1">
 
 
-     <form Name="Form" Method="POST" Action="{{ url_for('bp_games.save_score_post') }}">
+     <form Name="Form" Method="POST" Action="{{ url_for('bp_games.memory_post') }}">
      <input class="input is-large" type="text" name="t1" id="txt1" onclick="check" required hidden />
          <button id="clickButton" type="submit" value="Submit" hidden ></button>
 
