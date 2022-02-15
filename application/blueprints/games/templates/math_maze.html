@@ -1,72 +1,83 @@
-{% extends "base.html" %}
-{% block title %}A-Maze-Ing-Game{% endblock %}
-
-{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A-Maze-Ing-Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/maze.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/text-blocks.css') }}">
-{% endblock %}
-
-{% block content %}
-    <div class="column is-4 is-offset-4 has-text-centered">
-{#            <img src="{{ url_for('static', filename='img-game/math-maze/maze.svg') }}">#}
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    {% if 'Rätt' in message %}
-                        <div class="textbox-anim main-text top-20 bottom-20" style="background-color: limegreen">
-                            {{ message }}
-                        </div>
-                    {% else %}
-                        <div class="textbox-anim main-text top-20 bottom-20" style="background-color: darkred">
-                            {{ message }}
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <div class="textbox-non-anim main-text top-20 bottom-20" style="background-color: #376907; margin-top: 5%; margin-bottom: 5%;">
-                    A-Maze-Ing Game
-                </div>
-            {% endif %}
-        {% endwith %}
-
-        <div class="textbox-non-anim main-text bottom-20 top-20" style="background-color: #376907; height: 80px; margin-top: 5%;">
-            <h3>{% for item in current_location.math_problem %}{{ item }} {% endfor %}=</h3>
+</head>
+<body>
+    <div class="background animate-opacity main-text" style="position:relative;">
+        <div class="top-left padding-large">
+                <span id="time"></span><br>
+                <span id="points">{{ points }} poäng</span>
         </div>
-        <form id="maze" action="{{ url_for('bp_games.maze_post')}}" method="POST">
-            <div class="container main-text bottom-20 top-20" style="background-color: #376907; margin: 5%;">
-                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="north" style="background-color: #4D3617FF; margin-top: 10%;">{{ current_location.answers[0] }}</button>
-                <br>
-                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="west" style="background-color: #4D3617FF; margin-right: 70px; margin-left: 10%;">{{ current_location.answers[3] }}</button>
-                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="east" style="background-color: #4D3617FF; margin-left: 70px; margin-right: 10%;">{{ current_location.answers[2] }}</button>
-                <br>
-                    <button class="main-text button-maze textbox-anim top-20 bottom-20" type="submit" name="direction" value="south" style="background-color: #4D3617FF; margin-bottom: 10%;">{{ current_location.answers[1] }}</button>
-            </div>
-        </form>
+        <div class="display-middle has-text-centered">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'Rätt' in message %}
+                            <h1 class="animate-top main-text" style="color: limegreen;">{{ message }}</h1>
+                        {% else %}
+                            <h1 class="animate-top main-text" style="color: darkred;">{{ message }}</h1>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <h1 class="animate-top main-text" style="font-size: 60px;">{% for item in current_location.math_problem %}{{ item }} {% endfor %}=</h1>
+            <hr style="margin: auto; width: 40%; border-color: #9e9e9e !important;">
+
+            <form id="maze" action="{{ url_for('bp_games.maze_post') }}" method="POST">
+                <div class="button-box top-20 bottom-20">
+                        <button class="main-text button-maze top-20 bottom-20" type="submit" name="direction" value="north" style="margin-top: 10%;">{{ current_location.answers[0] }}</button>
+                    <br>
+                        <button class="main-text button-maze top-20 bottom-20" type="submit" name="direction" value="west" style="margin-right: 50px; margin-left: 10%;">{{ current_location.answers[3] }}</button>
+                        <button class="main-text button-maze top-20 bottom-20" type="submit" name="direction" value="east" style="margin-left: 50px; margin-right: 10%;">{{ current_location.answers[2] }}</button>
+                    <br>
+                        <button class="main-text button-maze top-20 bottom-20" type="submit" name="direction" value="south" style="margin-bottom: 10%;">{{ current_location.answers[1] }}</button>
+                        <input name="timer" id="timer" hidden>
+                </div>
+            </form>
+        </div>
+        <div class="bottom-left padding-large">
+            <div id="map" style="margin-bottom: 10px; background-color: #15492d; width: 300px; height: 300px;" hidden><img src="{{ url_for('static', filename='img-game/maze.svg') }}"></div>
+            <button class="main-text button-maze top-20 bottom-20" onclick="showMap()">Visa Karta</button>
+        </div>
+        <div class="bottom-right padding-large">
+            <a href="{{ url_for('bp_games.difficulty_get') }}">
+                <button class="main-text button-maze top-20 bottom-20" onclick="showMap()">Gå Tillbaka</button>
+            </a>
+        </div>
     </div>
 
-    {% block scripts %}
-        <script>
-            function startTimer(duration, display) {
-                let timer = duration, minutes, seconds;
-                setInterval(function () {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
+    <script>
+        let startTimer = new Date().getTime() + {{ time_remaining }};
+        let x = setInterval(function() {
+            let currentTime = new Date().getTime();
+            let timer = startTimer - currentTime;
 
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
+            let minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timer % (1000 * 60)) / 1000);
 
-                    display.textContent = minutes + ":" + seconds;
+            document.getElementById("time").innerHTML = "0" + minutes + " : " + seconds;
 
-                    if (--timer < 0) {
-                        timer = duration;
-                    }
-                }, 1000);
+            if (timer < 0) {
+                clearInterval(x);
+                document.getElementById("time").innerHTML = "Tiden är slut!"
             }
-            window.onload = function () {
-                var fiveMinutes = 60 * 5,
-                    display = document.querySelector('#time');
-                startTimer(fiveMinutes, display);
-            };
-        </script>
-    {% endblock %}
-{% endblock %}
+
+            document.getElementById("maze").onsubmit = function() {
+                document.getElementById("timer").value = timer;
+            }
+        }, 1000);
+
+        function showMap () {
+            document.getElementById("map").hidden = !document.getElementById("map").hidden;
+        }
+    </script>
+</body>
+</html>
