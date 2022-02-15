@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="column is-centered">
+{#    <div class="column is-centered">#}
         <div class="column is-4 is-offset-4">
             <div class="box">
                 {% with messages = get_flashed_messages() %}
@@ -38,11 +38,11 @@
                         <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Kom ihåg mig</label>
                         <a href="{{ url_for("bp_open.forgot_get") }}" style="position: absolute; left: 58%;">Glömt lösenord?</a>
                         </div>
-                    <button class="button is-block is-info is-large is-fullwidth" type="submit" value="Login" onclick="lsRememberMe()">Logga in</button>
+                    <button class="button is-block is-info is-large is-fullwidth" type="submit" value="Login" onclick="lsRememberMe()" style="background-color:purple">Logga in</button>
                 </form>
             </div>
         </div>
-    </div>
+{#    </div>#}
 
 
 {% endblock %}
