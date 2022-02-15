@@ -161,15 +161,7 @@ body {
 
 }
 
-@media (max-width: 600px) {
-
-    .username {
-        flex-direction: column;
-        align-items: center;
-    }
-
-  .score_DB {
-        flex-direction: column;
-        align-items: center;
-    }
+.hidden_box {
+  position: fixed;
+  margin-left: 20% ;
 }

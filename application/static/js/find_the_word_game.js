@@ -11,7 +11,8 @@
 
 
 // Punkt 1
-    let Wordarray = ['python', 'fåtölj', 'popcorn', 'apelsin', 'sjuksköterska', 'kalender', 'svenska', 'danska', 'hund'
+    let Wordarray = ['flodhäst', 'gris', 'giraff'];
+    let Org_Wordarray = ['python', 'fåtölj', 'popcorn', 'apelsin', 'sjuksköterska', 'kalender', 'svenska', 'danska', 'hund'
         , 'katt', 'gais', 'köttbullar', 'spagetti', 'blomma', 'zebra', 'måne', 'solen', 'torsk', 'lax', 'lejon',
         'tröja', 'byxor', 'dator', 'giraff', 'hårtork', 'tavla','sköldpadda', 'piano', 'ljusstake',
         'mugg', 'mobiltelefon', 'påse', 'tofflor', 'hörlurar', 'ros', 'skål', 'godis', 'kaka',
@@ -104,6 +105,7 @@
                 score2 = document.querySelector('#txt2');
                     points ++;
                 score.innerText = points.toString() + " Poäng";
+                score2.value = points.toString();
                 index = Wordarray.indexOf(selected_word)
                 Wordarray.splice(index,1);
                 console.log(Wordarray);
