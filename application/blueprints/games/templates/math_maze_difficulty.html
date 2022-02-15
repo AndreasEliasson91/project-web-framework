@@ -43,28 +43,28 @@
                     </div>
                     <br><br><br>
                 </div>
-                <button class="main-text button-maze">Skapa Labyrint</button>
+                <button class="main-text button-maze" style="background-color: #800080FF;">Skapa Labyrint</button>
             </form>
         </div>
     </div>
 
 
-{% block script %}
-    <script>
-        let size = document.getElementById('mazeSize');
-        let difficulty = document.getElementById('mazeDifficulty');
-        let size_output = document.getElementById('size');
-        let difficulty_output = document.getElementById('difficulty');
+    {% block script %}
+        <script>
+            let size = document.getElementById('mazeSize');
+            let difficulty = document.getElementById('mazeDifficulty');
+            let size_output = document.getElementById('size');
+            let difficulty_output = document.getElementById('difficulty');
 
-        size_output.innerHTML = `${size.value} x ${size.value}`;
-        difficulty_output.innerHTML = `Nivå: ${difficulty.value}`;
+            size_output.innerHTML = `${size.value} x ${size.value}`;
+            difficulty_output.innerHTML = `Nivå: ${difficulty.value}`;
 
-        size.oninput = function() {
-            size_output.innerHTML = `${this.value} x ${this.value}`;
-        }
-        difficulty.oninput = function() {
-                difficulty_output.innerHTML = `Nivå: ${difficulty.value}`;
-        }
-    </script>
-{% endblock %}
+            size.oninput = function() {
+                size_output.innerHTML = `${this.value} x ${this.value}`;
+            }
+            difficulty.oninput = function() {
+                    difficulty_output.innerHTML = `Nivå: ${difficulty.value}`;
+            }
+        </script>
+    {% endblock %}
 {% endblock %}
