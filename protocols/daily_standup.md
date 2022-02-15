@@ -553,6 +553,9 @@ Att göra idag:
 Anteckningar:
 
 
+MÖTESPROTOKOLL
+-
+
 Datum: 15-02-2022 09:00
 
 Närvarande: Andreas, Lenny, Anna och Markus
