@@ -83,3 +83,19 @@ Anteckningar:
 
 Vi började lite med spelen den här veckan, och vi förväntade oss att dom skulle ta minst 40 timmar per spel, med tanke på complexiteten.
 Samtidigt så gjorde vi lite smarta funktioner på hemsidan med bland annat lite parent control grejer samt dropdown menyer i navbaren.
+
+
+SPRINT REVIEW NR: 4
+Datum: 15-02-2022
+
+Blev allt klart?
+- Vi blev klara med de korten vi valde att göra, dvs de kort som prioriterades.
+
+Vad behövs för att vi skall klara av detta issue nästa gång ?
+- 
+
+Vad kan bli bättre till nästa gång ?
+- Bättre på att uppskatta tid och dela upp korten mer.
+
+Vad gjorde vi bra ?
+- Vi har varit bra på att få klart allt i tid och minimerat våra buggar.
