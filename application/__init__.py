@@ -45,7 +45,6 @@ def create_app():
 
 
 if __name__ == '__main__':
-
     dotenv.load_dotenv()
-    create_app().run(debug=True, port=5001)
+    create_app().run(debug=True)
 

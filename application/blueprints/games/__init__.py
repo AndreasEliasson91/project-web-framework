@@ -73,41 +73,55 @@ def game_description_post(game_id):
 # Find The Word
 @bp_games.get('/hitta-ordet')
 def find_the_word_get():
-    for hs in current_user.personal_high_score:
-        if hs['game'] == current_game:
-            score = hs['score']
-    return render_template('find_the_word_game.html', score=score)
+    if not current_user.is_authenticated:
+        return render_template('find_the_word_game.html')
+    else:
+        for hs in current_user.personal_high_score:
+            if hs['game'] == current_game:
+                score = hs['score']
+        return render_template('find_the_word_game.html', score=score)
 
 
 @bp_games.post('/hitta-ordet')
 def find_the_word_post():
-    global current_game
+    if not current_user.is_authenticated:
+        return render_template('find_the_word_game.html')
+    else:
 
-    score = int(request.form.get('t1'))
-    game_controller.set_high_score(current_game, current_user, score)
-    time.sleep(5)
+        global current_game
 
-    return redirect(url_for('bp_games.game_description_get', game_id=current_game))
+        score = int(request.form.get('t1'))
+        game_controller.set_high_score(current_game, current_user, score)
+        time.sleep(5)
+
+        return redirect(url_for('bp_games.game_description_get', game_id=current_game))
 
 
 # Memory Game
 @bp_games.get('/memory-game')
 def memory_get():
-    for hs in current_user.personal_high_score:
-        if hs['game'] == current_game:
-            score = hs['score']
-    return render_template('index_memory.html', score=score)
+    if not current_user.is_authenticated:
+        return render_template('index_memory.html')
+    else:
+        for hs in current_user.personal_high_score:
+            if hs['game'] == current_game:
+                score = hs['score']
+        return render_template('index_memory.html', score=score)
 
 
 @bp_games.post('/memory-game')
 def memory_post():
-    global current_game
+    if not current_user.is_authenticated:
+        return render_template('index_memory.html')
+    else:
 
-    score = int(request.form.get('t1'))
-    game_controller.set_high_score(current_game, current_user, score)
-    time.sleep(5)
+        global current_game
 
-    return redirect(url_for('bp_games.game_description_get', game_id=current_game))
+        score = int(request.form.get('t1'))
+        game_controller.set_high_score(current_game, current_user, score)
+        time.sleep(5)
+
+        return redirect(url_for('bp_games.game_description_get', game_id=current_game))
 
 
 # Card Game
