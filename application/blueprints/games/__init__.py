@@ -8,9 +8,11 @@ from flask_login import current_user, login_required
 current_game = None
 points = 0
 win_condition = None
+
 i = 0
+
 maze = None
-timer = 0
+timer = None
 position_x = 0
 position_y = 0
 
@@ -132,6 +134,7 @@ def card_game_get():
 
     start = time.time()
     cards = game_controller.game_sentances()
+
     while i < len(cards):
         answers = cards[i]['answers']
         random.shuffle(answers)
