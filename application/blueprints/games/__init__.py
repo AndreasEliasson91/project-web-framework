@@ -121,18 +121,18 @@ def card_game_get():
 
     start = time.time()
     cards = game_controller.game_sentances()
+    i = 0
+    points = 0
+
     while i < len(cards):
         answers = cards[i]['answers']
         random.shuffle(answers)
         return render_template('reading_game_swe.html', card=cards[i], points=points, answers=answers)
-    else:
-        end = time.time()
-        total_score = points * 10 - int(end - start)
-        game_controller.set_high_score(current_game, current_user, total_score)
-        i = 0
-        points = 0
-        start = time.time()
-        return render_template('reading_game_swe_complete.html', points=int(total_score))
+
+    end = time.time()
+    total_score = points * 10 - int(end - start)
+    game_controller.set_high_score(current_game, current_user, total_score)
+    return render_template('reading_game_swe_complete.html', points=int(total_score))
 
 
 @login_required

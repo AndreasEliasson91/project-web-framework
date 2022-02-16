@@ -128,8 +128,7 @@ def game_sentances():
                          'correct': False},
                         {'alternative': 'Ett papper',
                          'correct': False}],
-        },
-
+        }
     ]
 
     return cards
